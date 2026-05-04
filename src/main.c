@@ -34,7 +34,7 @@ int main(void)
         // DrawCircle(600, 300, 60, BLUE);
         // DrawLine(100, 100, 700, 400, GREEN);
 
-        // Optional: show current FPS in top-left corner (great for debugging)
+        // Optional: show current FPS in top-left corner
         DrawFPS(10, 10);
 
         EndDrawing();
