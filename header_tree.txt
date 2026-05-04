@@ -4,3 +4,4 @@ Showing: Directories + ['.c', '.h'] files only
 Note: Directories are colored blue in the terminal (plain text here)
 
 └── src
+ └── main.c

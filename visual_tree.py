@@ -112,7 +112,7 @@ def generate_fancy_tree(
         # Start the tree (prints to console + writes to file)
         _tree(path, "", 0, f)
 
-    print(f"\n✅ Fancy header tree written to: {output_file}")
+    print(f"\n✅ Header tree written to: {output_file}")
 
 
 # ====================== USAGE ======================
