@@ -26,7 +26,7 @@ class Colors:
 # ========================================================
 
 
-def generate_fancy_tree(
+def generate_tree(
     path: str = PATH,
     output_file: str = OUTPUT_FILE,
     include_extensions: Optional[Set[str]] = None,
@@ -117,4 +117,4 @@ def generate_fancy_tree(
 
 # ====================== USAGE ======================
 if __name__ == "__main__":
-    generate_fancy_tree()
+    generate_tree()
