@@ -17,7 +17,7 @@ USE_COLORS = True                   # For console output
 # ===================== COLORS (Console only) =====================
 class Colors:
     RESET = "\033[0m"
-    DIRECTORY = "\033[94m"   # Bright Blue – change this if you prefer another color
+    DIRECTORY = "\033[94m"   # Bright Blue
     # Common alternatives:
     # "\033[96m"  # Cyan
     # "\033[92m"  # Green
