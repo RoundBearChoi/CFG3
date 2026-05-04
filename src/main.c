@@ -9,7 +9,7 @@ int main(void)
     const int screenHeight = 450;
 
     // Initialize the window and OpenGL context
-    InitWindow(screenWidth, screenHeight, "raylib_basic - Your First Window");
+    InitWindow(screenWidth, screenHeight, "here's your window");
 
     // Set target frame rate
     SetTargetFPS(60);

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-project(raylib_basic C)
+project(CFG3 C)
 
 # ================================================
 # Release by default (recommended for raylib)
