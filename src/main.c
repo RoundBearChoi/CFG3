@@ -9,7 +9,7 @@ int main(void)
     const int screenHeight = 450;
 
     // Initialize the window and OpenGL context
-    InitWindow(screenWidth, screenHeight, "here's your window");
+    InitWindow(screenWidth, screenHeight, "C Fighting Game 3");
 
     // Set target frame rate
     SetTargetFPS(60);
