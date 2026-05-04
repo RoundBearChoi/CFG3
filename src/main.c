@@ -29,7 +29,7 @@ int main(void)
         DrawText("Congrats! You created your first raylib window in C!",
                  120, 180, 20, LIGHTGRAY);
 
-        // ── Example shapes (uncomment any time to test drawing)
+        // ── Example shapes 
         // DrawRectangle(300, 300, 200, 150, RED);
         // DrawCircle(600, 300, 60, BLUE);
         // DrawLine(100, 100, 700, 400, GREEN);
