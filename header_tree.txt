@@ -1,0 +1,6 @@
+Directory Tree for: /home/rbwindows/CFG3
+================================================================================
+Showing: Directories + ['.c', '.h'] files only
+Note: Directories are colored blue in the terminal (plain text here)
+
+└── src
