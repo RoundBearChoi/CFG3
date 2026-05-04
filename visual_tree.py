@@ -3,14 +3,14 @@ from typing import Set, Optional
 
 # ========================= CONFIG =========================
 PATH = "."                          # Starting directory (use "." for current folder)
-OUTPUT_FILE = "header_tree.txt"     # Name of the output text file
+OUTPUT_FILE = "header_tree.txt"
 MAX_DEPTH = None                    # Maximum depth (None = unlimited, or set e.g. 5)
-SHOW_HIDDEN = False                 # Show hidden folders starting with '.' ?
+SHOW_HIDDEN = True
 
 # Only files with these extensions will be shown (plus ALL directories)
 INCLUDE_EXTENSIONS = {'.h', '.c'}
 
-USE_COLORS = True                   # ← NEW: Enable/disable colors for console output
+USE_COLORS = True                   # For console output
 # ========================================================
 
 
@@ -34,7 +34,7 @@ def generate_fancy_tree(
     show_hidden: bool = SHOW_HIDDEN,
 ):
     """
-    Generate a fancy tree showing ONLY directories + the file extensions listed in INCLUDE_EXTENSIONS.
+    Generate a tree showing ONLY directories + the file extensions listed in INCLUDE_EXTENSIONS.
     Directories appear in color in the terminal; the output file remains plain text.
     """
     if include_extensions is None:
@@ -102,7 +102,7 @@ def generate_fancy_tree(
 
     # Write to file with nice header
     with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(f"Directory Tree for: {path}\n")
+        f.write("Directory Tree\n")
         f.write("=" * 80 + "\n")
         f.write(f"Showing: Directories + {sorted(include_extensions)} files only\n")
         if USE_COLORS:

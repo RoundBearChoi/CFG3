@@ -1,4 +1,4 @@
-Directory Tree for: /home/rbwindows/CFG3
+Directory Tree
 ================================================================================
 Showing: Directories + ['.c', '.h'] files only
 Note: Directories are colored blue in the terminal (plain text here)
