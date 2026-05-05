@@ -5,7 +5,7 @@ void rbg_render_debug(void)
 {
     // ── Mark world/screen origin (0, 0) with a bright red X
     const int crossSize = 25;
-    const int thickness = 3;
+    const int thickness = 5;
 
     // Draw X at (0,0) — top-left corner of the window
     for (int i = 0; i < thickness; i++)
