@@ -12,9 +12,7 @@ CFG3 (C_Fighting_Game_3) is the third iteration of a minimalistic fighting game 
 
 ## 🚀 Getting Started (Linux / Ubuntu / Debian / WSL2)
 
-Install raylib system-wide (the simplest and most common method for raylib projects)
-
-### Step 1: Install raylib (System-wide)
+### Step 1: Install raylib system-wide (the simplest and most common method for raylib projects)
 
 ```bash
 sudo apt update
