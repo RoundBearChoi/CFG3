@@ -7,6 +7,6 @@
 // All debug visualization lives here.
 // Separate from game logic, rendering pipeline, and main loop.
 
-void RBG_RenderDebug(void);
+void rbg_render_debug(void);
 
 #endif

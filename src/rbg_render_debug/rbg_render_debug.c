@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include "rbg_render_debug.h"
 
-void RBG_RenderDebug(void)
+void rbg_render_debug(void)
 {
     // ── Mark world/screen origin (0, 0) with a bright red X
     const int crossSize = 25;
