@@ -1,26 +1,30 @@
 # ================================================
-# Simple raylib Makefile for Linux (C Fighting Game 3)
+# Makefile for C Fighting Game 3 (raylib)
 # ================================================
 
-CC       = gcc
-CFLAGS   = -Wall -Wextra -std=c11 -O2 -D_DEFAULT_SOURCE
-TARGET   = CFG3
+CC      = gcc
+CFLAGS  = -Wall -Wextra -std=c11 -O2 -D_DEFAULT_SOURCE
+LDFLAGS = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
-# Source files (easy to expand later)
-SRC      = src/main.c
+# Add every .c file here as you create new modules
+SOURCES = src/main.c \
+          src/rbg_render_debug/rbg_render_debug.c
 
-# Raylib linking flags — works on almost every Linux/WSL setup
-LIBS := $(shell pkg-config --libs raylib 2>/dev/null || echo "-lraylib -lGL -lm -lpthread -ldl -lrt -lX11")
+TARGET = CFG3
 
-.PHONY: all clean run
-
+# Default target
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $@ $< $(LIBS)
+# Build the executable
+$(TARGET): $(SOURCES)
+	$(CC) $(CFLAGS) -o $@ $(SOURCES) $(LDFLAGS)
 
+# Run the game
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up
 clean:
 	rm -f $(TARGET)
 
-run: all
-	./$(TARGET)
+.PHONY: all run clean

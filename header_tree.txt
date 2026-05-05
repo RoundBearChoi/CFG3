@@ -4,4 +4,7 @@ Showing: Directories + ['.c', '.h'] files only
 Note: Directories are colored blue in the terminal (plain text here)
 
 └── src
- └── main.c
+ ├── main.c
+ └── rbg_render_debug
+  ├── rbg_render_debug.c
+  └── rbg_render_debug.h

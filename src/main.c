@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "rbg_render_debug/rbg_render_debug.h"
 
 int main(void)
 {
@@ -24,6 +25,8 @@ int main(void)
 
         // Clear the screen with a nice light background
         ClearBackground(RAYWHITE);
+
+		RBG_RenderDebug();
 
         // Simple welcome text (centered-ish)
         DrawText("Congrats! You created your first raylib window in C!",
