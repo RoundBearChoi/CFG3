@@ -6,6 +6,9 @@ Note: Directories are colored blue in the terminal (plain text here)
 └── src
  ├── main.c
  └── rbg_game
+  ├── rbg_cam_control
+  │ ├── rbg_cam_control.c
+  │ └── rbg_cam_control.h
   ├── rbg_game.c
   ├── rbg_game.h
   ├── rbg_render_debug

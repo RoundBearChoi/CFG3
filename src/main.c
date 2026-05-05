@@ -1,5 +1,8 @@
-#include "raylib.h"
 #include "rbg_game/rbg_game.h"
+#include "raylib.h"
+
+// Global camera
+extern Camera2D rbg_camera;
 
 int main(void)
 {
@@ -15,10 +18,12 @@ int main(void)
     {
         // All drawing must happen between BeginDrawing() and EndDrawing()
         BeginDrawing();
-
         ClearBackground(BLACK);
 
+		// Camera mode - everything between here is in world coordinates
+		BeginMode2D(rbg_camera);
 		rbg_update_game();
+		EndMode2D();
 		
         DrawFPS(10, 10);
 
