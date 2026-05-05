@@ -6,6 +6,5 @@ void update_test_scene_2(void)
 {
 	rbg_update_cam_control();
 
-	//position is at top left of the text
     DrawText("This is TEST SCENE 2", 0, 0, 30, WHITE);
 }

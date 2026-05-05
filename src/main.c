@@ -1,8 +1,7 @@
 #include "rbg_game/rbg_game.h"
 #include "raylib.h"
 
-// Global camera
-extern Camera2D rbg_camera;
+extern Camera2D rbg_global_camera;
 
 int main(void)
 {
@@ -21,7 +20,7 @@ int main(void)
         ClearBackground(BLACK);
 
 		// Camera mode - everything between here is in world coordinates
-		BeginMode2D(rbg_camera);
+		BeginMode2D(rbg_global_camera);
 		rbg_update_game();
 		EndMode2D();
 		

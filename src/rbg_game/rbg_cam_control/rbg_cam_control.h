@@ -3,8 +3,7 @@
 
 #include "raylib.h"
 
-// Global camera
-extern Camera2D rbg_camera;
+extern Camera2D rbg_global_camera;
 
 void rbg_update_cam_control(void);
 
