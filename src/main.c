@@ -16,7 +16,7 @@ int main(void)
     // ================================================
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // ── All drawing must happen between BeginDrawing() and EndDrawing()
+        // All drawing must happen between BeginDrawing() and EndDrawing()
         BeginDrawing();
 
         ClearBackground(BLACK);
