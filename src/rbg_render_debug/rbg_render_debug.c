@@ -16,9 +16,4 @@ void rbg_render_debug(void)
 
     // Label so it's instantly obvious what we're looking at
     DrawText("(0,0)", crossSize + 5, 2, 10, RED);
-
-    // ── All future debug features go here (grid, hitboxes, etc.)
-    // Examples you can add later:
-    // RBG_DebugDrawGrid();
-    // RBG_DebugDrawHitbox(...);
 }

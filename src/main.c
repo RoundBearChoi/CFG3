@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "rbg_render_debug/rbg_render_debug.h"
+#include "rbg_game/rbg_game.h"
 
 int main(void)
 {
@@ -26,6 +27,7 @@ int main(void)
         ClearBackground(BLACK);
 
 		rbg_render_debug();
+		rbg_update_game();
 
         DrawText("Congrats! You created your first raylib window in C!",
                  120, 180, 20, LIGHTGRAY);
