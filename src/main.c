@@ -11,7 +11,7 @@ int main(void)
 
     SetTargetFPS(60);
 
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (!WindowShouldClose()) // Detect window close button or ESC key
     {
         // All drawing must happen between BeginDrawing() and EndDrawing()
         BeginDrawing();
