@@ -1,5 +1,5 @@
-#include "raylib.h"
 #include "rbg_render_debug.h"
+#include "raylib.h"
 
 void rbg_render_debug(void)
 {
