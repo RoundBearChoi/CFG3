@@ -2,6 +2,7 @@
 
 ![GitHub repo](https://img.shields.io/badge/Language-C-00599C?logo=c)
 ![Raylib](https://img.shields.io/badge/Made%20with-raylib-000000?logo=raylib)
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtube.com/roundbeargames)
 
 **A lightweight, performant 2D fighting game prototype** written in pure **C** using the [raylib](https://github.com/raysan5/raylib) library.
 
@@ -48,3 +49,5 @@ cd CFG3
 # Build and run the game
 make run
 ```
+
+---
