@@ -4,7 +4,7 @@
 [![Made with raylib](https://img.shields.io/badge/Made%20with-raylib-000000?style=for-the-badge&logo=raylib&logoColor=white)](https://www.raylib.com/)
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtube.com/roundbeargames)
 
-Lightweight, performant 2D fighting game written in pure C using the [raylib](https://github.com/raysan5/raylib) library.
+Lightweight, performant 2D fighting game written in pure C using [raylib](https://github.com/raysan5/raylib) library.
 
 CFG3 (C_Fighting_Game_3) is the third iteration of a minimalistic fighting game built from the ground up. Focus is on clean code, high performance, easy compilation, and educational readability — for learning game development with raylib or experimenting with fighting game mechanics in C.
 
