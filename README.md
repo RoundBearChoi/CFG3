@@ -37,11 +37,8 @@ sudo ldconfig
 
 ### Step 2: Clone and Run CFG3
 ```bash
-# Clone repository
 git clone https://github.com/RoundBearChoi/CFG3.git
 cd CFG3
-
-# Build and run game
 make run
 ```
 
