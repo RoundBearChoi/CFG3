@@ -1,38 +1,46 @@
 # ================================================
-# Makefile for C Fighting Game 3 (raylib)
+# Makefile for C Fighting Game 3 (raylib) - Out-of-source build
 # ================================================
-
 CC      = gcc
 CFLAGS  = -Wall -Wextra -std=c11 -O2 -D_DEFAULT_SOURCE
 LDFLAGS = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
-# Automatically find ALL .c files recursively under src/
+# ========================= CONFIGURATION =========================
 SRCDIR   = src
+BUILDDIR = build
+TARGET   = CFG3
+# ================================================================
+
+# Automatically find all .c files recursively
 SOURCES := $(shell find $(SRCDIR) -type f -name '*.c')
 
-# Convert source paths to object paths (preserves directory structure)
-OBJECTS := $(SOURCES:.c=.o)
+# Transform src/xxx/yyy.c → build/xxx/yyy.o
+OBJECTS := $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SOURCES))
 
-TARGET = CFG3
+# Final executable path
+EXECUTABLE = $(BUILDDIR)/$(TARGET)
 
 # Default target
-all: $(TARGET)
+all: $(EXECUTABLE)
 
 # Link the final executable
-$(TARGET): $(OBJECTS)
+$(EXECUTABLE): $(OBJECTS)
+	@echo "Linking $(TARGET)..."
 	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
 
-# Compile each source file to an object file
-%.o: %.c
-	@mkdir -p $(dir $@)          # create subdirectories if they don't exist yet
+# Compile each source to object (creates subdirs automatically)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(dir $@)
+	@echo "Compiling $<"
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Run the game
-run: $(TARGET)
-	./$(TARGET)
+# Run the game (from build folder)
+run: $(EXECUTABLE)
+	@echo "Running $(TARGET)..."
+	@./$(EXECUTABLE)
 
-# Clean up
+# Clean everything
 clean:
-	rm -f $(TARGET) $(OBJECTS)
+	rm -rf $(BUILDDIR)
 
 .PHONY: all run clean
