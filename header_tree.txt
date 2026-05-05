@@ -13,4 +13,8 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ └── rbg_render_debug.h
   └── rbg_scenes
    ├── rbg_scenes.c
-   └── rbg_scenes.h
+   ├── rbg_scenes.h
+   ├── test_scene_1.c
+   ├── test_scene_1.h
+   ├── test_scene_2.c
+   └── test_scene_2.h
