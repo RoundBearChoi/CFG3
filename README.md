@@ -19,7 +19,7 @@ sudo apt install -y build-essential git \
     libasound2-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev \
     libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev pkg-config
 
-# Clone the exact pinned release
+# Clone exact pinned release
 git clone --depth 1 --branch 6.0 https://github.com/raysan5/raylib.git ~/raylib-temp
 cd ~/raylib-temp/src
 
@@ -31,17 +31,17 @@ sudo make install
 cd ../..
 rm -rf ~/raylib-temp
 
-# Make sure the dynamic linker knows about the new library
+# Make sure dynamic linker knows about new library
 sudo ldconfig
 ```
 
 ### Step 2: Clone and Run CFG3
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/RoundBearChoi/CFG3.git
 cd CFG3
 
-# Build and run the game
+# Build and run game
 make run
 ```
 
