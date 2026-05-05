@@ -21,9 +21,6 @@ int main(void)
 
         ClearBackground(BLACK);
 
-        DrawText("Congrats! You created your first raylib window in C!",
-                 120, 180, 20, LIGHTGRAY);
-
 		rbg_update_game();
 		
         DrawFPS(10, 10);
