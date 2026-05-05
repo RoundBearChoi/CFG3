@@ -1,18 +1,30 @@
-## 🛠️ Installing raylib on Linux (Ubuntu/Debian-based)
+# CFG3 - C Fighting Game 3
 
-This project uses **[raylib](https://github.com/raysan5/raylib)** (latest version ~6.x as of May 2026). The following commands will install all required build tools and system dependencies, then build and install the **static library** system-wide (the recommended default for most projects).
+![GitHub repo](https://img.shields.io/badge/Language-C-00599C?logo=c)
+![Raylib](https://img.shields.io/badge/Made%20with-raylib-000000?logo=raylib)
 
-### Quick Installation
+**A lightweight, performant 2D fighting game prototype** written in pure **C** using the [raylib](https://github.com/raysan5/raylib) library.
+
+CFG3 (C_Fighting_Game_3) is the third iteration of a minimalistic fighting game built from the ground up. The focus is on clean code, high performance, easy compilation, and educational readability — for learning game development with raylib or experimenting with fighting game mechanics in C.
+
+**Current Status**: Early development / Prototype (as of May 2026)
+
+---
+
+## 🚀 Getting Started (Linux / Ubuntu / Debian / WSL2)
+
+The process installs **raylib** system-wide (the simplest and most common method for raylib projects) and then builds and runs the game.
+
+### Step 1: Install raylib (System-wide)
 
 ```bash
-# Update and install build tools + raylib dependencies
 sudo apt update
 sudo apt install -y build-essential git \
     libasound2-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev \
     libgl1-mesa-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev pkg-config
 
-# Clone raylib (shallow clone = fast, gets latest version)
-git clone --depth 1 https://github.com/raysan5/raylib.git ~/raylib-temp
+# Clone the exact pinned release (fast shallow clone)
+git clone --depth 1 --branch 6.0 https://github.com/raysan5/raylib.git ~/raylib-temp
 cd ~/raylib-temp/src
 
 # Build static library (default & recommended) and install system-wide
@@ -24,5 +36,15 @@ cd ../..
 rm -rf ~/raylib-temp
 
 # Make sure the dynamic linker knows about the new library
-# (important on some systems, WSL, and fresh installs)
 sudo ldconfig
+```
+
+### Step 2: Clone and Run CFG3
+```bash
+# Clone the repository
+git clone https://github.com/RoundBearChoi/CFG3.git
+cd CFG3
+
+# Build and run the game
+make run
+```
