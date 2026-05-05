@@ -8,6 +8,9 @@ Note: Directories are colored blue in the terminal (plain text here)
  └── rbg_game
   ├── rbg_game.c
   ├── rbg_game.h
-  └── rbg_render_debug
-   ├── rbg_render_debug.c
-   └── rbg_render_debug.h
+  ├── rbg_render_debug
+  │ ├── rbg_render_debug.c
+  │ └── rbg_render_debug.h
+  └── rbg_scenes
+   ├── rbg_scenes.c
+   └── rbg_scenes.h
