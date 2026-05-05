@@ -6,18 +6,26 @@ CC      = gcc
 CFLAGS  = -Wall -Wextra -std=c11 -O2 -D_DEFAULT_SOURCE
 LDFLAGS = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
-# Add every .c file here as you create new modules
-SOURCES = src/main.c \
-          src/rbg_render_debug/rbg_render_debug.c
+# Automatically find ALL .c files recursively under src/
+SRCDIR   = src
+SOURCES := $(shell find $(SRCDIR) -type f -name '*.c')
+
+# Convert source paths to object paths (preserves directory structure)
+OBJECTS := $(SOURCES:.c=.o)
 
 TARGET = CFG3
 
 # Default target
 all: $(TARGET)
 
-# Build the executable
-$(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) -o $@ $(SOURCES) $(LDFLAGS)
+# Link the final executable
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
+
+# Compile each source file to an object file
+%.o: %.c
+	@mkdir -p $(dir $@)          # create subdirectories if they don't exist yet
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Run the game
 run: $(TARGET)
@@ -25,6 +33,6 @@ run: $(TARGET)
 
 # Clean up
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJECTS)
 
 .PHONY: all run clean
