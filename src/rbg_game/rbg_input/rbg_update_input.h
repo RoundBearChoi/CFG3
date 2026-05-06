@@ -15,7 +15,9 @@ typedef enum {
     INPUT_ACTION_COUNT
 } InputAction;
 
-// Current key bindings - can be customized
+// extern = “This exists somewhere else (in another .c file).
+//          I’m only declaring it here so other files can see it and use it.
+//          Do not create a new copy of this.”
 extern KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
 void rbg_init_input(void);
