@@ -4,8 +4,21 @@
 #include "rbg_render_debug/rbg_render_debug.h"
 #include "raylib.h"
 
+static bool rbg_game_initialized = false;
+
+void rbg_init_game()
+{
+
+}
+
 void rbg_update_game(void)
 {
+	if (rbg_game_initialized == false)
+	{
+		rbg_game_initialized = true;
+		rbg_init_game();
+	}
+
     // Fixed timestep setup
     static double accumulator = 0.0;
     const double fixed_dt = 1.0 / 60.0;
