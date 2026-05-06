@@ -5,8 +5,8 @@ extern Camera2D rbg_global_camera;
 
 int main(void)
 {
-    const int screenWidth  = 800;
-    const int screenHeight = 450;
+    const int screenWidth  = 1280;
+    const int screenHeight = 720;
 
 	// static = internal linkage. visible only inside the current file
 	// const char* = string won't change
