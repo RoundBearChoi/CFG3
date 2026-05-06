@@ -39,18 +39,21 @@ void rbg_update_input(void)
 bool IsInputActionDown(InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
-    return downStates[action];
+
+	return downStates[action];
 }
 
 bool IsInputActionPressed(InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
-    return pressedStates[action];
+    
+	return pressedStates[action];
 }
 
 bool IsInputActionReleased(InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
-    // Simple released = was down last frame but not this frame
+   
+	// Simple released = was down last frame but not this frame
     return !downStates[action] && IsKeyUp(inputBindings[action]);
 }
