@@ -9,6 +9,6 @@ void rbg_update_input(void)
 	{
 		DrawText("key right pressed", 0, 50, 30, WHITE);
 
-		rbg_global_camera.offset = (Vector2){ 0, 0 };
+		rbg_global_camera.offset.x += 1;
 	}
 }
