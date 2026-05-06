@@ -25,7 +25,7 @@ void rbg_update_input(void);
 
 // Query functions
 bool IsInputActionDown(InputAction action); // key is held down right now (continuous)
-bool IsInputActionPressed(InputAction action); // key was just pressed this exact frame
+bool IsInputActionPressed(InputAction action); // key was pressed this exact frame
 bool IsInputActionReleased(InputAction action);
 
 #endif
