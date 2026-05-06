@@ -11,8 +11,8 @@ void rbg_update_game(void)
     const double fixed_dt = 1.0 / 60.0;
 
     // Get elapsed time since last frame
-    double rbg_frame_time = GetFrameTime();
-    accumulator += rbg_frame_time;
+    double frame_time = GetFrameTime();
+    accumulator += frame_time;
 
     // Input runs every rendered frame (variable timestep)
     rbg_update_input();
