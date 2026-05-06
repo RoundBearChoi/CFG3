@@ -11,4 +11,9 @@ void rbg_update_input(void)
 
 		rbg_global_camera.offset.x += 1;
 	}
+
+	if (IsKeyDown(KEY_LEFT))
+	{
+		rbg_global_camera.offset.x -= 1;
+	}
 }
