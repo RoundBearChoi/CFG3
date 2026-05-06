@@ -11,6 +11,9 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ └── rbg_cam_control.h
   ├── rbg_game.c
   ├── rbg_game.h
+  ├── rbg_input
+  │ ├── rbg_update_input.c
+  │ └── rbg_update_input.h
   ├── rbg_render_debug
   │ ├── rbg_render_debug.c
   │ └── rbg_render_debug.h
