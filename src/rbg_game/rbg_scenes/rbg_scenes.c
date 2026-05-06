@@ -18,7 +18,7 @@ void rbg_update_scenes(void)
     // Safety: prevent crashes if somehow out of bounds
     if (current_scene >= 0 && current_scene < NUM_SCENES && scene_updates[current_scene] != NULL)
 	{
-        scene_updates[current_scene](); // This runs the correct scene's update
+        scene_updates[current_scene](); // run the scene update based on selected enum
     } 
 	else
 	{
