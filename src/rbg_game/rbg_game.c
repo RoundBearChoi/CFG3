@@ -7,21 +7,21 @@
 void rbg_update_game(void)
 {
     // Fixed timestep setup
-    static double accumulator = 0.0;
-    const double fixed_dt = 1.0 / 60.0;
+    static double rbg_accumulator = 0.0;
+    const double rbg_fixed_dt = 1.0 / 60.0;
 
     // Get elapsed time since last frame
-    double frame_time = GetFrameTime();
-    accumulator += frame_time;
+    double rbg_frame_time = GetFrameTime();
+    rbg_accumulator += rbg_frame_time;
 
     // Input runs every rendered frame (variable timestep)
     rbg_update_input();
 
     // Fixed timestep loop — game logic runs at 60 fps
-    while (accumulator >= fixed_dt)
+    while (rbg_accumulator >= rbg_fixed_dt)
     {
         rbg_update_scenes();
-        accumulator -= fixed_dt;
+        rbg_accumulator -= rbg_fixed_dt;
     }
 
     // Debug rendering runs every frame (after logic)
