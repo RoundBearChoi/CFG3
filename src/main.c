@@ -8,8 +8,13 @@ int main(void)
     const int screenWidth  = 800;
     const int screenHeight = 450;
 
+	// static = internal linkage. visible only inside the current file
+	// const char* = string won't change
+	// const = pointer won't change
+	static const char* const bar_title = "C Fighting Game 3"; 
+
     // Initialize the window and OpenGL context
-    InitWindow(screenWidth, screenHeight, "C Fighting Game 3");
+    InitWindow(screenWidth, screenHeight, bar_title);
 
     SetTargetFPS(60);
 
