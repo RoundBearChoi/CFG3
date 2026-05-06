@@ -12,10 +12,10 @@ void rbg_update_cam_control(void)
 	// run once
 	if (rbg_cam_initialized == false)
 	{
+		rbg_cam_initialized = true;
+		
 		rbg_global_camera.offset   = (Vector2){ 100, 100 };
 		rbg_global_camera.rotation = 0.0f;
 		rbg_global_camera.zoom     = 1.0f;
-
-		rbg_cam_initialized = true;
 	}
 }
