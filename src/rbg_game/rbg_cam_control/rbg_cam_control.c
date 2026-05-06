@@ -20,6 +20,7 @@ void rbg_update_cam_control(void)
 		rbg_global_camera.zoom     = 1.0f;
 	}
 
+	// temp - only for testing
 	if (IsInputActionDown(INPUT_P1_MOVE_LEFT))
 	{
 		rbg_global_camera.offset.x -= 1;
