@@ -1,0 +1,8 @@
+{
+  "INPUT_P1_MOVE_LEFT": "a",
+  "INPUT_P1_MOVE_RIGHT": "d",
+  "INPUT_P1_MOVE_UP": "w",
+  "INPUT_P1_MOVE_DOWN": "s",
+  "INPUT_P1_JUMP": "r",
+  "INPUT_P1_ATTACK": "t"
+}
