@@ -4,13 +4,14 @@
 
 static bool input_initialized = false;
 
-// Internal state updated every frame
+// internal state updated every frame
 static bool downStates[INPUT_ACTION_COUNT] = {false};
 static bool pressedStates[INPUT_ACTION_COUNT] = {false};
 
 KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
-// String literals generated automatically by the X macro
+// string literals generated automatically by the X macro
+// this is for converting enum to string literals or vice versa
 static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
 #define X(name) #name,
     RBG_INPUT_ACTIONS
@@ -18,7 +19,7 @@ static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
 };
 
 // static -> internal linkage -> function is visible only inside the current translation unit -> not declared in header
-// Helper: Convert JSON value (e.g. "a", "D", "space" later) to KeyboardKey
+// helper: convert JSON value (e.g. "a", "D", "space" later) to KeyboardKey
 static KeyboardKey string_to_keyboard_key(const char* keystr)
 {
     if (keystr == NULL || keystr[0] == '\0') {
@@ -27,7 +28,8 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
 
     char c = keystr[0];
 
-    // Lowercase or uppercase letter → KEY_A .. KEY_Z
+    // lowercase or uppercase letter → KEY_A .. KEY_Z
+	// both should work
     if ((c >= 'a' && c <= 'z')) {
         return (KeyboardKey)(KEY_A + (c - 'a'));
     }
@@ -45,7 +47,7 @@ void rbg_init_init(void)
 
 void rbg_load_default_key_bindings(void)
 {
-	// Try to load from JSON
+	// try to load from JSON
     char* jsonText = LoadFileText("resource/default_key_bindings.json");
     
 	if (jsonText == NULL)
@@ -65,7 +67,7 @@ void rbg_load_default_key_bindings(void)
         return;
     }
 
-	// Override defaults with values from JSON
+	// write defaults with values from JSON
     bool anyLoaded = false;
     for (int i = 0; i < INPUT_ACTION_COUNT; i++)
 	{
@@ -128,6 +130,6 @@ bool IsInputActionReleased(InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
    
-	// Simple released = was down last frame but not this frame
+	// simple released logic = was down last frame but not this frame
     return !downStates[action] && IsKeyUp(inputBindings[action]);
 }
