@@ -1,5 +1,4 @@
 #include "rbg_game/rbg_game.h"
-#include "rbg_game/rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "raylib.h"
 
 extern Camera2D rbg_global_camera;
@@ -34,9 +33,6 @@ int main(void)
 
         EndDrawing();
     }
-
-	// temp
-	UnloadSpriteSheets();
 
     // Clean shutdown (always call this)
     CloseWindow();

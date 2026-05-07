@@ -1,5 +1,6 @@
 #include "test_scene_2.h"
 #include "../rbg_input/rbg_update_input.h"
+#include "../rbg_scenes/rbg_scenes.h"
 #include "../rbg_cam_control/rbg_cam_control.h"
 #include "../rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "../rbg_spritesheets/rbg_spritesheet_player.h"
@@ -17,7 +18,7 @@ void init_test_scene_2(void)
 
 void end_test_scene_2(void)
 {
-
+	UnloadSpriteSheets();
 }
 
 void update_test_scene_2(void)
@@ -33,9 +34,10 @@ void update_test_scene_2(void)
 	UpdateSpriteSheetPlayer(&sheetPlayer);
 	DrawSpriteSheetPlayer(&sheetPlayer, (Vector2){400, 300}, 1.0f, WHITE);
 
-	if (IsInputActionDown(INPUT_F1))
+	if (IsInputActionPressed(INPUT_F1))
 	{
-		//DrawText("F1 key is working", 0, 100, 30, WHITE);
+		next_scene = TEST_SCENE_1;
+		end_test_scene_2();
 	}
 
     DrawText("This is TEST SCENE 2", 0, 0, 30, WHITE);
