@@ -19,6 +19,19 @@ static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
 
 void rbg_init_init(void)
 {
+	rbg_load_default_key_bindings();
+
+	// Default keyboard layout
+    inputBindings[INPUT_P1_MOVE_LEFT]  = KEY_A;
+    inputBindings[INPUT_P1_MOVE_RIGHT] = KEY_D;
+    inputBindings[INPUT_P1_MOVE_UP]    = KEY_W;
+    inputBindings[INPUT_P1_MOVE_DOWN]  = KEY_S;
+    inputBindings[INPUT_P1_JUMP]       = KEY_R;
+    inputBindings[INPUT_P1_ATTACK]     = KEY_T;
+}
+
+void rbg_load_default_key_bindings(void)
+{
 	// Try to load from JSON
     char* jsonText = LoadFileText("resource/default_key_bindings.json");
     
@@ -36,14 +49,6 @@ void rbg_init_init(void)
         UnloadFileText(jsonText);
         return;
     }
-
-	// Default keyboard layout
-    inputBindings[INPUT_P1_MOVE_LEFT]  = KEY_A;
-    inputBindings[INPUT_P1_MOVE_RIGHT] = KEY_D;
-    inputBindings[INPUT_P1_MOVE_UP]    = KEY_W;
-    inputBindings[INPUT_P1_MOVE_DOWN]  = KEY_S;
-    inputBindings[INPUT_P1_JUMP]       = KEY_R;
-    inputBindings[INPUT_P1_ATTACK]     = KEY_T;
 }
 
 void rbg_update_input(void)

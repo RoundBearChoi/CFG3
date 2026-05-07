@@ -25,6 +25,7 @@ typedef enum {
 extern KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
 void rbg_init_input(void);
+void rbg_load_default_key_bindings(void);
 void rbg_update_input(void);
 
 // Query functions
