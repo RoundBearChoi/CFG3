@@ -1,12 +1,13 @@
 #include "rbg_spritesheet_player.h"
 #include <string.h>  // for memset
 
-void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name)
+void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot)
 {
     if (player == NULL) return;
     memset(player, 0, sizeof(SpriteSheetPlayer));
     
     player->sheet = GetSpriteSheetByName(spritesheet_name);
+    player->pivot = pivot;                     // NEW: store chosen pivot
     
     if (player->sheet == NULL) {
         TraceLog(LOG_WARNING, "InitSpriteSheetPlayer: Could not find spritesheet '%s'", spritesheet_name);
@@ -16,8 +17,8 @@ void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_na
     player->is_playing = true;
     player->loop = true;
     
-    TraceLog(LOG_INFO, "Initialized SpriteSheetPlayer for '%s' (%d frames)", 
-             spritesheet_name, player->sheet->total_images);
+    TraceLog(LOG_INFO, "Initialized SpriteSheetPlayer for '%s' (%d frames) [pivot=%d]", 
+             spritesheet_name, player->sheet->total_images, pivot);
 }
 
 void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player)
@@ -55,15 +56,30 @@ void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
     
     // Destination rectangle (apply both CSV render_scale + runtime extra_scale)
     float final_scale = s->render_scale * extra_scale;
+    float fw = s->frame_width * final_scale;
+    float fh = s->frame_height * final_scale;
+    
     Rectangle dest = {
         position.x,
         position.y,
-        s->frame_width * final_scale,
-        s->frame_height * final_scale
+        fw,
+        fh
     };
     
-    // Center origin (standard for character sprites)
-    Vector2 origin = { dest.width / 2.0f, dest.height / 2.0f };
+    // Pivot-based origin
+    Vector2 origin;
+    switch (player->pivot) {
+        case RBG_RENDER_PIVOT_CENTER:
+            origin = (Vector2){ fw * 0.5f, fh * 0.5f };
+            break;
+        case RBG_RENDER_PIVOT_BOTTOM_CENTER:
+            origin = (Vector2){ fw * 0.5f, fh  };           // bottom edge
+            break;
+        default:
+            // Defensive fallback (should never happen unless memory corruption)
+            origin = (Vector2){ fw * 0.5f, fh * 0.5f };
+            break;
+    }
     
     DrawTexturePro(s->texture, source, dest, origin, 0.0f, tint);
 }
@@ -87,4 +103,5 @@ void ResetSpriteSheetPlayer(SpriteSheetPlayer* player)
     player->current_frame = 0;
     player->frame_counter = 0;
     player->is_playing = true;  // most common after reset
+    // pivot is intentionally left unchanged
 }
