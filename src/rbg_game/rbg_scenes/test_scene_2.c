@@ -11,7 +11,7 @@ void init_test_scene_2(void)
 {
 	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
 
-	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0");
+	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_sample");
 }
 
 void update_test_scene_2(void)

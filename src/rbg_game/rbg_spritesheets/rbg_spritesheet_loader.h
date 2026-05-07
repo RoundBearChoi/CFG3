@@ -5,7 +5,7 @@
 
 typedef struct {
     char *fighter_type;
-    char *spritesheet_filename;
+    char *spritesheet_name;     // base name WITHOUT .png (automatically cleaned from CSV)
     int total_x;
     int total_y;
     int total_images;
@@ -22,6 +22,6 @@ extern int spritesheet_count;
 
 void LoadSpriteSheets(const char *csv_path);
 void UnloadSpriteSheets(void);
-SpriteSheet* GetSpritesheet(const char *fighter_type);
+SpriteSheet* GetSpriteSheetByName(const char *spritesheet_name);
 
 #endif

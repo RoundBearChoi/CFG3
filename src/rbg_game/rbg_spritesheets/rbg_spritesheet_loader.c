@@ -55,28 +55,34 @@ void LoadSpriteSheets(const char *csv_path)
     int i = 0;
     while (line != NULL && i < row_count) {
         char type_buf[64] = {0};
-        char filename_buf[128] = {0};
+        char name_buf[128] = {0};   // may contain .png from CSV
         int tx = 0, ty = 0, ti = 0, pd = 0;
         float rs = 1.0f;
 
         int scanned = sscanf(line, "%63[^,],%127[^,],%d,%d,%d,%f,%d",
-                             type_buf, filename_buf, &tx, &ty, &ti, &rs, &pd);
+                             type_buf, name_buf, &tx, &ty, &ti, &rs, &pd);
 
-        if (scanned >= 5) {   // at minimum we have the required fields
+        if (scanned >= 5) {
+            // Strip .png extension if present (handles old and new CSV formats)
+            char *ext = strrchr(name_buf, '.');
+            if (ext && (strcmp(ext, ".png") == 0 || strcmp(ext, ".PNG") == 0)) {
+                *ext = '\0';   // truncate at the dot → clean base name
+            }
+
             spritesheets[i].fighter_type = strdup(type_buf);
-            spritesheets[i].spritesheet_filename = strdup(filename_buf);
+            spritesheets[i].spritesheet_name = strdup(name_buf);   // now guaranteed no .png
             spritesheets[i].total_x = tx;
             spritesheets[i].total_y = ty;
             spritesheets[i].total_images = ti;
             spritesheets[i].render_scale = rs;
             spritesheets[i].play_delay = pd;
 
-            // Load texture (full path relative to executable)
+            // Load texture using the clean name + .png
             char fullpath[512];
-            snprintf(fullpath, sizeof(fullpath), "resource/fighters_spritesheets/%s", filename_buf);
+            snprintf(fullpath, sizeof(fullpath), "resource/fighters_spritesheets/%s.png", name_buf);
             spritesheets[i].texture = LoadTexture(fullpath);
 
-            // Pre-compute frame size for the player (very useful!)
+            // Pre-compute frame size
             if (spritesheets[i].texture.id != 0 && tx > 0 && ty > 0) {
                 spritesheets[i].frame_width = spritesheets[i].texture.width / tx;
                 spritesheets[i].frame_height = spritesheets[i].texture.height / ty;
@@ -103,7 +109,7 @@ void UnloadSpriteSheets(void)
             UnloadTexture(spritesheets[i].texture);
         }
         if (spritesheets[i].fighter_type) free(spritesheets[i].fighter_type);
-        if (spritesheets[i].spritesheet_filename) free(spritesheets[i].spritesheet_filename);
+        if (spritesheets[i].spritesheet_name) free(spritesheets[i].spritesheet_name);
     }
 
     free(spritesheets);
@@ -111,13 +117,13 @@ void UnloadSpriteSheets(void)
     spritesheet_count = 0;
 }
 
-SpriteSheet* GetSpritesheet(const char *fighter_type)
+SpriteSheet* GetSpriteSheetByName(const char *spritesheet_name)
 {
-    if (fighter_type == NULL || spritesheets == NULL) return NULL;
+    if (spritesheet_name == NULL || spritesheets == NULL) return NULL;
 
     for (int i = 0; i < spritesheet_count; i++) {
-        if (spritesheets[i].fighter_type &&
-            strcmp(spritesheets[i].fighter_type, fighter_type) == 0) {
+        if (spritesheets[i].spritesheet_name &&
+            strcmp(spritesheets[i].spritesheet_name, spritesheet_name) == 0) {
             return &spritesheets[i];
         }
     }

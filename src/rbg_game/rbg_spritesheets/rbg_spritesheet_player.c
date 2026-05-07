@@ -1,19 +1,23 @@
 #include "rbg_spritesheet_player.h"
 #include <string.h>  // for memset
 
-void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* fighter_type)
+void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name)
 {
     if (player == NULL) return;
     memset(player, 0, sizeof(SpriteSheetPlayer));
     
-    player->sheet = GetSpritesheet(fighter_type);
+    player->sheet = GetSpriteSheetByName(spritesheet_name);
+    
+    if (player->sheet == NULL) {
+        TraceLog(LOG_WARNING, "InitSpriteSheetPlayer: Could not find spritesheet '%s'", spritesheet_name);
+        return;
+    }
+    
     player->is_playing = true;
     player->loop = true;
     
-    // Defensive: if delay is invalid, treat as 1
-    if (player->sheet && player->sheet->play_delay <= 0) {
-        // We don't modify the original sheet, just clamp locally if needed
-    }
+    TraceLog(LOG_INFO, "Initialized SpriteSheetPlayer for '%s' (%d frames)", 
+             spritesheet_name, player->sheet->total_images);
 }
 
 void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player)
@@ -69,8 +73,6 @@ void PlaySpriteSheet(SpriteSheetPlayer* player, bool loop)
     if (player == NULL) return;
     player->is_playing = true;
     player->loop = loop;
-    // Optional: reset frame when starting new playback
-    // player->current_frame = 0;
 }
 
 void StopSpriteSheet(SpriteSheetPlayer* player)

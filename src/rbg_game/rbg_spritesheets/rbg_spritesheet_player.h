@@ -12,8 +12,8 @@ typedef struct {
     bool loop;                // false = one-shot animation
 } SpriteSheetPlayer;
 
-// Initialize player from fighter_type (looks up via loader)
-void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* fighter_type);
+// Initialize player from spritesheet_name (looks up via GetSpriteSheetByName)
+void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name);
 
 // Advance animation (call every frame)
 void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player);
