@@ -11,7 +11,7 @@ static SpriteSheetPlayer sheetPlayer;
 
 void init_test_scene_2(void)
 {
-	rbg_global_camera.offset = (Vector2){ 100, 300 };
+	rbg_global_camera.offset = (Vector2){ 100.0f, 300.0f };
 
 	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
 	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle", RBG_RENDER_PIVOT_BOTTOM_CENTER);
