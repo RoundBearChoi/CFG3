@@ -45,3 +45,6 @@ make run
 ```
 
 ---
+
+## 🎨 Credits
+Character sprite sheets are from [Action Platformer Character Template](https://ozzbit-games.itch.io/action-platformer-character-template) by Ozzbit Games.
