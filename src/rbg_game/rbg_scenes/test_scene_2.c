@@ -8,13 +8,16 @@
 
 static bool test_scene_2_initialized = false; 
 static SpriteSheetPlayer sheetPlayer;
+static SpriteSheetPlayer sheetPlayer_2;
 
 void init_test_scene_2(void)
 {
 	rbg_global_camera.offset = (Vector2){ 100.0f, 300.0f };
 
 	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
-	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle", RBG_RENDER_PIVOT_BOTTOM_CENTER);
+
+	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle", RBG_RENDER_PIVOT_CENTER);
+	InitSpriteSheetPlayer(&sheetPlayer_2, "fighter_0_idle", RBG_RENDER_PIVOT_BOTTOM_CENTER);
 }
 
 void end_test_scene_2(void)
@@ -35,7 +38,10 @@ void update_test_scene_2(void)
 	rbg_update_cam_control();
 
 	UpdateSpriteSheetPlayer(&sheetPlayer);
-	DrawSpriteSheetPlayer(&sheetPlayer, (Vector2){ 0, 0 }, 1.0f, WHITE);
+	UpdateSpriteSheetPlayer(&sheetPlayer_2);
+
+	DrawSpriteSheetPlayer(&sheetPlayer, (Vector2){ 500.0f , 0.0f }, 1.0f, WHITE);
+	DrawSpriteSheetPlayer(&sheetPlayer_2, (Vector2){ 800.0f, 0.0f }, 1.0f, WHITE);
 
 	if (IsInputActionPressed(INPUT_F1))
 	{
