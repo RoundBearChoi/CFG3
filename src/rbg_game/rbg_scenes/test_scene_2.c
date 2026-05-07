@@ -14,6 +14,11 @@ void init_test_scene_2(void)
 	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle");
 }
 
+void end_test_scene_2(void)
+{
+
+}
+
 void update_test_scene_2(void)
 {
 	if (test_scene_2_initialized == false)
