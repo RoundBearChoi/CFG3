@@ -6,10 +6,10 @@
 Spritesheet *spritesheets = NULL;
 int spritesheet_count = 0;
 
-void LoadSpritesheets(const char *csv_path)
+void LoadSpriteSheets(const char *csv_path)
 {
     if (spritesheets != NULL) {
-        UnloadSpritesheets();   // allow re-load if called again
+        UnloadSpriteSheets();   // allow re-load if called again
     }
 
     // First pass: count data rows (skip header)
@@ -94,7 +94,7 @@ void LoadSpritesheets(const char *csv_path)
     TraceLog(LOG_INFO, "Loaded %d fighter spritesheets successfully", spritesheet_count);
 }
 
-void UnloadSpritesheets(void)
+void UnloadSpriteSheets(void)
 {
     if (spritesheets == NULL) return;
 

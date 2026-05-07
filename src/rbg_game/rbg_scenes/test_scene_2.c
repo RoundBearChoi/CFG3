@@ -7,7 +7,7 @@ static bool test_scene_2_initialized = false;
 
 void init_test_scene_2(void)
 {
-	LoadSpritesheets("resource/fighters_spritesheet_list.csv");
+	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
 }
 
 void update_test_scene_2(void)

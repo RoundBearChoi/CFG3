@@ -36,7 +36,7 @@ int main(void)
     }
 
 	// temp
-	UnloadSpritesheets();
+	UnloadSpriteSheets();
 
     // Clean shutdown (always call this)
     CloseWindow();

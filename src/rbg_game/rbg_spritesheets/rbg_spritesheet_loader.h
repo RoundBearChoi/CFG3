@@ -20,8 +20,8 @@ typedef struct {
 extern Spritesheet *spritesheets;
 extern int spritesheet_count;
 
-void LoadSpritesheets(const char *csv_path);
-void UnloadSpritesheets(void);
+void LoadSpriteSheets(const char *csv_path);
+void UnloadSpriteSheets(void);
 Spritesheet* GetSpritesheet(const char *fighter_type);
 
 #endif
