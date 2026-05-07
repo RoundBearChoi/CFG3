@@ -59,3 +59,6 @@ venv/
 
 # build files
 build/
+
+# sprites
+fighters_spritesheets/
