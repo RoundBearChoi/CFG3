@@ -13,17 +13,17 @@ typedef struct {
 } SpriteSheetPlayer;
 
 // Initialize player from fighter_type (looks up via loader)
-void InitSpritesheetPlayer(SpriteSheetPlayer* player, const char* fighter_type);
+void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* fighter_type);
 
 // Advance animation (call every frame)
-void UpdateSpritesheetPlayer(SpriteSheetPlayer* player);
+void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player);
 
 // Draw the current frame (centered origin by default)
-void DrawSpritesheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
+void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
 
 // Control playback
-void PlaySpritesheet(SpriteSheetPlayer* player, bool loop);
-void StopSpritesheet(SpriteSheetPlayer* player);
-void ResetSpritesheetPlayer(SpriteSheetPlayer* player);
+void PlaySpriteSheet(SpriteSheetPlayer* player, bool loop);
+void StopSpriteSheet(SpriteSheetPlayer* player);
+void ResetSpriteSheetPlayer(SpriteSheetPlayer* player);
 
 #endif
