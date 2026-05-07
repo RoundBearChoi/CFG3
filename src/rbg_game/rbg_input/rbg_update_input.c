@@ -102,6 +102,7 @@ void rbg_update_input(void)
 		rbg_init_init();
 	}
 
+	// check down or pressed in every frame
 	for (int i = 0; i < INPUT_ACTION_COUNT; i++)
     {
         downStates[i]    = IsKeyDown(inputBindings[i]);
