@@ -1,10 +1,13 @@
 Directory Tree
 ================================================================================
-Showing: Directories + ['.c', '.h', '.json'] files only
+Showing: Directories + ['.c', '.csv', '.h', '.json', '.png'] files only
 Note: Directories are colored blue in the terminal (plain text here)
 
 ├── resource
-│ └── default_key_bindings.json
+│ ├── default_key_bindings.json
+│ ├── fighters_spritesheet_list.csv
+│ └── fighters_spritesheets
+│  └── fighter_0_sample.png
 └── src
  ├── cJSON
  │ ├── cJSON.c
@@ -22,10 +25,15 @@ Note: Directories are colored blue in the terminal (plain text here)
   ├── rbg_render_debug
   │ ├── rbg_render_debug.c
   │ └── rbg_render_debug.h
-  └── rbg_scenes
-   ├── rbg_scenes.c
-   ├── rbg_scenes.h
-   ├── test_scene_1.c
-   ├── test_scene_1.h
-   ├── test_scene_2.c
-   └── test_scene_2.h
+  ├── rbg_scenes
+  │ ├── rbg_scenes.c
+  │ ├── rbg_scenes.h
+  │ ├── test_scene_1.c
+  │ ├── test_scene_1.h
+  │ ├── test_scene_2.c
+  │ └── test_scene_2.h
+  └── rbg_spritesheets
+   ├── rbg_spritesheet_loader.c
+   ├── rbg_spritesheet_loader.h
+   ├── rbg_spritesheet_player.c
+   └── rbg_spritesheet_player.h

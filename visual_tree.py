@@ -8,7 +8,7 @@ MAX_DEPTH = None                    # Maximum depth (None = unlimited, or set e.
 SHOW_HIDDEN = True
 
 # Only files with these extensions will be shown (plus ALL directories)
-INCLUDE_EXTENSIONS = {'.h', '.c', '.json'}
+INCLUDE_EXTENSIONS = {'.h', '.c', '.json', '.csv', '.png'}
 
 USE_COLORS = True                   # For console output
 # ========================================================
