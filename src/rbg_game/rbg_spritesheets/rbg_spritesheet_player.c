@@ -69,10 +69,10 @@ void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
     // Pivot-based origin
     Vector2 origin;
     switch (player->pivot) {
-        case RBG_RENDER_PIVOT_CENTER:
+        case RENDER_PIVOT_CENTER:
             origin = (Vector2){ fw * 0.5f, fh * 0.5f };
             break;
-        case RBG_RENDER_PIVOT_BOTTOM_CENTER:
+        case RENDER_PIVOT_BOTTOM_CENTER:
             origin = (Vector2){ fw * 0.5f, fh  };           // bottom edge
             break;
         default:

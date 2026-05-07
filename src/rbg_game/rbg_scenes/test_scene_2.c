@@ -16,8 +16,8 @@ void init_test_scene_2(void)
 
 	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
 
-	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle", RBG_RENDER_PIVOT_CENTER);
-	InitSpriteSheetPlayer(&sheetPlayer_2, "fighter_0_idle", RBG_RENDER_PIVOT_BOTTOM_CENTER);
+	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_CENTER);
+	InitSpriteSheetPlayer(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
 
 void end_test_scene_2(void)

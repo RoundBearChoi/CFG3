@@ -7,8 +7,8 @@
 // Enum that controls where the 'position' parameter points to in DrawSpriteSheetPlayer.
 // CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
 typedef enum {
-    RBG_RENDER_PIVOT_CENTER,
-    RBG_RENDER_PIVOT_BOTTOM_CENTER
+    RENDER_PIVOT_CENTER,
+    RENDER_PIVOT_BOTTOM_CENTER
 } rbg_render_pivot;
 
 typedef struct {
