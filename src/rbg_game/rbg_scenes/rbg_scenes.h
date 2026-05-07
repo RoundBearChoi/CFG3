@@ -10,8 +10,8 @@ typedef enum {
     NUM_SCENES
 } rbg_scene_type;
 
-extern rbg_scene_type current_scene;
-extern rbg_scene_type next_scene;
+extern rbg_scene_type rbg_current_scene;
+extern rbg_scene_type rbg_next_scene;
 
 // Function pointer type for scene updates
 typedef void (*SceneUpdateFn)(void);

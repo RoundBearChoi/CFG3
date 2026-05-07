@@ -36,7 +36,7 @@ void update_test_scene_2(void)
 
 	if (IsInputActionPressed(INPUT_F1))
 	{
-		next_scene = TEST_SCENE_1;
+		rbg_next_scene = TEST_SCENE_1;
 		end_test_scene_2();
 	}
 
