@@ -41,7 +41,7 @@ void update_test_scene_2(void)
 	UpdateSpriteSheetPlayer(&sheetPlayer_2);
 
 	DrawSpriteSheetPlayer(&sheetPlayer, (Vector2){ 500.0f , 0.0f }, 1.0f, WHITE);
-	DrawSpriteSheetPlayer(&sheetPlayer_2, (Vector2){ 800.0f, 0.0f }, 1.0f, WHITE);
+	DrawSpriteSheetPlayer(&sheetPlayer_2, (Vector2){ 800.0f, 0.0f }, 1.0f, GRAY);
 
 	if (IsInputActionPressed(INPUT_F1))
 	{
