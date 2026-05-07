@@ -17,7 +17,7 @@ static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
 #undef X
 };
 
-// static. internal linkage = function is visible only inside the current translation unit
+// static -> internal linkage -> function is visible only inside the current translation unit -> not declared in header
 // Helper: Convert JSON value (e.g. "a", "D", "space" later) to KeyboardKey
 static KeyboardKey string_to_keyboard_key(const char* keystr)
 {
