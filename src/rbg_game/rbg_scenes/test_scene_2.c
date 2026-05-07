@@ -35,7 +35,7 @@ void update_test_scene_2(void)
 
 	if (IsInputActionDown(INPUT_F1))
 	{
-		DrawText("F1 key is working", 0, 100, 30, WHITE);
+		//DrawText("F1 key is working", 0, 100, 30, WHITE);
 	}
 
     DrawText("This is TEST SCENE 2", 0, 0, 30, WHITE);
