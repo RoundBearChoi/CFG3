@@ -7,7 +7,7 @@ void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_na
     memset(player, 0, sizeof(SpriteSheetPlayer));
     
     player->sheet = GetSpriteSheetByName(spritesheet_name);
-    player->pivot = pivot;                     // NEW: store chosen pivot
+    player->pivot = pivot;
     
     if (player->sheet == NULL) {
         TraceLog(LOG_WARNING, "InitSpriteSheetPlayer: Could not find spritesheet '%s'", spritesheet_name);
@@ -76,7 +76,7 @@ void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
             origin = (Vector2){ fw * 0.5f, fh  };           // bottom edge
             break;
         default:
-            // Defensive fallback (should never happen unless memory corruption)
+            // Defensive fallback (shouldn't happen unless memory corruption)
             origin = (Vector2){ fw * 0.5f, fh * 0.5f };
             break;
     }
