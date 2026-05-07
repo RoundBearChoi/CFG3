@@ -1,4 +1,5 @@
 #include "rbg_update_input.h"
+#include "../../cJSON/cJSON.h"
 #include "raylib.h"
 
 static bool input_initialized = false;
@@ -16,8 +17,26 @@ static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
 #undef X
 };
 
-void rgb_init_input(void)
+void rbg_init_init(void)
 {
+	// Try to load from JSON
+    char* jsonText = LoadFileText("resource/default_key_bindings.json");
+    
+	if (jsonText == NULL) {
+        TraceLog(LOG_WARNING, "Failed to load key bindings JSON - using defaults");
+        return;
+    }
+
+	printf("\nprinting default_key_bindings.json...\n");
+	printf(jsonText);
+
+    cJSON* root = cJSON_Parse(jsonText);
+    if (root == NULL || !cJSON_IsObject(root)) {
+        TraceLog(LOG_WARNING, "Failed to parse key bindings JSON: %s", cJSON_GetErrorPtr());
+        UnloadFileText(jsonText);
+        return;
+    }
+
 	// Default keyboard layout
     inputBindings[INPUT_P1_MOVE_LEFT]  = KEY_A;
     inputBindings[INPUT_P1_MOVE_RIGHT] = KEY_D;
@@ -33,7 +52,7 @@ void rbg_update_input(void)
 	if (input_initialized == false)
 	{
 		input_initialized = true;
-		rgb_init_input();
+		rbg_init_init();
 	}
 
 	for (int i = 0; i < INPUT_ACTION_COUNT; i++)

@@ -1,9 +1,14 @@
 Directory Tree
 ================================================================================
-Showing: Directories + ['.c', '.h'] files only
+Showing: Directories + ['.c', '.h', '.json'] files only
 Note: Directories are colored blue in the terminal (plain text here)
 
+├── resource
+│ └── default_key_bindings.json
 └── src
+ ├── cJSON
+ │ ├── cJSON.c
+ │ └── cJSON.h
  ├── main.c
  └── rbg_game
   ├── rbg_cam_control
