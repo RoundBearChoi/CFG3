@@ -10,9 +10,9 @@ static bool pressedStates[INPUT_ACTION_COUNT] = {false};
 KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
 // String literals generated automatically by the X macro
-static const char* const inputActionNames[INPUT_ACTION_COUNT] = {
+static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
 #define X(name) #name,
-    INPUT_ACTIONS
+    RBG_INPUT_ACTIONS
 #undef X
 };
 
