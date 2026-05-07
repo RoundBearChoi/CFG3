@@ -1,7 +1,6 @@
 #include "test_scene_2.h"
 #include "../rbg_input/rbg_update_input.h"
 #include "../rbg_scenes/rbg_scenes.h"
-#include "../rbg_cam_control/rbg_cam_control.h"
 #include "../rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "../rbg_spritesheets/rbg_spritesheet_player.h"
 #include "raylib.h"
@@ -12,12 +11,12 @@ static SpriteSheetPlayer sheetPlayer;
 void init_test_scene_2(void)
 {
 	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
-
 	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle");
 }
 
 void end_test_scene_2(void)
 {
+	// reset so we init again when we come back to this scene
 	test_scene_2_initialized = false;
 	UnloadSpriteSheets();
 }
