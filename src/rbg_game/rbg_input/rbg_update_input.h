@@ -10,7 +10,8 @@
     X(INPUT_P1_MOVE_UP)    \
     X(INPUT_P1_MOVE_DOWN)  \
     X(INPUT_P1_JUMP)       \
-    X(INPUT_P1_ATTACK)
+    X(INPUT_P1_ATTACK)     \
+	X(INPUT_F1)
 
 typedef enum {
 #define X(name) name,
