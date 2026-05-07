@@ -1,3 +1,3 @@
-fighter_type,spritesheet_filename,total_x,total_y,total_images,render_size_x,render_size_y,play_delay
-fighter_0,fighter_0_sample.png,8,1,8,100,100,2
-fighter_0,fighter_0_idle.png,3,3,8,100,100,1
+fighter_type,spritesheet_filename,total_x,total_y,total_images,render_scale,play_delay
+fighter_0,fighter_0_sample.png,8,1,8,0.8,2
+fighter_0,fighter_0_idle.png,3,3,8,0.8,1
