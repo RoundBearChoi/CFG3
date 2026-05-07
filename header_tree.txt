@@ -7,7 +7,7 @@ Note: Directories are colored blue in the terminal (plain text here)
 │ ├── default_key_bindings.json
 │ ├── fighters_spritesheet_list.csv
 │ └── fighters_spritesheets
-│  └── fighter_0_sample.png
+│  └── fighter_0_idle.png
 └── src
  ├── cJSON
  │ ├── cJSON.c
