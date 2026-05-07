@@ -1,10 +1,10 @@
 #include "rbg_spritesheet_player.h"
 #include <string.h>  // for memset
 
-void InitSpritesheetPlayer(SpritesheetPlayer* player, const char* fighter_type)
+void InitSpritesheetPlayer(SpriteSheetPlayer* player, const char* fighter_type)
 {
     if (player == NULL) return;
-    memset(player, 0, sizeof(SpritesheetPlayer));
+    memset(player, 0, sizeof(SpriteSheetPlayer));
     
     player->sheet = GetSpritesheet(fighter_type);
     player->is_playing = true;
@@ -16,7 +16,7 @@ void InitSpritesheetPlayer(SpritesheetPlayer* player, const char* fighter_type)
     }
 }
 
-void UpdateSpritesheetPlayer(SpritesheetPlayer* player)
+void UpdateSpritesheetPlayer(SpriteSheetPlayer* player)
 {
     if (player == NULL || player->sheet == NULL || !player->is_playing) return;
     
@@ -34,7 +34,7 @@ void UpdateSpritesheetPlayer(SpritesheetPlayer* player)
     }
 }
 
-void DrawSpritesheetPlayer(const SpritesheetPlayer* player, Vector2 position, float extra_scale, Color tint)
+void DrawSpritesheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint)
 {
     if (player == NULL || player->sheet == NULL || player->sheet->texture.id == 0) return;
     
@@ -64,7 +64,7 @@ void DrawSpritesheetPlayer(const SpritesheetPlayer* player, Vector2 position, fl
     DrawTexturePro(s->texture, source, dest, origin, 0.0f, tint);
 }
 
-void PlaySpritesheet(SpritesheetPlayer* player, bool loop)
+void PlaySpritesheet(SpriteSheetPlayer* player, bool loop)
 {
     if (player == NULL) return;
     player->is_playing = true;
@@ -73,13 +73,13 @@ void PlaySpritesheet(SpritesheetPlayer* player, bool loop)
     // player->current_frame = 0;
 }
 
-void StopSpritesheet(SpritesheetPlayer* player)
+void StopSpritesheet(SpriteSheetPlayer* player)
 {
     if (player == NULL) return;
     player->is_playing = false;
 }
 
-void ResetSpritesheetPlayer(SpritesheetPlayer* player)
+void ResetSpritesheetPlayer(SpriteSheetPlayer* player)
 {
     if (player == NULL) return;
     player->current_frame = 0;

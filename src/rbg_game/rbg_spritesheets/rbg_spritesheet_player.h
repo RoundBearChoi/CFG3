@@ -10,20 +10,20 @@ typedef struct {
     int frame_counter;        // ticks until next frame
     bool is_playing;
     bool loop;                // false = one-shot animation
-} SpritesheetPlayer;
+} SpriteSheetPlayer;
 
 // Initialize player from fighter_type (looks up via loader)
-void InitSpritesheetPlayer(SpritesheetPlayer* player, const char* fighter_type);
+void InitSpritesheetPlayer(SpriteSheetPlayer* player, const char* fighter_type);
 
 // Advance animation (call every frame)
-void UpdateSpritesheetPlayer(SpritesheetPlayer* player);
+void UpdateSpritesheetPlayer(SpriteSheetPlayer* player);
 
 // Draw the current frame (centered origin by default)
-void DrawSpritesheetPlayer(const SpritesheetPlayer* player, Vector2 position, float extra_scale, Color tint);
+void DrawSpritesheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
 
 // Control playback
-void PlaySpritesheet(SpritesheetPlayer* player, bool loop);
-void StopSpritesheet(SpritesheetPlayer* player);
-void ResetSpritesheetPlayer(SpritesheetPlayer* player);
+void PlaySpritesheet(SpriteSheetPlayer* player, bool loop);
+void StopSpritesheet(SpriteSheetPlayer* player);
+void ResetSpritesheetPlayer(SpriteSheetPlayer* player);
 
 #endif

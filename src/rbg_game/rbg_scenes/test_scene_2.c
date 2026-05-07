@@ -5,13 +5,13 @@
 #include "raylib.h"
 
 static bool test_scene_2_initialized = false; 
-static SpritesheetPlayer fighterPlayer;
+static SpriteSheetPlayer sheetPlayer;
 
 void init_test_scene_2(void)
 {
 	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
 
-	InitSpritesheetPlayer(&fighterPlayer, "fighter_0");
+	InitSpritesheetPlayer(&sheetPlayer, "fighter_0");
 }
 
 void update_test_scene_2(void)
@@ -24,8 +24,8 @@ void update_test_scene_2(void)
 
 	rbg_update_cam_control();
 
-	UpdateSpritesheetPlayer(&fighterPlayer);
-	DrawSpritesheetPlayer(&fighterPlayer, (Vector2){400, 300}, 1.0f, WHITE);
+	UpdateSpritesheetPlayer(&sheetPlayer);
+	DrawSpritesheetPlayer(&sheetPlayer, (Vector2){400, 300}, 1.0f, WHITE);
 
     DrawText("This is TEST SCENE 2", 0, 0, 30, WHITE);
 }
