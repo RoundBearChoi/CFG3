@@ -38,7 +38,7 @@ void DrawSpritesheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
 {
     if (player == NULL || player->sheet == NULL || player->sheet->texture.id == 0) return;
     
-    Spritesheet* s = player->sheet;
+    SpriteSheet* s = player->sheet;
     int frame = player->current_frame;
     
     // Calculate source rectangle (row-major order, respect total_images)

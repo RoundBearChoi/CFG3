@@ -5,7 +5,7 @@
 #include "raylib.h"
 
 typedef struct {
-    Spritesheet* sheet;       // pointer to loaded data (do NOT free)
+    SpriteSheet* sheet;       // pointer to loaded data (do NOT free)
     int current_frame;        // 0 .. total_images-1
     int frame_counter;        // ticks until next frame
     bool is_playing;

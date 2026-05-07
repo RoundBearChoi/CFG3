@@ -15,13 +15,13 @@ typedef struct {
     Texture2D texture;      // loaded by Raylib
     int frame_width;        // pre-computed: texture.width / total_x
     int frame_height;       // pre-computed: texture.height / total_y
-} Spritesheet;
+} SpriteSheet;
 
-extern Spritesheet *spritesheets;
+extern SpriteSheet *spritesheets;
 extern int spritesheet_count;
 
 void LoadSpriteSheets(const char *csv_path);
 void UnloadSpriteSheets(void);
-Spritesheet* GetSpritesheet(const char *fighter_type);
+SpriteSheet* GetSpritesheet(const char *fighter_type);
 
 #endif

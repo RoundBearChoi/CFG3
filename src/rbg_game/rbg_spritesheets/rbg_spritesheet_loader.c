@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-Spritesheet *spritesheets = NULL;
+SpriteSheet *spritesheets = NULL;
 int spritesheet_count = 0;
 
 void LoadSpriteSheets(const char *csv_path)
@@ -32,7 +32,7 @@ void LoadSpriteSheets(const char *csv_path)
 
     if (row_count == 0) return;
 
-    spritesheets = (Spritesheet *)calloc(row_count, sizeof(Spritesheet));
+    spritesheets = (SpriteSheet *)calloc(row_count, sizeof(SpriteSheet));
     if (spritesheets == NULL) {
         spritesheet_count = 0;
         TraceLog(LOG_ERROR, "Failed to allocate memory for spritesheets");
@@ -111,7 +111,7 @@ void UnloadSpriteSheets(void)
     spritesheet_count = 0;
 }
 
-Spritesheet* GetSpritesheet(const char *fighter_type)
+SpriteSheet* GetSpritesheet(const char *fighter_type)
 {
     if (fighter_type == NULL || spritesheets == NULL) return NULL;
 
