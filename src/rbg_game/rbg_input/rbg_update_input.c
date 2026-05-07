@@ -45,7 +45,7 @@ void rbg_init_init(void)
 	rbg_load_default_key_bindings();
 }
 
-void rbg_load_default_key_bindings(void)
+bool rbg_load_default_key_bindings(void)
 {
 	// try to load from JSON
     char* jsonText = LoadFileText("resource/default_key_bindings.json");
@@ -53,7 +53,7 @@ void rbg_load_default_key_bindings(void)
 	if (jsonText == NULL)
 	{
         TraceLog(LOG_WARNING, "Failed to load key bindings JSON - using defaults");
-        return;
+        return false;
     }
 
 	printf("\nprinting default_key_bindings.json...\n");
@@ -64,7 +64,7 @@ void rbg_load_default_key_bindings(void)
 	{
         TraceLog(LOG_WARNING, "Failed to parse key bindings JSON: %s", cJSON_GetErrorPtr());
         UnloadFileText(jsonText);
-        return;
+        return false;
     }
 
 	// write defaults with values from JSON
@@ -74,14 +74,19 @@ void rbg_load_default_key_bindings(void)
         const char* actionName = rbg_input_action_names[i];
         cJSON* item = cJSON_GetObjectItem(root, actionName);
 
-        if (item && cJSON_IsString(item)) {
+        if (item && cJSON_IsString(item))
+		{
             const char* keyStr = cJSON_GetStringValue(item);
             KeyboardKey key = string_to_keyboard_key(keyStr);
-            if (key != KEY_NULL) {
+            if (key != KEY_NULL)
+			{
                 inputBindings[i] = key;
                 anyLoaded = true;
-            } else {
+            }
+			else
+			{
                 TraceLog(LOG_WARNING, "Invalid key value for %s: '%s' - keeping default", actionName, keyStr);
+				return false;
             }
         }
     }
@@ -93,6 +98,8 @@ void rbg_load_default_key_bindings(void)
 
     cJSON_Delete(root);
     UnloadFileText(jsonText);
+
+	return true;
 }
 
 void rbg_update_input(void)
