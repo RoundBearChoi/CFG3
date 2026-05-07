@@ -58,6 +58,7 @@ bool rbg_load_default_key_bindings(void)
 
 	printf("\nprinting default_key_bindings.json...\n");
 	printf(jsonText);
+	printf("\n");
 
     cJSON* root = cJSON_Parse(jsonText);
     if (root == NULL || !cJSON_IsObject(root))
