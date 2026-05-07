@@ -18,6 +18,7 @@ void init_test_scene_2(void)
 
 void end_test_scene_2(void)
 {
+	test_scene_2_initialized = false;
 	UnloadSpriteSheets();
 }
 
