@@ -10,7 +10,6 @@ static bool rbg_cam_initialized = false;
 
 void rbg_init_cam_control(void)
 {
-	//rbg_global_camera.offset   = (Vector2){ 100, 100 };
 	rbg_global_camera.rotation = 0.0f;
 	rbg_global_camera.zoom     = 1.0f;
 }
