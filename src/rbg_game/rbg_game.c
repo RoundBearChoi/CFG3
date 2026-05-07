@@ -21,7 +21,7 @@ void rbg_update_game(void)
 
     // Fixed timestep setup
     static double accumulator = 0.0;
-    const double fixed_dt = 1.0 / 60.0;
+    const double fixed_dt = 1.0 / 120.0;
 
     // Get elapsed time since last frame
     double frame_time = GetFrameTime();

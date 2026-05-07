@@ -17,7 +17,7 @@ int main(void)
     // Initialize the window and OpenGL context
     InitWindow(screenWidth, screenHeight, bar_title);
 
-    SetTargetFPS(60);
+    SetTargetFPS(120);
 
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
