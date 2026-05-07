@@ -76,6 +76,7 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
 // hardcoded defaults
 static void rbg_set_default_bindings(void)
 {
+	/*
     inputBindings[INPUT_P1_MOVE_LEFT]  = KEY_A;
     inputBindings[INPUT_P1_MOVE_RIGHT] = KEY_D;
     inputBindings[INPUT_P1_MOVE_UP]    = KEY_W;
@@ -83,6 +84,7 @@ static void rbg_set_default_bindings(void)
     inputBindings[INPUT_P1_JUMP]       = KEY_R;
     inputBindings[INPUT_P1_ATTACK]     = KEY_T;
     inputBindings[INPUT_F1]            = KEY_F1;
+	*/
 }
 
 bool rbg_load_default_key_bindings(void)
