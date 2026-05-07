@@ -3,15 +3,19 @@
 
 #include "raylib.h"
 
+// X macro – single source of truth for all input enums
+#define INPUT_ACTIONS \
+    X(INPUT_P1_MOVE_LEFT)  \
+    X(INPUT_P1_MOVE_RIGHT) \
+    X(INPUT_P1_MOVE_UP)    \
+    X(INPUT_P1_MOVE_DOWN)  \
+    X(INPUT_P1_JUMP)       \
+    X(INPUT_P1_ATTACK)
+
 typedef enum {
-    INPUT_P1_MOVE_LEFT,
-    INPUT_P1_MOVE_RIGHT,
-    INPUT_P1_MOVE_UP,
-    INPUT_P1_MOVE_DOWN,
-    INPUT_P1_JUMP,
-    INPUT_P1_ATTACK,
-
-
+#define X(name) name,
+    INPUT_ACTIONS
+#undef X
     INPUT_ACTION_COUNT
 } InputAction;
 

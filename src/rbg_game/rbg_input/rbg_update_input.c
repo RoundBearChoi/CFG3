@@ -9,6 +9,13 @@ static bool pressedStates[INPUT_ACTION_COUNT] = {false};
 
 KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
+// String literals generated automatically by the X macro
+static const char* const inputActionNames[INPUT_ACTION_COUNT] = {
+#define X(name) #name,
+    INPUT_ACTIONS
+#undef X
+};
+
 void rgb_init_input(void)
 {
 	// Default keyboard layout
