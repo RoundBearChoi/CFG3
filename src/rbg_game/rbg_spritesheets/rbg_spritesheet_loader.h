@@ -23,6 +23,6 @@ extern int spritesheet_count;
 
 void rbg_load_sprite_sheets(const char *csv_path);
 void rbg_unload_sprite_sheets(void);
-SpriteSheet* GetSpriteSheetByName(const char *spritesheet_name);
+SpriteSheet* rbg_get_sprite_sheet_by_name(const char *spritesheet_name);
 
 #endif

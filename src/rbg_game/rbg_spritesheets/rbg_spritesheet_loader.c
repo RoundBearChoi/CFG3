@@ -141,7 +141,7 @@ void rbg_unload_sprite_sheets(void)
     spritesheet_count = 0;
 }
 
-SpriteSheet* GetSpriteSheetByName(const char *spritesheet_name)
+SpriteSheet* rbg_get_sprite_sheet_by_name(const char *spritesheet_name)
 {
     if (spritesheet_name == NULL || spritesheets == NULL) return NULL;
 

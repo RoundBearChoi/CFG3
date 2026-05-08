@@ -7,7 +7,7 @@ void rbg_init_sprite_sheet(SpriteSheetPlayer* player, const char* spritesheet_na
     
 	memset(player, 0, sizeof(SpriteSheetPlayer));
     
-    player->sheet = GetSpriteSheetByName(spritesheet_name);
+    player->sheet = rbg_get_sprite_sheet_by_name(spritesheet_name);
     player->pivot = pivot;
     player->is_facing_right_side = true;  // default: right-facing (assuming all original png orientation is left to right)
     
