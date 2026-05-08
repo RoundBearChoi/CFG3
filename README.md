@@ -5,8 +5,6 @@
 
 CFG3 is a lightweight, performant 2D fighting game written in C using [raylib](https://github.com/raysan5/raylib) library. Focus is on clean code, high performance, easy compilation, and educational readability — for learning game development with raylib or experimenting with fighting game mechanics.
 
-I chose C because everything is explicit. No magical runtime behaviors, no silent allocations, no invisible destructors, no exceptions coming out of nowhere, no hidden abstractions. There is no safety net but there's no hidden machinery either. You can get raw power and total clarity. You can also shoot yourself in the foot.
-
 Follow dev journey on [YouTube](https://youtube.com/roundbeargames), [Discord](https://discord.gg/hAFTgcA)
 
 ---
