@@ -61,11 +61,11 @@ void LoadSpriteSheets(const char *csv_path)
     }
 
     line = strtok(fileData, "\r\n");    // header
-    if (line) line = strtok(NULL, "\r\n");
+	if (line) line = strtok(NULL, "\r\n");
 
-    int i = 0;
-    
 	printf("\n=== loading textures ===\n");
+
+	int i = 0;
 
 	while (line != NULL && i < row_count)
 	{
