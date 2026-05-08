@@ -8,6 +8,7 @@ void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_na
     
     player->sheet = GetSpriteSheetByName(spritesheet_name);
     player->pivot = pivot;
+    player->is_facing_right_side = true;  // default: right-facing (assuming all original png orientation is left to right)
     
     if (player->sheet == NULL) {
         TraceLog(LOG_WARNING, "InitSpriteSheetPlayer: Could not find spritesheet '%s'", spritesheet_name);
@@ -54,6 +55,13 @@ void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
         (float)s->frame_height
     };
     
+    // Horizontal mirror flip when not facing right
+    Rectangle drawSource = source;
+    if (!player->is_facing_right_side) {
+        drawSource.x += (float)s->frame_width;
+        drawSource.width = -(float)s->frame_width;
+    }
+    
     // Destination rectangle (apply both CSV render_scale + runtime extra_scale)
     float final_scale = s->render_scale * extra_scale;
     float fw = s->frame_width * final_scale;
@@ -66,7 +74,7 @@ void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
         fh
     };
     
-    // Pivot-based origin
+    // Pivot-based origin (works correctly with flip)
     Vector2 origin;
     switch (player->pivot) {
         case RENDER_PIVOT_CENTER:
@@ -76,25 +84,11 @@ void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
             origin = (Vector2){ fw * 0.5f, fh  };           // bottom edge
             break;
         default:
-            // Defensive fallback (shouldn't happen unless memory corruption)
             origin = (Vector2){ fw * 0.5f, fh * 0.5f };
             break;
     }
     
-    DrawTexturePro(s->texture, source, dest, origin, 0.0f, tint);
-}
-
-void PlaySpriteSheet(SpriteSheetPlayer* player, bool loop)
-{
-    if (player == NULL) return;
-    player->is_playing = true;
-    player->loop = loop;
-}
-
-void StopSpriteSheet(SpriteSheetPlayer* player)
-{
-    if (player == NULL) return;
-    player->is_playing = false;
+    DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
 void ResetSpriteSheetPlayer(SpriteSheetPlayer* player)
@@ -103,5 +97,5 @@ void ResetSpriteSheetPlayer(SpriteSheetPlayer* player)
     player->current_frame = 0;
     player->frame_counter = 0;
     player->is_playing = true;  // most common after reset
-    // pivot is intentionally left unchanged
+    // loop, pivot, and is_facing_right_side are intentionally left unchanged
 }

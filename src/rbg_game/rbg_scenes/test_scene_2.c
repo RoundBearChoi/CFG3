@@ -43,6 +43,8 @@ void update_test_scene_2(void)
 	DrawSpriteSheetPlayer(&sheetPlayer, (Vector2){ 500.0f , 0.0f }, 1.0f, WHITE);
 	DrawSpriteSheetPlayer(&sheetPlayer_2, (Vector2){ 800.0f, 0.0f }, 1.0f, GRAY);
 
+	sheetPlayer_2.is_facing_right_side = false;
+
 	if (IsInputActionPressed(INPUT_F1))
 	{
 		rbg_next_scene = TEST_SCENE_1;

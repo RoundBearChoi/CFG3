@@ -18,6 +18,8 @@ typedef struct {
     bool is_playing;
     bool loop;                // false = one-shot animation
     rbg_render_pivot pivot;
+    bool is_facing_right_side; // true = original PNG right-facing orientation (default)
+                               // false = horizontal mirror flip (left-facing)
 } SpriteSheetPlayer;
 
 // Initialize player from spritesheet_name (looks up via GetSpriteSheetByName)
@@ -27,10 +29,6 @@ void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_na
 void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player);
 
 void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
-
-// Control playback
-void PlaySpriteSheet(SpriteSheetPlayer* player, bool loop);
-void StopSpriteSheet(SpriteSheetPlayer* player);
 void ResetSpriteSheetPlayer(SpriteSheetPlayer* player);
 
 #endif
