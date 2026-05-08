@@ -53,7 +53,11 @@ void LoadSpriteSheets(const char *csv_path)
     if (line) line = strtok(NULL, "\r\n");
 
     int i = 0;
-    while (line != NULL && i < row_count) {
+    
+	printf("\n=== loading textures ===\n");
+
+	while (line != NULL && i < row_count)
+	{
         char type_buf[64] = {0};
         char name_buf[128] = {0};   // may contain .png from CSV
         int tx = 0, ty = 0, ti = 0, pd = 0;
@@ -62,10 +66,12 @@ void LoadSpriteSheets(const char *csv_path)
         int scanned = sscanf(line, "%63[^,],%127[^,],%d,%d,%d,%f,%d",
                              type_buf, name_buf, &tx, &ty, &ti, &rs, &pd);
 
-        if (scanned >= 5) {
+        if (scanned >= 5)
+		{
             // Strip .png extension if present (handles old and new CSV formats)
             char *ext = strrchr(name_buf, '.');
-            if (ext && (strcmp(ext, ".png") == 0 || strcmp(ext, ".PNG") == 0)) {
+            if (ext && (strcmp(ext, ".png") == 0 || strcmp(ext, ".PNG") == 0))
+			{
                 *ext = '\0';   // truncate at the dot → clean base name
             }
 
@@ -83,10 +89,13 @@ void LoadSpriteSheets(const char *csv_path)
             spritesheets[i].texture = LoadTexture(fullpath);
 
             // Pre-compute frame size
-            if (spritesheets[i].texture.id != 0 && tx > 0 && ty > 0) {
+            if (spritesheets[i].texture.id != 0 && tx > 0 && ty > 0)
+			{
                 spritesheets[i].frame_width = spritesheets[i].texture.width / tx;
                 spritesheets[i].frame_height = spritesheets[i].texture.height / ty;
-            } else {
+            } 
+			else
+			{
                 spritesheets[i].frame_width = 0;
                 spritesheets[i].frame_height = 0;
             }
@@ -97,7 +106,6 @@ void LoadSpriteSheets(const char *csv_path)
     }
 
     UnloadFileText(fileData);
-    TraceLog(LOG_INFO, "Loaded %d fighter spritesheets successfully", spritesheet_count);
 }
 
 void UnloadSpriteSheets(void)

@@ -31,6 +31,6 @@ void rbg_update_scenes(void)
     {
         rbg_current_scene = rbg_next_scene;
         rbg_next_scene = NONE;
-        TraceLog(LOG_INFO, "Scene switched to %d", (int)rbg_current_scene);
+        //TraceLog(LOG_INFO, "Scene switched to %d", (int)rbg_current_scene);
     }
 }

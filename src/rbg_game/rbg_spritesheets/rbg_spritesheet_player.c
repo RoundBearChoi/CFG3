@@ -17,9 +17,6 @@ void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_na
     
     player->is_playing = true;
     player->loop = true;
-    
-    TraceLog(LOG_INFO, "Initialized SpriteSheetPlayer for '%s' (%d frames) [pivot=%d]", 
-             spritesheet_name, player->sheet->total_images, pivot);
 }
 
 void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player)

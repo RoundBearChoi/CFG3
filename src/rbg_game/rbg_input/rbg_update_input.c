@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include <string.h>   // strcasecmp
 #include <stdlib.h>   // atoi
+#include <stdio.h>
 
 static bool input_initialized = false;
 
@@ -27,7 +28,7 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
         return KEY_NULL;
     }
 
-    // === Backward-compatible single letters (a-z / A-Z) ===
+    // Backward-compatible single letters (a-z / A-Z)
     if (strlen(keystr) == 1) {
         char c = keystr[0];
         if ((c >= 'a' && c <= 'z')) {
@@ -38,7 +39,7 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
         }
     }
 
-    // === F1–F12 (case-insensitive: "f1", "F1", "F12", etc.) ===
+    // F1–F12 (case-insensitive: "f1", "F1", "F12", etc.)
     if ((keystr[0] == 'F' || keystr[0] == 'f') && strlen(keystr) >= 2) {
         int num = atoi(keystr + 1);
         if (num >= 1 && num <= 12) {
@@ -46,7 +47,7 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
         }
     }
 
-    // === Common special keys (case-insensitive) ===
+    // Common special keys (case-insensitive)
     if (strcasecmp(keystr, "SPACE") == 0)          return KEY_SPACE;
     if (strcasecmp(keystr, "ENTER") == 0 || 
         strcasecmp(keystr, "RETURN") == 0)         return KEY_ENTER;
@@ -69,8 +70,9 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
     if (strcasecmp(keystr, "LEFT_ALT") == 0)       return KEY_LEFT_ALT;
     if (strcasecmp(keystr, "RIGHT_ALT") == 0)      return KEY_RIGHT_ALT;
 
-    TraceLog(LOG_WARNING, "Unknown key value in bindings: '%s' - using KEY_NULL", keystr);
-    return KEY_NULL;
+    //TraceLog(LOG_WARNING, "Unknown key value in bindings: '%s' - using KEY_NULL", keystr);
+    
+	return KEY_NULL;
 }
 
 // hardcoded defaults
@@ -89,6 +91,8 @@ static void rbg_set_default_bindings(void)
 
 bool rbg_load_default_key_bindings(void)
 {
+	printf("\n=== loading default_key_bindings.json ===\n");
+
     // start from safe defaults
     rbg_set_default_bindings();
 
@@ -100,7 +104,7 @@ bool rbg_load_default_key_bindings(void)
         return false;
     }
 
-    printf("\n=== default_key_bindings.json loaded ===\n");
+	printf("\n");
     printf("%s\n", jsonText);
 
     cJSON* root = cJSON_Parse(jsonText);
@@ -125,7 +129,7 @@ bool rbg_load_default_key_bindings(void)
             {
                 inputBindings[i] = key;
                 anyLoaded = true;
-                TraceLog(LOG_INFO, "Loaded binding: %s -> %s", actionName, keyStr);
+                //TraceLog(LOG_INFO, "Loaded binding: %s -> %s", actionName, keyStr);
             }
             else
             {
@@ -136,7 +140,7 @@ bool rbg_load_default_key_bindings(void)
 
     if (anyLoaded)
     {
-        TraceLog(LOG_INFO, "Key bindings loaded successfully from JSON (overrode %d actions)", INPUT_ACTION_COUNT);
+        //TraceLog(LOG_INFO, "Key bindings loaded successfully from JSON (overrode %d actions)", INPUT_ACTION_COUNT);
     }
 
     cJSON_Delete(root);
