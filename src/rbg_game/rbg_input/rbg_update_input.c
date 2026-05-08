@@ -15,7 +15,8 @@ KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
 // string literals generated automatically by the X macro
 // this is for converting enum to string literal or vice versa
-static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
+static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] =
+{
 #define X(name) #name,
     RBG_INPUT_ACTIONS
 #undef X
@@ -24,25 +25,31 @@ static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] = {
 // key parser (supports F1-F12, space, arrows, modifiers, etc.)
 static KeyboardKey string_to_keyboard_key(const char* keystr)
 {
-    if (keystr == NULL || keystr[0] == '\0') {
+    if (keystr == NULL || keystr[0] == '\0')
+	{
         return KEY_NULL;
     }
 
     // Backward-compatible single letters (a-z / A-Z)
-    if (strlen(keystr) == 1) {
+    if (strlen(keystr) == 1)
+	{
         char c = keystr[0];
-        if ((c >= 'a' && c <= 'z')) {
+        if ((c >= 'a' && c <= 'z'))
+		{
             return (KeyboardKey)(KEY_A + (c - 'a'));
         }
-        if ((c >= 'A' && c <= 'Z')) {
+        if ((c >= 'A' && c <= 'Z'))
+		{
             return (KeyboardKey)(KEY_A + (c - 'A'));
         }
     }
 
     // F1–F12 (case-insensitive: "f1", "F1", "F12", etc.)
-    if ((keystr[0] == 'F' || keystr[0] == 'f') && strlen(keystr) >= 2) {
+    if ((keystr[0] == 'F' || keystr[0] == 'f') && strlen(keystr) >= 2)
+	{
         int num = atoi(keystr + 1);
-        if (num >= 1 && num <= 12) {
+        if (num >= 1 && num <= 12)
+		{
             return (KeyboardKey)(KEY_F1 + (num - 1));
         }
     }
@@ -108,15 +115,15 @@ bool rbg_load_default_key_bindings(void)
     printf("%s\n", jsonText);
 
     cJSON* root = cJSON_Parse(jsonText);
-    if (root == NULL || !cJSON_IsObject(root))
+    
+	if (root == NULL || !cJSON_IsObject(root))
     {
         TraceLog(LOG_WARNING, "Failed to parse key bindings JSON: %s - using defaults", cJSON_GetErrorPtr());
         UnloadFileText(jsonText);
         return false;
     }
 
-    bool anyLoaded = false;
-    for (int i = 0; i < INPUT_ACTION_COUNT; i++)
+	for (int i = 0; i < INPUT_ACTION_COUNT; i++)
     {
         const char* actionName = rbg_input_action_names[i];
         cJSON* item = cJSON_GetObjectItem(root, actionName);
@@ -128,7 +135,6 @@ bool rbg_load_default_key_bindings(void)
             if (key != KEY_NULL)
             {
                 inputBindings[i] = key;
-                anyLoaded = true;
                 //TraceLog(LOG_INFO, "Loaded binding: %s -> %s", actionName, keyStr);
             }
             else
@@ -136,11 +142,6 @@ bool rbg_load_default_key_bindings(void)
                 TraceLog(LOG_WARNING, "Invalid key value for %s: '%s' - keeping default", actionName, keyStr);
             }
         }
-    }
-
-    if (anyLoaded)
-    {
-        //TraceLog(LOG_INFO, "Key bindings loaded successfully from JSON (overrode %d actions)", INPUT_ACTION_COUNT);
     }
 
     cJSON_Delete(root);
