@@ -6,38 +6,69 @@ extern Camera2D rbg_global_camera;
 
 int main(void)
 {
-    const int screenWidth  = 1280;
-    const int screenHeight = 720;
+    // intended game resolution (fixed internal resolution)
+    const int virtualWidth  = 1280;
+    const int virtualHeight = 720;
 
-	// static = internal linkage. visible only inside the current file
-	// const char* = string won't change
-	// const = pointer won't change
 	static const char* const bar_title = "C Fighting Game 3"; 
 
-    // Initialize the window and OpenGL context
-    InitWindow(screenWidth, screenHeight, bar_title);
-
+    InitWindow(virtualWidth, virtualHeight, bar_title);
     SetTargetFPS(120);
 
-    while (!WindowShouldClose()) // Detect window close button or ESC key
+    // create render target
+    RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
+    SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
+
+    while (!WindowShouldClose())
     {
-        // All drawing must happen between BeginDrawing() and EndDrawing()
         BeginDrawing();
         ClearBackground(BLACK);
 
-		// Camera mode - everything between here is in world coordinates
-		BeginMode2D(rbg_global_camera);
-		rbg_update_game();
-		EndMode2D();
-		
+        // draw everything to fixed 1280x720 render target
+        BeginTextureMode(target);
+            ClearBackground(BLACK);
+            
+            BeginMode2D(rbg_global_camera);
+                rbg_update_game(); // (update + drawing)
+            EndMode2D();
+        EndTextureMode();
+
+        // scale render target to the actual screen/window size
+        float scale = fminf(
+            (float)GetScreenWidth()  / (float)virtualWidth,
+            (float)GetScreenHeight() / (float)virtualHeight
+        );
+
+        Rectangle source = {
+            0.0f, 
+            0.0f, 
+            (float)target.texture.width, 
+            (float)-target.texture.height   // negative height is required for RenderTexture in raylib (OpenGL Y-flip)
+        };
+
+        Rectangle dest = {
+            (GetScreenWidth()  - (virtualWidth  * scale)) * 0.5f,
+            (GetScreenHeight() - (virtualHeight * scale)) * 0.5f,
+            virtualWidth  * scale,
+            virtualHeight * scale
+        };
+
+        DrawTexturePro(target.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
+
         DrawFPS(10, 10);
 
         EndDrawing();
+
+        // F11 to toggle fullscreen
+        if (IsKeyPressed(KEY_F11))
+        {
+            ToggleFullscreen();
+        }
     }
 
-	rbg_unload_sprite_sheets();
-
-    // Clean shutdown (always call this)
+    // Clean up
+    UnloadRenderTexture(target);
+    rbg_unload_sprite_sheets();
     CloseWindow();
     return 0;
 }
