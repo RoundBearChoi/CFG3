@@ -5,6 +5,7 @@
 #include "../rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "../rbg_spritesheets/rbg_spritesheet_player.h"
 #include "raylib.h"
+#include <stdio.h>
 
 static bool test_scene_2_initialized = false; 
 static SpriteSheetPlayer sheetPlayer;
@@ -12,6 +13,8 @@ static SpriteSheetPlayer sheetPlayer_2;
 
 void init_test_scene_2(void)
 {
+	printf("\n=== starting test scene 2 ===\n");
+
 	rbg_global_camera.offset = (Vector2){ 100.0f, 300.0f };
 
 	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
