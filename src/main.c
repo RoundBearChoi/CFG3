@@ -1,12 +1,13 @@
 #include "rbg_game/rbg_game.h"
 #include "rbg_game/rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "raylib.h"
+#include "math.h"
 
 extern Camera2D rbg_global_camera;
 
 int main(void)
 {
-    // intended game resolution (fixed internal resolution)
+    // fixed internal resolution
     const int virtualWidth  = 1280;
     const int virtualHeight = 720;
 
