@@ -8,41 +8,52 @@ int spritesheet_count = 0;
 
 void LoadSpriteSheets(const char *csv_path)
 {
-    if (spritesheets != NULL) {
+    if (spritesheets != NULL)
+	{
         UnloadSpriteSheets();   // allow re-load if called again
     }
 
     // First pass: count data rows (skip header)
     char *fileData = LoadFileText(csv_path);
-    if (fileData == NULL) {
+    
+	if (fileData == NULL) {
         TraceLog(LOG_WARNING, "Could not load spritesheet list: %s", csv_path);
         return;
     }
 
     int row_count = 0;
     char *line = strtok(fileData, "\r\n");
-    if (line != NULL) {
+    
+	if (line != NULL)
+	{
         line = strtok(NULL, "\r\n");            // skip header
-        while (line != NULL) {
+        while (line != NULL)
+		{
             row_count++;
             line = strtok(NULL, "\r\n");
         }
     }
+
     UnloadFileText(fileData);
 
     if (row_count == 0) return;
 
     spritesheets = (SpriteSheet *)calloc(row_count, sizeof(SpriteSheet));
-    if (spritesheets == NULL) {
+    
+	if (spritesheets == NULL)
+	{
         spritesheet_count = 0;
         TraceLog(LOG_ERROR, "Failed to allocate memory for spritesheets");
         return;
     }
-    spritesheet_count = row_count;
+    
+	spritesheet_count = row_count;
 
     // Second pass: parse and load
     fileData = LoadFileText(csv_path);
-    if (fileData == NULL) {
+    
+	if (fileData == NULL)
+	{
         free(spritesheets);
         spritesheets = NULL;
         spritesheet_count = 0;
@@ -112,11 +123,14 @@ void UnloadSpriteSheets(void)
 {
     if (spritesheets == NULL) return;
 
-    for (int i = 0; i < spritesheet_count; i++) {
-        if (spritesheets[i].texture.id != 0) {
+    for (int i = 0; i < spritesheet_count; i++)
+	{
+        if (spritesheets[i].texture.id != 0)
+		{
             UnloadTexture(spritesheets[i].texture);
         }
-        if (spritesheets[i].fighter_type) free(spritesheets[i].fighter_type);
+        
+		if (spritesheets[i].fighter_type) free(spritesheets[i].fighter_type);
         if (spritesheets[i].spritesheet_name) free(spritesheets[i].spritesheet_name);
     }
 
@@ -129,11 +143,14 @@ SpriteSheet* GetSpriteSheetByName(const char *spritesheet_name)
 {
     if (spritesheet_name == NULL || spritesheets == NULL) return NULL;
 
-    for (int i = 0; i < spritesheet_count; i++) {
+    for (int i = 0; i < spritesheet_count; i++)
+	{
         if (spritesheets[i].spritesheet_name &&
-            strcmp(spritesheets[i].spritesheet_name, spritesheet_name) == 0) {
+            strcmp(spritesheets[i].spritesheet_name, spritesheet_name) == 0)
+		{
             return &spritesheets[i];
         }
     }
+
     return NULL;
 }
