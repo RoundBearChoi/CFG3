@@ -1,10 +1,10 @@
 #include "test_scene_2.h"
 #include "../rbg_input/rbg_update_input.h"
 #include "../rbg_scenes/rbg_scenes.h"
-#include "../rbg_cam_control/rbg_cam_control.h"
+#include "rbg_cam_control/rbg_cam_control.h"
 #include "../rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "../rbg_spritesheets/rbg_spritesheet_player.h"
-#include "../rbg_players/rbg_players.h"
+#include "rbg_players/rbg_players.h"
 #include "raylib.h"
 #include <stdio.h>
 

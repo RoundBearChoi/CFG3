@@ -1,5 +1,5 @@
 #include "rbg_render_debug.h"
-#include "../rbg_players/rbg_players.h"
+#include "../rbg_scenes/rbg_players/rbg_players.h"
 #include "raylib.h"
 
 void rbg_render_debug(void)
