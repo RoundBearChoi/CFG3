@@ -17,17 +17,17 @@ void init_test_scene_2(void)
 
 	rbg_global_camera.offset = (Vector2){ 100.0f, 300.0f };
 
-	LoadSpriteSheets("resource/fighters_spritesheet_list.csv");
+	rbg_load_sprite_sheets("resource/fighters_spritesheet_list.csv");
 
-	InitSpriteSheetPlayer(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_CENTER);
-	InitSpriteSheetPlayer(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_sprite_sheet(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_CENTER);
+	rbg_init_sprite_sheet(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
 
 void end_test_scene_2(void)
 {
 	// reset so we init again when we come back to this scene
 	test_scene_2_initialized = false;
-	UnloadSpriteSheets();
+	rbg_unload_sprite_sheets();
 }
 
 void update_test_scene_2(void)
@@ -40,11 +40,11 @@ void update_test_scene_2(void)
 
 	rbg_update_cam_control();
 
-	UpdateSpriteSheetPlayer(&sheetPlayer);
-	UpdateSpriteSheetPlayer(&sheetPlayer_2);
+	rbg_update_sprite_sheet(&sheetPlayer);
+	rbg_update_sprite_sheet(&sheetPlayer_2);
 
-	DrawSpriteSheetPlayer(&sheetPlayer, (Vector2){ 500.0f , 0.0f }, 1.0f, WHITE);
-	DrawSpriteSheetPlayer(&sheetPlayer_2, (Vector2){ 800.0f, 0.0f }, 1.0f, GRAY);
+	rbg_draw_sprite_sheet(&sheetPlayer, (Vector2){ 500.0f , 0.0f }, 1.0f, WHITE);
+	rbg_draw_sprite_sheet(&sheetPlayer_2, (Vector2){ 800.0f, 0.0f }, 1.0f, GRAY);
 
 	sheetPlayer_2.is_facing_right_side = false;
 

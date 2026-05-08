@@ -21,8 +21,8 @@ typedef struct
 extern SpriteSheet *spritesheets;
 extern int spritesheet_count;
 
-void LoadSpriteSheets(const char *csv_path);
-void UnloadSpriteSheets(void);
+void rbg_load_sprite_sheets(const char *csv_path);
+void rbg_unload_sprite_sheets(void);
 SpriteSheet* GetSpriteSheetByName(const char *spritesheet_name);
 
 #endif

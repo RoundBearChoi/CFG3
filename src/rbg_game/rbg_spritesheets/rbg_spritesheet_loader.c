@@ -6,11 +6,11 @@
 SpriteSheet *spritesheets = NULL;
 int spritesheet_count = 0;
 
-void LoadSpriteSheets(const char *csv_path)
+void rbg_load_sprite_sheets(const char *csv_path)
 {
     if (spritesheets != NULL)
 	{
-        UnloadSpriteSheets();   // allow re-load if called again
+        rbg_unload_sprite_sheets();   // allow re-load if called again
     }
 
     // First pass: count data rows (skip header)
@@ -119,8 +119,10 @@ void LoadSpriteSheets(const char *csv_path)
     UnloadFileText(fileData);
 }
 
-void UnloadSpriteSheets(void)
+void rbg_unload_sprite_sheets(void)
 {
+	printf("\n=== unloading sprite sheets ===\n");
+
     if (spritesheets == NULL) return;
 
     for (int i = 0; i < spritesheet_count; i++)

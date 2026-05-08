@@ -1,7 +1,7 @@
 #include "rbg_spritesheet_player.h"
 #include <string.h>  // for memset
 
-void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot)
+void rbg_init_sprite_sheet(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot)
 {
     if (player == NULL) return;
     
@@ -13,7 +13,7 @@ void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_na
     
     if (player->sheet == NULL)
 	{
-        TraceLog(LOG_WARNING, "InitSpriteSheetPlayer: Could not find spritesheet '%s'", spritesheet_name);
+        TraceLog(LOG_WARNING, "rbg_init_sprite_sheet: Could not find spritesheet '%s'", spritesheet_name);
         return;
     }
     
@@ -21,7 +21,7 @@ void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_na
     player->loop = true;
 }
 
-void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player)
+void rbg_update_sprite_sheet(SpriteSheetPlayer* player)
 {
     if (player == NULL || player->sheet == NULL || !player->is_playing) return;
     
@@ -41,7 +41,7 @@ void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player)
     }
 }
 
-void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint)
+void rbg_draw_sprite_sheet(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint)
 {
     if (player == NULL || player->sheet == NULL || player->sheet->texture.id == 0) return;
     
@@ -97,7 +97,7 @@ void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, fl
     DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
-void ResetSpriteSheetPlayer(SpriteSheetPlayer* player)
+void rbg_reset_sprite_sheet(SpriteSheetPlayer* player)
 {
     if (player == NULL) return;
     

@@ -4,7 +4,7 @@
 #include "rbg_spritesheet_loader.h"
 #include "raylib.h"
 
-// Enum that controls where the 'position' parameter points to in DrawSpriteSheetPlayer.
+// Enum that controls where the 'position' parameter points to in rbg_draw_sprite_sheet.
 // CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
 typedef enum
 {
@@ -24,9 +24,9 @@ typedef struct
                                // false = horizontal mirror flip (left-facing)
 } SpriteSheetPlayer;
 
-void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot); // Initialize player from spritesheet_name (looks up via GetSpriteSheetByName)
-void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player); // Advance animation (call every frame)
-void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
-void ResetSpriteSheetPlayer(SpriteSheetPlayer* player);
+void rbg_init_sprite_sheet(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot); // Initialize player from spritesheet_name (looks up via GetSpriteSheetByName)
+void rbg_update_sprite_sheet(SpriteSheetPlayer* player); // Advance animation (call every frame)
+void rbg_draw_sprite_sheet(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
+void rbg_reset_sprite_sheet(SpriteSheetPlayer* player);
 
 #endif
