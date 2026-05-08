@@ -6,8 +6,8 @@ void rbg_render_debug(void)
 {
 	// red x on (0, 0)
 	// -y is up
-	DrawLine(-10, 10, 10, -10, RED);
-	DrawLine(-10, -10, 10, 10, RED);
+	DrawLine(-5, 5, 5, -5, RED);
+	DrawLine(-5, -5, 5, 5, RED);
 
 	// random green horizontal line
 	DrawLine(-50, -50, 50, -50, GREEN);
@@ -19,9 +19,11 @@ void rbg_render_debug(void)
 	Color p1_color_x = (Color){ 255, 247, 0, 255 };
 	Color p2_color_x = (Color){ 255, 162, 0, 255 };
 
-	DrawLineV((Vector2){p1_pos.x - 10, p1_pos.y + 10}, (Vector2){p1_pos.x + 10, p1_pos.y - 10}, p1_color_x);
-	DrawLineV((Vector2){p1_pos.x - 10, p1_pos.y - 10}, (Vector2){p1_pos.x + 10, p1_pos.y + 10}, p1_color_x);
+	int x_length = 5;
 
-	DrawLineV((Vector2){p2_pos.x - 10, p2_pos.y + 10}, (Vector2){p2_pos.x + 10, p2_pos.y - 10}, p2_color_x);
-	DrawLineV((Vector2){p2_pos.x - 10, p2_pos.y - 10}, (Vector2){p2_pos.x + 10, p2_pos.y + 10}, p2_color_x);
+	DrawLineV((Vector2){p1_pos.x - x_length, p1_pos.y + x_length}, (Vector2){p1_pos.x + x_length, p1_pos.y - x_length}, p1_color_x);
+	DrawLineV((Vector2){p1_pos.x - x_length, p1_pos.y - x_length}, (Vector2){p1_pos.x + x_length, p1_pos.y + x_length}, p1_color_x);
+
+	DrawLineV((Vector2){p2_pos.x - x_length, p2_pos.y + x_length}, (Vector2){p2_pos.x + x_length, p2_pos.y - x_length}, p2_color_x);
+	DrawLineV((Vector2){p2_pos.x - x_length, p2_pos.y - x_length}, (Vector2){p2_pos.x + x_length, p2_pos.y + x_length}, p2_color_x);
 }

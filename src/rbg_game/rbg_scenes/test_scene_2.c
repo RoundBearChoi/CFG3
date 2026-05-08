@@ -58,6 +58,4 @@ void update_test_scene_2(void)
 		rbg_next_scene = TEST_SCENE_1;
 		end_test_scene_2();
 	}
-
-    DrawText("This is TEST SCENE 2", 0, 0, 30, WHITE);
 }
