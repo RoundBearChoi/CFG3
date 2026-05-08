@@ -14,7 +14,10 @@ int main(void)
 	static const char* const bar_title = "C Fighting Game 3"; 
 
     InitWindow(virtualWidth, virtualHeight, bar_title);
-    SetTargetFPS(60);
+    
+	ClearWindowState(FLAG_VSYNC_HINT);
+
+	SetTargetFPS(120);
 
     // create render target
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
@@ -56,7 +59,7 @@ int main(void)
 
         DrawTexturePro(target.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
 
-		DrawFPS(10, 10);
+		//DrawFPS(10, 10);
 
         EndDrawing();
 
@@ -64,7 +67,8 @@ int main(void)
         if (IsKeyPressed(KEY_F11))
         {
             ToggleFullscreen();
-        }
+			ClearWindowState(FLAG_VSYNC_HINT);
+		}
     }
 
     // Clean up
