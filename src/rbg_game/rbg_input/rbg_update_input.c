@@ -111,8 +111,7 @@ bool rbg_load_default_key_bindings(void)
         return false;
     }
 
-	printf("\n");
-    printf("%s\n", jsonText);
+    printf("\n%s", jsonText);
 
     cJSON* root = cJSON_Parse(jsonText);
     
