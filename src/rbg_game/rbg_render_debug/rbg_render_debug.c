@@ -12,7 +12,7 @@ void rbg_render_debug(void)
 	// random green horizontal line
 	DrawLine(-50, -50, 50, -50, GREEN);
 
-	// draw yellow x on player position
+	// draw x on player positions
 	Vector2 p1_pos = rbg_player_1.position;
 	Vector2 p2_pos = rbg_player_2.position;
 
