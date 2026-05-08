@@ -16,9 +16,12 @@ void rbg_render_debug(void)
 	Vector2 p1_pos = rbg_player_1.position;
 	Vector2 p2_pos = rbg_player_2.position;
 
-	DrawLineV((Vector2){p1_pos.x - 10, p1_pos.y + 10}, (Vector2){p1_pos.x + 10, p1_pos.y - 10}, YELLOW);
-	DrawLineV((Vector2){p1_pos.x - 10, p1_pos.y - 10}, (Vector2){p1_pos.x + 10, p1_pos.y + 10}, YELLOW);
+	Color p1_color_x = (Color){ 255, 247, 0, 255 };
+	Color p2_color_x = (Color){ 255, 162, 0, 255 };
 
-	DrawLineV((Vector2){p2_pos.x - 10, p2_pos.y + 10}, (Vector2){p2_pos.x + 10, p2_pos.y - 10}, YELLOW);
-	DrawLineV((Vector2){p2_pos.x - 10, p2_pos.y - 10}, (Vector2){p2_pos.x + 10, p2_pos.y + 10}, YELLOW);
+	DrawLineV((Vector2){p1_pos.x - 10, p1_pos.y + 10}, (Vector2){p1_pos.x + 10, p1_pos.y - 10}, p1_color_x);
+	DrawLineV((Vector2){p1_pos.x - 10, p1_pos.y - 10}, (Vector2){p1_pos.x + 10, p1_pos.y + 10}, p1_color_x);
+
+	DrawLineV((Vector2){p2_pos.x - 10, p2_pos.y + 10}, (Vector2){p2_pos.x + 10, p2_pos.y - 10}, p2_color_x);
+	DrawLineV((Vector2){p2_pos.x - 10, p2_pos.y - 10}, (Vector2){p2_pos.x + 10, p2_pos.y + 10}, p2_color_x);
 }
