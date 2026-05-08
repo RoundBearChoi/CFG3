@@ -8,13 +8,13 @@ extern Camera2D rbg_global_camera;
 int main(void)
 {
     // fixed internal resolution
-    const int virtualWidth  = 1280;
-    const int virtualHeight = 720;
+    const int virtualWidth  = 800;
+    const int virtualHeight = 400;
 
 	static const char* const bar_title = "C Fighting Game 3"; 
 
     InitWindow(virtualWidth, virtualHeight, bar_title);
-    SetTargetFPS(120);
+    SetTargetFPS(60);
 
     // create render target
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
