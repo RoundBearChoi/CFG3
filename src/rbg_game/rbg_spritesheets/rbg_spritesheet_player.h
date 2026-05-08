@@ -22,12 +22,8 @@ typedef struct {
                                // false = horizontal mirror flip (left-facing)
 } SpriteSheetPlayer;
 
-// Initialize player from spritesheet_name (looks up via GetSpriteSheetByName)
-void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot);
-
-// Advance animation (call every frame)
-void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player);
-
+void InitSpriteSheetPlayer(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot); // Initialize player from spritesheet_name (looks up via GetSpriteSheetByName)
+void UpdateSpriteSheetPlayer(SpriteSheetPlayer* player); // Advance animation (call every frame)
 void DrawSpriteSheetPlayer(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
 void ResetSpriteSheetPlayer(SpriteSheetPlayer* player);
 
