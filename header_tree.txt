@@ -14,21 +14,21 @@ Note: Directories are colored blue in the terminal (plain text here)
  │ └── cJSON.h
  ├── main.c
  └── rbg_game
-  ├── rbg_cam_control
-  │ ├── rbg_cam_control.c
-  │ └── rbg_cam_control.h
   ├── rbg_game.c
   ├── rbg_game.h
   ├── rbg_input
   │ ├── rbg_update_input.c
   │ └── rbg_update_input.h
-  ├── rbg_players
-  │ ├── rbg_players.c
-  │ └── rbg_players.h
   ├── rbg_render_debug
   │ ├── rbg_render_debug.c
   │ └── rbg_render_debug.h
   ├── rbg_scenes
+  │ ├── rbg_cam_control
+  │ │ ├── rbg_cam_control.c
+  │ │ └── rbg_cam_control.h
+  │ ├── rbg_players
+  │ │ ├── rbg_players.c
+  │ │ └── rbg_players.h
   │ ├── rbg_scenes.c
   │ ├── rbg_scenes.h
   │ ├── test_scene_1.c
