@@ -43,6 +43,8 @@ void update_test_scene_2(void)
 
 	rbg_update_cam_control();
 
+	rbg_update_players();
+
 	rbg_update_sprite_sheet(&sheetPlayer);
 	rbg_update_sprite_sheet(&sheetPlayer_2);
 
