@@ -13,7 +13,8 @@
     X(INPUT_P1_ATTACK)     \
 	X(INPUT_F1)
 
-typedef enum {
+typedef enum
+{
 #define X(name) name,
     RBG_INPUT_ACTIONS
 #undef X

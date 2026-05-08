@@ -3,7 +3,8 @@
 
 void rbg_update_scenes(void);
 
-typedef enum {
+typedef enum
+{
 	NONE = -1,
     TEST_SCENE_1,
     TEST_SCENE_2,

@@ -6,12 +6,14 @@
 
 // Enum that controls where the 'position' parameter points to in DrawSpriteSheetPlayer.
 // CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
-typedef enum {
+typedef enum
+{
     RENDER_PIVOT_CENTER,
     RENDER_PIVOT_BOTTOM_CENTER
 } rbg_render_pivot;
 
-typedef struct {
+typedef struct
+{
     SpriteSheet* sheet;       // pointer to loaded data (do NOT free)
     int current_frame;        // 0 .. total_images-1
     int frame_counter;        // ticks until next frame

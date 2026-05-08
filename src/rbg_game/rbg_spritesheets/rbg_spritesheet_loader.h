@@ -3,7 +3,8 @@
 
 #include "raylib.h"
 
-typedef struct {
+typedef struct
+{
     char *fighter_type;
     char *spritesheet_name;     // base name WITHOUT .png (automatically cleaned from CSV)
     int total_x;
