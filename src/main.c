@@ -1,4 +1,5 @@
 #include "rbg_game/rbg_game.h"
+#include "rbg_game/rbg_render_on_screenspace.h"
 #include "rbg_game/rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "raylib.h"
 #include "math.h"
@@ -98,7 +99,8 @@ int main(void)
 
         DrawTexturePro(target.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
 
-        DrawFPS(10, 10);
+        //DrawFPS(10, 10);
+		rbg_render_on_screenspace();
 
         EndDrawing();
     }
