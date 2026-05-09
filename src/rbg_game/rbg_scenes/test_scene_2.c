@@ -19,8 +19,6 @@ void init_test_scene_2(void)
 
 	test_scene_2_initialized = true;
 
-	rbg_global_camera.offset = (Vector2){ 100.0f, 300.0f };
-
 	rbg_load_sprite_sheets("resource/fighters_spritesheet_list.csv");
 	
 	rbg_init_input();
