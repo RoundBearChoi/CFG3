@@ -1,5 +1,5 @@
 #include "rbg_update_input.h"
-#include "../../cJSON/cJSON.h"
+#include "../../../cJSON/cJSON.h"
 #include "raylib.h"
 #include <string.h>   // strcasecmp
 #include <stdlib.h>   // atoi
