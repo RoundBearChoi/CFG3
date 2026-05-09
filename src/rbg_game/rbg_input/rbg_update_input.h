@@ -12,7 +12,8 @@
     X(INPUT_P1_JUMP)       \
     X(INPUT_P1_ATTACK)     \
 	X(INPUT_F1)            \
-	X(INPUT_F2)
+	X(INPUT_F2)            \
+	X(INPUT_F3)
 
 typedef enum
 {

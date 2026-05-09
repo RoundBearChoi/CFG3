@@ -1,5 +1,6 @@
 #include "test_scene_2.h"
 #include "../rbg_input/rbg_update_input.h"
+#include "../rbg_input/rbg_record_input_actions.h"
 #include "../rbg_scenes/rbg_scenes.h"
 #include "rbg_cam_control/rbg_cam_control.h"
 #include "../rbg_spritesheets/rbg_spritesheet_loader.h"
@@ -22,6 +23,8 @@ void init_test_scene_2(void)
 
 	rbg_init_players();
 
+	rbg_init_recording(); // input actions
+
 	rbg_init_sprite_sheet(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_CENTER);
 	rbg_init_sprite_sheet(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
@@ -35,6 +38,14 @@ void end_test_scene_2(void)
 
 void update_test_scene_2(void)
 {
+	rbg_update_recording(); // input actions
+
+	if (IsInputActionPressed(INPUT_F2)) rbg_start_recording();
+	if (IsInputActionPressed(INPUT_F3)) {
+		rbg_stop_recording();
+		rbg_save_recording("resource/recordings/demo_input.csv");  // nested array ready
+	}
+
 	if (test_scene_2_initialized == false)
 	{
 		test_scene_2_initialized = true;
