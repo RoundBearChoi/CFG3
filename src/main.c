@@ -37,7 +37,7 @@ int main(void)
 
             if (window_mode == 2)  // === entering exclusive fullscreen ===
             {
-                // resize to monitor's native resolution FIRST
+                // resize to monitor's native resolution first
                 int monitor = GetCurrentMonitor();
                 SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
 
@@ -52,7 +52,7 @@ int main(void)
                     ToggleFullscreen();
                 }
 
-                // set the exact target window size for the chosen mode
+                // set target window size for the chosen mode
                 int targetW = (window_mode == 0) ? virtualWidth  : scale2Width;
                 int targetH = (window_mode == 0) ? virtualHeight : scale2Height;
 
