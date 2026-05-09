@@ -10,7 +10,6 @@
 #define NUM_RECORD_ACTIONS    ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 // ===================================================
 
-// Public API — simplified (no separate init required)
 void rbg_start_recording(void);
 void rbg_stop_recording(void);
 bool rbg_is_recording(void);

@@ -7,17 +7,11 @@
 static bool recordingBuffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
 static int  currentRecordFrame = 0;
 static bool isRecording = false;
-static bool loggingDone = false;        // one-time initialization log
 // =========================================================
 
 void rbg_start_recording(void)
 {
-    // One-time system log (only the very first time recording is ever started)
-    if (!loggingDone)
-    {
-        loggingDone = true;
-        TraceLog(LOG_INFO, "Input recording system initialized (max %d frames @ 128 FPS)", MAX_RECORD_FRAMES);
-    }
+	TraceLog(LOG_INFO, "Input recording system initialized (max %d frames @ 128 FPS)", MAX_RECORD_FRAMES);
 
     // Always reset buffer and state when starting a new recording
     memset(recordingBuffer, 0, sizeof(recordingBuffer));
