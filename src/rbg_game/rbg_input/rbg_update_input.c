@@ -5,8 +5,6 @@
 #include <stdlib.h>   // atoi
 #include <stdio.h>
 
-static bool input_initialized = false;
-
 // internal state updated every frame
 static bool downStates[INPUT_ACTION_COUNT] = {false};
 static bool pressedStates[INPUT_ACTION_COUNT] = {false};
@@ -156,13 +154,6 @@ void rbg_init_input(void)
 
 void rbg_update_input(void)
 {
-    // run once
-    if (input_initialized == false)
-    {
-        input_initialized = true;
-        rbg_init_input();
-    }
-
     // check down or pressed in every frame
     for (int i = 0; i < INPUT_ACTION_COUNT; i++)
     {
