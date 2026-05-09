@@ -3,12 +3,21 @@
 
 static double accumulator = 0.0;
 static double previous_time = 0.0;
-const double RBG_FIXED_DT = 1.0 / 128.0;
+static double fixed_dt = 1.0 / 128.0;
 
 void rbg_init_fixed_time_step(void)
 {
     accumulator = 0.0;
     previous_time = 0.0;
+
+	if (rbg_target_fps == 128)
+	{
+		fixed_dt = 1.0 / 128.0;
+	}
+	else if (rbg_target_fps == 60)
+	{
+		fixed_dt = 1.0 / 60.0;
+	}
 }
 
 void rbg_accumulate_fixed_time_step(void)
@@ -26,9 +35,9 @@ void rbg_accumulate_fixed_time_step(void)
 
 bool rbg_run_fixed_time_step(void)
 {
-    if (accumulator >= RBG_FIXED_DT)
+    if (accumulator >= fixed_dt)
     {
-        accumulator -= RBG_FIXED_DT;
+        accumulator -= fixed_dt;
         return true;
     }
     return false;

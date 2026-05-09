@@ -5,6 +5,7 @@
 #include "math.h"
 
 extern Camera2D rbg_global_camera;
+extern int rbg_target_fps;
 
 int main(void)
 {
@@ -24,7 +25,7 @@ int main(void)
     InitWindow(virtualWidth, virtualHeight, bar_title);
     
     ClearWindowState(FLAG_VSYNC_HINT);
-    SetTargetFPS(128);
+    SetTargetFPS(rbg_target_fps);
 
     // create render target
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
@@ -62,7 +63,7 @@ int main(void)
 
             // re-apply after any window state change
             ClearWindowState(FLAG_VSYNC_HINT);
-            SetTargetFPS(128);
+            SetTargetFPS(rbg_target_fps);
         }
 
         BeginDrawing();
