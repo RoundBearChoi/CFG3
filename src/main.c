@@ -14,16 +14,14 @@ int main(void)
     const int virtualHeight = 400;
 
     // double-size windowed mode (perfect integer upscale)
-    const int scale2Width   = virtualWidth * 2;   // 1600
-    const int scale2Height  = virtualHeight * 2;  // 800
+    const int scale2Width   = virtualWidth * 2; // 1600
+    const int scale2Height  = virtualHeight * 2; // 800
 
     // current display mode (cycles on every F11 press)
     int window_mode = 0; // 0 = original 800x400, 1 = double 1600x800, 2 = fullscreen
 
     static const char* const bar_title = "C Fighting Game 3"; 
-
     InitWindow(virtualWidth, virtualHeight, bar_title);
-    
     ClearWindowState(FLAG_VSYNC_HINT);
     SetTargetFPS(rbg_target_fps);
 
@@ -37,7 +35,7 @@ int main(void)
         {
             window_mode = (window_mode + 1) % 3;
 
-            if (window_mode == 2)  // === ENTERING exclusive fullscreen ===
+            if (window_mode == 2)  // === entering exclusive fullscreen ===
             {
                 // resize to monitor's native resolution FIRST
                 int monitor = GetCurrentMonitor();
@@ -88,7 +86,7 @@ int main(void)
             0.0f, 
             0.0f, 
             (float)target.texture.width, 
-            (float)-target.texture.height   // negative height for OpenGL Y-flip
+            (float)-target.texture.height // negative height for OpenGL Y-flip
         };
 
         Rectangle dest = {
@@ -100,13 +98,12 @@ int main(void)
 
         DrawTexturePro(target.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
 
-        //DrawFPS(10, 10);
 		rbg_render_on_screenspace();
 
         EndDrawing();
     }
 
-    // Clean up
+    // clean up
     UnloadRenderTexture(target);
     rbg_unload_sprite_sheets();
     CloseWindow();
