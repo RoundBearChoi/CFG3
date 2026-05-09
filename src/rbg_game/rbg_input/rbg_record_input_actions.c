@@ -59,7 +59,7 @@ void rbg_update_recording(void)
         return;
     }
 
-    // Record "pressed or held" state for each of the 6 actions
+    // Record "pressed or held" state for each of the actions
     for (int i = 0; i < NUM_RECORD_ACTIONS; i++)
     {
         InputAction action = (InputAction)(RECORD_FIRST_ACTION + i);

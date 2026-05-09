@@ -6,8 +6,10 @@ Note: Directories are colored blue in the terminal (plain text here)
 ├── resource
 │ ├── default_key_bindings.json
 │ ├── fighters_spritesheet_list.csv
-│ └── fighters_spritesheets
-│  └── fighter_0_idle.png
+│ ├── fighters_spritesheets
+│ │ └── fighter_0_idle.png
+│ └── recordings
+│  └── demo_input.csv
 └── src
  ├── cJSON
  │ ├── cJSON.c
@@ -21,6 +23,8 @@ Note: Directories are colored blue in the terminal (plain text here)
   ├── rbg_game.c
   ├── rbg_game.h
   ├── rbg_input
+  │ ├── rbg_record_input_actions.c
+  │ ├── rbg_record_input_actions.h
   │ ├── rbg_update_input.c
   │ └── rbg_update_input.h
   ├── rbg_render_debug
