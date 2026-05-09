@@ -6,10 +6,10 @@
 #include "rbg_fixed_time_step.h"
 #include "raylib.h"
 
-static bool rbg_game_initialized = false;
-
 double rbg_frame_time = 0.0f;
 int rbg_target_fps = 120;
+
+static bool rbg_game_initialized = false;
 
 void rbg_init_game()
 {
