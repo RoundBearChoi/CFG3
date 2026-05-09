@@ -3,11 +3,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-// ====================== STATIC STATE ======================
 static bool recordingBuffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
 static int  currentRecordFrame = 0;
 static bool isRecording = false;
-// =========================================================
 
 void rbg_start_recording(void)
 {
