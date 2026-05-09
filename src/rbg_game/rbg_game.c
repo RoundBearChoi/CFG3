@@ -2,6 +2,7 @@
 #include "rbg_input/rbg_update_input.h"
 #include "rbg_scenes/rbg_scenes.h"
 #include "rbg_render_debug/rbg_render_debug.h"
+#include "rbg_fixed_update_count.h"
 #include "raylib.h"
 
 static bool rbg_game_initialized = false;
@@ -35,8 +36,8 @@ void rbg_update_game(void)
     {
         rbg_update_scenes();
         accumulator -= fixed_dt;
-    }
-
-    // Debug rendering runs every frame (after logic)
-    rbg_render_debug();
+		
+		rbg_fixed_update_count();
+		rbg_render_debug();
+	}
 }
