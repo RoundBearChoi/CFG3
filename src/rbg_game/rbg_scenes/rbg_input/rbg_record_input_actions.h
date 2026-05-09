@@ -10,6 +10,8 @@
 #define NUM_RECORD_ACTIONS    ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 // ===================================================
 
+extern int rbg_current_record_frame;
+
 void rbg_start_recording(void);
 void rbg_stop_recording(void);
 bool rbg_is_recording(void);

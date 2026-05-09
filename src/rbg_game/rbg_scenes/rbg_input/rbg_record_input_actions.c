@@ -3,8 +3,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+int rbg_current_record_frame = 0;
+
 static bool recordingBuffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
-static int  currentRecordFrame = 0;
 static bool isRecording = false;
 
 void rbg_start_recording(void)
@@ -13,7 +14,7 @@ void rbg_start_recording(void)
 
     // Always reset buffer and state when starting a new recording
     memset(recordingBuffer, 0, sizeof(recordingBuffer));
-    currentRecordFrame = 0;
+    rbg_current_record_frame = 0;
     isRecording = true;
 
     TraceLog(LOG_INFO, "=== INPUT RECORDING STARTED ===");
@@ -25,7 +26,7 @@ void rbg_stop_recording(void)
 
     isRecording = false;
     TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)",
-             currentRecordFrame, currentRecordFrame / 128.0f);
+             rbg_current_record_frame, rbg_current_record_frame / 128.0f);
 }
 
 bool rbg_is_recording(void)
@@ -35,14 +36,14 @@ bool rbg_is_recording(void)
 
 int rbg_get_recorded_frames(void)
 {
-    return currentRecordFrame;
+    return rbg_current_record_frame;
 }
 
 void rbg_update_recording(void)
 {
     if (!isRecording) return;
 
-    if (currentRecordFrame >= MAX_RECORD_FRAMES)
+    if (rbg_current_record_frame >= MAX_RECORD_FRAMES)
     {
         rbg_stop_recording();
         TraceLog(LOG_WARNING, "Maximum recording length (45s) reached");
@@ -53,15 +54,15 @@ void rbg_update_recording(void)
     for (int i = 0; i < NUM_RECORD_ACTIONS; i++)
     {
         InputAction action = (InputAction)(RECORD_FIRST_ACTION + i);
-        recordingBuffer[currentRecordFrame][i] = IsInputActionDown(action);
+        recordingBuffer[rbg_current_record_frame][i] = IsInputActionDown(action);
     }
 
-    currentRecordFrame++;
+    rbg_current_record_frame++;
 }
 
 bool rbg_save_recording(const char* filename)
 {
-    if (currentRecordFrame <= 0)
+    if (rbg_current_record_frame <= 0)
     {
         TraceLog(LOG_WARNING, "No frames recorded to save");
         return false;
@@ -73,7 +74,7 @@ bool rbg_save_recording(const char* filename)
     }
 
     // Rough but safe size estimate for CSV buffer
-    size_t estimated_size = 1024 + (size_t)currentRecordFrame * (NUM_RECORD_ACTIONS * 12 + 2);
+    size_t estimated_size = 1024 + (size_t)rbg_current_record_frame * (NUM_RECORD_ACTIONS * 12 + 2);
     char* csvBuffer = (char*)malloc(estimated_size);
     if (!csvBuffer)
     {
@@ -98,7 +99,7 @@ bool rbg_save_recording(const char* filename)
     *ptr++ = '\n';
 
     // === 2. WRITE DATA ROWS ===
-    for (int f = 0; f < currentRecordFrame; f++)
+    for (int f = 0; f < rbg_current_record_frame; f++)
     {
         for (int a = 0; a < NUM_RECORD_ACTIONS; a++)
         {
@@ -116,7 +117,7 @@ bool rbg_save_recording(const char* filename)
     if (success)
     {
         TraceLog(LOG_INFO, "Input recording saved → %s (%d frames, %d actions) [CSV with header]",
-                 filename, currentRecordFrame, NUM_RECORD_ACTIONS);
+                 filename, rbg_current_record_frame, NUM_RECORD_ACTIONS);
     }
     else
     {
