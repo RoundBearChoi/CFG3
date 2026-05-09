@@ -11,12 +11,12 @@
 // ===================================================
 
 // Public API
-void rbg_init_recording(void);           // call once at startup (safe to call multiple times)
-void rbg_start_recording(void);          // begin capturing
-void rbg_stop_recording(void);           // end capturing
+void rbg_init_recording(void);
+void rbg_start_recording(void);
+void rbg_stop_recording(void);
 bool rbg_is_recording(void);
-void rbg_update_recording(void);         // ← call every frame AFTER rbg_update_input()
+void rbg_update_recording(void);
 int  rbg_get_recorded_frames(void);
-bool rbg_save_recording(const char* filename);  // saves as nested JSON array-of-arrays
+bool rbg_save_recording(const char* filename);
 
 #endif
