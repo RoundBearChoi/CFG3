@@ -1,0 +1,35 @@
+#include "rbg_fixed_time_step.h"
+#include "raylib.h"
+
+static double accumulator = 0.0;
+static double previous_time = 0.0;
+const double RBG_FIXED_DT = 1.0 / 120.0;
+
+void rbg_init_fixed_time_step(void)
+{
+    accumulator = 0.0;
+    previous_time = 0.0;
+}
+
+void rbg_accumulate_fixed_time_step(void)
+{
+    if (previous_time == 0.0)
+    {
+        previous_time = GetTime();
+    }
+
+    double current_time = GetTime();
+    rbg_frame_time = current_time - previous_time;
+    previous_time = current_time;
+    accumulator += rbg_frame_time;
+}
+
+bool rbg_run_fixed_time_step(void)
+{
+    if (accumulator >= RBG_FIXED_DT)
+    {
+        accumulator -= RBG_FIXED_DT;
+        return true;
+    }
+    return false;
+}

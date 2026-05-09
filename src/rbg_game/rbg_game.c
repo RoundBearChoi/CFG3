@@ -3,6 +3,7 @@
 #include "rbg_scenes/rbg_scenes.h"
 #include "rbg_render_debug/rbg_render_debug.h"
 #include "rbg_fixed_update_count.h"
+#include "rbg_fixed_time_step.h"
 #include "raylib.h"
 
 static bool rbg_game_initialized = false;
@@ -20,32 +21,18 @@ void rbg_update_game(void)
 	{
 		rbg_game_initialized = true;
 		rbg_init_game();
+		rbg_init_fixed_time_step();
 	}
 
-    // Fixed timestep setup
-    static double accumulator = 0.0;
-    static double previous_time = 0.0;   // for manual delta time
-    const double fixed_dt = 1.0 / 120.0;
+    rbg_update_input();
 
-    if (previous_time == 0.0)
-    {
-        previous_time = GetTime();
-    }
-
-    double current_time = GetTime();
-    rbg_frame_time = current_time - previous_time;
-    previous_time = current_time;
-    accumulator += rbg_frame_time;
+    rbg_accumulate_fixed_time_step();
     
-	rbg_update_input();
-
     // fixed timestep loop — game logic runs at 120 fps
-    while (accumulator >= fixed_dt)
+    while (rbg_run_fixed_time_step())
     {
         rbg_update_scenes();
-        accumulator -= fixed_dt;
-		
-		rbg_fixed_update_count();
-		rbg_render_debug();
+        rbg_fixed_update_count();
+        rbg_render_debug();
     }
 }
