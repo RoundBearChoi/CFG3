@@ -4,9 +4,9 @@
 #include <stdlib.h>
 
 int rbg_current_record_frame = 0;
+bool rbg_is_recording_input = false;
 
 static bool recordingBuffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
-static bool isRecording = false;
 
 void rbg_start_recording(void)
 {
@@ -15,23 +15,23 @@ void rbg_start_recording(void)
     // Always reset buffer and state when starting a new recording
     memset(recordingBuffer, 0, sizeof(recordingBuffer));
     rbg_current_record_frame = 0;
-    isRecording = true;
+    rbg_is_recording_input = true;
 
     TraceLog(LOG_INFO, "=== INPUT RECORDING STARTED ===");
 }
 
 void rbg_stop_recording(void)
 {
-    if (!isRecording) return;
+    if (!rbg_is_recording_input) return;
 
-    isRecording = false;
+    rbg_is_recording_input = false;
     TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)",
              rbg_current_record_frame, rbg_current_record_frame / 128.0f);
 }
 
 bool rbg_is_recording(void)
 {
-    return isRecording;
+    return rbg_is_recording_input;
 }
 
 int rbg_get_recorded_frames(void)
@@ -41,7 +41,7 @@ int rbg_get_recorded_frames(void)
 
 void rbg_update_recording(void)
 {
-    if (!isRecording) return;
+    if (!rbg_is_recording_input) return;
 
     if (rbg_current_record_frame >= MAX_RECORD_FRAMES)
     {
