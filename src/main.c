@@ -16,7 +16,7 @@ int main(void)
     InitWindow(virtualWidth, virtualHeight, bar_title);
     
     ClearWindowState(FLAG_VSYNC_HINT);
-    SetTargetFPS(120);
+    SetTargetFPS(128);
 
     // create render target
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
@@ -54,7 +54,7 @@ int main(void)
 
             // Re-apply these after any window state change (GLFW can reset flags)
             ClearWindowState(FLAG_VSYNC_HINT);
-            SetTargetFPS(120);
+            SetTargetFPS(128);
         }
 
         BeginDrawing();

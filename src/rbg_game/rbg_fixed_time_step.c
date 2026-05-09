@@ -3,7 +3,7 @@
 
 static double accumulator = 0.0;
 static double previous_time = 0.0;
-const double RBG_FIXED_DT = 1.0 / 120.0;
+const double RBG_FIXED_DT = 1.0 / 128.0;
 
 void rbg_init_fixed_time_step(void)
 {
