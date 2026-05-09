@@ -23,6 +23,7 @@ void init_test_scene_2(void)
 
 	rbg_load_sprite_sheets("resource/fighters_spritesheet_list.csv");
 
+	rbg_init_cam_control();
 	rbg_init_players();
 
 	// temp - update can get info from player. probably won't need separate init

@@ -5,9 +5,6 @@
 // Definition (no extern) – this is the real variable
 Camera2D rbg_global_camera;
 
-// Internal linkage → other files can't see it
-static bool rbg_cam_initialized = false;
-
 void rbg_init_cam_control(void)
 {
 	rbg_global_camera.rotation = 0.0f;
@@ -16,13 +13,6 @@ void rbg_init_cam_control(void)
 
 void rbg_update_cam_control(void)
 {
-	// run once
-	if (rbg_cam_initialized == false)
-	{
-		rbg_cam_initialized = true;
-		rbg_init_cam_control();
-	}
-
 	// temp - only for testing
 	if (IsInputActionDown(INPUT_P1_MOVE_LEFT))
 	{
