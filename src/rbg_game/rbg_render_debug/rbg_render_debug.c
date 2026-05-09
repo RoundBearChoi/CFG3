@@ -29,5 +29,4 @@ void rbg_render_debug(void)
 	DrawLineV((Vector2){p2_pos.x - x_length, p2_pos.y - x_length}, (Vector2){p2_pos.x + x_length, p2_pos.y + x_length}, p2_color_x);
 
 	DrawText(TextFormat("fixed update count: %i", rbg_fixed_updates), 0, 0, 10, GREEN);
-	DrawText(TextFormat("accumulated dt: %i", rbg_accumulated_dt), 0, 10, 10, GREEN);
 }
