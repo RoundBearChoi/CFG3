@@ -7,5 +7,5 @@ void rbg_render_on_screenspace(void)
 {
 	DrawText(TextFormat("fixed update count: %i", rbg_fixed_updates), 10, 10, 20, GREEN);
 
-	DrawText(TextFormat("recording frame: %i", rbg_current_record_frame), 10, 40, 20, GREEN);
+	//DrawText(TextFormat("recording frame: %i", rbg_current_record_frame), 10, 40, 20, GREEN);
 }
