@@ -17,12 +17,15 @@ void init_test_scene_2(void)
 {
 	printf("\n=== starting test scene 2 ===\n");
 
+	test_scene_2_initialized = true;
+
 	rbg_global_camera.offset = (Vector2){ 100.0f, 300.0f };
 
 	rbg_load_sprite_sheets("resource/fighters_spritesheet_list.csv");
 
 	rbg_init_players();
-	
+
+	// temp - update can get info from player. probably won't need separate init
 	rbg_init_sprite_sheet(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_CENTER);
 	rbg_init_sprite_sheet(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
@@ -36,6 +39,8 @@ void end_test_scene_2(void)
 
 void update_test_scene_2(void)
 {
+	if (!test_scene_2_initialized) init_test_scene_2();
+
 	rbg_update_recording(); // input actions
 
 	// temp - manual record button for now
@@ -44,12 +49,6 @@ void update_test_scene_2(void)
 	{
 		rbg_stop_recording();
 		rbg_save_recording("resource/recordings/demo_input.csv");  // nested array ready
-	}
-
-	if (test_scene_2_initialized == false)
-	{
-		test_scene_2_initialized = true;
-		init_test_scene_2();
 	}
 
 	rbg_update_cam_control();
