@@ -28,6 +28,9 @@ void init_test_scene_2(void)
 	// temp - update can get info from player. probably won't need separate init
 	rbg_init_sprite_sheet(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_CENTER);
 	rbg_init_sprite_sheet(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+
+	// temp testing
+	sheetPlayer_2.is_facing_right_side = false;
 }
 
 void end_test_scene_2(void)
@@ -52,16 +55,12 @@ void update_test_scene_2(void)
 	}
 
 	rbg_update_cam_control();
-
 	rbg_update_players();
-
 	rbg_update_sprite_sheet(&sheetPlayer);
 	rbg_update_sprite_sheet(&sheetPlayer_2);
 
 	rbg_draw_sprite_sheet(&sheetPlayer, (Vector2){ 500.0f , 0.0f }, 1.0f, WHITE);
 	rbg_draw_sprite_sheet(&sheetPlayer_2, (Vector2){ 800.0f, 0.0f }, 1.0f, GRAY);
-
-	sheetPlayer_2.is_facing_right_side = false;
 
 	if (IsInputActionPressed(INPUT_F1))
 	{

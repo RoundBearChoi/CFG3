@@ -1,9 +1,11 @@
 #include "rbg_players.h"
+#include "../rbg_input/rbg_record_input_actions.h"
 #include <stdio.h>
 
 rbg_player rbg_player_1;
 rbg_player rbg_player_2;
 
+// specific to test scene 2
 void rbg_init_players(void)
 {
 	printf("\n=== initializing players ===\n");
@@ -15,7 +17,16 @@ void rbg_init_players(void)
 	rbg_player_2.is_facing_right_side = false;
 }
 
+// specific to test scene 2
 void rbg_update_players(void)
 {
+	if (rbg_input_action_is_pressed(INPUT_P1_MOVE_LEFT))
+	{
+		rbg_player_1.position.x -= 2;
+	}
 
+	if (rbg_input_action_is_pressed(INPUT_P1_MOVE_RIGHT))
+	{
+		rbg_player_1.position.x += 2;
+	}
 }

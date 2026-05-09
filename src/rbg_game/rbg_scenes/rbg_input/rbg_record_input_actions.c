@@ -125,3 +125,19 @@ bool rbg_save_recording(const char* filename)
     }
     return success;
 }
+
+bool rbg_input_action_is_pressed(InputAction action)
+{
+    if (rbg_current_record_frame == 0)
+        return false;
+
+    if (action < RECORD_FIRST_ACTION || action > RECORD_LAST_ACTION)
+    {
+        TraceLog(LOG_WARNING, "rbg_input_action_is_pressed: action %d is outside recorded range [%d-%d]",
+                 (int)action, RECORD_FIRST_ACTION, RECORD_LAST_ACTION);
+        return false;
+    }
+
+    int idx = (int)(action - RECORD_FIRST_ACTION);
+    return recordingBuffer[rbg_current_record_frame - 1][idx];
+}
