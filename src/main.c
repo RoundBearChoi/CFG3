@@ -11,20 +11,52 @@ int main(void)
     const int virtualWidth  = 800;
     const int virtualHeight = 400;
 
-	static const char* const bar_title = "C Fighting Game 3"; 
+    static const char* const bar_title = "C Fighting Game 3"; 
 
     InitWindow(virtualWidth, virtualHeight, bar_title);
     
-	ClearWindowState(FLAG_VSYNC_HINT);
-
-	SetTargetFPS(120);
+    ClearWindowState(FLAG_VSYNC_HINT);
+    SetTargetFPS(120);
 
     // create render target
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
     SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
 
+    // Track the original windowed size so we can restore it cleanly
+    int windowedWidth  = virtualWidth;
+    int windowedHeight = virtualHeight;
+
     while (!WindowShouldClose())
     {
+        if (IsKeyPressed(KEY_F11))
+        {
+            if (!IsWindowState(FLAG_BORDERLESS_WINDOWED_MODE))
+            {
+                // === ENTERING borderless fullscreen ===
+                // 1. Remember current windowed size
+                windowedWidth  = GetScreenWidth();
+                windowedHeight = GetScreenHeight();
+
+                // 2. Resize to monitor's native resolution FIRST
+                int monitor = GetCurrentMonitor();
+                SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
+
+                // 3. Activate borderless windowed mode (no display-mode change)
+                SetWindowState(FLAG_BORDERLESS_WINDOWED_MODE);
+            }
+            else
+            {
+                // === EXITING borderless fullscreen ===
+                ClearWindowState(FLAG_BORDERLESS_WINDOWED_MODE);
+                // Restore the saved windowed size
+                SetWindowSize(windowedWidth, windowedHeight);
+            }
+
+            // Re-apply these after any window state change (GLFW can reset flags)
+            ClearWindowState(FLAG_VSYNC_HINT);
+            SetTargetFPS(120);
+        }
+
         BeginDrawing();
         ClearBackground(BLACK);
 
@@ -47,7 +79,7 @@ int main(void)
             0.0f, 
             0.0f, 
             (float)target.texture.width, 
-            (float)-target.texture.height   // negative height is required for RenderTexture in raylib (OpenGL Y-flip)
+            (float)-target.texture.height   // negative height for OpenGL Y-flip
         };
 
         Rectangle dest = {
@@ -59,16 +91,9 @@ int main(void)
 
         DrawTexturePro(target.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
 
-		DrawFPS(10, 10);
+        DrawFPS(10, 10);
 
         EndDrawing();
-
-        // F11 to toggle fullscreen
-        if (IsKeyPressed(KEY_F11))
-        {
-            ToggleFullscreen();
-			ClearWindowState(FLAG_VSYNC_HINT);
-		}
     }
 
     // Clean up
