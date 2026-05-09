@@ -5,5 +5,6 @@
   "INPUT_P1_MOVE_DOWN": "s",
   "INPUT_P1_JUMP": "r",
   "INPUT_P1_ATTACK": "t",
-  "INPUT_F1": "f1"
+  "INPUT_F1": "f1",
+  "INPUT_F2": "f2"
 }
