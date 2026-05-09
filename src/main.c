@@ -11,6 +11,13 @@ int main(void)
     const int virtualWidth  = 800;
     const int virtualHeight = 400;
 
+    // double-size windowed mode (perfect integer upscale)
+    const int scale2Width   = virtualWidth * 2;   // 1600
+    const int scale2Height  = virtualHeight * 2;  // 800
+
+    // current display mode (cycles on every F11 press)
+    int window_mode = 0; // 0 = original 800x400, 1 = double 1600x800, 2 = fullscreen
+
     static const char* const bar_title = "C Fighting Game 3"; 
 
     InitWindow(virtualWidth, virtualHeight, bar_title);
@@ -22,37 +29,37 @@ int main(void)
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
     SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
 
-    // Track the original windowed size so we can restore it cleanly
-    int windowedWidth  = virtualWidth;
-    int windowedHeight = virtualHeight;
-
     while (!WindowShouldClose())
     {
         if (IsKeyPressed(KEY_F11))
         {
-            if (!IsWindowState(FLAG_BORDERLESS_WINDOWED_MODE))
-            {
-                // === ENTERING borderless fullscreen ===
-                // 1. Remember current windowed size
-                windowedWidth  = GetScreenWidth();
-                windowedHeight = GetScreenHeight();
+            window_mode = (window_mode + 1) % 3;
 
-                // 2. Resize to monitor's native resolution FIRST
+            if (window_mode == 2)  // === ENTERING exclusive fullscreen ===
+            {
+                // resize to monitor's native resolution FIRST
                 int monitor = GetCurrentMonitor();
                 SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
 
-                // 3. Activate borderless windowed mode (no display-mode change)
-                SetWindowState(FLAG_BORDERLESS_WINDOWED_MODE);
+                // go true fullscreen
+                ToggleFullscreen();
             }
-            else
+            else  // === windowed mode 0 or 1 ===
             {
-                // === EXITING borderless fullscreen ===
-                ClearWindowState(FLAG_BORDERLESS_WINDOWED_MODE);
-                // Restore the saved windowed size
-                SetWindowSize(windowedWidth, windowedHeight);
+                // if we were in fullscreen, exit it first
+                if (IsWindowFullscreen())
+                {
+                    ToggleFullscreen();
+                }
+
+                // set the exact target window size for the chosen mode
+                int targetW = (window_mode == 0) ? virtualWidth  : scale2Width;
+                int targetH = (window_mode == 0) ? virtualHeight : scale2Height;
+
+                SetWindowSize(targetW, targetH);
             }
 
-            // Re-apply these after any window state change (GLFW can reset flags)
+            // re-apply after any window state change
             ClearWindowState(FLAG_VSYNC_HINT);
             SetTargetFPS(128);
         }
