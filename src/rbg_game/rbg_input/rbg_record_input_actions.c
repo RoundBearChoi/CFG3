@@ -71,7 +71,7 @@ void rbg_update_recording(void)
 
 bool rbg_save_recording(const char* filename)
 {
-    if (currentRecordFrame <= 0)
+	if (currentRecordFrame <= 0)
     {
         TraceLog(LOG_WARNING, "No frames recorded to save");
         return false;
@@ -82,8 +82,10 @@ bool rbg_save_recording(const char* filename)
         return false;
     }
 
-    // Rough but safe size estimate: each frame = NUM_RECORD_ACTIONS digits + commas + newline
-    size_t estimated_size = (size_t)currentRecordFrame * (NUM_RECORD_ACTIONS * 2 + 2) + 512;
+    // Rough but safe size estimate:
+    //   - header row (~200 bytes) 
+    //   + each data row (NUM_RECORD_ACTIONS * ~12 chars max per name + commas/newlines)
+    size_t estimated_size = 1024 + (size_t)currentRecordFrame * (NUM_RECORD_ACTIONS * 12 + 2);
     char* csvBuffer = (char*)malloc(estimated_size);
     if (!csvBuffer)
     {
@@ -92,6 +94,22 @@ bool rbg_save_recording(const char* filename)
     }
 
     char* ptr = csvBuffer;
+
+    // === 1. WRITE HEADER ROW (column names) ===
+    for (int a = 0; a < NUM_RECORD_ACTIONS; a++)
+    {
+        if (a > 0)
+            *ptr++ = ',';
+
+        InputAction action = (InputAction)(RECORD_FIRST_ACTION + a);
+        const char* name = rbg_input_action_names[action];
+        size_t len = strlen(name);
+        memcpy(ptr, name, len);   // fast & safe copy
+        ptr += len;
+    }
+    *ptr++ = '\n';
+
+    // === 2. WRITE DATA ROWS (existing logic) ===
     for (int f = 0; f < currentRecordFrame; f++)
     {
         for (int a = 0; a < NUM_RECORD_ACTIONS; a++)
@@ -109,7 +127,7 @@ bool rbg_save_recording(const char* filename)
 
     if (success)
     {
-        TraceLog(LOG_INFO, "Input recording saved → %s (%d frames, %d actions) [CSV]", 
+        TraceLog(LOG_INFO, "Input recording saved → %s (%d frames, %d actions) [CSV with header]", 
                  filename, currentRecordFrame, NUM_RECORD_ACTIONS);
     }
     else

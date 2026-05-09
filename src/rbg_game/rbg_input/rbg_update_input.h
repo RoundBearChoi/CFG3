@@ -28,6 +28,8 @@ typedef enum
 //          Do not create a new copy of this.”
 extern KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
+extern const char* const rbg_input_action_names[INPUT_ACTION_COUNT];
+
 void rbg_init_input(void);
 bool rbg_load_default_key_bindings(void);
 void rbg_update_input(void);

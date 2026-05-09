@@ -15,7 +15,7 @@ KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
 // string literals generated automatically by the X macro
 // this is for converting enum to string literal or vice versa
-static const char* const rbg_input_action_names[INPUT_ACTION_COUNT] =
+const char* const rbg_input_action_names[INPUT_ACTION_COUNT] =
 {
 #define X(name) #name,
     RBG_INPUT_ACTIONS
