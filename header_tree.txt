@@ -10,6 +10,7 @@ Note: Directories are colored blue in the terminal (plain text here)
 │ │ └── fighter_0_idle.png
 │ └── recordings
 │  └── demo_input.csv
+├── screenshot000.png
 └── src
  ├── cJSON
  │ ├── cJSON.c

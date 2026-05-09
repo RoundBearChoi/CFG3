@@ -5,6 +5,7 @@
 // Definition (no extern) – this is the real variable
 Camera2D rbg_global_camera;
 
+// specific to test_scene_2
 void rbg_init_cam_control(void)
 {
 	rbg_global_camera.offset = (Vector2){ 100.0f, 300.0f };
@@ -12,6 +13,7 @@ void rbg_init_cam_control(void)
 	rbg_global_camera.zoom     = 1.0f;
 }
 
+// specific to test_scene_2
 void rbg_update_cam_control(void)
 {
 	// temp - only for testing
