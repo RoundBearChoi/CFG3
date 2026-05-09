@@ -7,6 +7,8 @@
 
 static bool rbg_game_initialized = false;
 
+double rbg_frame_time = 0.0f;
+
 void rbg_init_game()
 {
 
@@ -22,16 +24,22 @@ void rbg_update_game(void)
 
     // Fixed timestep setup
     static double accumulator = 0.0;
+    static double previous_time = 0.0;   // for manual delta time
     const double fixed_dt = 1.0 / 120.0;
 
-    // Get elapsed time since last frame
-    double frame_time = GetFrameTime();
-    accumulator += frame_time;
+    if (previous_time == 0.0)
+    {
+        previous_time = GetTime();
+    }
 
-    // Input runs every rendered frame (variable timestep)
-    rbg_update_input();
+    double current_time = GetTime();
+    rbg_frame_time = current_time - previous_time;
+    previous_time = current_time;
+    accumulator += rbg_frame_time;
+    
+	rbg_update_input();
 
-    // Fixed timestep loop — game logic runs at 60 fps
+    // fixed timestep loop — game logic runs at 120 fps
     while (accumulator >= fixed_dt)
     {
         rbg_update_scenes();
@@ -39,5 +47,5 @@ void rbg_update_game(void)
 		
 		rbg_fixed_update_count();
 		rbg_render_debug();
-	}
+    }
 }
