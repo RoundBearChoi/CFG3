@@ -4,14 +4,13 @@
 #include "rbg_update_input.h"   // for InputAction and IsInputActionDown
 
 // ====================== CONFIG ======================
-#define MAX_RECORD_FRAMES     (45 * 128)                    // 5760 frames
+#define MAX_RECORD_FRAMES     (45 * 128)                    // 5760 frames (45 seconds @ 128 FPS)
 #define RECORD_FIRST_ACTION   INPUT_P1_MOVE_LEFT
 #define RECORD_LAST_ACTION    INPUT_P1_ATTACK
 #define NUM_RECORD_ACTIONS    ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 // ===================================================
 
-// Public API
-void rbg_init_recording(void);
+// Public API — simplified (no separate init required)
 void rbg_start_recording(void);
 void rbg_stop_recording(void);
 bool rbg_is_recording(void);

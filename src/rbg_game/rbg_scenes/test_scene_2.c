@@ -22,7 +22,7 @@ void init_test_scene_2(void)
 	rbg_load_sprite_sheets("resource/fighters_spritesheet_list.csv");
 
 	rbg_init_players();
-	rbg_init_recording(); // input actions
+	
 	rbg_init_sprite_sheet(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_CENTER);
 	rbg_init_sprite_sheet(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
