@@ -28,7 +28,7 @@ int main(void)
         BeginDrawing();
         ClearBackground(BLACK);
 
-        // draw everything to fixed 1280x720 render target
+        // draw everything to fixed render target
         BeginTextureMode(target);
             ClearBackground(BLACK);
             
