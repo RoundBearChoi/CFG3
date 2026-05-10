@@ -19,7 +19,7 @@ void init_test_scene_2(void)
 
 	test_scene_2_initialized = true;
 
-	rbg_load_sprite_sheets("resource/fighters_spritesheet_list.csv");
+	rbg_load_sprite_sheets("resources/fighters_spritesheet_list.csv");
 	
 	rbg_init_input();
 	rbg_init_cam_control();
@@ -53,7 +53,7 @@ void update_test_scene_2(void)
 	if (IsInputActionPressed(INPUT_F3))
 	{
 		rbg_stop_recording();
-		rbg_save_recording("resource/recordings/demo_input.csv");  // nested array ready
+		rbg_save_recording("resources/recordings/demo_input.csv");  // nested array ready
 	}
 
 	rbg_update_cam_control();

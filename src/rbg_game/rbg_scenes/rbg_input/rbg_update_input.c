@@ -102,7 +102,7 @@ bool rbg_load_default_key_bindings(void)
     rbg_set_default_bindings();
 
     // try to load JSON
-    char* jsonText = LoadFileText("resource/default_key_bindings.json");
+    char* jsonText = LoadFileText("resources/default_key_bindings.json");
     if (jsonText == NULL)
     {
         TraceLog(LOG_WARNING, "Failed to load key bindings JSON - using hardcoded defaults");
