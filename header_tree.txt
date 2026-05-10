@@ -3,11 +3,12 @@ Directory Tree
 Showing: Directories + ['.c', '.csv', '.h', '.json', '.png'] files only
 Note: Directories are colored blue in the terminal (plain text here)
 
-├── resource
+├── resources
 │ ├── default_key_bindings.json
 │ ├── fighters_spritesheet_list.csv
 │ ├── fighters_spritesheets
 │ │ └── fighter_0_idle.png
+│ ├── fonts
 │ └── recordings
 │  └── demo_input.csv
 ├── screenshot000.png
