@@ -8,7 +8,7 @@ extern Font press_start;
 
 void rbg_render_on_screenspace(void)
 {
-	// scale 720p reference
+	// scale to 720p reference
     int screenHeight = GetScreenHeight();
     float scale = (float)screenHeight / 720.0f;
 	float font_size = 16.0f * scale;
