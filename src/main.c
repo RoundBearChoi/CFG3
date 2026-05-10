@@ -3,9 +3,11 @@
 #include "rbg_game/rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "raylib.h"
 #include "math.h"
+#include <stddef.h>
 
 extern Camera2D rbg_global_camera;
 extern int rbg_target_fps;
+extern Font press_start;
 
 int main(void)
 {
@@ -21,11 +23,16 @@ int main(void)
     int window_mode = 0; // 0 = original 800x400, 1 = double 1600x800, 2 = fullscreen
 
     static const char* const bar_title = "C Fighting Game 3"; 
-    InitWindow(virtualWidth, virtualHeight, bar_title);
+
+	InitWindow(virtualWidth, virtualHeight, bar_title);
     ClearWindowState(FLAG_VSYNC_HINT);
     SetTargetFPS(rbg_target_fps);
 
-    // create render target
+	// font
+	press_start = LoadFontEx("PrStart.ttf", 32, NULL, 0);
+	SetTextureFilter(press_start.texture, TEXTURE_FILTER_POINT);
+    
+	// create render target
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
     SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
 
@@ -106,6 +113,7 @@ int main(void)
     // clean up
     UnloadRenderTexture(target);
     rbg_unload_sprite_sheets();
+	UnloadFont(press_start);
     CloseWindow();
     return 0;
 }
