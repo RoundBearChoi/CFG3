@@ -16,6 +16,7 @@ void rbg_init_cam_control(void)
 // specific to test_scene_2
 void rbg_update_cam_control(void)
 {
+	/*
 	// temp - only for testing
 	if (IsInputActionDown(INPUT_P1_MOVE_LEFT))
 	{
@@ -36,4 +37,5 @@ void rbg_update_cam_control(void)
 	{
 		rbg_global_camera.offset.y -= 1;
 	}
+	*/
 }

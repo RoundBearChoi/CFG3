@@ -37,6 +37,8 @@ void end_test_scene_2(void)
 {
 	// reset so we init again when we come back to this scene
 	test_scene_2_initialized = false;
+
+	rbg_stop_recording();
 	rbg_unload_sprite_sheets();
 }
 

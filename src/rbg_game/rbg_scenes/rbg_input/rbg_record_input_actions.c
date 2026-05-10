@@ -25,8 +25,9 @@ void rbg_stop_recording(void)
     if (!rbg_is_recording_input) return;
 
     rbg_is_recording_input = false;
-    TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)",
-             rbg_current_record_frame, rbg_current_record_frame / 128.0f);
+	rbg_current_record_frame = 0;
+    
+	TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)", rbg_current_record_frame, rbg_current_record_frame / 128.0f);
 }
 
 bool rbg_is_recording(void)
