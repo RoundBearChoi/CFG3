@@ -19,9 +19,11 @@ void rbg_init_players(void)
 	rbg_player_2.fighter_state = fighter_0_idle;
 }
 
-// temp - we probably don't need player updater. fighter updater will do
+// specific to test scene 2
 void rbg_update_players(void)
 {
+	// maybe update physics here
+
 	if (rbg_input_action_is_pressed(INPUT_P1_MOVE_LEFT))
 	{
 		rbg_player_1.position.x -= 2;
