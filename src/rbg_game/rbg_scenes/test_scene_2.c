@@ -11,8 +11,8 @@
 #include <stdio.h>
 
 static bool test_scene_2_initialized = false; 
-static SpriteSheetPlayer sheetPlayer;
-static SpriteSheetPlayer sheetPlayer_2;
+static SpriteSheetPlayer sheet_player_1;
+static SpriteSheetPlayer sheet_player_2;
 
 void init_test_scene_2(void)
 {
@@ -27,11 +27,11 @@ void init_test_scene_2(void)
 	rbg_init_players();
 
 	// temp - update can get info from player. probably won't need separate init
-	rbg_init_sprite_sheet(&sheetPlayer, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
-	rbg_init_sprite_sheet(&sheetPlayer_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_sprite_sheet(&sheet_player_1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_sprite_sheet(&sheet_player_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 
 	// temp testing
-	sheetPlayer_2.is_facing_right_side = false;
+	sheet_player_2.is_facing_right_side = false;
 }
 
 void end_test_scene_2(void)
@@ -61,11 +61,11 @@ void update_test_scene_2(void)
 	rbg_update_players();
 	rbg_update_fighter(&rbg_player_1);
 	rbg_update_fighter(&rbg_player_2);
-	rbg_update_sprite_sheet(&sheetPlayer);
-	rbg_update_sprite_sheet(&sheetPlayer_2);
+	rbg_update_sprite_sheet(&sheet_player_1);
+	rbg_update_sprite_sheet(&sheet_player_2);
 
-	rbg_draw_sprite_sheet(&sheetPlayer, rbg_player_1.position, 1.0f, WHITE);
-	rbg_draw_sprite_sheet(&sheetPlayer_2, (Vector2){ 400.0f, 0.0f }, 1.0f, GRAY);
+	rbg_draw_sprite_sheet(&sheet_player_1, rbg_player_1.position, 1.0f, WHITE);
+	rbg_draw_sprite_sheet(&sheet_player_2, (Vector2){ 400.0f, 0.0f }, 1.0f, GRAY);
 
 	if (IsInputActionPressed(INPUT_F1))
 	{
