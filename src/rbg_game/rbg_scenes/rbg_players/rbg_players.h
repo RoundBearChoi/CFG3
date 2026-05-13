@@ -3,10 +3,21 @@
 
 #include "raylib.h"
 
+typedef enum
+{
+	UNASSIGNED,
+
+	FIGHTER_0_IDLE,
+	FIGHTER_0_WALK_FORWARD,
+
+	NUM_FIGHTER_STATES,
+} rbg_fighter_state;
+
 typedef struct
 {
     Vector2 position;
     bool is_facing_right_side;
+	rbg_fighter_state fighter_state;
 } rbg_player;
 
 extern rbg_player rbg_player_1;

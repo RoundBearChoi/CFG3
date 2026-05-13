@@ -1,11 +1,12 @@
 #include "test_scene_2.h"
 #include "rbg_input/rbg_update_input.h"
 #include "rbg_input/rbg_record_input_actions.h"
-#include "../rbg_scenes/rbg_scenes.h"
 #include "rbg_cam_control/rbg_cam_control.h"
+#include "rbg_players/rbg_players.h"
+#include "rbg_players/rbg_fighters/rbg_fighter_updater.h"
+#include "../rbg_scenes/rbg_scenes.h"
 #include "../rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "../rbg_spritesheets/rbg_spritesheet_player.h"
-#include "rbg_players/rbg_players.h"
 #include "raylib.h"
 #include <stdio.h>
 
@@ -58,6 +59,8 @@ void update_test_scene_2(void)
 
 	rbg_update_cam_control();
 	rbg_update_players();
+	rbg_update_fighter(&rbg_player_1);
+	rbg_update_fighter(&rbg_player_2);
 	rbg_update_sprite_sheet(&sheetPlayer);
 	rbg_update_sprite_sheet(&sheetPlayer_2);
 
