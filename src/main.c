@@ -15,12 +15,14 @@ int main(void)
     const int virtualWidth  = 800;
     const int virtualHeight = 400;
 
-    // double-size windowed mode (perfect integer upscale)
-    const int scale2Width   = virtualWidth * 2; // 1600
+    // integer scale windowed modes (perfect pixel scaling)
+    const int scale2Width   = virtualWidth * 2;  // 1600
     const int scale2Height  = virtualHeight * 2; // 800
+    const int scale3Width   = virtualWidth * 3;  // 2400
+    const int scale3Height  = virtualHeight * 3; // 1200
 
     // current display mode (cycles on every F11 press)
-    int window_mode = 0; // 0 = original 800x400, 1 = double 1600x800, 2 = fullscreen
+    int window_mode = 0; // 0 = 1x 800x400, 1 = 2x 1600x800, 2 = 3x 2400x1200, 3 = fullscreen
 
     static const char* const bar_title = "C Fighting Game 3"; 
 
@@ -40,9 +42,9 @@ int main(void)
     {
         if (IsKeyPressed(KEY_F11))
         {
-            window_mode = (window_mode + 1) % 3;
+            window_mode = (window_mode + 1) % 4;
 
-            if (window_mode == 2)  // === entering exclusive fullscreen ===
+            if (window_mode == 3)  // === entering exclusive fullscreen ===
             {
                 // resize to monitor's native resolution first
                 int monitor = GetCurrentMonitor();
@@ -51,7 +53,7 @@ int main(void)
                 // go true fullscreen
                 ToggleFullscreen();
             }
-            else  // === windowed mode 0 or 1 ===
+            else  // === windowed mode 0, 1 or 2 ===
             {
                 // if we were in fullscreen, exit it first
                 if (IsWindowFullscreen())
@@ -60,8 +62,22 @@ int main(void)
                 }
 
                 // set target window size for the chosen mode
-                int targetW = (window_mode == 0) ? virtualWidth  : scale2Width;
-                int targetH = (window_mode == 0) ? virtualHeight : scale2Height;
+                int targetW, targetH;
+                switch(window_mode)
+                {
+                    case 0:
+                        targetW = virtualWidth;
+                        targetH = virtualHeight;
+                        break;
+                    case 1:
+                        targetW = scale2Width;
+                        targetH = scale2Height;
+                        break;
+                    case 2:
+                        targetW = scale3Width;
+                        targetH = scale3Height;
+                        break;
+                }
 
                 SetWindowSize(targetW, targetH);
             }

@@ -29,7 +29,7 @@ void rbg_update_game(void)
     rbg_update_input();
     rbg_accumulate_fixed_time_step();
     
-    // fixed timestep loop — game logic runs at 120 fps
+    // fixed timestep loop
     while (rbg_run_fixed_time_step())
     {
         rbg_update_scenes();
