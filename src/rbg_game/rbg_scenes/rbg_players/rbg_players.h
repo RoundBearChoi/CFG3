@@ -3,12 +3,13 @@
 
 #include "raylib.h"
 
+// use X macro to convert to string literals. should match png file (sheet) names
 typedef enum
 {
 	UNASSIGNED,
 
-	FIGHTER_0_IDLE,
-	FIGHTER_0_WALK_FORWARD,
+	fighter_0_idle,
+	fighter_0_walk_forward,
 
 	NUM_FIGHTER_STATES,
 } rbg_fighter_state;
