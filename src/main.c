@@ -62,7 +62,8 @@ int main(void)
                 }
 
                 // set target window size for the chosen mode
-                int targetW, targetH;
+                int targetW = 800;
+				int targetH= 400;
                 switch(window_mode)
                 {
                     case 0:
