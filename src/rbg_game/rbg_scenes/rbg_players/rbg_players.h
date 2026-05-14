@@ -22,6 +22,7 @@ extern const char* const rbg_fighter_state_strings[NUM_FIGHTER_STATES];
 
 typedef struct
 {
+	int player_index;
     Vector2 position;
     bool is_facing_right_side;
 	rbg_fighter_state fighter_curr_state;
@@ -33,5 +34,6 @@ extern rbg_player rbg_player_2;
 
 void rbg_init_players(void);
 void rbg_update_players(void);
+bool new_state_detected(rbg_player* player);
 
 #endif
