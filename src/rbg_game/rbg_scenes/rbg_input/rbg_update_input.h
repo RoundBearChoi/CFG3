@@ -4,13 +4,15 @@
 #include "raylib.h"
 
 // X macro – single source of truth for all input enums
-#define RBG_INPUT_ACTIONS \
-    X(INPUT_P1_MOVE_LEFT)  \
+#define RBG_INPUT_ACTIONS  \
+	X(INPUT_P1)            \
+	X(INPUT_P1_MOVE_LEFT)  \
     X(INPUT_P1_MOVE_RIGHT) \
     X(INPUT_P1_MOVE_UP)    \
     X(INPUT_P1_MOVE_DOWN)  \
     X(INPUT_P1_JUMP)       \
     X(INPUT_P1_ATTACK)     \
+	X(INPUT_P2)            \
     X(INPUT_P2_MOVE_LEFT)  \
     X(INPUT_P2_MOVE_RIGHT) \
     X(INPUT_P2_MOVE_UP)    \
