@@ -5,7 +5,7 @@
 #include "rbg_players/rbg_players.h"
 #include "rbg_players/rbg_fighters/rbg_fighter_updater.h"
 #include "../rbg_scenes/rbg_scenes.h"
-#include "../rbg_spritesheets/rbg_spritesheet_loader.h" // need for unloading
+#include "../rbg_spritesheets/rbg_sheet_loader.h" // need for unloading
 #include "../rbg_spritesheets/rbg_sheet_animators.h"
 #include "raylib.h"
 #include <stdio.h>

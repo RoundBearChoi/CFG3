@@ -1,7 +1,7 @@
 #ifndef RBG_SPRITESHEET_ANIMATOR_H
 #define RBG_SPRITESHEET_ANIMATOR_H
 
-#include "rbg_spritesheet_loader.h"
+#include "rbg_sheet_loader.h"
 #include "raylib.h"
 
 // Enum that controls where the 'position' parameter points to in rbg_draw_sprite_sheet.
