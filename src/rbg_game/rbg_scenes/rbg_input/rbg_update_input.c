@@ -162,6 +162,34 @@ void rbg_update_input(void)
     }
 }
 
+InputAction rbg_get_move_left(int playerIndex)
+{
+	if (playerIndex == 1)
+	{
+		return INPUT_P1_MOVE_LEFT;
+	}
+	else if (playerIndex == 2)
+	{
+		return INPUT_P2_MOVE_LEFT;
+	}
+
+	return 0;
+}
+
+InputAction rbg_get_move_right(int playerIndex)
+{
+	if (playerIndex == 1)
+	{
+		return INPUT_P1_MOVE_RIGHT;
+	}
+	else if (playerIndex == 2)
+	{
+		return INPUT_P2_MOVE_RIGHT;
+	}
+
+	return 0;
+}
+
 bool IsInputActionDown(InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;

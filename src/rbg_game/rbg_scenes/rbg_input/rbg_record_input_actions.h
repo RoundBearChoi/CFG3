@@ -5,8 +5,8 @@
 
 // ====================== CONFIG ======================
 #define MAX_RECORD_FRAMES     (45 * 128) // 5760 frames (45 seconds @ 128 FPS)
-#define RECORD_FIRST_ACTION   INPUT_P1_MOVE_LEFT
-#define RECORD_LAST_ACTION    INPUT_P1_ATTACK
+#define RECORD_FIRST_ACTION   INPUT_P1
+#define RECORD_LAST_ACTION    END_OF_INPUT
 #define NUM_RECORD_ACTIONS    ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 // ===================================================
 

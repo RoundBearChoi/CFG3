@@ -21,7 +21,8 @@
     X(INPUT_P2_ATTACK)     \
 	X(INPUT_F1)            \
 	X(INPUT_F2)            \
-	X(INPUT_F3)
+	X(INPUT_F3)            \
+	X(END_OF_INPUT)
 
 typedef enum
 {
@@ -41,6 +42,8 @@ extern const char* const rbg_input_action_names[INPUT_ACTION_COUNT];
 void rbg_init_input(void);
 bool rbg_load_default_key_bindings(void);
 void rbg_update_input(void);
+InputAction rbg_get_move_left(int playerIndex);
+InputAction rbg_get_move_right(int playerIndex);
 
 // query functions
 bool IsInputActionDown(InputAction action); // key is held down right now (continuous)

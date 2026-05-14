@@ -9,15 +9,11 @@ void update_fighter_0_walk(rbg_player* player)
 		rbg_change_player_animation(player->player_index, "fighter_0_walk");
 	}
 
-	// temp testing
-	if (player->player_index == 1)
+	if (rbg_input_action_is_pressed(rbg_get_move_right(player->player_index)) == false)
 	{
-		if (rbg_input_action_is_pressed(INPUT_P1_MOVE_RIGHT) == false)
-		{
-			player->fighter_curr_state = fighter_0_idle;
-			return;
-		}
-
-		player->position.x += 1;
+		player->fighter_curr_state = fighter_0_idle;
+		return;
 	}
+
+	player->position.x += 1;
 }
