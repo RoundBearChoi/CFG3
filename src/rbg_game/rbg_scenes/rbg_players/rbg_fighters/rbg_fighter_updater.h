@@ -3,7 +3,7 @@
 
 #include "../rbg_players.h"
 
-// Function pointer type for any state update
+// Function pointer type for state update
 typedef void (*rbg_fighter_update_func)(rbg_player* player);
 
 // Table of update functions (auto-generated via X-macro)

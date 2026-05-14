@@ -3,16 +3,13 @@
 #include "rbg_fighter_0_walk_forward.h"
 #include <stdio.h>
 
-// Handle the uninitialized state (defined here because it's not in its own file)
+// Handle the uninitialized state
 static void update_fighter_uninitialized(rbg_player* player)
 {
-    printf("Warning: fighter_uninitialized state detected for player at %p - forcing idle\n", (void*)player);
-    player->fighter_curr_state = fighter_0_idle;
-    player->fighter_prev_state = fighter_0_idle;
+    printf("fighter_uninitialized state detected for player at %p - forcing idle\n", (void*)player);
 }
 
 // X-macro magic: builds the table automatically
-// update_fighter_uninitialized, update_fighter_0_idle, update_fighter_0_walk_forward, ...
 rbg_fighter_update_func rbg_fighter_update_functions[NUM_FIGHTER_STATES] = {
 #define X(state) [state] = update_##state,
     RBG_FIGHTER_STATES(X)
@@ -36,7 +33,4 @@ void rbg_update_fighter(rbg_player* player)
 
     // Dispatch to the correct per-state update function
     rbg_fighter_update_functions[player->fighter_curr_state](player);
-
-    // Optional: you can also call a "late update" or record prev_state here if needed
-    // player->fighter_prev_state = player->fighter_curr_state; // if you want to track changes
 }
