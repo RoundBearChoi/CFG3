@@ -1,4 +1,5 @@
 #include "rbg_fighter_0_idle.h"
+#include "../../rbg_input/rbg_record_input_actions.h"
 #include <stdio.h>
 
 void update_fighter_0_idle(rbg_player* player)
@@ -8,5 +9,14 @@ void update_fighter_0_idle(rbg_player* player)
 		printf("player %d switched to idle state\n", player->player_index);
 
 		printf("enum to string literal: %s\n", rbg_fighter_state_strings[fighter_0_idle]);
+	}
+
+	// temp testing
+	if (player->player_index == 1)
+	{
+		if (rbg_input_action_is_pressed(INPUT_P1_MOVE_RIGHT))
+		{
+			player->fighter_curr_state = fighter_0_walk_forward;
+		}
 	}
 }
