@@ -3,6 +3,7 @@
 #include "rbg_spritesheet_player.h"
 #include "../rbg_scenes/rbg_players/rbg_players.h"
 #include "raylib.h"
+#include <stddef.h>
 
 SpriteSheetPlayer sheet_animator_p1;
 SpriteSheetPlayer sheet_animator_p2;
@@ -22,4 +23,23 @@ void rbg_update_sheet_animators()
 
 	rbg_draw_sprite_sheet(&sheet_animator_p1, rbg_player_1.position, 1.0f, RED);
 	rbg_draw_sprite_sheet(&sheet_animator_p2, rbg_player_2.position , 1.0f, BLUE);
+}
+
+void rbg_change_player_animation(int playerIndex, const char* sheet_name)
+{
+	SpriteSheetPlayer* animator = NULL;
+
+	if (playerIndex == 1)
+	{
+		animator = &sheet_animator_p1;
+	}
+	else if (playerIndex == 2)
+	{
+		animator = &sheet_animator_p2;
+	}
+
+	if (animator != NULL)
+	{
+		animator->sheet = rbg_get_sprite_sheet_by_name(sheet_name);
+	}
 }
