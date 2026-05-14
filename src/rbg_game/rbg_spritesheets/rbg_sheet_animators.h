@@ -3,8 +3,8 @@
 
 #include "rbg_spritesheet_player.h"
 
-extern SpriteSheetPlayer sheet_animator_p1;
-extern SpriteSheetPlayer sheet_animator_p2;
+extern sprite_sheet_animation sheet_animator_p1;
+extern sprite_sheet_animation sheet_animator_p2;
 
 void rbg_init_sheet_animators();
 void rbg_update_sheet_animators();

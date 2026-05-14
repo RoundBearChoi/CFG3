@@ -22,11 +22,11 @@ typedef struct
     rbg_render_pivot pivot;
     bool is_facing_right_side; // true = original PNG right-facing orientation (default)
                                // false = horizontal mirror flip (left-facing)
-} SpriteSheetPlayer;
+} sprite_sheet_animation;
 
-void rbg_init_sprite_sheet(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot); // Initialize player from spritesheet_name (looks up via rbg_get_sprite_sheet_by_name)
-void rbg_update_sprite_sheet(SpriteSheetPlayer* player); // Advance animation (call every frame)
-void rbg_draw_sprite_sheet(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint);
-void rbg_reset_sprite_sheet(SpriteSheetPlayer* player);
+void rbg_init_sprite_sheet(sprite_sheet_animation* player, const char* spritesheet_name, rbg_render_pivot pivot); // Initialize player from spritesheet_name (looks up via rbg_get_sprite_sheet_by_name)
+void rbg_update_sprite_sheet(sprite_sheet_animation* player); // Advance animation (call every frame)
+void rbg_draw_sprite_sheet(const sprite_sheet_animation* player, Vector2 position, float extra_scale, Color tint);
+void rbg_reset_sprite_sheet(sprite_sheet_animation* player);
 
 #endif

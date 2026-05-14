@@ -1,11 +1,11 @@
 #include "rbg_spritesheet_player.h"
 #include <string.h>  // for memset
 
-void rbg_init_sprite_sheet(SpriteSheetPlayer* player, const char* spritesheet_name, rbg_render_pivot pivot)
+void rbg_init_sprite_sheet(sprite_sheet_animation* player, const char* spritesheet_name, rbg_render_pivot pivot)
 {
     if (player == NULL) return;
     
-	memset(player, 0, sizeof(SpriteSheetPlayer));
+	memset(player, 0, sizeof(sprite_sheet_animation));
     
     player->sheet = rbg_get_sprite_sheet_by_name(spritesheet_name);
     player->pivot = pivot;
@@ -21,7 +21,7 @@ void rbg_init_sprite_sheet(SpriteSheetPlayer* player, const char* spritesheet_na
     player->loop = true;
 }
 
-void rbg_update_sprite_sheet(SpriteSheetPlayer* player)
+void rbg_update_sprite_sheet(sprite_sheet_animation* player)
 {
     if (player == NULL || player->sheet == NULL || !player->is_playing) return;
     
@@ -41,7 +41,7 @@ void rbg_update_sprite_sheet(SpriteSheetPlayer* player)
     }
 }
 
-void rbg_draw_sprite_sheet(const SpriteSheetPlayer* player, Vector2 position, float extra_scale, Color tint)
+void rbg_draw_sprite_sheet(const sprite_sheet_animation* player, Vector2 position, float extra_scale, Color tint)
 {
     if (player == NULL || player->sheet == NULL || player->sheet->texture.id == 0) return;
     
@@ -97,7 +97,7 @@ void rbg_draw_sprite_sheet(const SpriteSheetPlayer* player, Vector2 position, fl
     DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
-void rbg_reset_sprite_sheet(SpriteSheetPlayer* player)
+void rbg_reset_sprite_sheet(sprite_sheet_animation* player)
 {
     if (player == NULL) return;
     

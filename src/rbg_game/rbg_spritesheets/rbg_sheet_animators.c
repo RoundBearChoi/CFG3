@@ -5,8 +5,8 @@
 #include "raylib.h"
 #include <stddef.h>
 
-SpriteSheetPlayer sheet_animator_p1;
-SpriteSheetPlayer sheet_animator_p2;
+sprite_sheet_animation sheet_animator_p1;
+sprite_sheet_animation sheet_animator_p2;
 
 void rbg_init_sheet_animators()
 {
@@ -27,7 +27,7 @@ void rbg_update_sheet_animators()
 
 void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 {
-	SpriteSheetPlayer* animator = NULL;
+	sprite_sheet_animation* animator = NULL;
 
 	if (playerIndex == 1)
 	{
