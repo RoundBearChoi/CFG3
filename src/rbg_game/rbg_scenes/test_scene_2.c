@@ -63,7 +63,7 @@ void update_test_scene_2(void)
 	rbg_update_sprite_sheet(&sheet_player_2);
 
 	rbg_draw_sprite_sheet(&sheet_player_1, rbg_player_1.position, 1.0f, WHITE);
-	rbg_draw_sprite_sheet(&sheet_player_2, (Vector2){ 400.0f, 0.0f }, 1.0f, GRAY);
+	rbg_draw_sprite_sheet(&sheet_player_2, rbg_player_2.position, 1.0f, GRAY);
 
 	if (IsInputActionPressed(INPUT_F1))
 	{
