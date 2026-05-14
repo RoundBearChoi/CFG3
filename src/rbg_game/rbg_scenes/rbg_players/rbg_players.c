@@ -6,7 +6,7 @@ rbg_player rbg_player_1;
 rbg_player rbg_player_2;
 
 // X-macro generated string literals array (must come after the header definition)
-const char* const rbg_fighter_state_strings[NUM_FIGHTER_STATES] = {
+const char* const rbg_fighter_curr_state_strings[NUM_FIGHTER_STATES] = {
 #define X(state) [state] = #state,
     RBG_FIGHTER_STATES(X)
 #undef X
@@ -19,11 +19,13 @@ void rbg_init_players(void)
 
 	rbg_player_1.position = (Vector2){ 50.0f, 0.0f };
 	rbg_player_1.is_facing_right_side = true;
-	rbg_player_1.fighter_state = fighter_0_idle;
+	rbg_player_1.fighter_curr_state = fighter_uninitialized;
+	rbg_player_1.fighter_prev_state = fighter_uninitialized;
 
 	rbg_player_2.position = (Vector2){ 200.0f, 0.0f };
 	rbg_player_2.is_facing_right_side = false;
-	rbg_player_2.fighter_state = fighter_0_idle;
+	rbg_player_2.fighter_curr_state = fighter_uninitialized;
+	rbg_player_2.fighter_prev_state = fighter_uninitialized;
 }
 
 // specific to test scene 2
