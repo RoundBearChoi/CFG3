@@ -37,12 +37,12 @@ void rbg_update_players(void)
 
 	if (rbg_input_action_is_pressed(INPUT_P1_MOVE_LEFT))
 	{
-		rbg_player_1.position.x -= 2;
+		rbg_player_1.position.x -= 1;
 	}
 
 	if (rbg_input_action_is_pressed(INPUT_P1_MOVE_RIGHT))
 	{
-		rbg_player_1.position.x += 2;
+		rbg_player_1.position.x += 1;
 	}
 }
 
