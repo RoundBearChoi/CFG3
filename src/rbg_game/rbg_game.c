@@ -7,7 +7,7 @@
 #include "raylib.h"
 
 double rbg_frame_time = 0.0f;
-const int rbg_target_fps = 120;
+const int rbg_target_fps = 128;
 Font press_start;
 
 static bool rbg_game_initialized = false;
