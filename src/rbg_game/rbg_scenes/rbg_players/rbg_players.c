@@ -20,12 +20,12 @@ void rbg_init_players(void)
 	rbg_player_1.position = (Vector2){ 50.0f, 0.0f };
 	rbg_player_1.is_facing_right_side = true;
 	rbg_player_1.fighter_curr_state = fighter_uninitialized;
-	rbg_player_1.fighter_prev_state = fighter_uninitialized;
+	rbg_player_1.fighter_prev_state = fighter_0_idle;
 
 	rbg_player_2.position = (Vector2){ 200.0f, 0.0f };
 	rbg_player_2.is_facing_right_side = false;
 	rbg_player_2.fighter_curr_state = fighter_uninitialized;
-	rbg_player_2.fighter_prev_state = fighter_uninitialized;
+	rbg_player_2.fighter_prev_state = fighter_0_idle;
 }
 
 // specific to test scene 2
