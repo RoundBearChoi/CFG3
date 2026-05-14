@@ -1,5 +1,5 @@
-#ifndef RBG_SPRITESHEET_PLAYER_H
-#define RBG_SPRITESHEET_PLAYER_H
+#ifndef RBG_SPRITESHEET_ANIMATOR_H
+#define RBG_SPRITESHEET_ANIMATOR_H
 
 #include "rbg_spritesheet_loader.h"
 #include "raylib.h"
