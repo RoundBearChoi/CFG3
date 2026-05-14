@@ -9,7 +9,7 @@ Follow dev journey on [YouTube](https://youtube.com/roundbeargames), [Discord](h
 
 ---
 
-## 🚀 Getting Started (Linux / Ubuntu / Debian)
+## 🚀 Getting Started (Ubuntu / Debian)
 
 ### Step 1: Install raylib system-wide (simplest and most common)
 
