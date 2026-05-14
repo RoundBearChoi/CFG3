@@ -50,6 +50,7 @@ bool new_state_detected(rbg_player* player)
 {
 	if (player->fighter_prev_state != player->fighter_curr_state)
 	{
+		player->fighter_prev_state = player->fighter_curr_state; // new state can only be detected on the first update
 		return true;
 	}
 	else
