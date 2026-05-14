@@ -129,8 +129,14 @@ bool rbg_save_recording(const char* filename)
 
 bool rbg_input_action_is_pressed(InputAction action)
 {
-    if (rbg_current_record_frame == 0)
-        return false;
+	// only during record (gameplay)
+	if (rbg_is_recording_input == false)
+	{
+		return false;
+	}
+    
+	//if (rbg_current_record_frame == 0)
+    //    return false;
 
     if (action < RECORD_FIRST_ACTION || action > RECORD_LAST_ACTION)
     {
