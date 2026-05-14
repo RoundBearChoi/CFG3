@@ -25,7 +25,7 @@ void init_test_scene_2(void)
 	rbg_init_input();
 	rbg_init_cam_control();
 	rbg_init_players();
-	rbg_init_sprite_sheet(&sheet_player_1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_sprite_sheet(&sheet_player_1, "fighter_0_walk", RENDER_PIVOT_BOTTOM_CENTER);
 	rbg_init_sprite_sheet(&sheet_player_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 
 	// temp testing
