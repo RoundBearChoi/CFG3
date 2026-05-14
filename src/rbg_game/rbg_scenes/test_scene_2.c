@@ -5,15 +5,12 @@
 #include "rbg_players/rbg_players.h"
 #include "rbg_players/rbg_fighters/rbg_fighter_updater.h"
 #include "../rbg_scenes/rbg_scenes.h"
-#include "../rbg_spritesheets/rbg_spritesheet_loader.h"
-#include "../rbg_spritesheets/rbg_spritesheet_player.h"
+#include "../rbg_spritesheets/rbg_spritesheet_loader.h" // need for unloading
 #include "../rbg_spritesheets/rbg_sheet_animators.h"
 #include "raylib.h"
 #include <stdio.h>
 
 static bool test_scene_2_initialized = false; 
-static SpriteSheetPlayer sheet_player_1;
-static SpriteSheetPlayer sheet_player_2;
 
 void init_test_scene_2(void)
 {
@@ -21,17 +18,10 @@ void init_test_scene_2(void)
 
 	test_scene_2_initialized = true;
 
-	rbg_load_sprite_sheets("resources/fighters_spritesheet_list.csv");
-	
 	rbg_init_input();
 	rbg_init_cam_control();
 	rbg_init_players();
-	rbg_init_sprite_sheet(&sheet_player_1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
-	rbg_init_sprite_sheet(&sheet_player_2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 	rbg_init_sheet_animators();
-
-	// temp testing
-	sheet_player_2.is_facing_right_side = false;
 }
 
 void end_test_scene_2(void)
@@ -61,12 +51,7 @@ void update_test_scene_2(void)
 	rbg_update_fighter(&rbg_player_1);
 	rbg_update_fighter(&rbg_player_2);
 	rbg_update_players();
-	rbg_update_sprite_sheet(&sheet_player_1);
-	rbg_update_sprite_sheet(&sheet_player_2);
 	rbg_update_sheet_animators();
-
-	rbg_draw_sprite_sheet(&sheet_player_1, rbg_player_1.position, 1.0f, WHITE);
-	rbg_draw_sprite_sheet(&sheet_player_2, rbg_player_2.position, 1.0f, GRAY);
 
 	if (IsInputActionPressed(INPUT_F1))
 	{
