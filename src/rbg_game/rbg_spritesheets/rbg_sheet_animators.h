@@ -1,7 +1,7 @@
 #ifndef RBG_SHEET_ANIMATORS_H
 #define RBG_SHEET_ANIMATORS_H
 
-#include "rbg_spritesheet_animator.h"
+#include "rbg_sheet_updater.h"
 
 extern sprite_sheet_animation sheet_animator_p1;
 extern sprite_sheet_animation sheet_animator_p2;

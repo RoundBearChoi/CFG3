@@ -1,4 +1,4 @@
-#include "rbg_spritesheet_animator.h"
+#include "rbg_sheet_updater.h"
 #include <string.h>  // for memset
 
 void rbg_init_sprite_sheet(sprite_sheet_animation* player, const char* spritesheet_name, rbg_render_pivot pivot)
