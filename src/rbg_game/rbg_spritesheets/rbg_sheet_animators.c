@@ -21,8 +21,8 @@ void rbg_update_sheet_animators()
 	rbg_update_sprite_sheet(&sheet_animator_p1);
 	rbg_update_sprite_sheet(&sheet_animator_p2);
 
-	rbg_draw_sprite_sheet(&sheet_animator_p1, rbg_player_1.position, 1.0f, RED);
-	rbg_draw_sprite_sheet(&sheet_animator_p2, rbg_player_2.position , 1.0f, BLUE);
+	rbg_draw_sprite_sheet(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
+	rbg_draw_sprite_sheet(&sheet_animator_p2, rbg_player_2.position , 1.0f, GRAY);
 }
 
 void rbg_change_player_animation(int playerIndex, const char* sheet_name)

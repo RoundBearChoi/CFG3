@@ -35,6 +35,7 @@ void rbg_update_players(void)
 {
 	// maybe update physics here
 
+	/*
 	if (rbg_input_action_is_pressed(INPUT_P1_MOVE_LEFT))
 	{
 		rbg_player_1.position.x -= 1;
@@ -44,6 +45,7 @@ void rbg_update_players(void)
 	{
 		rbg_player_1.position.x += 1;
 	}
+	*/
 }
 
 bool new_state_detected(rbg_player* player)
