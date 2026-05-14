@@ -56,9 +56,9 @@ void update_test_scene_2(void)
 	}
 
 	rbg_update_cam_control();
-	rbg_update_players();
 	rbg_update_fighter(&rbg_player_1);
 	rbg_update_fighter(&rbg_player_2);
+	rbg_update_players();
 	rbg_update_sprite_sheet(&sheet_player_1);
 	rbg_update_sprite_sheet(&sheet_player_2);
 
