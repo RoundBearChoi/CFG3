@@ -15,6 +15,7 @@ void update_fighter_0_idle(rbg_player* player)
 		if (rbg_input_action_is_pressed(INPUT_P1_MOVE_RIGHT))
 		{
 			player->fighter_curr_state = fighter_0_walk;
+			return;
 		}
 	}
 }
