@@ -1,7 +1,7 @@
-#include "rbg_fighter_0_walk_forward.h"
+#include "rbg_fighter_0_walk.h"
 #include <stdio.h>
 
-void update_fighter_0_walk_forward(rbg_player* player)
+void update_fighter_0_walk(rbg_player* player)
 {
 	if (new_state_detected(player))
 	{

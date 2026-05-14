@@ -8,7 +8,7 @@
 #define RBG_FIGHTER_STATES(X) \
 	X(fighter_uninitialized) \
 	X(fighter_0_idle) \
-    X(fighter_0_walk_forward)
+    X(fighter_0_walk)
 
 typedef enum
 {
