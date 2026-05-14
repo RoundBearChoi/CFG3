@@ -11,6 +11,12 @@
     X(INPUT_P1_MOVE_DOWN)  \
     X(INPUT_P1_JUMP)       \
     X(INPUT_P1_ATTACK)     \
+    X(INPUT_P2_MOVE_LEFT)  \
+    X(INPUT_P2_MOVE_RIGHT) \
+    X(INPUT_P2_MOVE_UP)    \
+    X(INPUT_P2_MOVE_DOWN)  \
+    X(INPUT_P2_JUMP)       \
+    X(INPUT_P2_ATTACK)     \
 	X(INPUT_F1)            \
 	X(INPUT_F2)            \
 	X(INPUT_F3)
