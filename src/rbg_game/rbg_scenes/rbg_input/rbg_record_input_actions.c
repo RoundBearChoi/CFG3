@@ -135,9 +135,6 @@ bool rbg_input_action_is_pressed(InputAction action)
 		return false;
 	}
     
-	//if (rbg_current_record_frame == 0)
-    //    return false;
-
     if (action < RECORD_FIRST_ACTION || action > RECORD_LAST_ACTION)
     {
         TraceLog(LOG_WARNING, "rbg_input_action_is_pressed: action %d is outside recorded range [%d-%d]",
