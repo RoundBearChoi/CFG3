@@ -7,6 +7,7 @@
 #include "../rbg_scenes/rbg_scenes.h"
 #include "../rbg_spritesheets/rbg_spritesheet_loader.h"
 #include "../rbg_spritesheets/rbg_spritesheet_player.h"
+#include "../rbg_spritesheets/rbg_sheet_animators.h"
 #include "raylib.h"
 #include <stdio.h>
 
@@ -61,6 +62,7 @@ void update_test_scene_2(void)
 	rbg_update_players();
 	rbg_update_sprite_sheet(&sheet_player_1);
 	rbg_update_sprite_sheet(&sheet_player_2);
+	rbg_update_sheet_animators();
 
 	rbg_draw_sprite_sheet(&sheet_player_1, rbg_player_1.position, 1.0f, WHITE);
 	rbg_draw_sprite_sheet(&sheet_player_2, rbg_player_2.position, 1.0f, GRAY);
