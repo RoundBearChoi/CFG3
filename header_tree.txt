@@ -50,6 +50,8 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ │ │ ├── rbg_fighter_0_walk.h
   │ │ │ ├── rbg_fighter_updater.c
   │ │ │ └── rbg_fighter_updater.h
+  │ │ ├── rbg_player_boxes.c
+  │ │ ├── rbg_player_boxes.h
   │ │ ├── rbg_players.c
   │ │ └── rbg_players.h
   │ ├── rbg_scenes.c
