@@ -64,6 +64,4 @@ Note: Directories are colored blue in the terminal (plain text here)
    ├── rbg_sheet_animators.c
    ├── rbg_sheet_animators.h
    ├── rbg_sheet_loader.c
-   ├── rbg_sheet_loader.h
-   ├── rbg_sheet_updater.c
-   └── rbg_sheet_updater.h
+   └── rbg_sheet_loader.h
