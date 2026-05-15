@@ -60,13 +60,13 @@ int main(void)
             }
             else  // === windowed mode 0, 1 or 2 ===
             {
-                // if we were in fullscreen, exit it first
+                // if fullscreen, exit first
                 if (IsWindowFullscreen())
                 {
                     ToggleFullscreen();
                 }
 
-                // set target window size for the chosen mode
+                // set target window size for chosen mode
                 int targetW = 800;
 				int targetH= 400;
                 switch(window_mode)
@@ -88,7 +88,7 @@ int main(void)
                 SetWindowSize(targetW, targetH);
             }
 
-            // re-apply after any window state change
+            // re-apply after window change
             ClearWindowState(FLAG_VSYNC_HINT);
             SetTargetFPS(rbg_target_fps);
         }
