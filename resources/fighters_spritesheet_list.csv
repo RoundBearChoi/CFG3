@@ -1,3 +1,3 @@
 fighter_type,spritesheet_filename,total_x,total_y,total_images,render_scale,play_delay
 fighter_0,fighter_0_idle.png,10,1,10,2.0,10
-fighter_0,fighter_0_walk.png,10,1,10,2.0,10
+fighter_0,fighter_0_walk.png,10,1,10,1.92,10
