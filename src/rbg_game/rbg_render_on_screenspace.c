@@ -22,8 +22,8 @@ void rbg_render_on_screenspace(void)
 	float horizontal_gap = 20.0f * scale;
 
 	rbg_draw_scaled_text(TextFormat("FIXED UPDATE COUNT: %i", rbg_fixed_updates), (Vector2){ 10.0f, 15.0f }, font_size, font_spacing, WHITE);
-
 	rbg_draw_scaled_text(TextFormat("RECORDING FRAME: %i", rbg_current_record_frame), (Vector2){ 10.0f, 15.0f + horizontal_gap }, font_size, font_spacing, WHITE);
+	rbg_draw_scaled_text(TextFormat("PRESS F2 TO START PLAYING, F3 TO STOP"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 2 }, font_size, font_spacing, WHITE);
 }
 
 void rbg_draw_scaled_text(const char* text, Vector2 pos, float font_size, float font_spacing, Color color)
