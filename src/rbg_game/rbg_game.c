@@ -1,10 +1,12 @@
 #include "rbg_game.h"
+#include "rbg_game_settings.h"
 #include "rbg_scenes/rbg_input/rbg_update_input.h"
 #include "rbg_scenes/rbg_scenes.h"
 #include "rbg_render_debug/rbg_render_debug.h"
 #include "rbg_fixed_update_count.h"
 #include "rbg_fixed_time_step.h"
 #include "raylib.h"
+#include <stddef.h>
 
 double rbg_frame_time = 0.0f;
 const int rbg_target_fps = 128;
@@ -14,7 +16,7 @@ static bool rbg_game_initialized = false;
 
 void rbg_init_game()
 {
-
+	rbg_load_game_settings(NULL);
 }
 
 void rbg_update_game(void)

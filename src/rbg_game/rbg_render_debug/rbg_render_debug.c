@@ -1,10 +1,16 @@
 #include "rbg_render_debug.h"
+#include "../rbg_game_settings.h"
 #include "../rbg_scenes/rbg_players/rbg_players.h"
 #include "../rbg_fixed_update_count.h"
 #include "raylib.h"
 
 void rbg_render_debug(void)
 {
+	if (rbg_game_settings.render_debug == false)
+	{
+		return;
+	}
+
 	// red x on (0, 0)
 	// -y is up
 	DrawLine(-5, 5, 5, -5, RED);

@@ -1,5 +1,6 @@
 #include "rbg_render_on_screenspace.h"
 #include "rbg_game.h"
+#include "rbg_game_settings.h"
 #include "rbg_fixed_update_count.h"
 #include "rbg_scenes/rbg_input/rbg_record_input_actions.h"
 #include "raylib.h"
@@ -8,6 +9,11 @@ extern Font press_start;
 
 void rbg_render_on_screenspace(void)
 {
+	if (rbg_game_settings.render_debug == false)
+	{
+		return;
+	}
+
 	// scale to 720p reference
     int screenHeight = GetScreenHeight();
     float scale = (float)screenHeight / 720.0f;
