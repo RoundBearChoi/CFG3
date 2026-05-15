@@ -21,11 +21,7 @@ int main(void)
     const int scale3Width   = virtualWidth * 3;  // 2400
     const int scale3Height  = virtualHeight * 3; // 1200
 
-	// 0 = 1x (800x400), 1 = 2x (1600x800), 2 = 3x (2400x1200), 3 = fullscreen
-	int window_mode = 1;
-
 	static const char* const bar_title = "C Fighting Game 3"; 
-
 	InitWindow(virtualWidth, virtualHeight, bar_title);
     ClearWindowState(FLAG_VSYNC_HINT);
     SetTargetFPS(rbg_target_fps);
@@ -38,7 +34,10 @@ int main(void)
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
     SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
 
-    while (!WindowShouldClose())
+	// 0 = 1x (800x400), 1 = 2x (1600x800), 2 = 3x (2400x1200), 3 = fullscreen
+	int window_mode = 1;
+    
+	while (!WindowShouldClose())
     {
 		static bool first_frame = true;
 
