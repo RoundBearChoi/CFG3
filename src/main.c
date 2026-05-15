@@ -21,10 +21,10 @@ int main(void)
     const int scale3Width   = virtualWidth * 3;  // 2400
     const int scale3Height  = virtualHeight * 3; // 1200
 
-    // current display mode (cycles on every F11 press)
-    int window_mode = 0; // 0 = 1x 800x400, 1 = 2x 1600x800, 2 = 3x 2400x1200, 3 = fullscreen
+	// 0 = 1x 800x400, 1 = 2x 1600x800, 2 = 3x 2400x1200, 3 = fullscreen
+	int window_mode = 0;
 
-    static const char* const bar_title = "C Fighting Game 3"; 
+	static const char* const bar_title = "C Fighting Game 3"; 
 
 	InitWindow(virtualWidth, virtualHeight, bar_title);
     ClearWindowState(FLAG_VSYNC_HINT);
@@ -40,8 +40,12 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        if (IsKeyPressed(KEY_F11))
+		static bool first_frame = true;
+
+        if (IsKeyPressed(KEY_F11) || first_frame == true)
         {
+			first_frame = false;
+
             window_mode = (window_mode + 1) % 4;
 
             if (window_mode == 3)  // === entering exclusive fullscreen ===
