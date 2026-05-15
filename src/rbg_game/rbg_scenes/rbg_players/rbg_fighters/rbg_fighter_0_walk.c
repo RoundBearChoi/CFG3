@@ -9,11 +9,26 @@ void update_fighter_0_walk(rbg_player* player)
 		rbg_change_player_animation(player->player_index, "fighter_0_walk");
 	}
 
-	if (rbg_input_action_is_pressed(rbg_get_move_right(player->player_index)) == false)
+	if (player->is_facing_right_side)
 	{
-		player->fighter_curr_state = fighter_0_idle;
-		return;
+		if (rbg_input_action_is_pressed(rbg_get_move_right(player->player_index)) == false)
+		{
+			player->fighter_curr_state = fighter_0_idle;
+		}
+		else
+		{
+			player->position.x += 1;
+		}
 	}
-
-	player->position.x += 1;
+	else
+	{
+		if (rbg_input_action_is_pressed(rbg_get_move_left(player->player_index)) == false)
+		{
+			player->fighter_curr_state = fighter_0_idle;
+		}
+		else
+		{
+			player->position.x -= 1;
+		}
+	}
 }

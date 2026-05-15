@@ -18,6 +18,9 @@ void rbg_init_sheet_animators()
 
 void rbg_update_sheet_animators()
 {
+	sheet_animator_p1.is_facing_right_side = rbg_player_1.is_facing_right_side;
+	sheet_animator_p2.is_facing_right_side = rbg_player_2.is_facing_right_side;
+
 	rbg_update_sprite_sheet(&sheet_animator_p1);
 	rbg_update_sprite_sheet(&sheet_animator_p2);
 
