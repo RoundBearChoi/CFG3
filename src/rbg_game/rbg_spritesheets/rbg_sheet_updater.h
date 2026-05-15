@@ -24,9 +24,9 @@ typedef struct
                                // false = horizontal mirror flip (left-facing)
 } sprite_sheet_animation;
 
-void rbg_init_sprite_sheet(sprite_sheet_animation* player, const char* spritesheet_name, rbg_render_pivot pivot); // Initialize player from spritesheet_name (looks up via rbg_get_sprite_sheet_by_name)
-void rbg_update_sprite_sheet(sprite_sheet_animation* player); // Advance animation (call every frame)
-void rbg_draw_sprite_sheet(const sprite_sheet_animation* player, Vector2 position, float extra_scale, Color tint);
-void rbg_reset_sprite_sheet(sprite_sheet_animation* player);
+void rbg_init_sprite_sheet(sprite_sheet_animation* ani, const char* spritesheet_name, rbg_render_pivot pivot);
+void rbg_update_sprite_sheet(sprite_sheet_animation* ani); // Advance animation (call every frame)
+void rbg_draw_sprite_sheet(const sprite_sheet_animation* ani, Vector2 position, float extra_scale, Color tint);
+void rbg_reset_sprite_sheet(sprite_sheet_animation* ani);
 
 #endif
