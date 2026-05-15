@@ -5,15 +5,15 @@
 #include <stddef.h>
 #include <string.h>  // for memset
 
-sprite_sheet_animation sheet_animator_p1;
-sprite_sheet_animation sheet_animator_p2;
+sprite_sheet_animator sheet_animator_p1;
+sprite_sheet_animator sheet_animator_p2;
 
 void rbg_init_sheet_animators()
 {
 	rbg_load_sprite_sheets("resources/fighters_spritesheet_list.csv");
 
-	rbg_init_sprite_sheet(&sheet_animator_p1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
-	rbg_init_sprite_sheet(&sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_animator(&sheet_animator_p1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_animator(&sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
 
 void rbg_update_sheet_animators()
@@ -21,16 +21,16 @@ void rbg_update_sheet_animators()
 	sheet_animator_p1.is_facing_right_side = rbg_player_1.is_facing_right_side;
 	sheet_animator_p2.is_facing_right_side = rbg_player_2.is_facing_right_side;
 
-	rbg_update_sprite_sheet(&sheet_animator_p1);
-	rbg_update_sprite_sheet(&sheet_animator_p2);
+	rbg_update_animator(&sheet_animator_p1);
+	rbg_update_animator(&sheet_animator_p2);
 
-	rbg_draw_sprite_sheet(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
-	rbg_draw_sprite_sheet(&sheet_animator_p2, rbg_player_2.position , 1.0f, GRAY);
+	rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
+	rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position , 1.0f, GRAY);
 }
 
 void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 {
-	sprite_sheet_animation* animator = NULL;
+	sprite_sheet_animator* animator = NULL;
 
 	if (playerIndex == 1)
 	{
@@ -46,15 +46,15 @@ void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 		animator->sheet = rbg_get_sprite_sheet_by_name(sheet_name);
 		
 		// start curr frame at 0 whenever new animation begins (otherwise player 1 and player 2 walk animations for example will sink)
-		rbg_reset_sprite_sheet(animator);
+		rbg_reset_animator(animator);
 	}
 }
 
-void rbg_init_sprite_sheet(sprite_sheet_animation* ani, const char* spritesheet_name, rbg_render_pivot pivot)
+void rbg_init_animator(sprite_sheet_animator* ani, const char* spritesheet_name, rbg_render_pivot pivot)
 {
     if (ani == NULL) return;
     
-	memset(ani, 0, sizeof(sprite_sheet_animation));
+	memset(ani, 0, sizeof(sprite_sheet_animator));
     
     ani->sheet = rbg_get_sprite_sheet_by_name(spritesheet_name);
     ani->pivot = pivot;
@@ -62,7 +62,7 @@ void rbg_init_sprite_sheet(sprite_sheet_animation* ani, const char* spritesheet_
     
     if (ani->sheet == NULL)
 	{
-        TraceLog(LOG_WARNING, "rbg_init_sprite_sheet: Could not find spritesheet '%s'", spritesheet_name);
+        TraceLog(LOG_WARNING, "rbg_init_animator: Could not find spritesheet '%s'", spritesheet_name);
         return;
     }
     
@@ -70,7 +70,7 @@ void rbg_init_sprite_sheet(sprite_sheet_animation* ani, const char* spritesheet_
     ani->loop = true;
 }
 
-void rbg_update_sprite_sheet(sprite_sheet_animation* ani)
+void rbg_update_animator(sprite_sheet_animator* ani)
 {
     if (ani == NULL || ani->sheet == NULL || !ani->is_playing) return;
     
@@ -90,7 +90,7 @@ void rbg_update_sprite_sheet(sprite_sheet_animation* ani)
     }
 }
 
-void rbg_draw_sprite_sheet(const sprite_sheet_animation* ani, Vector2 position, float extra_scale, Color tint)
+void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 position, float extra_scale, Color tint)
 {
     if (ani == NULL || ani->sheet == NULL || ani->sheet->texture.id == 0) return;
     
@@ -146,7 +146,7 @@ void rbg_draw_sprite_sheet(const sprite_sheet_animation* ani, Vector2 position, 
     DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
-void rbg_reset_sprite_sheet(sprite_sheet_animation* ani)
+void rbg_reset_animator(sprite_sheet_animator* ani)
 {
     if (ani == NULL) return;
     
