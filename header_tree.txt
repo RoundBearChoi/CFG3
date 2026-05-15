@@ -10,6 +10,7 @@ Note: Directories are colored blue in the terminal (plain text here)
 │ │ ├── fighter_0_idle.png
 │ │ └── fighter_0_walk.png
 │ ├── fonts
+│ ├── game_settings.json
 │ └── recordings
 │  └── demo_input.csv
 ├── screenshot000.png
@@ -25,6 +26,8 @@ Note: Directories are colored blue in the terminal (plain text here)
   ├── rbg_fixed_update_count.h
   ├── rbg_game.c
   ├── rbg_game.h
+  ├── rbg_game_settings.c
+  ├── rbg_game_settings.h
   ├── rbg_render_debug
   │ ├── rbg_render_debug.c
   │ └── rbg_render_debug.h
@@ -58,7 +61,7 @@ Note: Directories are colored blue in the terminal (plain text here)
   └── rbg_spritesheets
    ├── rbg_sheet_animators.c
    ├── rbg_sheet_animators.h
-   ├── rbg_spritesheet_loader.c
-   ├── rbg_spritesheet_loader.h
-   ├── rbg_spritesheet_player.c
-   └── rbg_spritesheet_player.h
+   ├── rbg_sheet_loader.c
+   ├── rbg_sheet_loader.h
+   ├── rbg_sheet_updater.c
+   └── rbg_sheet_updater.h
