@@ -1,5 +1,6 @@
 #include "rbg_players.h"
 #include "../rbg_input/rbg_record_input_actions.h"
+#include <stddef.h>
 #include <stdio.h>
 
 rbg_player rbg_player_1;
@@ -47,4 +48,18 @@ bool new_state_detected(rbg_player* player)
 	{
 		return false;
 	}
+}
+
+rbg_player* rbg_get_player(int playerIndex)
+{
+	if (playerIndex == 1)
+	{
+		return &rbg_player_1;
+	}
+	else if (playerIndex == 2)
+	{
+		return &rbg_player_2;
+	}
+
+	return NULL;
 }

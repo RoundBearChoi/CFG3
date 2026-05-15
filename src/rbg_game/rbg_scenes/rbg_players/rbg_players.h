@@ -35,5 +35,6 @@ extern rbg_player rbg_player_2;
 void rbg_init_players(void);
 void rbg_update_players(void);
 bool new_state_detected(rbg_player* player);
+rbg_player* rbg_get_player(int playerIndex);
 
 #endif
