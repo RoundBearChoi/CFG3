@@ -4,8 +4,6 @@
 typedef struct
 {
 	int player_index;
-	float pos_x;
-	float pos_y;
 	float width;
 	float height;
 	float offset_x;
@@ -14,5 +12,8 @@ typedef struct
 
 extern rbg_player_col_box rbg_player_1_box;
 extern rbg_player_col_box rbg_player_2_box;
+
+void rbg_init_player_boxes();
+void rbg_reset_box(rbg_player_col_box* box);
 
 #endif

@@ -3,6 +3,7 @@
 #include "rbg_input/rbg_record_input_actions.h"
 #include "rbg_cam_control/rbg_cam_control.h"
 #include "rbg_players/rbg_players.h"
+#include "rbg_players/rbg_player_boxes.h"
 #include "rbg_players/rbg_fighters/rbg_fighter_updater.h"
 #include "../rbg_scenes/rbg_scenes.h"
 #include "../rbg_spritesheets/rbg_sheet_loader.h" // need for unloading
@@ -21,6 +22,7 @@ void init_test_scene_2(void)
 	rbg_init_input();
 	rbg_init_cam_control();
 	rbg_init_players();
+	rbg_init_player_boxes();
 	rbg_init_sheet_animators();
 }
 
