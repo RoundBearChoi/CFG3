@@ -44,5 +44,8 @@ void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 	if (animator != NULL)
 	{
 		animator->sheet = rbg_get_sprite_sheet_by_name(sheet_name);
+		
+		// start curr frame at 0 whenever new animation begins (otherwise player 1 and player 2 walk animations for example will sink)
+		rbg_reset_sprite_sheet(animator);
 	}
 }
