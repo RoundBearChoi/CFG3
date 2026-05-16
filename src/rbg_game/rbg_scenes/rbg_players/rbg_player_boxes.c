@@ -32,39 +32,45 @@ void rbg_update_player_boxes()
     rbg_player_col_box* b2 = rbg_get_player_box(2);
 
     // should never happen with valid indices, but defensive
-    if (p1 == NULL || p2 == NULL || b1 == NULL || b2 == NULL) 
-	{
+    if (p1 == NULL || p2 == NULL || b1 == NULL || b2 == NULL)
+    {
         return;
     }
 
-    // calculate player 1's AABB (top-left based, with facing mirror)
-    float rect1_x = p1->position.x + b1->offset_x;
+    // Player 1: bottom-center based AABB with facing-aware offset mirroring
+    float effective_offset_x1 = b1->offset_x;
     
 	if (!p1->is_facing_right_side)
-	{
-        rect1_x = p1->position.x - (b1->offset_x + b1->width);
+    {
+        effective_offset_x1 = -b1->offset_x;
     }
+    
+	float box1_cx = p1->position.x + effective_offset_x1;
+    float box1_by = p1->position.y + b1->offset_y;
 
     Rectangle rect1 =
-	{
-        .x = rect1_x,
-        .y = p1->position.y + b1->offset_y,
+    {
+        .x = box1_cx - (b1->width * 0.5f),
+        .y = box1_by - b1->height,
         .width = b1->width,
         .height = b1->height
     };
 
-    // calculate Player 2's AABB (top-left based, with facing mirror)
-    float rect2_x = p2->position.x + b2->offset_x;
+    // Player 2: same logic
+    float effective_offset_x2 = b2->offset_x;
     
 	if (!p2->is_facing_right_side)
-	{
-        rect2_x = p2->position.x - (b2->offset_x + b2->width);
+    {
+        effective_offset_x2 = -b2->offset_x;
     }
+    
+	float box2_cx = p2->position.x + effective_offset_x2;
+    float box2_by = p2->position.y + b2->offset_y;
 
     Rectangle rect2 =
-	{
-        .x = rect2_x,
-        .y = p2->position.y + b2->offset_y,
+    {
+        .x = box2_cx - (b2->width * 0.5f),
+        .y = box2_by - b2->height,
         .width = b2->width,
         .height = b2->height
     };
