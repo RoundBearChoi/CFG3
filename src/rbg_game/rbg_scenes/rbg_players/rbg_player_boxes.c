@@ -32,13 +32,15 @@ void rbg_update_player_boxes()
     rbg_player_col_box* b2 = rbg_get_player_box(2);
 
     // should never happen with valid indices, but defensive
-    if (p1 == NULL || p2 == NULL || b1 == NULL || b2 == NULL) {
+    if (p1 == NULL || p2 == NULL || b1 == NULL || b2 == NULL) 
+	{
         return;
     }
 
     // calculate player 1's AABB (top-left based, with facing mirror)
     float rect1_x = p1->position.x + b1->offset_x;
-    if (!p1->is_facing_right_side)
+    
+	if (!p1->is_facing_right_side)
 	{
         rect1_x = p1->position.x - (b1->offset_x + b1->width);
     }
@@ -53,7 +55,8 @@ void rbg_update_player_boxes()
 
     // calculate Player 2's AABB (top-left based, with facing mirror)
     float rect2_x = p2->position.x + b2->offset_x;
-    if (!p2->is_facing_right_side)
+    
+	if (!p2->is_facing_right_side)
 	{
         rect2_x = p2->position.x - (b2->offset_x + b2->width);
     }
