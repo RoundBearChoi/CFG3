@@ -49,16 +49,18 @@ void update_test_scene_2(void)
 		rbg_save_recording("resources/recordings/demo_input.csv");  // nested array ready
 	}
 
+	// temp -  switch scene
+	if (IsInputActionPressed(INPUT_F1))
+	{
+		rbg_next_scene = TEST_SCENE_1;
+		end_test_scene_2();
+	}
+	
+	// update all gameplay stuff
 	rbg_update_cam_control();
 	rbg_update_fighter(&rbg_player_1);
 	rbg_update_fighter(&rbg_player_2);
 	rbg_update_players();
 	rbg_update_sheet_animators();
 	rbg_update_player_boxes();
-
-	if (IsInputActionPressed(INPUT_F1))
-	{
-		rbg_next_scene = TEST_SCENE_1;
-		end_test_scene_2();
-	}
 }
