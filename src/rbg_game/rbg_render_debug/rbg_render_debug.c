@@ -62,5 +62,4 @@ void rbg_draw_player_boxes(int playerIndex)
 	}
 
 	DrawRectangleLinesEx(rec, 0.9f, boxColor);
-	//DrawRectangleRec(rec, (Color){ 255, 234, 0, 80 });
 }

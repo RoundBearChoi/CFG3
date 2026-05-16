@@ -31,36 +31,42 @@ void rbg_update_player_boxes()
     rbg_player_col_box* b1 = rbg_get_player_box(1);
     rbg_player_col_box* b2 = rbg_get_player_box(2);
 
-    // Safety guard (should never happen with valid indices, but defensive)
+    // should never happen with valid indices, but defensive
     if (p1 == NULL || p2 == NULL || b1 == NULL || b2 == NULL) {
         return;
     }
 
-    // Calculate Player 1's AABB (top-left based, with facing mirror)
+    // calculate player 1's AABB (top-left based, with facing mirror)
     float rect1_x = p1->position.x + b1->offset_x;
-    if (!p1->is_facing_right_side) {
+    if (!p1->is_facing_right_side)
+	{
         rect1_x = p1->position.x - (b1->offset_x + b1->width);
     }
-    Rectangle rect1 = {
+
+    Rectangle rect1 =
+	{
         .x = rect1_x,
         .y = p1->position.y + b1->offset_y,
         .width = b1->width,
         .height = b1->height
     };
 
-    // Calculate Player 2's AABB (top-left based, with facing mirror)
+    // calculate Player 2's AABB (top-left based, with facing mirror)
     float rect2_x = p2->position.x + b2->offset_x;
-    if (!p2->is_facing_right_side) {
+    if (!p2->is_facing_right_side)
+	{
         rect2_x = p2->position.x - (b2->offset_x + b2->width);
     }
-    Rectangle rect2 = {
+
+    Rectangle rect2 =
+	{
         .x = rect2_x,
         .y = p2->position.y + b2->offset_y,
         .width = b2->width,
         .height = b2->height
     };
 
-    // Perform the AABB test using raylib's built-in function
+    // AABB test using raylib's built-in function
     bool is_colliding = CheckCollisionRecs(rect1, rect2);
 
     // Update collision flags for both players
