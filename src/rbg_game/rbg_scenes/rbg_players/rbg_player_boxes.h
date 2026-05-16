@@ -1,9 +1,12 @@
 #ifndef RBG_PLAYER_BOX_H
 #define RBG_PLAYER_BOX_H
 
+#include <stdbool.h>
+
 typedef struct
 {
 	int player_index;
+	bool collision_with_other_player;
 	float width;
 	float height;
 	float offset_x;

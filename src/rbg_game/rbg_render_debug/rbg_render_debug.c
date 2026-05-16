@@ -53,6 +53,14 @@ void rbg_draw_player_boxes(int playerIndex)
 	float left_x = center_x - (b->width * 0.5f);
 
 	Rectangle rec = { left_x, top_y, b->width, b->height };
-	DrawRectangleLinesEx(rec, 0.9f, (Color){ 255, 234, 0, 255 });
+	
+	Color boxColor = (Color){ 255, 234, 0, 255 };
+
+	if (b->collision_with_other_player)
+	{
+		boxColor = (Color){ 255, 0, 0, 255 };
+	}
+
+	DrawRectangleLinesEx(rec, 0.9f, boxColor);
 	//DrawRectangleRec(rec, (Color){ 255, 234, 0, 80 });
 }
