@@ -54,6 +54,7 @@ void update_test_scene_2(void)
 	rbg_update_fighter(&rbg_player_2);
 	rbg_update_players();
 	rbg_update_sheet_animators();
+	rbg_update_player_boxes();
 
 	if (IsInputActionPressed(INPUT_F1))
 	{
