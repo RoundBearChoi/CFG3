@@ -11,18 +11,19 @@ extern Font press_start;
 
 int main(void)
 {
-    // fixed internal resolution
-    const int virtualWidth  = 800;
-    const int virtualHeight = 400;
+    const int virtualWidth  = 1600;
+    const int virtualHeight = 800;
 
-    // integer scale windowed modes (perfect pixel scaling)
-    const int scale2Width   = virtualWidth * 2;  // 1600
-    const int scale2Height  = virtualHeight * 2; // 800
-    const int scale3Width   = virtualWidth * 3;  // 2400
-    const int scale3Height  = virtualHeight * 3; // 1200
+    // windowed modes - integer scale (perfect pixel scaling)
+    const int nativeWidth   = 1600;   // 1× virtual
+    const int nativeHeight  = 800;
+    const int highWidth     = 2400;   // 1.5× virtual (still crisp with POINT filter)
+    const int highHeight    = 1200;
 
 	static const char* const bar_title = "C Fighting Game 3"; 
-	InitWindow(virtualWidth, virtualHeight, bar_title);
+
+    // start at native resolution (1600x800)
+	InitWindow(nativeWidth, nativeHeight, bar_title);
     ClearWindowState(FLAG_VSYNC_HINT);
     SetTargetFPS(rbg_target_fps);
 
@@ -30,25 +31,21 @@ int main(void)
 	press_start = LoadFontEx("PrStart.ttf", 32, NULL, 0);
 	SetTextureFilter(press_start.texture, TEXTURE_FILTER_POINT);
     
-	// create render target
+	// create render target (native resolution)
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
     SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
 
-	// 0 = 1x (800x400), 1 = 2x (1600x800), 2 = 3x (2400x1200), 3 = fullscreen
-	int window_mode = 1;
+	// 0 = native 1600x800 (default), 1 = 2400x1200, 2 = fullscreen
+	int window_mode = 0;
     
 	while (!WindowShouldClose())
     {
-		static bool first_frame = true;
-
-        if (IsKeyPressed(KEY_F11) || first_frame == true)
+        // cycle window modes with F11
+        if (IsKeyPressed(KEY_F11))
         {
-			if (first_frame == true) window_mode -= 1;
-			first_frame = false;
-			
-            window_mode = (window_mode + 1) % 4;
+            window_mode = (window_mode + 1) % 3;
 
-            if (window_mode == 3)  // === entering exclusive fullscreen ===
+            if (window_mode == 2)  // === entering exclusive fullscreen ===
             {
                 // resize to monitor's native resolution first
                 int monitor = GetCurrentMonitor();
@@ -57,7 +54,7 @@ int main(void)
                 // go true fullscreen
                 ToggleFullscreen();
             }
-            else  // === windowed mode 0, 1 or 2 ===
+            else  // === windowed mode 0 or 1 ===
             {
                 // if fullscreen, exit first
                 if (IsWindowFullscreen())
@@ -66,22 +63,12 @@ int main(void)
                 }
 
                 // set target window size for chosen mode
-                int targetW = 800;
-				int targetH= 400;
-                switch(window_mode)
+                int targetW = nativeWidth;
+                int targetH = nativeHeight;
+                if (window_mode == 1)
                 {
-                    case 0:
-                        targetW = virtualWidth;
-                        targetH = virtualHeight;
-                        break;
-                    case 1:
-                        targetW = scale2Width;
-                        targetH = scale2Height;
-                        break;
-                    case 2:
-                        targetW = scale3Width;
-                        targetH = scale3Height;
-                        break;
+                    targetW = highWidth;
+                    targetH = highHeight;
                 }
 
                 SetWindowSize(targetW, targetH);
