@@ -17,7 +17,7 @@ void update_fighter_0_walk(rbg_player* player)
 		}
 		else
 		{
-			player->position.x += 1;
+			player->position.x += 1.5;
 		}
 	}
 	else
@@ -28,7 +28,7 @@ void update_fighter_0_walk(rbg_player* player)
 		}
 		else
 		{
-			player->position.x -= 1;
+			player->position.x -= 1.5;
 		}
 	}
 }

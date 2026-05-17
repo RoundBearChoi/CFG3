@@ -18,8 +18,8 @@ void rbg_reset_box(rbg_player_col_box* box)
 {
 	box->player_index = 0;
 	box->collision_with_other_player = false;
-	box->width = 20.0f;
-	box->height = 60.0f;
+	box->width = 50.0f;
+	box->height = 150.0f;
 	box->offset_x = 0.0f;
 	box->offset_y = 0.0f;
 }

@@ -31,7 +31,7 @@ void rbg_draw_x_on_player_pos(void)
 	Color p1_color_x = (Color){ 0, 149, 255, 255 };
 	Color p2_color_x = (Color){ 255, 162, 0, 255 };
 
-	int x_length = 3.2;
+	int x_length = 8;
 
 	DrawLineV((Vector2){ p1_pos.x - x_length, p1_pos.y + x_length }, (Vector2){ p1_pos.x + x_length, p1_pos.y - x_length }, p1_color_x);
 	DrawLineV((Vector2){ p1_pos.x - x_length, p1_pos.y - x_length }, (Vector2){ p1_pos.x + x_length, p1_pos.y + x_length }, p1_color_x);
