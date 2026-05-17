@@ -26,6 +26,11 @@ void rbg_reset_box(rbg_player_col_box* box)
 
 void rbg_update_player_boxes()
 {
+	rbg_check_collision();
+}
+
+void rbg_check_collision(void)
+{
 	rbg_player* p1 = rbg_get_player(1);
     rbg_player* p2 = rbg_get_player(2);
     rbg_player_col_box* b1 = rbg_get_player_box(1);
