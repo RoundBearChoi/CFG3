@@ -9,7 +9,7 @@ Camera2D rbg_global_camera;
 void rbg_init_cam_control(void)
 {
 	rbg_global_camera.offset = (Vector2){ 0.0f, 0.0f };
-	rbg_global_camera.target = (Vector2){ -600.0f, -600.0f };
+	rbg_global_camera.target = (Vector2){ -600.0f, -600.0f }; // behaves like camera position
 	rbg_global_camera.rotation = 0.0f;
 	rbg_global_camera.zoom = 1.0f;
 }
