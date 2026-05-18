@@ -8,9 +8,10 @@ Camera2D rbg_global_camera;
 // specific to test_scene_2
 void rbg_init_cam_control(void)
 {
-	rbg_global_camera.offset = (Vector2){ 500.0f, 500.0f };
+	rbg_global_camera.offset = (Vector2){ 0.0f, 0.0f };
+	rbg_global_camera.target = (Vector2){ -600.0f, -600.0f };
 	rbg_global_camera.rotation = 0.0f;
-	rbg_global_camera.zoom     = 1.0f;
+	rbg_global_camera.zoom = 1.0f;
 }
 
 // specific to test_scene_2
