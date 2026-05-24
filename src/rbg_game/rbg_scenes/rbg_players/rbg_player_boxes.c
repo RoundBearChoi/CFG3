@@ -17,7 +17,7 @@ void rbg_init_player_boxes()
 void rbg_reset_box(rbg_player_col_box* box)
 {
 	box->player_index = 0;
-	box->collision_with_other_player = false;
+	box->is_colliding_with_other_player = false;
 	box->width = 50.0f;
 	box->height = 150.0f;
 	box->offset_x = 0.0f;
@@ -84,8 +84,8 @@ void rbg_check_collision(void)
     bool is_colliding = CheckCollisionRecs(rect1, rect2);
 
     // Update collision flags for both players
-    b1->collision_with_other_player = is_colliding;
-    b2->collision_with_other_player = is_colliding;
+    b1->is_colliding_with_other_player = is_colliding;
+    b2->is_colliding_with_other_player = is_colliding;
 }
 
 rbg_player_col_box* rbg_get_player_box(int playerIndex)

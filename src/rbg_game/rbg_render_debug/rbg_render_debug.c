@@ -56,7 +56,7 @@ void rbg_draw_player_boxes(int playerIndex)
 	
 	Color boxColor = (Color){ 255, 234, 0, 255 };
 
-	if (b->collision_with_other_player)
+	if (b->is_colliding_with_other_player)
 	{
 		boxColor = (Color){ 255, 0, 0, 255 };
 	}
