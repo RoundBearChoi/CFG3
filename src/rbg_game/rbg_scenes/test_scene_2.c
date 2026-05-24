@@ -4,6 +4,7 @@
 #include "rbg_cam_control/rbg_cam_control.h"
 #include "rbg_players/rbg_players.h"
 #include "rbg_players/rbg_player_boxes.h"
+#include "rbg_players/rbg_basic_collision_resolve.h"
 #include "rbg_players/rbg_fighters/rbg_fighter_updater.h"
 #include "../rbg_scenes/rbg_scenes.h"
 #include "../rbg_spritesheets/rbg_sheet_loader.h" // need for unloading
@@ -63,4 +64,5 @@ void update_test_scene_2(void)
 	rbg_update_players();
 	rbg_update_sheet_animators();
 	rbg_update_player_boxes();
+	rbg_update_basic_collision_resolve();
 }
