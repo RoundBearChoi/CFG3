@@ -1,0 +1,52 @@
+#include "rbg_fighter_0_jump.h"
+#include "../../rbg_input/rbg_record_input_actions.h"
+#include "../../../rbg_spritesheets/rbg_sheet_animators.h"
+
+void update_fighter_0_jump(rbg_player* player)
+{
+	if (player == NULL) return;
+
+	sprite_sheet_animator* ani = NULL;
+	if (player->player_index == 1) ani = &sheet_animator_p1;
+	else if (player->player_index == 2) ani = &sheet_animator_p2;
+
+	if (new_state_detected(player))
+	{
+		rbg_change_player_animation(player->player_index, "fighter_0_jump");
+		if (ani != NULL)
+		{
+			ani->loop = false;
+			ani->is_playing = true;
+		}
+		// reset per-player timer on (re)entry
+		static int jump_timers[3] = {0, 0, 0};
+		int idx = player->player_index;
+		if (idx >= 1 && idx <= 2) jump_timers[idx] = 0;
+	}
+
+	// static timer persists across calls but only incremented while in this state
+	static int jump_timers[3] = {0, 0, 0};
+	int idx = player->player_index;
+	if (idx < 1 || idx > 2) return;
+
+	jump_timers[idx]++;
+	int t = jump_timers[idx];
+
+	// start going up after 10 frames (matches first play_delay windup)
+	if (t > 10)
+	{
+		player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
+	}
+
+	// stop at animation end (~10 delay * 6 frames = 60) or when one-shot completes
+	bool anim_stopped = (ani != NULL && !ani->is_playing);
+	if (t >= 60 || anim_stopped)
+	{
+		if (ani != NULL)
+		{
+			ani->loop = true;  // restore default looping for next state (e.g. idle)
+		}
+		player->fighter_curr_state = fighter_0_idle;
+		jump_timers[idx] = 0;
+	}
+}
