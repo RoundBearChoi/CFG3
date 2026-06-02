@@ -35,7 +35,6 @@ void update_fighter_0_jump(rbg_player* player)
 		jump_timers[idx] = 0;  // reset timer for this jump
 	}
 
-	jump_timers[idx]++;
 	int t = jump_timers[idx];
 
 	// start going up after 10 frames (matches first play_delay windup)
@@ -43,4 +42,6 @@ void update_fighter_0_jump(rbg_player* player)
 	{
 		//player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
+
+	jump_timers[idx]++;
 }
