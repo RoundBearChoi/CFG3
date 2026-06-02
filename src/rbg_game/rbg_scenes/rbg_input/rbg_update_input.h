@@ -44,6 +44,7 @@ bool rbg_load_default_key_bindings(void);
 void rbg_update_input(void);
 InputAction rbg_get_move_left(int playerIndex);
 InputAction rbg_get_move_right(int playerIndex);
+InputAction rbg_get_move_up(int playerIndex);
 
 // query functions
 bool IsInputActionDown(InputAction action); // key is held down right now (continuous)
