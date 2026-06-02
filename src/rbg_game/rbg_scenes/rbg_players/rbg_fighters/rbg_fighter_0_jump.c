@@ -1,6 +1,7 @@
 #include "rbg_fighter_0_jump.h"
 #include "../../rbg_input/rbg_record_input_actions.h"
 #include "../../../rbg_spritesheets/rbg_sheet_animators.h"
+#include <stddef.h>
 
 void update_fighter_0_jump(rbg_player* player)
 {
