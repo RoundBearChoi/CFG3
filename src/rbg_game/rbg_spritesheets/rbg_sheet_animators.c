@@ -30,16 +30,7 @@ void rbg_update_sheet_animators()
 
 void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 {
-	sprite_sheet_animator* animator = NULL;
-
-	if (playerIndex == 1)
-	{
-		animator = &sheet_animator_p1;
-	}
-	else if (playerIndex == 2)
-	{
-		animator = &sheet_animator_p2;
-	}
+	sprite_sheet_animator* animator = rbg_get_player_sheet_animator(playerIndex);
 
 	if (animator != NULL)
 	{
@@ -48,6 +39,19 @@ void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 		// start curr frame at 0 whenever new animation begins (otherwise player 1 and player 2 walk animations for example will sink)
 		rbg_reset_animator(animator);
 	}
+}
+
+sprite_sheet_animator* rbg_get_player_sheet_animator(int playerIndex)
+{
+	if (playerIndex == 1)
+	{
+		return &sheet_animator_p1;
+	}
+	else if (playerIndex == 2)
+	{
+		return &sheet_animator_p2;
+	}
+	return NULL;
 }
 
 void rbg_init_animator(sprite_sheet_animator* ani, const char* spritesheet_name, rbg_render_pivot pivot)
