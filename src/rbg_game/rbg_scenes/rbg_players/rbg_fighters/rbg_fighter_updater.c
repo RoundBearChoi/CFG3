@@ -1,6 +1,7 @@
 #include "rbg_fighter_updater.h"
 #include "rbg_fighter_0_idle.h"
 #include "rbg_fighter_0_walk.h"
+#include "rbg_fighter_0_jump.h"
 #include <stdio.h>
 
 // Handle the uninitialized state
