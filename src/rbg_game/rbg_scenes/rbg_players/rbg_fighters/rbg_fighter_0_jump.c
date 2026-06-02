@@ -31,20 +31,14 @@ void update_fighter_0_jump(rbg_player* player)
 	int t = jump_timers[idx];
 
 	// start going up after 10 frames (matches first play_delay windup)
-	if (t > 10)
+	// only while the one-shot animation is still playing
+	if (t > 10 && ani && ani->is_playing)
 	{
 		player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
 
-	// stop at animation end (~10 delay * 6 frames = 60) or when one-shot completes
-	bool anim_stopped = (ani != NULL && !ani->is_playing);
-	if (t >= 60 || anim_stopped)
-	{
-		if (ani != NULL)
-		{
-			ani->loop = true;  // restore default looping for next state (e.g. idle)
-		}
-		player->fighter_curr_state = fighter_0_idle;
-		jump_timers[idx] = 0;
-	}
+	// Animation plays exactly once (loop=false on entry).
+	// After it finishes naturally, we do NOT switch back to idle.
+	// State remains fighter_0_jump and the sprite freezes on the final frame.
+	// (You can later add landing logic or manual state change from elsewhere.)
 }
