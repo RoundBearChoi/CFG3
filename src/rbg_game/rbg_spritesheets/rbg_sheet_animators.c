@@ -89,7 +89,7 @@ void rbg_update_animator(sprite_sheet_animator* ani)
         // One-shot handling: stop after one full cycle
         if (!ani->loop && ani->current_frame == 0)
 		{
-            ani->is_playing = false;
+			//ani->is_playing = false;
         }
     }
 }

@@ -1,6 +1,7 @@
 #include "rbg_fighter_0_jump.h"
 #include "../../rbg_input/rbg_record_input_actions.h"
 #include "../../../rbg_spritesheets/rbg_sheet_animators.h"
+#include "raylib.h"
 #include <stddef.h>
 
 void update_fighter_0_jump(rbg_player* player)
@@ -18,13 +19,14 @@ void update_fighter_0_jump(rbg_player* player)
 	static int jump_timers[3] = {0, 0, 0};
 	int idx = player->player_index;
 	if (idx >= 3) return;
+	
+	sprite_sheet_animator* ani = NULL;
+	ani = rbg_get_player_sheet_animator(player->player_index);
 
 	if (new_state_detected(player))
 	{
 		rbg_change_player_animation(player->player_index, "fighter_0_jump");
 
-		sprite_sheet_animator* ani = NULL;
-		ani = rbg_get_player_sheet_animator(player->player_index);
 
 		if (ani != NULL)
 		{
@@ -36,12 +38,23 @@ void update_fighter_0_jump(rbg_player* player)
 	}
 
 	int t = jump_timers[idx];
+	jump_timers[idx]++;
+
 
 	// start going up after 10 frames (matches first play_delay windup)
-	if (t > 10)
+	if (t >= 10 && t <= 10 * 6)
 	{
+		//if (idx == 1)
+		{
+			TraceLog(LOG_INFO, "player %d ani frame: %d  |  jump frame: %d", player->player_index, ani->current_frame, t);
+		}
 		//player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
 
-	jump_timers[idx]++;
+	if (t >= 10 * 6)
+	{
+		// something wrong with animation control
+		ani->current_frame = 5;
+		ani->is_playing = false;
+	}
 }
