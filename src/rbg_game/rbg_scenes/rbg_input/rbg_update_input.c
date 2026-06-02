@@ -178,6 +178,14 @@ InputAction rbg_get_move_right(int playerIndex)
 	return 0;
 }
 
+InputAction rbg_get_move_up(int playerIndex)
+{
+	if (playerIndex == 1) return INPUT_P1_MOVE_UP;
+	if (playerIndex == 2) return INPUT_P2_MOVE_UP;
+
+	return 0;
+}
+
 bool IsInputActionDown(InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
