@@ -9,6 +9,12 @@ void update_fighter_0_idle(rbg_player* player)
 		rbg_change_player_animation(player->player_index, "fighter_0_idle");
 	}
 
+	if (rbg_input_action_is_pressed(rbg_get_move_up(player->player_index)))
+	{
+		player->fighter_curr_state = fighter_0_jump;
+		return;
+	}
+	
 	if (rbg_input_action_is_pressed(rbg_get_move_right(player->player_index)))
 	{
 		player->is_facing_right_side = true;
