@@ -10,6 +10,11 @@ void update_fighter_0_jump(rbg_player* player)
 	if (player->player_index == 1) ani = &sheet_animator_p1;
 	else if (player->player_index == 2) ani = &sheet_animator_p2;
 
+	// static timer for jump duration (initialized once, value persists; we reset on state entry)
+	static int jump_timers[3] = {0, 0, 0};
+	int idx = player->player_index;
+	if (idx < 1 || idx > 2) return;
+
 	if (new_state_detected(player))
 	{
 		rbg_change_player_animation(player->player_index, "fighter_0_jump");
@@ -18,16 +23,8 @@ void update_fighter_0_jump(rbg_player* player)
 			ani->loop = false;
 			ani->is_playing = true;
 		}
-		// reset per-player timer on (re)entry
-		static int jump_timers[3] = {0, 0, 0};
-		int idx = player->player_index;
-		if (idx >= 1 && idx <= 2) jump_timers[idx] = 0;
+		jump_timers[idx] = 0;  // reset timer for this jump
 	}
-
-	// static timer persists across calls but only incremented while in this state
-	static int jump_timers[3] = {0, 0, 0};
-	int idx = player->player_index;
-	if (idx < 1 || idx > 2) return;
 
 	jump_timers[idx]++;
 	int t = jump_timers[idx];
