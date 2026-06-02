@@ -3,6 +3,7 @@
 #include "rbg_players.h"
 #include <raylib.h>
 #include <math.h>
+#include <stddef.h>
 
 void rbg_update_basic_collision_resolve(void)
 {
