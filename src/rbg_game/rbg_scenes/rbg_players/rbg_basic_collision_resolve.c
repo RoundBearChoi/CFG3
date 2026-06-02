@@ -90,10 +90,4 @@ void rbg_update_basic_collision_resolve(void)
     // Clear flags after resolution (next frame's check_collision will re-evaluate if still overlapping)
     b1->is_colliding_with_other_player = false;
     b2->is_colliding_with_other_player = false;
-
-    // Note: For more advanced resolution, consider:
-    // - Velocity-based resolution (push more the faster-moving character)
-    // - State priority (attacking character may have push advantage or be unpushable)
-    // - Minimum separation distance or friction-like behavior
-    // - Y-axis resolution for jumping/anti-air scenarios
 }
