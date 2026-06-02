@@ -17,8 +17,6 @@ void update_fighter_0_jump(rbg_player* player)
 	// static timer for jump duration (initialized once, value persists; we reset on state entry)
 	static int jump_timers[3] = {0, 0, 0};
 	int idx = player->player_index;
-	//if (idx < 1 || idx > 2) return;
-
 	if (idx >= 3) return;
 
 	if (new_state_detected(player))
