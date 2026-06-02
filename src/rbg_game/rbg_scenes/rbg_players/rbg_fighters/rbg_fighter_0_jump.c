@@ -22,14 +22,15 @@ void update_fighter_0_jump(rbg_player* player)
 	if (new_state_detected(player))
 	{
 		rbg_change_player_animation(player->player_index, "fighter_0_jump");
-		
-		/*
+
+		sprite_sheet_animator* ani = NULL;
+		ani = rbg_get_player_sheet_animator(player->player_index);
+
 		if (ani != NULL)
 		{
 			ani->loop = false;
 			ani->is_playing = true;
 		}
-		*/
 		
 		jump_timers[idx] = 0;  // reset timer for this jump
 	}
@@ -40,6 +41,6 @@ void update_fighter_0_jump(rbg_player* player)
 	// start going up after 10 frames (matches first play_delay windup)
 	if (t > 10)
 	{
-		player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
+		//player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
 }
