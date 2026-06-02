@@ -19,6 +19,8 @@ void update_fighter_0_jump(rbg_player* player)
 	int idx = player->player_index;
 	//if (idx < 1 || idx > 2) return;
 
+	if (idx >= 3) return;
+
 	if (new_state_detected(player))
 	{
 		rbg_change_player_animation(player->player_index, "fighter_0_jump");
