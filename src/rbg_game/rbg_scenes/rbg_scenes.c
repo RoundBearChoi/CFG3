@@ -34,3 +34,8 @@ void rbg_update_scenes(void)
         //TraceLog(LOG_INFO, "Scene switched to %d", (int)rbg_current_scene);
     }
 }
+
+void rbg_render_scenes(void)
+{
+
+}

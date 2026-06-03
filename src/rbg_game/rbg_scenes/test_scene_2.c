@@ -66,3 +66,8 @@ void update_test_scene_2(void)
 	rbg_update_player_boxes();
 	rbg_update_basic_collision_resolve();
 }
+
+void render_test_scene_2(void)
+{
+
+}

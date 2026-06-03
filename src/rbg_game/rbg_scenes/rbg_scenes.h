@@ -2,6 +2,7 @@
 #define RBG_SCENES_H
 
 void rbg_update_scenes(void);
+void rbg_render_scenes(void);
 
 typedef enum
 {

@@ -13,3 +13,8 @@ void update_test_scene_1(void)
 
     DrawText("This is TEST SCENE 1", 0, 0, 30, WHITE);
 }
+
+void render_test_scene_1(void)
+{
+
+}
