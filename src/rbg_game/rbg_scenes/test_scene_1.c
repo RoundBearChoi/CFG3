@@ -11,10 +11,11 @@ void update_test_scene_1(void)
 		rbg_next_scene = TEST_SCENE_2;
 	}
 
-    DrawText("This is TEST SCENE 1", 0, 0, 30, WHITE);
+	// Note: input, logic, state changes here. No drawing.
 }
 
 void render_test_scene_1(void)
 {
-
+    DrawText("This is TEST SCENE 1", 0, 0, 30, WHITE);
+	// All drawing / render commands for this scene go here.
 }
