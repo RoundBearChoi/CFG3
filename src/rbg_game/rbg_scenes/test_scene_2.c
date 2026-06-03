@@ -69,5 +69,6 @@ void update_test_scene_2(void)
 
 void render_test_scene_2(void)
 {
+	rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
 
 }

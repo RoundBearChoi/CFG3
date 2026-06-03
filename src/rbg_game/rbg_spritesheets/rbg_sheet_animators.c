@@ -24,10 +24,10 @@ void rbg_update_sheet_animators()
 	rbg_update_animator(&sheet_animator_p1);
 	rbg_update_animator(&sheet_animator_p2);
 
-	TraceLog(LOG_INFO, "player 1 ani");
-	rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
-	TraceLog(LOG_INFO, "player 2 ani");
-	rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position , 1.0f, GRAY);
+	//TraceLog(LOG_INFO, "player 1 ani");
+	//rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
+	//TraceLog(LOG_INFO, "player 2 ani");
+	//rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position , 1.0f, GRAY);
 }
 
 void rbg_change_player_animation(int playerIndex, const char* sheet_name)
