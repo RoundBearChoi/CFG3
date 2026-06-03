@@ -34,8 +34,10 @@ void rbg_update_game(void)
     // fixed timestep loop
     while (rbg_run_fixed_time_step())
     {
+		// should separate update vs render
         rbg_update_scenes();
         rbg_fixed_update_count();
-        rbg_render_debug();
     }
+    
+	rbg_render_debug();
 }
