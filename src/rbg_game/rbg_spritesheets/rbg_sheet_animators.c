@@ -164,5 +164,5 @@ void rbg_reset_animator(sprite_sheet_animator* ani)
 	ani->current_frame = 0;
     ani->frame_counter = 0;
     ani->is_playing = true;  // most common after reset
-    // loop, pivot, and is_facing_right_side are intentionally left unchanged
+    // pivot, is_facing_right_side are intentionally left unchanged
 }
