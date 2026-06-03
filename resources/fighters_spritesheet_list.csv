@@ -2,3 +2,4 @@ fighter_type,spritesheet_filename,total_x,total_y,total_images,render_scale,play
 fighter_0,fighter_0_idle.png,10,1,10,5.0,10
 fighter_0,fighter_0_walk.png,10,1,10,4.75,10
 fighter_0,fighter_0_jump.png,6,1,6,5.0,10
+fighter_0,fighter_0_fall.png,4,1,4,5.0,10
