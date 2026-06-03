@@ -136,7 +136,6 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
         fw,
         fh
     };
-
     
     // Pivot-based origin (works correctly with flip)
     Vector2 origin;
@@ -152,7 +151,6 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
             origin = (Vector2){ fw * 0.5f, fh * 0.5f };
             break;
     }
-   
 
 	TraceLog(LOG_INFO, "drawSource.x %d   width %d", drawSource.x, drawSource.width);
 	TraceLog(LOG_INFO, "dest: x=%.1f y=%.1f w=%.1f h=%.1f", dest.x, dest.y, dest.width, dest.height);
