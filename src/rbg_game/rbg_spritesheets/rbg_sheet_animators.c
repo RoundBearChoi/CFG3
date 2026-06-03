@@ -120,7 +120,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
     
 	if (!ani->is_facing_right_side)
 	{
-        drawSource.x += (float)s->frame_width;
+        //drawSource.x += (float)s->frame_width;
         drawSource.width = -(float)s->frame_width;
     }
 	
