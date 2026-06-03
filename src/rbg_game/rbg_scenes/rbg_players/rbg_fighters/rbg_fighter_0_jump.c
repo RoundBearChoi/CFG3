@@ -52,8 +52,6 @@ void update_fighter_0_jump(rbg_player* player)
 
 	if (t >= 10 * 6)
 	{
-		// something wrong with animation control
-		//ani->current_frame = 5;
-		//ani->is_playing = false;
+		ani->is_playing = false;
 	}
 }
