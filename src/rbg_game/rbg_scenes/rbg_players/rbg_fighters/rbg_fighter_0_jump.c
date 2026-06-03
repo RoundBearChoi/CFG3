@@ -6,15 +6,6 @@
 
 void update_fighter_0_jump(rbg_player* player)
 {
-	/*
-	if (player == NULL) return;
-
-	sprite_sheet_animator* ani = NULL;
-	if (player->player_index == 1) ani = &sheet_animator_p1;
-	else if (player->player_index == 2) ani = &sheet_animator_p2;
-
-	*/
-
 	// static timer for jump duration (initialized once, value persists; we reset on state entry)
 	static int jump_timers[3] = {0, 0, 0};
 	int idx = player->player_index;
@@ -27,12 +18,6 @@ void update_fighter_0_jump(rbg_player* player)
 	{
 		rbg_change_player_animation(player->player_index, "fighter_0_jump");
 
-		//if (ani != NULL)
-		//{
-		//	ani->loop = false;
-		//	ani->is_playing = true;
-		//}
-		
 		jump_timers[idx] = 0;  // reset timer for this jump
 	}
 
@@ -43,10 +28,6 @@ void update_fighter_0_jump(rbg_player* player)
 	// start going up after 10 frames (matches first play_delay windup)
 	if (t >= 10 && t <= 10 * 6)
 	{
-		//if (idx == 1)
-		{
-			//TraceLog(LOG_INFO, "player %d ani frame: %d  |  jump frame: %d", player->player_index, ani->current_frame, t);
-		}
 		player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
 

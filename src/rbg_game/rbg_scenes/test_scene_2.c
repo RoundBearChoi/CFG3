@@ -69,8 +69,6 @@ void update_test_scene_2(void)
 
 void render_test_scene_2(void)
 {
-	TraceLog(LOG_INFO, "    player 1");
 	rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
-	TraceLog(LOG_INFO, "    player 2");	
 	rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position, 1.0f, GRAY);
 }

@@ -92,9 +92,6 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
     SpriteSheet* s = ani->sheet;
     int frame = ani->current_frame;
    
-	TraceLog(LOG_INFO, "drawing sprite ani frame %d   frame_counter %d", frame, ani->frame_counter);
-	TraceLog(LOG_INFO, "sheet total x %d   frame width %d   frame height %d", s->total_x, s->frame_width, s->frame_height);
-
     // Calculate source rectangle (row-major order, respect total_images)
     Rectangle source =
 	{
@@ -142,8 +139,6 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
             break;
     }
 
-	TraceLog(LOG_INFO, "drawSource.x %d   width %d", drawSource.x, drawSource.width);
-	TraceLog(LOG_INFO, "dest: x=%.1f y=%.1f w=%.1f h=%.1f", dest.x, dest.y, dest.width, dest.height);
 	DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
