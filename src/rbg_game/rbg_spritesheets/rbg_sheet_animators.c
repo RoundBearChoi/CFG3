@@ -37,7 +37,7 @@ void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 	if (animator != NULL)
 	{
 		animator->sheet = rbg_get_sprite_sheet_by_name(sheet_name);
-		
+
 		// start curr frame at 0 whenever new animation begins (otherwise player 1 and player 2 walk animations for example will sink)
 		rbg_reset_animator(animator);
 	}
@@ -91,7 +91,7 @@ void rbg_update_animator(sprite_sheet_animator* ani)
         // One-shot handling: stop after one full cycle
         if (!ani->loop && ani->current_frame == 0)
 		{
-			//ani->is_playing = false;
+			ani->is_playing = false;
         }
     }
 }
@@ -103,8 +103,9 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
     SpriteSheet* s = ani->sheet;
     int frame = ani->current_frame;
    
-	TraceLog(LOG_INFO, "drawing sprite ani frame %d", frame); 
+	TraceLog(LOG_INFO, "drawing sprite ani frame %d   frame_counter %d", frame, ani->frame_counter);
 	TraceLog(LOG_INFO, "sheet total x %d   frame width %d   frame height %d", s->total_x, s->frame_width, s->frame_height);
+
     // Calculate source rectangle (row-major order, respect total_images)
     Rectangle source =
 	{

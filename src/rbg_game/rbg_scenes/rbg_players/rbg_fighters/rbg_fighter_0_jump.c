@@ -45,7 +45,7 @@ void update_fighter_0_jump(rbg_player* player)
 	{
 		//if (idx == 1)
 		{
-			TraceLog(LOG_INFO, "player %d ani frame: %d  |  jump frame: %d", player->player_index, ani->current_frame, t);
+			//TraceLog(LOG_INFO, "player %d ani frame: %d  |  jump frame: %d", player->player_index, ani->current_frame, t);
 		}
 		//player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
@@ -54,6 +54,6 @@ void update_fighter_0_jump(rbg_player* player)
 	{
 		// something wrong with animation control
 		//ani->current_frame = 5;
-		ani->is_playing = false;
+		//ani->is_playing = false;
 	}
 }
