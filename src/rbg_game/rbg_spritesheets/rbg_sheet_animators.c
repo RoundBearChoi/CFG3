@@ -123,8 +123,8 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
         drawSource.x += (float)s->frame_width;
         drawSource.width = -(float)s->frame_width;
     }
-    
-    // Destination rectangle (apply both CSV render_scale + runtime extra_scale)
+	
+	// Destination rectangle (apply both CSV render_scale + runtime extra_scale)
     float final_scale = s->render_scale * extra_scale;
     float fw = s->frame_width * final_scale;
     float fh = s->frame_height * final_scale;
@@ -136,6 +136,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
         fw,
         fh
     };
+
     
     // Pivot-based origin (works correctly with flip)
     Vector2 origin;
@@ -154,7 +155,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
    
 
 	TraceLog(LOG_INFO, "drawSource.x %d   width %d", drawSource.x, drawSource.width);
-    TraceLog(LOG_INFO, "dest.x %d   dest.y %d   dest.fw %d   dest.fh %d", dest.x, dest.y, dest.width, dest.height);
+	TraceLog(LOG_INFO, "dest: x=%.1f y=%.1f w=%.1f h=%.1f", dest.x, dest.y, dest.width, dest.height);
 	DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
