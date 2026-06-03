@@ -8,10 +8,9 @@ void update_fighter_0_fall(rbg_player* player)
 		rbg_change_player_animation(player->player_index, "fighter_0_fall");
 	}
 
-	// Fall by +3.0f in y every fixed update (positive y is down in Raylib coord system).
-	// This mirrors the -3.0f ascent in jump state.
 	player->position.y += 3.0f;
 
+	// temp..
 	// If we hit or passed ground (y=0), clamp position and transition back to idle.
 	// Idle's new_state_detected on next frame will start the idle animation.
 	if (player->position.y >= 0.0f)
