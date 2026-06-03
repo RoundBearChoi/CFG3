@@ -27,11 +27,11 @@ void update_fighter_0_jump(rbg_player* player)
 	{
 		rbg_change_player_animation(player->player_index, "fighter_0_jump");
 
-		if (ani != NULL)
-		{
-			ani->loop = false;
-			ani->is_playing = true;
-		}
+		//if (ani != NULL)
+		//{
+		//	ani->loop = false;
+		//	ani->is_playing = true;
+		//}
 		
 		jump_timers[idx] = 0;  // reset timer for this jump
 	}

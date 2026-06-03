@@ -18,7 +18,7 @@ typedef struct
     int current_frame;        // 0 .. total_images-1
     int frame_counter;        // ticks until next frame
     bool is_playing;
-    bool loop;                // false = one-shot animation
+    //bool loop;                // false = one-shot animation
     rbg_render_pivot pivot;
     bool is_facing_right_side; // true = original PNG right-facing orientation (default)
                                // false = horizontal mirror flip (left-facing)

@@ -73,7 +73,7 @@ void rbg_init_animator(sprite_sheet_animator* ani, const char* spritesheet_name,
     }
     
     ani->is_playing = true;
-    ani->loop = true;
+    //ani->loop = true;
 }
 
 void rbg_update_animator(sprite_sheet_animator* ani)
@@ -89,10 +89,10 @@ void rbg_update_animator(sprite_sheet_animator* ani)
         ani->current_frame = (ani->current_frame + 1) % ani->sheet->total_images;
         
         // One-shot handling: stop after one full cycle
-        if (!ani->loop && ani->current_frame == 0)
-		{
-			ani->is_playing = false;
-        }
+        //if (!ani->loop && ani->current_frame == 0)
+		//{
+		//	ani->is_playing = false;
+        //}
     }
 }
 
