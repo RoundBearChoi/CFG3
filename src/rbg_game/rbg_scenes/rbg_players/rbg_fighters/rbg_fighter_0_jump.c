@@ -47,7 +47,7 @@ void update_fighter_0_jump(rbg_player* player)
 		{
 			//TraceLog(LOG_INFO, "player %d ani frame: %d  |  jump frame: %d", player->player_index, ani->current_frame, t);
 		}
-		//player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
+		player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
 
 	if (t >= 10 * 6)

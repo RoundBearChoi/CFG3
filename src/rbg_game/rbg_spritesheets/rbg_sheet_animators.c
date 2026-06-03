@@ -154,7 +154,8 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
    
 
 	TraceLog(LOG_INFO, "drawSource.x %d   width %d", drawSource.x, drawSource.width);
-    DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
+    TraceLog(LOG_INFO, "dest.x %d   dest.y %d   dest.fw %d   dest.fh %d", dest.x, dest.y, dest.width, dest.height);
+	DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
 void rbg_reset_animator(sprite_sheet_animator* ani)
