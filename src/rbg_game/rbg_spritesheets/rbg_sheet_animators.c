@@ -68,7 +68,6 @@ void rbg_init_animator(sprite_sheet_animator* ani, const char* spritesheet_name,
     }
     
     ani->is_playing = true;
-    //ani->loop = true;
 }
 
 void rbg_update_animator(sprite_sheet_animator* ani)
