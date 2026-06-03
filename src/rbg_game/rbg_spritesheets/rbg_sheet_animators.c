@@ -24,7 +24,9 @@ void rbg_update_sheet_animators()
 	rbg_update_animator(&sheet_animator_p1);
 	rbg_update_animator(&sheet_animator_p2);
 
+	TraceLog(LOG_INFO, "player 1 ani");
 	rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
+	TraceLog(LOG_INFO, "player 2 ani");
 	rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position , 1.0f, GRAY);
 }
 
@@ -100,7 +102,9 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
     
     SpriteSheet* s = ani->sheet;
     int frame = ani->current_frame;
-    
+   
+	TraceLog(LOG_INFO, "drawing sprite ani frame %d", frame); 
+
     // Calculate source rectangle (row-major order, respect total_images)
     Rectangle source =
 	{
@@ -146,7 +150,9 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
             origin = (Vector2){ fw * 0.5f, fh * 0.5f };
             break;
     }
-    
+   
+
+	TraceLog(LOG_INFO, "drawSource.x %d   width %d", drawSource.x, drawSource.width);
     DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
 
