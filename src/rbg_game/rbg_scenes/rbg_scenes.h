@@ -15,7 +15,7 @@ typedef enum
 extern rbg_scene_type rbg_current_scene;
 extern rbg_scene_type rbg_next_scene;
 
-// Function pointer types for scene dispatch (update + render)
+// Function pointer types for scene dispatch (update & render)
 typedef void (*SceneUpdateFn)(void);
 typedef void (*SceneRenderFn)(void);
 

@@ -34,14 +34,11 @@ void rbg_update_game(void)
     // fixed timestep loop - multiple updates if behind (for determinism)
     while (rbg_run_fixed_time_step())
     {
-		// should separate update vs render (render happens once after all fixed updates)
         rbg_update_scenes();
         rbg_fixed_update_count();
     }
     
     // Render scenes once per frame (after fixed updates, inside camera in main.c)
-    // This mirrors the function pointer dispatch pattern now used for updates.
 	rbg_render_scenes();
-    
 	rbg_render_debug();
 }
