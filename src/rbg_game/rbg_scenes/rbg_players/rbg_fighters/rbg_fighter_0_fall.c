@@ -11,10 +11,7 @@ void update_fighter_0_fall(rbg_player* player)
 		// spritesheet exists yet in resources/fighters_spritesheet_list.csv.
 		// The last frame of the jump animation will remain visible (frozen) while falling.
 		sprite_sheet_animator* ani = rbg_get_player_sheet_animator(player->player_index);
-		if (ani != NULL)
-		{
-			ani->is_playing = false;
-		}
+		ani->is_playing = false;
 	}
 
 	// Fall by +3.0f in y every fixed update (positive y is down in Raylib coord system).
