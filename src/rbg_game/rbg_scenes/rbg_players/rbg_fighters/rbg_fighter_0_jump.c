@@ -6,7 +6,7 @@
 
 void update_fighter_0_jump(rbg_player* player)
 {
-	// static timer for jump duration (initialized once, value persists; we reset on state entry)
+	// static timer for jump duration (initialized once, value persists. we reset on state entry)
 	static int jump_timers[3] = {0, 0, 0};
 	int idx = player->player_index;
 	if (idx >= 3) return;
@@ -24,14 +24,14 @@ void update_fighter_0_jump(rbg_player* player)
 	int t = jump_timers[idx];
 	jump_timers[idx]++;
 
-
 	// start going up after 10 frames (matches first play_delay windup)
-	if (t >= 10 && t <= 10 * 6)
+	// maybe separate jump prep vs jump
+	if (t >= 10 && t <= 10 * 5)
 	{
 		player->position.y -= 3.0f;  // upward delta per fixed update; adjust for feel/height
 	}
 
-	if (t >= 10 * 6)
+	if (t >= 10 * 5)
 	{
 		ani->is_playing = false;
 	}
