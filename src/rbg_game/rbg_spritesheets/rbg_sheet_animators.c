@@ -104,7 +104,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
     int frame = ani->current_frame;
    
 	TraceLog(LOG_INFO, "drawing sprite ani frame %d", frame); 
-
+	TraceLog(LOG_INFO, "sheet total x %d   frame width %d   frame height %d", s->total_x, s->frame_width, s->frame_height);
     // Calculate source rectangle (row-major order, respect total_images)
     Rectangle source =
 	{

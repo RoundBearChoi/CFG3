@@ -27,7 +27,6 @@ void update_fighter_0_jump(rbg_player* player)
 	{
 		rbg_change_player_animation(player->player_index, "fighter_0_jump");
 
-
 		if (ani != NULL)
 		{
 			ani->loop = false;
@@ -54,7 +53,7 @@ void update_fighter_0_jump(rbg_player* player)
 	if (t >= 10 * 6)
 	{
 		// something wrong with animation control
-		ani->current_frame = 5;
+		//ani->current_frame = 5;
 		ani->is_playing = false;
 	}
 }
