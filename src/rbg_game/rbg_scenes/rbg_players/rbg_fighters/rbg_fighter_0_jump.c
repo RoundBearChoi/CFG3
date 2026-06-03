@@ -32,5 +32,6 @@ void update_fighter_0_jump(rbg_player* player)
 	{
 		sprite_sheet_animator* ani = rbg_get_player_sheet_animator(player->player_index);
 		ani->is_playing = false;
+		player->fighter_curr_state = fighter_0_fall;  // as we stop playing the jump animation, transition to fall
 	}
 }
