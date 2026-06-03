@@ -9,7 +9,8 @@
 	X(fighter_uninitialized) \
 	X(fighter_0_idle) \
     X(fighter_0_walk) \
-    X(fighter_0_jump)
+    X(fighter_0_jump) \
+    X(fighter_0_fall)
 
 typedef enum
 {
