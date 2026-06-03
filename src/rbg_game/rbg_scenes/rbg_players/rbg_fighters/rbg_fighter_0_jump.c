@@ -2,7 +2,7 @@
 #include "../../rbg_input/rbg_record_input_actions.h"
 #include "../../../rbg_spritesheets/rbg_sheet_animators.h"
 #include "raylib.h"
-#include <stddef.h>
+//#include <stddef.h>
 
 void update_fighter_0_jump(rbg_player* player)
 {
@@ -10,9 +10,6 @@ void update_fighter_0_jump(rbg_player* player)
 	static int jump_timers[3] = {0, 0, 0};
 	int idx = player->player_index;
 	if (idx >= 3) return;
-	
-	sprite_sheet_animator* ani = NULL;
-	ani = rbg_get_player_sheet_animator(player->player_index);
 
 	if (new_state_detected(player))
 	{
@@ -33,6 +30,7 @@ void update_fighter_0_jump(rbg_player* player)
 
 	if (t >= 10 * 5)
 	{
+		sprite_sheet_animator* ani = rbg_get_player_sheet_animator(player->player_index);
 		ani->is_playing = false;
 	}
 }
