@@ -23,11 +23,6 @@ void rbg_update_sheet_animators()
 
 	rbg_update_animator(&sheet_animator_p1);
 	rbg_update_animator(&sheet_animator_p2);
-
-	//TraceLog(LOG_INFO, "player 1 ani");
-	//rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
-	//TraceLog(LOG_INFO, "player 2 ani");
-	//rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position , 1.0f, GRAY);
 }
 
 void rbg_change_player_animation(int playerIndex, const char* sheet_name)
@@ -87,12 +82,6 @@ void rbg_update_animator(sprite_sheet_animator* ani)
 	{
         ani->frame_counter = 0;
         ani->current_frame = (ani->current_frame + 1) % ani->sheet->total_images;
-        
-        // One-shot handling: stop after one full cycle
-        //if (!ani->loop && ani->current_frame == 0)
-		//{
-		//	ani->is_playing = false;
-        //}
     }
 }
 
@@ -120,6 +109,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
     
 	if (!ani->is_facing_right_side)
 	{
+		//don't need to adjust x for DrawTexturePro 
         //drawSource.x += (float)s->frame_width;
         drawSource.width = -(float)s->frame_width;
     }
