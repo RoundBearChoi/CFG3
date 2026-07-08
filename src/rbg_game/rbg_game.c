@@ -9,7 +9,7 @@
 #include <stddef.h>
 
 double rbg_frame_time = 0.0f;
-const int rbg_target_fps = 128;
+const int rbg_target_fps = 128; //the authoritative definition
 Font press_start;
 
 static bool rbg_game_initialized = false;
