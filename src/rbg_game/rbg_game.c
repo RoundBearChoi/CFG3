@@ -8,35 +8,37 @@
 #include "raylib.h"
 #include <stddef.h>
 
-double global_rbg_frame_time = 0.0f; // calculate during runtime, so no const
-Font global_font_press_start; // load during runtime, so no const
+double global_rbg_frame_time = 0.0f;
+Font global_font_press_start;
 const int global_rbg_target_fps = 128;
 
-void rbg_init_game()
+void rbg_init_game(void)
 {
-	rbg_load_game_settings(NULL);
+    rbg_load_game_settings(NULL);
 }
 
 void rbg_run_game(RbgGameContext* game_ctx)
 {
-	if (game_ctx->game_initialized == false)
-	{
-		game_ctx->game_initialized = true;
-		rbg_init_game();
-		rbg_init_fixed_time_step();
-	}
+    if (!game_ctx) return;
+
+    if (game_ctx->game_initialized == false)
+    {
+        game_ctx->game_initialized = true;
+        rbg_init_game();
+        rbg_init_fixed_time_step(game_ctx);
+    }
 
     rbg_update_input();
-    rbg_accumulate_fixed_time_step();
-    
+    rbg_accumulate_fixed_time_step(game_ctx);
+
     // fixed timestep loop - multiple updates if behind (for determinism)
-    while (rbg_run_fixed_time_step())
+    while (rbg_run_fixed_time_step(game_ctx))
     {
         rbg_update_scenes();
         rbg_fixed_update_count();
     }
-    
-    // Render scenes once per frame (after fixed updates, inside camera in main.c)
-	rbg_render_scenes();
-	rbg_render_debug();
+
+    // Render scenes once per frame
+    rbg_render_scenes();
+    rbg_render_debug();
 }

@@ -1,49 +1,49 @@
 #include "rbg_fixed_time_step.h"
 #include "raylib.h"
 
-/*
-    === static ===
-    storage duration — variable lives for entire lifetime of program (same as a normal global)
-    internal linkage — variable is private to this file only, no other file can access _accumulator directly, this is the key benefit
-*/
-
-static double _accumulator = 0.0;
-static double _previous_time = 0.0;
-static double _fixed_dt = 1.0 / 128.0;
-
-void rbg_init_fixed_time_step(void)
+void rbg_init_fixed_time_step(RbgGameContext* ctx)
 {
-    _accumulator = 0.0;
-    _previous_time = 0.0;
+    if (!ctx) return;
 
-	if (global_rbg_target_fps == 128)
-	{
-		_fixed_dt = 1.0 / 128.0;
-	}
-	else if (global_rbg_target_fps == 60)
-	{
-		_fixed_dt = 1.0 / 60.0;
-	}
+    ctx->accumulator   = 0.0;
+    ctx->previous_time = 0.0;
+
+    if (global_rbg_target_fps == 128)
+    {
+        ctx->fixed_dt = 1.0 / 128.0;
+    }
+    else if (global_rbg_target_fps == 60)
+    {
+        ctx->fixed_dt = 1.0 / 60.0;
+    }
+    else
+    {
+        ctx->fixed_dt = 1.0 / 60.0; // fallback
+    }
 }
 
-void rbg_accumulate_fixed_time_step(void)
+void rbg_accumulate_fixed_time_step(RbgGameContext* ctx)
 {
-    if (_previous_time == 0.0)
+    if (!ctx) return;
+
+    if (ctx->previous_time == 0.0)
     {
-        _previous_time = GetTime();
+        ctx->previous_time = GetTime();
     }
 
     double current_time = GetTime();
-    global_rbg_frame_time = current_time - _previous_time;
-    _previous_time = current_time;
-    _accumulator += global_rbg_frame_time;
+    global_rbg_frame_time = current_time - ctx->previous_time;
+    ctx->previous_time = current_time;
+    ctx->accumulator += global_rbg_frame_time;
 }
 
-bool rbg_run_fixed_time_step(void)
+bool rbg_run_fixed_time_step(RbgGameContext* ctx)
 {
-    if (_accumulator >= _fixed_dt)
+    if (!ctx) return false;
+
+    if (ctx->accumulator >= ctx->fixed_dt)
     {
-        _accumulator -= _fixed_dt;
+        ctx->accumulator -= ctx->fixed_dt;
         return true;
     }
     return false;
