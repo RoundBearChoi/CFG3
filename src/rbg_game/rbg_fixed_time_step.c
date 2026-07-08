@@ -28,9 +28,9 @@ void rbg_accumulate_fixed_time_step(void)
     }
 
     double current_time = GetTime();
-    rbg_frame_time = current_time - previous_time;
+    global_rbg_frame_time = current_time - previous_time;
     previous_time = current_time;
-    accumulator += rbg_frame_time;
+    accumulator += global_rbg_frame_time;
 }
 
 bool rbg_run_fixed_time_step(void)
