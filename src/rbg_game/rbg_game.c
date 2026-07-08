@@ -9,8 +9,8 @@
 #include <stddef.h>
 
 double global_rbg_frame_time = 0.0f; // calculate during runtime, so no const
+Font global_font_press_start; // load during runtime, so no const
 const int global_rbg_target_fps = 128; // the authoritative definition
-Font press_start;
 
 static bool rbg_game_initialized = false;
 

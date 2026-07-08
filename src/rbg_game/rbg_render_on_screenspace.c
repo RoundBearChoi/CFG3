@@ -5,7 +5,7 @@
 #include "rbg_scenes/rbg_input/rbg_record_input_actions.h"
 #include "raylib.h"
 
-extern Font press_start;
+extern Font global_font_press_start;
 
 void rbg_render_on_screenspace(void)
 {
@@ -30,7 +30,7 @@ void rbg_render_on_screenspace(void)
 
 void rbg_draw_scaled_text(const char* text, Vector2 pos, float font_size, float font_spacing, Color color)
 {
-	DrawTextEx(press_start,
+	DrawTextEx(global_font_press_start,
                text,
                pos, // must be float
                font_size, // must be float

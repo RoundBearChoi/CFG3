@@ -7,7 +7,7 @@
 
 extern Camera2D rbg_global_camera;
 extern int global_rbg_target_fps; // defined in rbg_game.c
-extern Font press_start;
+extern Font global_font_press_start;
 
 int main(void)
 {
@@ -28,8 +28,8 @@ int main(void)
     SetTargetFPS(global_rbg_target_fps);
 
 	// font
-	press_start = LoadFontEx("PrStart.ttf", 32, NULL, 0);
-	SetTextureFilter(press_start.texture, TEXTURE_FILTER_POINT);
+	global_font_press_start = LoadFontEx("PrStart.ttf", 32, NULL, 0);
+	SetTextureFilter(global_font_press_start.texture, TEXTURE_FILTER_POINT);
     
 	// create render target (native resolution)
     RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
@@ -121,7 +121,7 @@ int main(void)
     // clean up
     UnloadRenderTexture(target);
     rbg_unload_sprite_sheets();
-	UnloadFont(press_start);
+	UnloadFont(global_font_press_start);
     CloseWindow();
     return 0;
 }
