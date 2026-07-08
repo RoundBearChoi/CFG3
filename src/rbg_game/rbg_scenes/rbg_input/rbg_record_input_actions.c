@@ -5,7 +5,7 @@
 
 int global_rbg_current_record_frame = 0;
 
-static bool rbg_is_recording_input = false;
+static bool _is_recording_input = false;
 static bool recordingBuffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
 
 void rbg_start_recording(void)
@@ -15,16 +15,16 @@ void rbg_start_recording(void)
     // Always reset buffer and state when starting a new recording
     memset(recordingBuffer, 0, sizeof(recordingBuffer));
     global_rbg_current_record_frame = 0;
-    rbg_is_recording_input = true;
+    _is_recording_input = true;
 
     TraceLog(LOG_INFO, "=== INPUT RECORDING STARTED ===");
 }
 
 void rbg_stop_recording(void)
 {
-    if (!rbg_is_recording_input) return;
+    if (!_is_recording_input) return;
 
-    rbg_is_recording_input = false;
+    _is_recording_input = false;
 	global_rbg_current_record_frame = 0;
     
 	TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)", global_rbg_current_record_frame, global_rbg_current_record_frame / 128.0f);
@@ -32,7 +32,7 @@ void rbg_stop_recording(void)
 
 bool rbg_is_recording(void)
 {
-    return rbg_is_recording_input;
+    return _is_recording_input;
 }
 
 int rbg_get_recorded_frames(void)
@@ -42,7 +42,7 @@ int rbg_get_recorded_frames(void)
 
 void rbg_update_recording(void)
 {
-    if (!rbg_is_recording_input) return;
+    if (!_is_recording_input) return;
 
     if (global_rbg_current_record_frame >= MAX_RECORD_FRAMES)
     {
@@ -130,7 +130,7 @@ bool rbg_save_recording(const char* filename)
 bool rbg_input_action_is_pressed(InputAction action)
 {
 	// only during record (gameplay)
-	if (rbg_is_recording_input == false)
+	if (_is_recording_input == false)
 	{
 		return false;
 	}
