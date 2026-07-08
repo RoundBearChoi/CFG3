@@ -10,9 +10,9 @@
 
 double global_rbg_frame_time = 0.0f; // calculate during runtime, so no const
 Font global_font_press_start; // load during runtime, so no const
-const int global_rbg_target_fps = 128; // the definition, does not change,  so const
+const int global_rbg_target_fps = 128;
 
-static bool rbg_game_initialized = false; // local variable, so static
+static bool _game_initialized = false;
 
 void rbg_init_game()
 {
@@ -21,9 +21,9 @@ void rbg_init_game()
 
 void rbg_update_game(void)
 {
-	if (rbg_game_initialized == false)
+	if (_game_initialized == false)
 	{
-		rbg_game_initialized = true;
+		_game_initialized = true;
 		rbg_init_game();
 		rbg_init_fixed_time_step();
 	}
