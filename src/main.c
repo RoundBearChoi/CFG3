@@ -87,7 +87,7 @@ int main(void)
             ClearBackground(BLACK);
             
             BeginMode2D(global_rbg_camera);
-                rbg_update_game(); // (update + drawing)
+                rbg_run_game(); // (update + drawing)
             EndMode2D();
         EndTextureMode();
 

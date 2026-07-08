@@ -17,7 +17,7 @@ void rbg_init_game()
 	rbg_load_game_settings(NULL);
 }
 
-void rbg_update_game(void)
+void rbg_run_game(void)
 {
 	static bool _initialized = false;
 
