@@ -9,7 +9,7 @@ extern Font global_font_press_start;
 
 void rbg_render_on_screenspace(void)
 {
-	if (rbg_game_settings.render_debug == false)
+	if (global_rbg_game_settings.render_debug == false)
 	{
 		return;
 	}

@@ -7,7 +7,7 @@ typedef struct RBG_GameSettings {
     bool render_debug;
 } RBG_GameSettings;
 
-extern RBG_GameSettings rbg_game_settings;
+extern RBG_GameSettings global_rbg_game_settings;
 
 void rbg_load_game_settings(const char* json_path);  // pass NULL to use default path
 

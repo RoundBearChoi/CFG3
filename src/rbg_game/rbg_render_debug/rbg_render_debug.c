@@ -7,7 +7,7 @@
 
 void rbg_render_debug(void)
 {
-	if (rbg_game_settings.render_debug == false) { return; }
+	if (global_rbg_game_settings.render_debug == false) { return; }
 
 	// red x on (0, 0)
 	// -y is up

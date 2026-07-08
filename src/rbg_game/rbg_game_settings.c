@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-RBG_GameSettings rbg_game_settings = {false};  // defaults
+RBG_GameSettings global_rbg_game_settings = {false};
 
 static char* read_file_to_string(const char* filename)
 {
@@ -62,7 +62,7 @@ void rbg_load_game_settings(const char* json_path)
     
 	if (cJSON_IsBool(item))
 	{
-        rbg_game_settings.render_debug = cJSON_IsTrue(item);
+        global_rbg_game_settings.render_debug = cJSON_IsTrue(item);
     }
 	else if (cJSON_IsString(item))
 	{
@@ -73,11 +73,11 @@ void rbg_load_game_settings(const char* json_path)
 		{
             if (strcasecmp(val, "true") == 0)
 			{
-                rbg_game_settings.render_debug = true;
+                global_rbg_game_settings.render_debug = true;
             }
 			else if (strcasecmp(val, "false") == 0)
 			{
-                rbg_game_settings.render_debug = false;
+                global_rbg_game_settings.render_debug = false;
             }
         }
     }
