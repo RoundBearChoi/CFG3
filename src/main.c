@@ -5,7 +5,7 @@
 #include "math.h"
 #include <stddef.h>
 
-extern Camera2D rbg_global_camera;
+extern Camera2D global_rbg_camera;
 extern int global_rbg_target_fps;
 extern Font global_font_press_start;
 
@@ -86,7 +86,7 @@ int main(void)
         BeginTextureMode(target);
             ClearBackground(BLACK);
             
-            BeginMode2D(rbg_global_camera);
+            BeginMode2D(global_rbg_camera);
                 rbg_update_game(); // (update + drawing)
             EndMode2D();
         EndTextureMode();
