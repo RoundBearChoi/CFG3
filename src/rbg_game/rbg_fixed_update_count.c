@@ -2,7 +2,7 @@
 #include "raylib.h"
 
 int global_rbg_fixed_updates = 0;
-double rbg_accumulated_dt = 0.0;
+double global_rbg_accumulated_dt = 0.0;
 
 static double prev_time = 0.0f;
 static double curr_time = 0.0f;
@@ -23,16 +23,16 @@ void rbg_fixed_update_count(void)
 		rbg_init_fixed_update_count();
 	}
 
-	if (rbg_accumulated_dt >= 1.0)
+	if (global_rbg_accumulated_dt >= 1.0)
 	{
 		global_rbg_fixed_updates = fixed_updates;
 
 		fixed_updates = 0;
-		rbg_accumulated_dt = 0.0;
+		global_rbg_accumulated_dt = 0.0;
 		prev_time = GetTime();
 	}
 	
 	fixed_updates++;
 	curr_time = GetTime();
-	rbg_accumulated_dt = curr_time - prev_time;
+	global_rbg_accumulated_dt = curr_time - prev_time;
 }
