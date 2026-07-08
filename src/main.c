@@ -7,7 +7,7 @@
 
 extern Camera2D rbg_global_camera;
 extern int global_rbg_target_fps; // defined in rbg_game.c
-extern Font global_font_press_start;
+extern Font global_font_press_start; // defined in rbg_game.c
 
 int main(void)
 {
