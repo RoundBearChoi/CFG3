@@ -37,7 +37,10 @@ int main(void)
 
 	// 0 = native 1600x800 (default), 1 = 2400x1200, 2 = fullscreen
 	int window_mode = 0;
-    
+
+	// game context instance
+	RbgGameContext rbg_game_ctx = {0};
+
 	while (!WindowShouldClose())
     {
         // cycle window modes with F11
@@ -87,7 +90,7 @@ int main(void)
             ClearBackground(BLACK);
             
             BeginMode2D(global_rbg_camera);
-                rbg_run_game(); // (update + drawing)
+                rbg_run_game(&rbg_game_ctx); // (update + drawing)
             EndMode2D();
         EndTextureMode();
 

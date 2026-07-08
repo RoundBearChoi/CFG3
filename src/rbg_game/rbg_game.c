@@ -17,13 +17,11 @@ void rbg_init_game()
 	rbg_load_game_settings(NULL);
 }
 
-void rbg_run_game(void)
+void rbg_run_game(RbgGameContext* game_ctx)
 {
-	static bool _initialized = false;
-
-	if (_initialized == false)
+	if (game_ctx->game_initialized == false)
 	{
-		_initialized = true;
+		game_ctx->game_initialized = true;
 		rbg_init_game();
 		rbg_init_fixed_time_step();
 	}
