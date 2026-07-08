@@ -5,7 +5,7 @@
 #include <stddef.h>
 
 static rbg_scene_type _current_scene = TEST_SCENE_2; // only used locally
-rbg_scene_type rbg_next_scene = NONE; // accessed by other files to set next scene
+static rbg_scene_type _next_scene = NONE; // accessed by other files to set next scene
 
 // Array of function pointers for updates - indexed by rbg_scene_type enum
 static SceneUpdateFn scene_updates[NUM_SCENES] =
@@ -34,10 +34,10 @@ void rbg_update_scenes(void)
     }
 
     // apply queued scene change at the end of the frame's update phase
-    if (rbg_next_scene != NONE && rbg_next_scene != NUM_SCENES)
+    if (_next_scene != NONE && _next_scene != NUM_SCENES)
     {
-        _current_scene = rbg_next_scene;
-        rbg_next_scene = NONE;
+        _current_scene = _next_scene;
+        _next_scene = NONE;
         //TraceLog(LOG_INFO, "Scene switched to %d", (int)_current_scene);
     }
 }
@@ -53,4 +53,12 @@ void rbg_render_scenes(void)
 	{
         DrawText("ERROR: Invalid scene for render!", 200, 200, 30, RED);
     }
+}
+
+void rbg_set_next_scene(rbg_scene_type next_scene)
+{
+	if (next_scene >= 0 && next_scene < NUM_SCENES)
+	{
+		_next_scene = next_scene;
+	}
 }

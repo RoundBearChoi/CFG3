@@ -12,7 +12,7 @@ typedef enum
     NUM_SCENES
 } rbg_scene_type;
 
-extern rbg_scene_type rbg_next_scene;
+void rbg_set_next_scene(rbg_scene_type next_scene);
 
 // Function pointer types for scene dispatch (update & render)
 typedef void (*SceneUpdateFn)(void);
