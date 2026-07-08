@@ -6,14 +6,14 @@
 int global_rbg_current_record_frame = 0;
 
 static bool _is_recording_input = false;
-static bool recordingBuffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
+static bool _recording_buffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
 
 void rbg_start_recording(void)
 {
 	TraceLog(LOG_INFO, "Input recording system initialized (max %d frames @ 128 FPS)", MAX_RECORD_FRAMES);
 
     // Always reset buffer and state when starting a new recording
-    memset(recordingBuffer, 0, sizeof(recordingBuffer));
+    memset(_recording_buffer, 0, sizeof(_recording_buffer));
     global_rbg_current_record_frame = 0;
     _is_recording_input = true;
 
@@ -55,7 +55,7 @@ void rbg_update_recording(void)
     for (int i = 0; i < NUM_RECORD_ACTIONS; i++)
     {
         InputAction action = (InputAction)(RECORD_FIRST_ACTION + i);
-        recordingBuffer[global_rbg_current_record_frame][i] = IsInputActionDown(action);
+        _recording_buffer[global_rbg_current_record_frame][i] = IsInputActionDown(action);
     }
 
     global_rbg_current_record_frame++;
@@ -106,7 +106,7 @@ bool rbg_save_recording(const char* filename)
         {
             if (a > 0)
                 *ptr++ = ',';
-            *ptr++ = recordingBuffer[f][a] ? '1' : '0';
+            *ptr++ = _recording_buffer[f][a] ? '1' : '0';
         }
         *ptr++ = '\n';
     }
@@ -143,5 +143,5 @@ bool rbg_input_action_is_pressed(InputAction action)
     }
 
     int idx = (int)(action - RECORD_FIRST_ACTION);
-    return recordingBuffer[global_rbg_current_record_frame - 1][idx];
+    return _recording_buffer[global_rbg_current_record_frame - 1][idx];
 }
