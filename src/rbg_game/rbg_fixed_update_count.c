@@ -1,7 +1,7 @@
 #include "rbg_fixed_update_count.h"
 #include "raylib.h"
 
-int rbg_fixed_updates = 0;
+int global_rbg_fixed_updates = 0;
 double rbg_accumulated_dt = 0.0;
 
 static double prev_time = 0.0f;
@@ -25,7 +25,7 @@ void rbg_fixed_update_count(void)
 
 	if (rbg_accumulated_dt >= 1.0)
 	{
-		rbg_fixed_updates = fixed_updates;
+		global_rbg_fixed_updates = fixed_updates;
 
 		fixed_updates = 0;
 		rbg_accumulated_dt = 0.0;

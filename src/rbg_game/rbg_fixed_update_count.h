@@ -1,7 +1,7 @@
 #ifndef RBG_FIXED_UPDATE_COUNT_H
 #define RBG_FIXED_UPDATE_COUNT_H
 
-extern int rbg_fixed_updates;
+extern int global_rbg_fixed_updates;
 extern double rbg_delta_time;
 extern double rbg_accumulated_dt;
 
