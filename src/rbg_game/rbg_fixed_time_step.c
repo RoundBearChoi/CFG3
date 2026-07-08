@@ -4,8 +4,7 @@
 /*
     === static ===
     storage duration — variable lives for entire lifetime of program (same as a normal global)
-    internal linkage — variable is private to this file only, no other .c  can access _accumulator directly, even if they include the header
-    this is the key benefit
+    internal linkage — variable is private to this file only, no other file can access _accumulator directly, this is the key benefit
 */
 
 static double _accumulator = 0.0;
