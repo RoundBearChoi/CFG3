@@ -4,8 +4,8 @@
 #include "raylib.h"
 #include <stddef.h>
 
-static rbg_scene_type _current_scene = TEST_SCENE_2; // only used locally
-static rbg_scene_type _next_scene = NONE; // accessed by other files to set next scene
+static rbg_scene_type _current_scene = TEST_SCENE_2;
+static rbg_scene_type _next_scene = NONE;
 
 // Array of function pointers for updates - indexed by rbg_scene_type enum
 static SceneUpdateFn scene_updates[NUM_SCENES] =
