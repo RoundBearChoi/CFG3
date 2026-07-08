@@ -6,8 +6,12 @@
 extern double global_rbg_frame_time;
 
 typedef struct {
-    bool game_initialized;
-    // Add more game-wide state here later
+    bool   game_initialized;
+
+    // fixed timestep state
+    double accumulator;
+    double previous_time;
+    double fixed_dt;
 } RbgGameContext;
 
 void rbg_init_game(void);
