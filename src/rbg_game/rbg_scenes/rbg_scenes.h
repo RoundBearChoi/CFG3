@@ -12,7 +12,6 @@ typedef enum
     NUM_SCENES
 } rbg_scene_type;
 
-extern rbg_scene_type rbg_current_scene;
 extern rbg_scene_type rbg_next_scene;
 
 // Function pointer types for scene dispatch (update & render)

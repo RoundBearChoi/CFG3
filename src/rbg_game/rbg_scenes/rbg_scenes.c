@@ -4,8 +4,8 @@
 #include "raylib.h"
 #include <stddef.h>
 
-rbg_scene_type rbg_current_scene = TEST_SCENE_2;
-rbg_scene_type rbg_next_scene = NONE;
+static rbg_scene_type _current_scene = TEST_SCENE_2; // only used locally
+rbg_scene_type rbg_next_scene = NONE; // accessed by other files to set next scene
 
 // Array of function pointers for updates - indexed by rbg_scene_type enum
 static SceneUpdateFn scene_updates[NUM_SCENES] =
@@ -24,9 +24,9 @@ static SceneRenderFn scene_renders[NUM_SCENES] =
 void rbg_update_scenes(void)
 {
     // safety: prevent crashes if somehow out of bounds
-    if (rbg_current_scene >= 0 && rbg_current_scene < NUM_SCENES && scene_updates[rbg_current_scene] != NULL)
+    if (_current_scene >= 0 && _current_scene < NUM_SCENES && scene_updates[_current_scene] != NULL)
 	{
-        scene_updates[rbg_current_scene](); // run the scene update based on selected enum
+        scene_updates[_current_scene](); // run the scene update based on selected enum
     } 
 	else
 	{
@@ -36,18 +36,18 @@ void rbg_update_scenes(void)
     // apply queued scene change at the end of the frame's update phase
     if (rbg_next_scene != NONE && rbg_next_scene != NUM_SCENES)
     {
-        rbg_current_scene = rbg_next_scene;
+        _current_scene = rbg_next_scene;
         rbg_next_scene = NONE;
-        //TraceLog(LOG_INFO, "Scene switched to %d", (int)rbg_current_scene);
+        //TraceLog(LOG_INFO, "Scene switched to %d", (int)_current_scene);
     }
 }
 
 void rbg_render_scenes(void)
 {
     // Mirror of update dispatch, but for rendering (called once per visual frame)
-    if (rbg_current_scene >= 0 && rbg_current_scene < NUM_SCENES && scene_renders[rbg_current_scene] != NULL)
+    if (_current_scene >= 0 && _current_scene < NUM_SCENES && scene_renders[_current_scene] != NULL)
 	{
-        scene_renders[rbg_current_scene]();
+        scene_renders[_current_scene]();
     } 
 	else
 	{
