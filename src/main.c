@@ -6,7 +6,7 @@
 #include <stddef.h>
 
 extern Camera2D rbg_global_camera;
-extern int rbg_target_fps; // declared in rbg_game.c
+extern int rbg_target_fps; // defined in rbg_game.c
 extern Font press_start;
 
 int main(void)

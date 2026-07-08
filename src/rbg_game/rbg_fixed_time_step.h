@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 extern double rbg_frame_time;
-extern const int rbg_target_fps; // declared in rbg_game.c
+extern const int rbg_target_fps; // defined in rbg_game.c
 
 void rbg_init_fixed_time_step(void);
 void rbg_accumulate_fixed_time_step(void);
