@@ -8,7 +8,7 @@ extern double global_rbg_frame_time;
 typedef struct {
     bool   game_initialized;
 
-    // Fixed timestep state (moved from rbg_fixed_time_step.c)
+    // fixed timestep state
     double accumulator;
     double previous_time;
     double fixed_dt;
