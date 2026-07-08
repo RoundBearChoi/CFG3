@@ -10,11 +10,11 @@ void rbg_init_fixed_time_step(void)
     accumulator = 0.0;
     previous_time = 0.0;
 
-	if (rbg_target_fps == 128)
+	if (global_rbg_target_fps == 128)
 	{
 		fixed_dt = 1.0 / 128.0;
 	}
-	else if (rbg_target_fps == 60)
+	else if (global_rbg_target_fps == 60)
 	{
 		fixed_dt = 1.0 / 60.0;
 	}

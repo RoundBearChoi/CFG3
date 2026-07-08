@@ -6,7 +6,7 @@
 #include <stddef.h>
 
 extern Camera2D rbg_global_camera;
-extern int rbg_target_fps; // defined in rbg_game.c
+extern int global_rbg_target_fps; // defined in rbg_game.c
 extern Font press_start;
 
 int main(void)
@@ -25,7 +25,7 @@ int main(void)
     // start at native resolution (1600x800)
 	InitWindow(nativeWidth, nativeHeight, bar_title);
     ClearWindowState(FLAG_VSYNC_HINT);
-    SetTargetFPS(rbg_target_fps);
+    SetTargetFPS(global_rbg_target_fps);
 
 	// font
 	press_start = LoadFontEx("PrStart.ttf", 32, NULL, 0);
@@ -76,7 +76,7 @@ int main(void)
 
             // re-apply after window change
             ClearWindowState(FLAG_VSYNC_HINT);
-            SetTargetFPS(rbg_target_fps);
+            SetTargetFPS(global_rbg_target_fps);
         }
 
         BeginDrawing();
