@@ -11,7 +11,7 @@
 // ===================================================
 
 extern int global_rbg_current_record_frame;
-extern bool rbg_is_recording_input;
+//extern bool rbg_is_recording_input;
 
 void rbg_start_recording(void);
 void rbg_stop_recording(void);

@@ -4,8 +4,8 @@
 #include <stdlib.h>
 
 int global_rbg_current_record_frame = 0;
-bool rbg_is_recording_input = false;
 
+static bool rbg_is_recording_input = false;
 static bool recordingBuffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
 
 void rbg_start_recording(void)
