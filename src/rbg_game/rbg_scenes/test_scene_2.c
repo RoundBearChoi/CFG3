@@ -12,13 +12,13 @@
 #include "raylib.h"
 #include <stdio.h>
 
-static bool test_scene_2_initialized = false; 
+static bool _test_scene_2_initialized = false; 
 
 void init_test_scene_2(void)
 {
 	printf("\n=== starting test scene 2 ===\n");
 
-	test_scene_2_initialized = true;
+	_test_scene_2_initialized = true;
 
 	rbg_init_input();
 	rbg_init_cam_control();
@@ -30,7 +30,7 @@ void init_test_scene_2(void)
 void end_test_scene_2(void)
 {
 	// reset so we init again when we come back to this scene
-	test_scene_2_initialized = false;
+	_test_scene_2_initialized = false;
 
 	rbg_stop_recording();
 	rbg_unload_sprite_sheets();
@@ -38,7 +38,7 @@ void end_test_scene_2(void)
 
 void update_test_scene_2(void)
 {
-	if (!test_scene_2_initialized) init_test_scene_2();
+	if (!_test_scene_2_initialized) init_test_scene_2();
 
 	rbg_update_recording(); // input actions
 
