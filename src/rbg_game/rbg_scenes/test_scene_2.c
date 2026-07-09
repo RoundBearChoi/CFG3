@@ -1,7 +1,7 @@
 #include "test_scene_2.h"
 #include "rbg_input/rbg_update_input.h"
 #include "rbg_input/rbg_record_input_actions.h"
-#include "rbg_cam_control/rbg_cam_control.h"
+#include "../rbg_cam_control/rbg_cam_control.h"
 #include "rbg_players/rbg_players.h"
 #include "rbg_players/rbg_player_boxes.h"
 #include "rbg_players/rbg_basic_collision_resolve.h"
@@ -21,10 +21,10 @@ void init_test_scene_2(void)
 	_test_scene_2_initialized = true;
 
 	rbg_init_input();
-	rbg_init_cam_control();
-	rbg_init_players();
-	rbg_init_player_boxes();
-	rbg_init_sheet_animators();
+trbg_init_cam_control();
+trbg_init_players();
+trbg_init_player_boxes();
+trbg_init_sheet_animators();
 }
 
 void end_test_scene_2(void)
@@ -33,7 +33,7 @@ void end_test_scene_2(void)
 	_test_scene_2_initialized = false;
 
 	rbg_stop_recording();
-	rbg_unload_sprite_sheets();
+trbg_unload_sprite_sheets();
 }
 
 void update_test_scene_2(void)
