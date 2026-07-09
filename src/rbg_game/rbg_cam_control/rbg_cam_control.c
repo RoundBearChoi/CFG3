@@ -2,7 +2,6 @@
 #include "../rbg_input/rbg_update_input.h"
 #include "raylib.h"
 
-// specific to test_scene_2
 void rbg_init_cam_control(RbgGameContext* ctx)
 {
 	if (!ctx) return;
@@ -13,7 +12,6 @@ void rbg_init_cam_control(RbgGameContext* ctx)
 	ctx->camera.zoom = 1.0f;
 }
 
-// specific to test_scene_2
 void rbg_update_cam_control(RbgGameContext* ctx)
 {
 	if (!ctx) return;
