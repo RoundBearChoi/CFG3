@@ -1,0 +1,15 @@
+#ifndef RBG_GAME_CONTEXT_H
+#define RBG_GAME_CONTEXT_H
+
+#include <stdbool.h>
+
+typedef struct {
+    bool   game_initialized;
+
+    // fixed timestep state
+    double accumulator;
+    double previous_time;
+    double fixed_dt;
+} RbgGameContext;
+
+#endif

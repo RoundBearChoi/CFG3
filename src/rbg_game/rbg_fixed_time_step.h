@@ -1,7 +1,7 @@
 #ifndef RBG_FIXED_TIME_STEP_H
 #define RBG_FIXED_TIME_STEP_H
 
-#include "rbg_game.h"
+#include "rbg_game_context.h"
 #include <stdbool.h>
 
 extern double global_rbg_frame_time;
