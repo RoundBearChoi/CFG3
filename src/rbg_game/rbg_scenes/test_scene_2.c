@@ -21,10 +21,10 @@ void init_test_scene_2(void)
 	_test_scene_2_initialized = true;
 
 	rbg_init_input();
-trbg_init_cam_control();
-trbg_init_players();
-trbg_init_player_boxes();
-trbg_init_sheet_animators();
+	rbg_init_cam_control();
+	rbg_init_players();
+	rbg_init_player_boxes();
+	rbg_init_sheet_animators();
 }
 
 void end_test_scene_2(void)
@@ -33,7 +33,7 @@ void end_test_scene_2(void)
 	_test_scene_2_initialized = false;
 
 	rbg_stop_recording();
-trbg_unload_sprite_sheets();
+	rbg_unload_sprite_sheets();
 }
 
 void update_test_scene_2(void)
