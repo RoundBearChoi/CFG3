@@ -7,13 +7,15 @@ Note: Directories are colored blue in the terminal (plain text here)
 │ ├── default_key_bindings.json
 │ ├── fighters_spritesheet_list.csv
 │ ├── fighters_spritesheets
+│ │ ├── fighter_0_fall.png
+│ │ ├── fighter_0_fall_loop.png
 │ │ ├── fighter_0_idle.png
+│ │ ├── fighter_0_jump.png
 │ │ └── fighter_0_walk.png
 │ ├── fonts
 │ ├── game_settings.json
 │ └── recordings
 │  └── demo_input.csv
-├── screenshot000.png
 └── src
  ├── cJSON
  │ ├── cJSON.c
@@ -46,8 +48,12 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ │ ├── rbg_basic_collision_resolve.c
   │ │ ├── rbg_basic_collision_resolve.h
   │ │ ├── rbg_fighters
+  │ │ │ ├── rbg_fighter_0_fall.c
+  │ │ │ ├── rbg_fighter_0_fall.h
   │ │ │ ├── rbg_fighter_0_idle.c
   │ │ │ ├── rbg_fighter_0_idle.h
+  │ │ │ ├── rbg_fighter_0_jump.c
+  │ │ │ ├── rbg_fighter_0_jump.h
   │ │ │ ├── rbg_fighter_0_walk.c
   │ │ │ ├── rbg_fighter_0_walk.h
   │ │ │ ├── rbg_fighter_updater.c
