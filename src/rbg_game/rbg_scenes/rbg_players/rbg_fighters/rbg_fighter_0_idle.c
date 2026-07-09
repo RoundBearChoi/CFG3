@@ -1,5 +1,5 @@
 #include "rbg_fighter_0_idle.h"
-#include "../../rbg_input/rbg_record_input_actions.h"
+#include "../../../rbg_input/rbg_record_input_actions.h"
 #include "../../../rbg_spritesheets/rbg_sheet_animators.h"
 
 void update_fighter_0_idle(rbg_player* player)

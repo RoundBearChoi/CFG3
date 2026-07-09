@@ -1,5 +1,5 @@
 #include "rbg_cam_control.h"
-#include "../rbg_scenes/rbg_input/rbg_update_input.h"
+#include "../rbg_input/rbg_update_input.h"
 #include "raylib.h"
 
 // Definition (no extern) – this is the real variable

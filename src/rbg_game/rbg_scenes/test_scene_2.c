@@ -1,6 +1,6 @@
 #include "test_scene_2.h"
-#include "rbg_input/rbg_update_input.h"
-#include "rbg_input/rbg_record_input_actions.h"
+#include "../rbg_input/rbg_update_input.h"
+#include "../rbg_input/rbg_record_input_actions.h"
 #include "../rbg_cam_control/rbg_cam_control.h"
 #include "rbg_players/rbg_players.h"
 #include "rbg_players/rbg_player_boxes.h"

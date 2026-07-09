@@ -1,5 +1,5 @@
 #include "rbg_fighter_0_walk.h"
-#include "../../rbg_input/rbg_record_input_actions.h"
+#include "../../../rbg_input/rbg_record_input_actions.h"
 #include "../../../rbg_spritesheets/rbg_sheet_animators.h"
 
 void update_fighter_0_walk(rbg_player* player)

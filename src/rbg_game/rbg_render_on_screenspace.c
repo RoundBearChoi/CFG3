@@ -2,7 +2,7 @@
 #include "rbg_game.h"
 #include "rbg_game_settings.h"
 #include "rbg_fixed_update_count.h"
-#include "rbg_scenes/rbg_input/rbg_record_input_actions.h"
+#include "rbg_input/rbg_record_input_actions.h"
 #include "raylib.h"
 
 extern Font global_font_press_start;

@@ -1,5 +1,5 @@
 #include "rbg_players.h"
-#include "../rbg_input/rbg_record_input_actions.h"
+#include "../../rbg_input/rbg_record_input_actions.h"
 #include <stddef.h>
 #include <stdio.h>
 

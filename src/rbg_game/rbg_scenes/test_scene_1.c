@@ -1,6 +1,6 @@
 #include "test_scene_1.h"
-#include "rbg_input/rbg_update_input.h"
-#include "../rbg_scenes/rbg_scenes.h"
+#include "rbg_scenes.h"
+#include "../rbg_input/rbg_update_input.h"
 #include "../rbg_cam_control/rbg_cam_control.h"
 #include "raylib.h"
 

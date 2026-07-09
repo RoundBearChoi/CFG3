@@ -1,7 +1,7 @@
 #include "rbg_game.h"
 #include "rbg_game_settings.h"
-#include "rbg_scenes/rbg_input/rbg_update_input.h"
 #include "rbg_scenes/rbg_scenes.h"
+#include "rbg_input/rbg_update_input.h"
 #include "rbg_render_debug/rbg_render_debug.h"
 #include "rbg_fixed_update_count.h"
 #include "rbg_fixed_time_step.h"
