@@ -1,6 +1,6 @@
 #include "rbg_sheet_animators.h"
 #include "rbg_sheet_loader.h"
-#include "../rbg_scenes/rbg_players/rbg_players.h"
+#include "../rbg_players/rbg_players.h"
 #include "raylib.h"
 #include <stddef.h>
 #include <string.h>  // for memset

@@ -38,30 +38,30 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ ├── rbg_record_input_actions.h
   │ ├── rbg_update_input.c
   │ └── rbg_update_input.h
+  ├── rbg_players
+  │ ├── rbg_basic_collision_resolve.c
+  │ ├── rbg_basic_collision_resolve.h
+  │ ├── rbg_fighters
+  │ │ ├── rbg_fighter_0_fall.c
+  │ │ ├── rbg_fighter_0_fall.h
+  │ │ ├── rbg_fighter_0_idle.c
+  │ │ ├── rbg_fighter_0_idle.h
+  │ │ ├── rbg_fighter_0_jump.c
+  │ │ ├── rbg_fighter_0_jump.h
+  │ │ ├── rbg_fighter_0_walk.c
+  │ │ ├── rbg_fighter_0_walk.h
+  │ │ ├── rbg_fighter_updater.c
+  │ │ └── rbg_fighter_updater.h
+  │ ├── rbg_player_boxes.c
+  │ ├── rbg_player_boxes.h
+  │ ├── rbg_players.c
+  │ └── rbg_players.h
   ├── rbg_render_debug
   │ ├── rbg_render_debug.c
   │ └── rbg_render_debug.h
   ├── rbg_render_on_screenspace.c
   ├── rbg_render_on_screenspace.h
   ├── rbg_scenes
-  │ ├── rbg_players
-  │ │ ├── rbg_basic_collision_resolve.c
-  │ │ ├── rbg_basic_collision_resolve.h
-  │ │ ├── rbg_fighters
-  │ │ │ ├── rbg_fighter_0_fall.c
-  │ │ │ ├── rbg_fighter_0_fall.h
-  │ │ │ ├── rbg_fighter_0_idle.c
-  │ │ │ ├── rbg_fighter_0_idle.h
-  │ │ │ ├── rbg_fighter_0_jump.c
-  │ │ │ ├── rbg_fighter_0_jump.h
-  │ │ │ ├── rbg_fighter_0_walk.c
-  │ │ │ ├── rbg_fighter_0_walk.h
-  │ │ │ ├── rbg_fighter_updater.c
-  │ │ │ └── rbg_fighter_updater.h
-  │ │ ├── rbg_player_boxes.c
-  │ │ ├── rbg_player_boxes.h
-  │ │ ├── rbg_players.c
-  │ │ └── rbg_players.h
   │ ├── rbg_scenes.c
   │ ├── rbg_scenes.h
   │ ├── test_scene_1.c
