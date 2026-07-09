@@ -2,6 +2,7 @@
 #define RBG_GAME_CONTEXT_H
 
 #include <stdbool.h>
+#include "raylib.h"
 
 typedef struct {
     bool   game_initialized;
@@ -10,6 +11,8 @@ typedef struct {
     double accumulator;
     double previous_time;
     double fixed_dt;
+
+	Camera2D camera;
 } RbgGameContext;
 
 #endif

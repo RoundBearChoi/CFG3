@@ -21,12 +21,12 @@ static SceneRenderFn scene_renders[NUM_SCENES] =
     render_test_scene_2,
 };
 
-void rbg_update_scenes(void)
+void rbg_update_scenes(RbgGameContext* ctx)
 {
     // safety: prevent crashes if somehow out of bounds
     if (_current_scene >= 0 && _current_scene < NUM_SCENES && scene_updates[_current_scene] != NULL)
 	{
-        scene_updates[_current_scene](); // run the scene update based on selected enum
+        scene_updates[_current_scene](ctx); // run the scene update based on selected enum
     } 
 	else
 	{
@@ -42,12 +42,12 @@ void rbg_update_scenes(void)
     }
 }
 
-void rbg_render_scenes(void)
+void rbg_render_scenes(RbgGameContext* ctx)
 {
     // Mirror of update dispatch, but for rendering (called once per visual frame)
     if (_current_scene >= 0 && _current_scene < NUM_SCENES && scene_renders[_current_scene] != NULL)
 	{
-        scene_renders[_current_scene]();
+        scene_renders[_current_scene](ctx);
     } 
 	else
 	{

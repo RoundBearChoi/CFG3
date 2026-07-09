@@ -14,21 +14,25 @@
 
 static bool _test_scene_2_initialized = false; 
 
-void init_test_scene_2(void)
+void init_test_scene_2(RbgGameContext* ctx)
 {
+	if (!ctx) return;
+
 	printf("\n=== starting test scene 2 ===\n");
 
 	_test_scene_2_initialized = true;
 
 	rbg_init_input();
-	rbg_init_cam_control();
+	rbg_init_cam_control(ctx);
 	rbg_init_players();
 	rbg_init_player_boxes();
 	rbg_init_sheet_animators();
 }
 
-void end_test_scene_2(void)
+void end_test_scene_2(RbgGameContext* ctx)
 {
+	if (!ctx) return;
+	
 	// reset so we init again when we come back to this scene
 	_test_scene_2_initialized = false;
 
@@ -36,9 +40,11 @@ void end_test_scene_2(void)
 	rbg_unload_sprite_sheets();
 }
 
-void update_test_scene_2(void)
+void update_test_scene_2(RbgGameContext* ctx)
 {
-	if (!_test_scene_2_initialized) init_test_scene_2();
+	if (!ctx) return;
+	
+	if (!_test_scene_2_initialized) init_test_scene_2(ctx);
 
 	rbg_update_recording(); // input actions
 
@@ -54,11 +60,11 @@ void update_test_scene_2(void)
 	if (IsInputActionPressed(INPUT_F1))
 	{
 		rbg_set_next_scene(TEST_SCENE_1);
-		end_test_scene_2();
+		end_test_scene_2(ctx);
 	}
 	
 	// update all gameplay stuff
-	rbg_update_cam_control();
+	rbg_update_cam_control(ctx);
 	rbg_update_fighter(&rbg_player_1);
 	rbg_update_fighter(&rbg_player_2);
 	rbg_update_players();
@@ -67,8 +73,10 @@ void update_test_scene_2(void)
 	rbg_update_basic_collision_resolve();
 }
 
-void render_test_scene_2(void)
+void render_test_scene_2(RbgGameContext* ctx)
 {
+	if (!ctx) return;
+	
 	rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
 	rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position, 1.0f, GRAY);
 }

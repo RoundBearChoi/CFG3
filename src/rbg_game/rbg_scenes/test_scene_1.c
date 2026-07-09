@@ -4,8 +4,10 @@
 #include "../rbg_cam_control/rbg_cam_control.h"
 #include "raylib.h"
 
-void update_test_scene_1(void)
+void update_test_scene_1(RbgGameContext* ctx)
 {
+	if (!ctx) return;
+
 	if (IsInputActionPressed(INPUT_F1))
 	{
 		rbg_set_next_scene(TEST_SCENE_2);
@@ -14,8 +16,10 @@ void update_test_scene_1(void)
 	// Note: input, logic, state changes here. No drawing.
 }
 
-void render_test_scene_1(void)
+void render_test_scene_1(RbgGameContext* ctx)
 {
+	if (!ctx) return;
+
     DrawText("This is TEST SCENE 1", 0, 0, 30, WHITE);
 	// All drawing / render commands for this scene go here.
 }

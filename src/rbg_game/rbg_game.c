@@ -34,11 +34,11 @@ void rbg_run_game(RbgGameContext* game_ctx)
     // fixed timestep loop - multiple updates if behind (for determinism)
     while (rbg_run_fixed_time_step(game_ctx))
     {
-        rbg_update_scenes();
+        rbg_update_scenes(game_ctx);
         rbg_fixed_update_count();
     }
 
     // Render scenes once per frame
-    rbg_render_scenes();
+    rbg_render_scenes(game_ctx);
     rbg_render_debug();
 }
