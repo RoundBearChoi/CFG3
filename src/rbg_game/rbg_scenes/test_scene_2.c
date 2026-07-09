@@ -16,8 +16,6 @@ static bool _test_scene_2_initialized = false;
 
 void init_test_scene_2(RbgGameContext* ctx)
 {
-	if (!ctx) return;
-
 	printf("\n=== starting test scene 2 ===\n");
 
 	_test_scene_2_initialized = true;
@@ -42,8 +40,6 @@ void end_test_scene_2(RbgGameContext* ctx)
 
 void update_test_scene_2(RbgGameContext* ctx)
 {
-	if (!ctx) return;
-	
 	if (!_test_scene_2_initialized) init_test_scene_2(ctx);
 
 	rbg_update_recording(); // input actions
