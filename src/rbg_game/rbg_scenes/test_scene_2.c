@@ -22,7 +22,7 @@ void init_test_scene_2(RbgGameContext* ctx)
 
 	_test_scene_2_initialized = true;
 
-	rbg_init_input();
+	rbg_init_input(ctx);
 	rbg_init_players();
 	rbg_init_player_boxes();
 	rbg_init_sheet_animators();

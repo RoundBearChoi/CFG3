@@ -28,7 +28,7 @@ void rbg_run_game(RbgGameContext* game_ctx)
         rbg_init_fixed_time_step(game_ctx);
     }
 
-    rbg_update_input();
+    rbg_update_input(game_ctx);
     rbg_accumulate_fixed_time_step(game_ctx);
 
     // fixed timestep loop - multiple updates if behind (for determinism)

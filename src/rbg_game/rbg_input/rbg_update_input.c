@@ -147,13 +147,17 @@ bool rbg_load_default_key_bindings(void)
     return true;
 }
 
-void rbg_init_input(void)
+void rbg_init_input(RbgGameContext* game_ctx)
 {
+	if (!game_ctx) return;
+
     rbg_load_default_key_bindings();
 }
 
-void rbg_update_input(void)
+void rbg_update_input(RbgGameContext* game_ctx)
 {
+	if (!game_ctx) return;
+
     // check down or pressed in every frame
     for (int i = 0; i < INPUT_ACTION_COUNT; i++)
     {

@@ -1,6 +1,7 @@
 #ifndef RBG_UPDATE_INPUT_H
 #define RBG_UPDATE_INPUT_H
 
+#include "../rbg_game_context.h"
 #include "raylib.h"
 
 // X macro – single source of truth for all input enums
@@ -39,9 +40,9 @@ extern KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
 extern const char* const rbg_input_action_names[INPUT_ACTION_COUNT];
 
-void rbg_init_input(void);
 bool rbg_load_default_key_bindings(void);
-void rbg_update_input(void);
+void rbg_init_input(RbgGameContext *game_ctx);
+void rbg_update_input(RbgGameContext *game_ctx);
 InputAction rbg_get_move_left(int playerIndex);
 InputAction rbg_get_move_right(int playerIndex);
 InputAction rbg_get_move_up(int playerIndex);
