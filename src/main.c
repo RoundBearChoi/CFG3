@@ -38,7 +38,7 @@ int main(void)
 	int window_mode = 0;
 
 	// game context instance
-	RbgGameContext rbg_game_ctx = {0};
+	RbgGameContext game_ctx = {0};
 
 	while (!WindowShouldClose())
     {
@@ -88,8 +88,8 @@ int main(void)
         BeginTextureMode(target);
             ClearBackground(BLACK);
             
-            BeginMode2D(rbg_game_ctx.camera);
-                rbg_run_game(&rbg_game_ctx); // (update + drawing)
+            BeginMode2D(game_ctx.camera);
+                rbg_run_game(&game_ctx); // (update + drawing)
             EndMode2D();
         EndTextureMode();
 
@@ -115,7 +115,7 @@ int main(void)
 
         DrawTexturePro(target.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
 
-		rbg_render_on_screenspace();
+		rbg_render_on_screenspace(&game_ctx);
 
         EndDrawing();
     }

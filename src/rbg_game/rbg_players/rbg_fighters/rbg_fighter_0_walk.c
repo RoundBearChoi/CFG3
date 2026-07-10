@@ -2,7 +2,7 @@
 #include "../../rbg_input/rbg_record_input_actions.h"
 #include "../../rbg_spritesheets/rbg_sheet_animators.h"
 
-void update_fighter_0_walk(rbg_player* player)
+void update_fighter_0_walk(RbgGameContext* game_ctx, rbg_player* player)
 {
 	if (new_state_detected(player))
 	{
@@ -11,7 +11,7 @@ void update_fighter_0_walk(rbg_player* player)
 
 	if (player->is_facing_right_side)
 	{
-		if (rbg_input_action_is_pressed(rbg_get_move_right(player->player_index)) == false)
+		if (rbg_input_action_is_pressed(game_ctx, rbg_get_move_right(player->player_index)) == false)
 		{
 			player->fighter_curr_state = fighter_0_idle;
 		}
@@ -22,7 +22,7 @@ void update_fighter_0_walk(rbg_player* player)
 	}
 	else
 	{
-		if (rbg_input_action_is_pressed(rbg_get_move_left(player->player_index)) == false)
+		if (rbg_input_action_is_pressed(game_ctx, rbg_get_move_left(player->player_index)) == false)
 		{
 			player->fighter_curr_state = fighter_0_idle;
 		}

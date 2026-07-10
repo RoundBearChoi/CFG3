@@ -18,7 +18,7 @@ rbg_fighter_update_func rbg_fighter_update_functions[NUM_FIGHTER_STATES] = {
 #undef X
 };
 
-void rbg_update_fighter(rbg_player* player)
+void rbg_update_fighter(RbgGameContext* game_ctx, rbg_player* player)
 {
     if (player == NULL)
     {
@@ -34,5 +34,5 @@ void rbg_update_fighter(rbg_player* player)
     }
 
     // Dispatch to the correct per-state update function
-    rbg_fighter_update_functions[player->fighter_curr_state](player);
+    rbg_fighter_update_functions[player->fighter_curr_state](game_ctx, player);
 }

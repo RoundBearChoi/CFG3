@@ -4,7 +4,7 @@
 #include "raylib.h"
 //#include <stddef.h>
 
-void update_fighter_0_jump(rbg_player* player)
+void update_fighter_0_jump(RbgGameContext* game_ctx, rbg_player* player)
 {
 	// static timer for jump duration (initialized once, value persists. we reset on state entry)
 	static int jump_timers[3] = {0, 0, 0};

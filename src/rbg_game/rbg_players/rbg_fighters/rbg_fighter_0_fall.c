@@ -1,7 +1,7 @@
 #include "rbg_fighter_0_fall.h"
 #include "../../rbg_spritesheets/rbg_sheet_animators.h"
 
-void update_fighter_0_fall(rbg_player* player)
+void update_fighter_0_fall(RbgGameContext* game_ctx, rbg_player* player)
 {
 	if (new_state_detected(player))
 	{
