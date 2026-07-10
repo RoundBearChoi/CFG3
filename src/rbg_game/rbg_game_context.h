@@ -46,7 +46,7 @@ typedef enum
 typedef struct {
     bool game_initialized;
 
-    // fixed timestep state
+    // fixed timestep ctx
     double accumulator;
     double previous_time;
     double fixed_dt;
