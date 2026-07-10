@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 // Handle the uninitialized state
-static void update_fighter_uninitialized(rbg_player* player)
+static void update_fighter_uninitialized(RbgGameContext* game_ctx, rbg_player* player)
 {
     printf("fighter_uninitialized state detected for player at %p - forcing idle\n", (void*)player);
 }
