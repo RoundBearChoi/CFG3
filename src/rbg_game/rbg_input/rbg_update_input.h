@@ -4,10 +4,6 @@
 #include "../rbg_game_context.h"
 #include "raylib.h"
 
-// ============================================================
-//  SINGLE SOURCE OF TRUTH
-//  Enum name and string literal sit side-by-side → easy to compare
-// ============================================================
 #define RBG_INPUT_ACTIONS \
     X(INPUT_P1,               "INPUT_P1") \
     X(INPUT_P1_MOVE_LEFT,     "INPUT_P1_MOVE_LEFT") \
