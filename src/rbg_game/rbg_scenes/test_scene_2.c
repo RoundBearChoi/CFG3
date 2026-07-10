@@ -35,7 +35,7 @@ void end_test_scene_2(RbgGameContext* ctx)
 	// reset so we init again when we come back to this scene
 	_test_scene_2_initialized = false;
 
-	rbg_stop_recording();
+	rbg_stop_recording(ctx);
 	rbg_unload_sprite_sheets();
 }
 
@@ -43,13 +43,13 @@ void update_test_scene_2(RbgGameContext* ctx)
 {
 	if (!_test_scene_2_initialized) init_test_scene_2(ctx);
 
-	rbg_update_recording(); // input actions
+	rbg_update_recording(ctx); // input actions
 
 	// temp - manual record button for now
 	if (IsInputActionPressed(INPUT_F2)) rbg_start_recording(ctx);
 	if (IsInputActionPressed(INPUT_F3))
 	{
-		rbg_stop_recording();
+		rbg_stop_recording(ctx);
 		rbg_save_recording("resources/recordings/demo_input.csv");  // nested array ready
 	}
 

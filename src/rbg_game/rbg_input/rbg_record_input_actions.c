@@ -20,7 +20,7 @@ void rbg_start_recording(RbgGameContext* game_ctx)
     TraceLog(LOG_INFO, "=== INPUT RECORDING STARTED ===");
 }
 
-void rbg_stop_recording(void)
+void rbg_stop_recording(RbgGameContext* game_ctx)
 {
     if (!_is_recording_input) return;
 
@@ -40,13 +40,13 @@ int rbg_get_recorded_frames(void)
     return global_rbg_current_record_frame;
 }
 
-void rbg_update_recording(void)
+void rbg_update_recording(RbgGameContext* game_ctx)
 {
     if (!_is_recording_input) return;
 
     if (global_rbg_current_record_frame >= MAX_RECORD_FRAMES)
     {
-        rbg_stop_recording();
+        rbg_stop_recording(game_ctx);
         TraceLog(LOG_WARNING, "Maximum recording length (45s) reached");
         return;
     }
