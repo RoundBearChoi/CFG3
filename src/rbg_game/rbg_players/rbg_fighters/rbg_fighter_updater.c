@@ -8,7 +8,7 @@
 // Handle the uninitialized state
 static void update_fighter_uninitialized(RbgGameContext* game_ctx, rbg_player* player)
 {
-    printf("fighter_uninitialized state detected for player at %p - forcing idle\n", (void*)player);
+    printf("fighter_uninitialized state detected for player at %p\n", (void*)player);
 }
 
 // X-macro magic: builds the table automatically
