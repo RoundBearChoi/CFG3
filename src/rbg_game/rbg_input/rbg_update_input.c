@@ -11,11 +11,11 @@ static bool pressedStates[INPUT_ACTION_COUNT] = {false};
 
 KeyboardKey inputBindings[INPUT_ACTION_COUNT];
 
-// string literals generated automatically by the X macro
-// this is for converting enum to string literal or vice versa
+// string table generated from the side-by-side X-macro
+// (id, str) → we take the str part
 const char* const rbg_input_action_names[INPUT_ACTION_COUNT] =
 {
-#define X(name) #name,
+#define X(id, str) str,
     RBG_INPUT_ACTIONS
 #undef X
 };
