@@ -8,7 +8,7 @@ void update_test_scene_1(RbgGameContext* ctx)
 {
 	if (!ctx) return;
 
-	if (IsInputActionPressed(INPUT_F1))
+	if (IsInputActionPressed(ctx, INPUT_F1))
 	{
 		rbg_set_next_scene(TEST_SCENE_2);
 	}

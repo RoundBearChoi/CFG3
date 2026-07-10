@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 // internal state updated every frame
-static bool downStates[INPUT_ACTION_COUNT] = {false};
+//static bool downStates[INPUT_ACTION_COUNT] = {false};
 static bool pressedStates[INPUT_ACTION_COUNT] = {false};
 
 // string table generated from the side-by-side X-macro
@@ -149,7 +149,7 @@ void rbg_update_input(RbgGameContext* game_ctx)
     // check down or pressed in every frame
     for (int i = 0; i < INPUT_ACTION_COUNT; i++)
     {
-        downStates[i]    = IsKeyDown(game_ctx->input_bindings[i]);
+        game_ctx->down_states[i] = IsKeyDown(game_ctx->input_bindings[i]);
         pressedStates[i] = IsKeyPressed(game_ctx->input_bindings[i]);
     }
 }
@@ -178,13 +178,13 @@ InputAction rbg_get_move_up(int playerIndex)
 	return 0;
 }
 
-bool IsInputActionDown(InputAction action)
+bool IsInputActionDown(RbgGameContext* game_ctx, InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
-    return downStates[action];
+    return game_ctx->down_states[action];
 }
 
-bool IsInputActionPressed(InputAction action)
+bool IsInputActionPressed(RbgGameContext* game_ctx, InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
     return pressedStates[action];
@@ -195,5 +195,5 @@ bool IsInputActionReleased(RbgGameContext* game_ctx, InputAction action)
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
    
     // simple released logic = was down last frame but not this frame
-    return !downStates[action] && IsKeyUp(game_ctx->input_bindings[action]);
+    return !game_ctx->down_states[action] && IsKeyUp(game_ctx->input_bindings[action]);
 }

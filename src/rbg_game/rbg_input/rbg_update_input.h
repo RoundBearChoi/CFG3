@@ -14,8 +14,8 @@ InputAction rbg_get_move_right(int playerIndex);
 InputAction rbg_get_move_up(int playerIndex);
 
 // query functions
-bool IsInputActionDown(InputAction action); // key is held down right now (continuous)
-bool IsInputActionPressed(InputAction action); // key was pressed this exact frame
+bool IsInputActionDown(RbgGameContext* game_ctx, InputAction action); // key is held down right now (continuous)
+bool IsInputActionPressed(RbgGameContext* game_ctx, InputAction action); // key was pressed this exact frame
 bool IsInputActionReleased(RbgGameContext* game_ctx, InputAction action);
 
 #endif

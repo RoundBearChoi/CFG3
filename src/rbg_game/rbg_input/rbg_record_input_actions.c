@@ -39,7 +39,7 @@ void rbg_update_recording(RbgGameContext* game_ctx)
     for (int i = 0; i < NUM_RECORD_ACTIONS; i++)
     {
         InputAction action = (InputAction)(RECORD_FIRST_ACTION + i);
-        game_ctx->recording_buffer[game_ctx->current_recording_frame][i] = IsInputActionDown(action);
+        game_ctx->recording_buffer[game_ctx->current_recording_frame][i] = IsInputActionDown(game_ctx, action);
     }
 
     game_ctx->current_recording_frame++;
@@ -124,7 +124,7 @@ bool rbg_input_action_is_pressed(RbgGameContext* game_ctx, InputAction action)
         TraceLog(LOG_WARNING, "rbg_input_action_is_pressed: action %d is outside recorded range [%d-%d]",
                  (int)action, RECORD_FIRST_ACTION, RECORD_LAST_ACTION);
 		
-		return IsInputActionPressed(action); // fallback
+		return IsInputActionPressed(game_ctx, action); // fallback
 	}
 
 	int idx = (int)(action - RECORD_FIRST_ACTION);
