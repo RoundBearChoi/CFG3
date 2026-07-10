@@ -4,12 +4,12 @@
 #include "math.h"
 #include <stddef.h>
 
-void rbg_update_basic_collision_resolve(void)
+void rbg_update_basic_collision_resolve(RbgGameContext* game_ctx)
 {
 	rbg_player* p1 = rbg_get_player(1);
 	rbg_player* p2 = rbg_get_player(2);
-	rbg_player_col_box* b1 = rbg_get_player_box(1);
-	rbg_player_col_box* b2 = rbg_get_player_box(2);
+	rbg_player_col_box* b1 = &(game_ctx->player_1_box);
+	rbg_player_col_box* b2 = &(game_ctx->player_2_box);
 
 	if (p1 == NULL || p2 == NULL || b1 == NULL || b2 == NULL)
 	{

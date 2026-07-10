@@ -5,7 +5,7 @@
 #include "../rbg_fixed_update_count.h"
 #include "raylib.h"
 
-void rbg_render_debug(void)
+void rbg_render_debug(RbgGameContext* game_ctx)
 {
 	if (global_rbg_game_settings.render_debug == false) { return; }
 
@@ -17,8 +17,8 @@ void rbg_render_debug(void)
 	// random green horizontal line
 	DrawLine(-50, -50, 50, -50, GREEN);
 
-	rbg_draw_player_boxes(1);
-	rbg_draw_player_boxes(2);
+	rbg_draw_player_boxes(game_ctx, 1);
+	rbg_draw_player_boxes(game_ctx, 2);
 	rbg_draw_x_on_player_pos();
 }
 
@@ -40,10 +40,10 @@ void rbg_draw_x_on_player_pos(void)
 	DrawLineV((Vector2){ p2_pos.x - x_length, p2_pos.y - x_length }, (Vector2){ p2_pos.x + x_length, p2_pos.y + x_length }, p2_color_x);
 }
 
-void rbg_draw_player_boxes(int playerIndex)
+void rbg_draw_player_boxes(RbgGameContext* game_ctx, int playerIndex)
 {
 	rbg_player* p = rbg_get_player(playerIndex); 
-	rbg_player_col_box* b = rbg_get_player_box(playerIndex);
+	rbg_player_col_box* b = rbg_get_player_box(game_ctx, playerIndex);
 
 	float center_x = p->position.x + b->offset_x;
 	float bottom_y = p->position.y + b->offset_y;

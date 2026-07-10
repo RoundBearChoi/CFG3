@@ -40,5 +40,5 @@ void rbg_run_game(RbgGameContext* game_ctx)
 
     // Render scenes once per frame
     rbg_render_scenes(game_ctx);
-    rbg_render_debug();
+    rbg_render_debug(game_ctx);
 }

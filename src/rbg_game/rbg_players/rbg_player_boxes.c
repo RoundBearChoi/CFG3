@@ -4,16 +4,13 @@
 #include "raylib.h"
 #include "math.h"
 
-rbg_player_col_box rbg_player_1_box;
-rbg_player_col_box rbg_player_2_box;
-
-void rbg_init_player_boxes()
+void rbg_init_player_boxes(RbgGameContext* game_ctx)
 {
-	rbg_reset_box(&rbg_player_1_box);
-	rbg_reset_box(&rbg_player_2_box);
+	rbg_reset_box(&game_ctx->player_1_box);
+	rbg_reset_box(&game_ctx->player_2_box);
 
-	rbg_player_1_box.player_index = 1;
-	rbg_player_2_box.player_index = 2;
+	game_ctx->player_1_box.player_index = 1;
+	game_ctx->player_2_box.player_index = 2;
 }
 
 void rbg_reset_box(rbg_player_col_box* box)
@@ -27,17 +24,17 @@ void rbg_reset_box(rbg_player_col_box* box)
 	box->overlap_x = 0.0f;
 }
 
-void rbg_update_player_boxes()
+void rbg_update_player_boxes(RbgGameContext* game_ctx)
 {
-	rbg_check_collision();
+	rbg_check_collision(game_ctx);
 }
 
-void rbg_check_collision(void)
+void rbg_check_collision(RbgGameContext* game_ctx)
 {
 	rbg_player* p1 = rbg_get_player(1);
 	rbg_player* p2 = rbg_get_player(2);
-	rbg_player_col_box* b1 = rbg_get_player_box(1);
-	rbg_player_col_box* b2 = rbg_get_player_box(2);
+	rbg_player_col_box* b1 = &game_ctx->player_1_box;
+	rbg_player_col_box* b2 = &game_ctx->player_2_box;
 
 	if (p1 == NULL || p2 == NULL || b1 == NULL || b2 == NULL)
 	{
@@ -95,15 +92,15 @@ void rbg_check_collision(void)
 	b2->overlap_x = overlap;
 }
 
-rbg_player_col_box* rbg_get_player_box(int playerIndex)
+rbg_player_col_box* rbg_get_player_box(RbgGameContext* game_ctx, int playerIndex)
 {
 	if (playerIndex == 1)
 	{
-		return &rbg_player_1_box;
+		return &game_ctx->player_1_box;
 	}
 	else if (playerIndex == 2)
 	{
-		return &rbg_player_2_box;
+		return &game_ctx->player_2_box;
 	}
 
 	return NULL;

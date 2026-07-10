@@ -77,6 +77,10 @@ typedef struct {
 	KeyboardKey input_bindings[INPUT_ACTION_COUNT];
 	bool down_states[INPUT_ACTION_COUNT];
 	bool pressed_states[INPUT_ACTION_COUNT];
+
+	// player ctx
+	rbg_player_col_box player_1_box;
+	rbg_player_col_box player_2_box;
 } RbgGameContext;
 
 #endif
