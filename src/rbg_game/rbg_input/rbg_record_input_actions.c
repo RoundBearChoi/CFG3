@@ -8,7 +8,7 @@ int global_rbg_current_record_frame = 0;
 static bool _is_recording_input = false;
 static bool _recording_buffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
 
-void rbg_start_recording(void)
+void rbg_start_recording(RbgGameContext* game_ctx)
 {
 	TraceLog(LOG_INFO, "Input recording system initialized (max %d frames @ 128 FPS)", MAX_RECORD_FRAMES);
 

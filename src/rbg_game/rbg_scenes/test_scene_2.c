@@ -46,7 +46,7 @@ void update_test_scene_2(RbgGameContext* ctx)
 	rbg_update_recording(); // input actions
 
 	// temp - manual record button for now
-	if (IsInputActionPressed(INPUT_F2)) rbg_start_recording();
+	if (IsInputActionPressed(INPUT_F2)) rbg_start_recording(ctx);
 	if (IsInputActionPressed(INPUT_F3))
 	{
 		rbg_stop_recording();

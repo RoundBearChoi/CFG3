@@ -1,6 +1,7 @@
 #ifndef RBG_RECORD_INPUT_ACTIONS_H
 #define RBG_RECORD_INPUT_ACTIONS_H
 
+#include "../rbg_game_context.h"
 #include "rbg_update_input.h"
 
 // ====================== CONFIG ======================
@@ -12,7 +13,7 @@
 
 extern int global_rbg_current_record_frame;
 
-void rbg_start_recording(void);
+void rbg_start_recording(RbgGameContext* game_ctx);
 void rbg_stop_recording(void);
 bool rbg_is_recording(void);
 void rbg_update_recording(void);
