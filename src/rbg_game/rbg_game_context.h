@@ -59,6 +59,7 @@ typedef struct {
 	int current_recording_frame;
 	bool is_recording_input;
 	bool recording_buffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
+	KeyboardKey input_bindings[INPUT_ACTION_COUNT];
 } RbgGameContext;
 
 #endif

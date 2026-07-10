@@ -9,8 +9,6 @@
 static bool downStates[INPUT_ACTION_COUNT] = {false};
 static bool pressedStates[INPUT_ACTION_COUNT] = {false};
 
-KeyboardKey inputBindings[INPUT_ACTION_COUNT];
-
 // string table generated from the side-by-side X-macro
 // (id, str) → we take the str part
 const char* const rbg_input_action_names[INPUT_ACTION_COUNT] =
@@ -83,18 +81,10 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
 // hardcoded defaults
 static void rbg_set_default_bindings(void)
 {
-	/*
-    inputBindings[INPUT_P1_MOVE_LEFT]  = KEY_A;
-    inputBindings[INPUT_P1_MOVE_RIGHT] = KEY_D;
-    inputBindings[INPUT_P1_MOVE_UP]    = KEY_W;
-    inputBindings[INPUT_P1_MOVE_DOWN]  = KEY_S;
-    inputBindings[INPUT_P1_JUMP]       = KEY_R;
-    inputBindings[INPUT_P1_ATTACK]     = KEY_T;
-    inputBindings[INPUT_F1]            = KEY_F1;
-	*/
+
 }
 
-bool rbg_load_default_key_bindings(void)
+bool rbg_load_default_key_bindings(RbgGameContext* game_ctx)
 {
 	printf("\n=== loading default_key_bindings.json ===\n");
 
@@ -131,7 +121,7 @@ bool rbg_load_default_key_bindings(void)
             KeyboardKey key = string_to_keyboard_key(keyStr);
             if (key != KEY_NULL)
             {
-                inputBindings[i] = key;
+                game_ctx->input_bindings[i] = key;
                 //TraceLog(LOG_INFO, "Loaded binding: %s -> %s", actionName, keyStr);
             }
             else
@@ -149,9 +139,7 @@ bool rbg_load_default_key_bindings(void)
 
 void rbg_init_input(RbgGameContext* game_ctx)
 {
-	if (!game_ctx) return;
-
-    rbg_load_default_key_bindings();
+    rbg_load_default_key_bindings(game_ctx);
 }
 
 void rbg_update_input(RbgGameContext* game_ctx)
@@ -161,8 +149,8 @@ void rbg_update_input(RbgGameContext* game_ctx)
     // check down or pressed in every frame
     for (int i = 0; i < INPUT_ACTION_COUNT; i++)
     {
-        downStates[i]    = IsKeyDown(inputBindings[i]);
-        pressedStates[i] = IsKeyPressed(inputBindings[i]);
+        downStates[i]    = IsKeyDown(game_ctx->input_bindings[i]);
+        pressedStates[i] = IsKeyPressed(game_ctx->input_bindings[i]);
     }
 }
 
@@ -202,10 +190,10 @@ bool IsInputActionPressed(InputAction action)
     return pressedStates[action];
 }
 
-bool IsInputActionReleased(InputAction action)
+bool IsInputActionReleased(RbgGameContext* game_ctx, InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
    
     // simple released logic = was down last frame but not this frame
-    return !downStates[action] && IsKeyUp(inputBindings[action]);
+    return !downStates[action] && IsKeyUp(game_ctx->input_bindings[action]);
 }
