@@ -15,10 +15,10 @@ extern int global_rbg_current_record_frame;
 
 void rbg_start_recording(RbgGameContext* game_ctx);
 void rbg_stop_recording(RbgGameContext* game_ctx);
-bool rbg_is_recording(void);
-int  rbg_get_recorded_frames(void);
 void rbg_update_recording(RbgGameContext* game_ctx);
 bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename);
+bool rbg_is_recording(void);
+int  rbg_get_recorded_frames(void);
 bool rbg_input_action_is_pressed(InputAction action);
 
 #endif

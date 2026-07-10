@@ -30,16 +30,6 @@ void rbg_stop_recording(RbgGameContext* game_ctx)
 	TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)", global_rbg_current_record_frame, global_rbg_current_record_frame / 128.0f);
 }
 
-bool rbg_is_recording(void)
-{
-    return _is_recording_input;
-}
-
-int rbg_get_recorded_frames(void)
-{
-    return global_rbg_current_record_frame;
-}
-
 void rbg_update_recording(RbgGameContext* game_ctx)
 {
     if (!_is_recording_input) return;
@@ -125,6 +115,16 @@ bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename)
         TraceLog(LOG_ERROR, "Failed to write recording file: %s", filename);
     }
     return success;
+}
+
+bool rbg_is_recording(void)
+{
+    return _is_recording_input;
+}
+
+int rbg_get_recorded_frames(void)
+{
+    return global_rbg_current_record_frame;
 }
 
 bool rbg_input_action_is_pressed(InputAction action)
