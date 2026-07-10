@@ -4,30 +4,37 @@
 #include "../rbg_game_context.h"
 #include "raylib.h"
 
-// X macro – single source of truth for all input enums
-#define RBG_INPUT_ACTIONS  \
-	X(INPUT_P1)            \
-	X(INPUT_P1_MOVE_LEFT)  \
-    X(INPUT_P1_MOVE_RIGHT) \
-    X(INPUT_P1_MOVE_UP)    \
-    X(INPUT_P1_MOVE_DOWN)  \
-    X(INPUT_P1_JUMP)       \
-    X(INPUT_P1_ATTACK)     \
-	X(INPUT_P2)            \
-    X(INPUT_P2_MOVE_LEFT)  \
-    X(INPUT_P2_MOVE_RIGHT) \
-    X(INPUT_P2_MOVE_UP)    \
-    X(INPUT_P2_MOVE_DOWN)  \
-    X(INPUT_P2_JUMP)       \
-    X(INPUT_P2_ATTACK)     \
-	X(INPUT_F1)            \
-	X(INPUT_F2)            \
-	X(INPUT_F3)            \
-	X(END_OF_INPUT)
+// ============================================================
+//  SINGLE SOURCE OF TRUTH
+//  Enum name and string literal sit side-by-side → easy to compare
+// ============================================================
+#define RBG_INPUT_ACTIONS \
+    X(INPUT_P1,               "INPUT_P1") \
+    X(INPUT_P1_MOVE_LEFT,     "INPUT_P1_MOVE_LEFT") \
+    X(INPUT_P1_MOVE_RIGHT,    "INPUT_P1_MOVE_RIGHT") \
+    X(INPUT_P1_MOVE_UP,       "INPUT_P1_MOVE_UP") \
+    X(INPUT_P1_MOVE_DOWN,     "INPUT_P1_MOVE_DOWN") \
+    X(INPUT_P1_JUMP,          "INPUT_P1_JUMP") \
+    X(INPUT_P1_ATTACK,        "INPUT_P1_ATTACK") \
+    \
+    X(INPUT_P2,               "INPUT_P2") \
+    X(INPUT_P2_MOVE_LEFT,     "INPUT_P2_MOVE_LEFT") \
+    X(INPUT_P2_MOVE_RIGHT,    "INPUT_P2_MOVE_RIGHT") \
+    X(INPUT_P2_MOVE_UP,       "INPUT_P2_MOVE_UP") \
+    X(INPUT_P2_MOVE_DOWN,     "INPUT_P2_MOVE_DOWN") \
+    X(INPUT_P2_JUMP,          "INPUT_P2_JUMP") \
+    X(INPUT_P2_ATTACK,        "INPUT_P2_ATTACK") \
+    \
+    X(INPUT_F1,               "INPUT_F1") \
+    X(INPUT_F2,               "INPUT_F2") \
+    X(INPUT_F3,               "INPUT_F3") \
+    \
+    X(END_OF_INPUT,           "END_OF_INPUT")
 
+// ---- Generate the enum ----
 typedef enum
 {
-#define X(name) name,
+#define X(id, str) id,
     RBG_INPUT_ACTIONS
 #undef X
     INPUT_ACTION_COUNT
