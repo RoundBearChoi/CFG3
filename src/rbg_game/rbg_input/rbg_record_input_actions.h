@@ -11,8 +11,6 @@
 #define NUM_RECORD_ACTIONS    ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 // ===================================================
 
-//extern int global_rbg_current_record_frame;
-
 void rbg_start_recording(RbgGameContext* game_ctx);
 void rbg_stop_recording(RbgGameContext* game_ctx);
 void rbg_update_recording(RbgGameContext* game_ctx);

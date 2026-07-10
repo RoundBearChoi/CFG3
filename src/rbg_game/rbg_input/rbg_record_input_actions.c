@@ -3,8 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-//int global_rbg_current_record_frame = 0;
-
 static bool _is_recording_input = false;
 static bool _recording_buffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
 
@@ -14,7 +12,7 @@ void rbg_start_recording(RbgGameContext* game_ctx)
 
     // Always reset buffer and state when starting a new recording
     memset(_recording_buffer, 0, sizeof(_recording_buffer));
-    game_ctx->current_recording_frame = 0; //global_rbg_current_record_frame = 0;
+    game_ctx->current_recording_frame = 0;
     _is_recording_input = true;
 
     TraceLog(LOG_INFO, "=== INPUT RECORDING STARTED ===");
@@ -25,7 +23,6 @@ void rbg_stop_recording(RbgGameContext* game_ctx)
     if (!_is_recording_input) return;
 
     _is_recording_input = false;
-	//game_ctx->current_recording_frame = 0;
     
 	TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)", game_ctx->current_recording_frame, game_ctx->current_recording_frame / 128.0f);
 }
@@ -34,7 +31,7 @@ void rbg_update_recording(RbgGameContext* game_ctx)
 {
     if (!_is_recording_input) return;
 
-    if (game_ctx->current_recording_frame /*global_rbg_current_record_frame*/ >= MAX_RECORD_FRAMES)
+    if (game_ctx->current_recording_frame >= MAX_RECORD_FRAMES)
     {
         rbg_stop_recording(game_ctx);
         TraceLog(LOG_WARNING, "Maximum recording length (45s) reached");
@@ -45,15 +42,15 @@ void rbg_update_recording(RbgGameContext* game_ctx)
     for (int i = 0; i < NUM_RECORD_ACTIONS; i++)
     {
         InputAction action = (InputAction)(RECORD_FIRST_ACTION + i);
-        _recording_buffer[game_ctx->current_recording_frame/*global_rbg_current_record_frame*/][i] = IsInputActionDown(action);
+        _recording_buffer[game_ctx->current_recording_frame][i] = IsInputActionDown(action);
     }
 
-    game_ctx->current_recording_frame++; //global_rbg_current_record_frame++;
+    game_ctx->current_recording_frame++;
 }
 
 bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename)
 {
-    if (game_ctx->current_recording_frame /*global_rbg_current_record_frame*/ <= 0)
+    if (game_ctx->current_recording_frame <= 0)
     {
         TraceLog(LOG_WARNING, "No frames recorded to save");
         return false;
@@ -65,7 +62,7 @@ bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename)
     }
 
     // Rough but safe size estimate for CSV buffer
-    size_t estimated_size = 1024 + (size_t)game_ctx->current_recording_frame  /*global_rbg_current_record_frame*/ * (NUM_RECORD_ACTIONS * 12 + 2);
+    size_t estimated_size = 1024 + (size_t)game_ctx->current_recording_frame * (NUM_RECORD_ACTIONS * 12 + 2);
     char* csvBuffer = (char*)malloc(estimated_size);
     if (!csvBuffer)
     {
@@ -90,7 +87,7 @@ bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename)
     *ptr++ = '\n';
 
     // === 2. WRITE DATA ROWS ===
-    for (int f = 0; f < game_ctx->current_recording_frame /*global_rbg_current_record_frame*/; f++)
+    for (int f = 0; f < game_ctx->current_recording_frame; f++)
     {
         for (int a = 0; a < NUM_RECORD_ACTIONS; a++)
         {
@@ -108,7 +105,7 @@ bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename)
     if (success)
     {
         TraceLog(LOG_INFO, "Input recording saved → %s (%d frames, %d actions) [CSV with header]",
-                 filename, game_ctx->current_recording_frame /*global_rbg_current_record_frame*/, NUM_RECORD_ACTIONS);
+                 filename, game_ctx->current_recording_frame, NUM_RECORD_ACTIONS);
     }
     else
     {

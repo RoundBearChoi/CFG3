@@ -22,7 +22,7 @@ void rbg_render_on_screenspace(RbgGameContext* game_ctx)
 	float horizontal_gap = 20.0f * scale;
 
 	rbg_draw_scaled_text(TextFormat("FIXED UPDATE COUNT: %i", global_rbg_fixed_updates), (Vector2){ 10.0f, 15.0f }, font_size, font_spacing, WHITE);
-	rbg_draw_scaled_text(TextFormat("RECORDING FRAME: %i", game_ctx->current_recording_frame /*global_rbg_current_record_frame*/), (Vector2){ 10.0f, 15.0f + horizontal_gap }, font_size, font_spacing, WHITE);
+	rbg_draw_scaled_text(TextFormat("RECORDING FRAME: %i", game_ctx->current_recording_frame), (Vector2){ 10.0f, 15.0f + horizontal_gap }, font_size, font_spacing, WHITE);
 	rbg_draw_scaled_text(TextFormat("PRESS F2 TO START PLAYING, F3 TO STOP"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 2 }, font_size, font_spacing, WHITE);
 
 	rbg_draw_scaled_text(TextFormat("F11 TO CYCLE THROUGH WINDOW MODES"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 3 }, font_size, font_spacing, WHITE);
