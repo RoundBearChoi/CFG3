@@ -26,6 +26,7 @@ void init_test_scene_2(RbgGameContext* ctx)
 	rbg_init_players();
 	rbg_init_player_boxes();
 	rbg_init_sheet_animators();
+	rbg_init_fighter_update_functions();
 }
 
 void end_test_scene_2(RbgGameContext* ctx)
