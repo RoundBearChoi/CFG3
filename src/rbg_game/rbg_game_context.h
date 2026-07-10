@@ -5,7 +5,7 @@
 #include "raylib.h"
 
 // this is the single source of truth
-// both InputAction enum and rbg_input_action_names[] table are generated from this list (side-by-side for easy comparison)
+// both InputAction enum and input_action_names[] table are generated from this list (side-by-side for easy comparison)
 
 #define RBG_INPUT_ACTIONS \
     X(INPUT_P1,               "INPUT_P1") \
