@@ -4,13 +4,6 @@
 #include "../rbg_game_context.h"
 #include "rbg_update_input.h"
 
-// ====================== CONFIG ======================
-#define MAX_RECORD_FRAMES     (45 * 128) // 5760 frames (45 seconds @ 128 FPS)
-#define RECORD_FIRST_ACTION   INPUT_P1
-#define RECORD_LAST_ACTION    END_OF_INPUT
-#define NUM_RECORD_ACTIONS    ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
-// ===================================================
-
 void rbg_start_recording(RbgGameContext* game_ctx);
 void rbg_stop_recording(RbgGameContext* game_ctx);
 void rbg_update_recording(RbgGameContext* game_ctx);

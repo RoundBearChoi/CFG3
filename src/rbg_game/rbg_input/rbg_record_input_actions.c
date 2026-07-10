@@ -3,14 +3,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-static bool _recording_buffer[MAX_RECORD_FRAMES][NUM_RECORD_ACTIONS];
-
 void rbg_start_recording(RbgGameContext* game_ctx)
 {
 	TraceLog(LOG_INFO, "Input recording system initialized (max %d frames @ 128 FPS)", MAX_RECORD_FRAMES);
 
     // Always reset buffer and state when starting a new recording
-    memset(_recording_buffer, 0, sizeof(_recording_buffer));
+    memset(game_ctx->recording_buffer, 0, sizeof(game_ctx->recording_buffer));
     game_ctx->current_recording_frame = 0;
     game_ctx->is_recording_input = true;
 
@@ -41,7 +39,7 @@ void rbg_update_recording(RbgGameContext* game_ctx)
     for (int i = 0; i < NUM_RECORD_ACTIONS; i++)
     {
         InputAction action = (InputAction)(RECORD_FIRST_ACTION + i);
-        _recording_buffer[game_ctx->current_recording_frame][i] = IsInputActionDown(action);
+        game_ctx->recording_buffer[game_ctx->current_recording_frame][i] = IsInputActionDown(action);
     }
 
     game_ctx->current_recording_frame++;
@@ -92,7 +90,7 @@ bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename)
         {
             if (a > 0)
                 *ptr++ = ',';
-            *ptr++ = _recording_buffer[f][a] ? '1' : '0';
+            *ptr++ = game_ctx->recording_buffer[f][a] ? '1' : '0';
         }
         *ptr++ = '\n';
     }
@@ -134,5 +132,5 @@ bool rbg_input_action_is_pressed(RbgGameContext* game_ctx, InputAction action)
 
     if (frame <= 0) return false;
 
-    return _recording_buffer[frame - 1][idx];	
+    return game_ctx->recording_buffer[frame - 1][idx];	
 }
