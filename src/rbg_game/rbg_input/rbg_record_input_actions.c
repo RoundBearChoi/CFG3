@@ -25,9 +25,9 @@ void rbg_stop_recording(RbgGameContext* game_ctx)
     if (!_is_recording_input) return;
 
     _is_recording_input = false;
-	game_ctx->current_recording_frame = 0; //global_rbg_current_record_frame = 0;
+	//game_ctx->current_recording_frame = 0;
     
-	TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)", game_ctx->current_recording_frame /*global_rbg_current_record_frame*/, game_ctx->current_recording_frame /*global_rbg_current_record_frame*/ / 128.0f);
+	TraceLog(LOG_INFO, "=== INPUT RECORDING STOPPED === Recorded %d frames (%.2f seconds)", game_ctx->current_recording_frame, game_ctx->current_recording_frame / 128.0f);
 }
 
 void rbg_update_recording(RbgGameContext* game_ctx)
