@@ -5,10 +5,6 @@
 #include <stdlib.h>   // atoi
 #include <stdio.h>
 
-// internal state updated every frame
-//static bool downStates[INPUT_ACTION_COUNT] = {false};
-static bool pressedStates[INPUT_ACTION_COUNT] = {false};
-
 // string table generated from the side-by-side X-macro
 // (id, str) → we take the str part
 const char* const rbg_input_action_names[INPUT_ACTION_COUNT] =
@@ -150,7 +146,7 @@ void rbg_update_input(RbgGameContext* game_ctx)
     for (int i = 0; i < INPUT_ACTION_COUNT; i++)
     {
         game_ctx->down_states[i] = IsKeyDown(game_ctx->input_bindings[i]);
-        pressedStates[i] = IsKeyPressed(game_ctx->input_bindings[i]);
+        game_ctx->pressed_states[i] = IsKeyPressed(game_ctx->input_bindings[i]);
     }
 }
 
@@ -187,7 +183,7 @@ bool IsInputActionDown(RbgGameContext* game_ctx, InputAction action)
 bool IsInputActionPressed(RbgGameContext* game_ctx, InputAction action)
 {
     if (action < 0 || action >= INPUT_ACTION_COUNT) return false;
-    return pressedStates[action];
+    return game_ctx->pressed_states[action];
 }
 
 bool IsInputActionReleased(RbgGameContext* game_ctx, InputAction action)
