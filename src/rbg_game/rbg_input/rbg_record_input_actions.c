@@ -61,7 +61,7 @@ void rbg_update_recording(RbgGameContext* game_ctx)
     global_rbg_current_record_frame++;
 }
 
-bool rbg_save_recording(const char* filename)
+bool rbg_save_recording(RbgGameContext* game_ctx, const char* filename)
 {
     if (global_rbg_current_record_frame <= 0)
     {
