@@ -4,15 +4,18 @@
 
 void rbg_init_cam_control(RbgGameContext* ctx)
 {
-	if (!ctx) return;
+	if (ctx->cam_initialized == false)
+	{
+		ctx->camera.offset = (Vector2){ 0.0f, 0.0f };
+		ctx->camera.target = (Vector2){ -600.0f, -600.0f }; // behaves like camera position
+		ctx->camera.rotation = 0.0f;
+		ctx->camera.zoom = 1.0f;
 
-	ctx->camera.offset = (Vector2){ 0.0f, 0.0f };
-	ctx->camera.target = (Vector2){ -600.0f, -600.0f }; // behaves like camera position
-	ctx->camera.rotation = 0.0f;
-	ctx->camera.zoom = 1.0f;
+		ctx->cam_initialized = true;
+	}
 }
 
 void rbg_update_cam_control(RbgGameContext* ctx)
 {
-	if (!ctx) return;
+	rbg_init_cam_control(ctx);
 }

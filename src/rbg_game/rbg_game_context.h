@@ -5,14 +5,16 @@
 #include "raylib.h"
 
 typedef struct {
-    bool   game_initialized;
+    bool game_initialized;
 
     // fixed timestep state
     double accumulator;
     double previous_time;
     double fixed_dt;
 
+	// cam ctx
 	Camera2D camera;
+	bool cam_initialized;
 } RbgGameContext;
 
 #endif

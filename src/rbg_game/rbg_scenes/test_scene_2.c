@@ -16,12 +16,13 @@ static bool _test_scene_2_initialized = false;
 
 void init_test_scene_2(RbgGameContext* ctx)
 {
+	if (!ctx) return;
+
 	printf("\n=== starting test scene 2 ===\n");
 
 	_test_scene_2_initialized = true;
 
 	rbg_init_input();
-	rbg_init_cam_control(ctx);
 	rbg_init_players();
 	rbg_init_player_boxes();
 	rbg_init_sheet_animators();
