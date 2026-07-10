@@ -3,24 +3,15 @@
 
 #include "raylib.h"
 
-// X macro for rbg_fighter_curr_state to convert enums to string literals.
-// Should match png file (sheet) names exactly.
-#define RBG_FIGHTER_STATES(X) \
-	X(fighter_uninitialized) \
-	X(fighter_0_idle) \
-    X(fighter_0_walk) \
-    X(fighter_0_jump) \
-    X(fighter_0_fall)
-
 typedef enum
 {
-#define X(state) state,
-    RBG_FIGHTER_STATES(X)
-#undef X
+	fighter_uninitialized,
+	fighter_0_idle,
+    fighter_0_walk,
+    fighter_0_jump,
+    fighter_0_fall,
     NUM_FIGHTER_STATES,
 } rbg_fighter_state;
-
-extern const char* const rbg_fighter_state_strings[NUM_FIGHTER_STATES];
 
 typedef struct
 {

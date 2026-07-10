@@ -6,12 +6,14 @@
 rbg_player rbg_player_1;
 rbg_player rbg_player_2;
 
+/*
 // X-macro generated string literals array (must come after the header definition)
 const char* const rbg_fighter_state_strings[NUM_FIGHTER_STATES] = {
 #define X(state) [state] = #state,
     RBG_FIGHTER_STATES(X)
 #undef X
 };
+*/
 
 // specific to test scene 2
 void rbg_init_players(void)
