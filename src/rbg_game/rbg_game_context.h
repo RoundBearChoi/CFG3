@@ -18,6 +18,7 @@ typedef struct {
 
 	// input ctx
 	int current_recording_frame;
+	bool is_recording_input;
 } RbgGameContext;
 
 #endif
