@@ -43,6 +43,21 @@ typedef enum
 #define RECORD_LAST_ACTION   END_OF_INPUT
 #define NUM_RECORD_ACTIONS   ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 
+typedef struct
+{
+	int player_index;
+	bool is_colliding_with_other_player;
+
+	float width;
+	float height;
+	float offset_x;
+	float offset_y;
+
+	// Collision result stored after detection (to avoid recalculating in resolve)
+	float overlap_x;   // Positive value = how much the boxes overlap horizontally
+
+} rbg_player_col_box;
+
 typedef struct {
     bool game_initialized;
 
