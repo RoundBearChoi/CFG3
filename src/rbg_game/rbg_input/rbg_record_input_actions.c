@@ -134,9 +134,14 @@ bool rbg_input_action_is_pressed(RbgGameContext* game_ctx, InputAction action)
     {
         TraceLog(LOG_WARNING, "rbg_input_action_is_pressed: action %d is outside recorded range [%d-%d]",
                  (int)action, RECORD_FIRST_ACTION, RECORD_LAST_ACTION);
-        return false;
-    }
+		
+		return IsInputActionPressed(action); // fallback
+	}
 
-    int idx = (int)(action - RECORD_FIRST_ACTION);
-    return _recording_buffer[game_ctx->current_recording_frame /*global_rbg_current_record_frame*/ - 1][idx];
+	int idx = (int)(action - RECORD_FIRST_ACTION);
+    int frame = game_ctx->current_recording_frame;  // or whatever you're using
+
+    if (frame <= 0) return false;
+
+    return _recording_buffer[frame - 1][idx];	
 }
