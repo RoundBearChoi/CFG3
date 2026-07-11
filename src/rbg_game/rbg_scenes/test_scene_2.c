@@ -23,7 +23,7 @@ void init_test_scene_2(RbgGameContext* ctx)
 	_test_scene_2_initialized = true;
 
 	rbg_init_input(ctx);
-	rbg_init_players();
+	rbg_init_players(ctx);
 	rbg_init_player_boxes(ctx);
 	rbg_init_sheet_animators();
 	rbg_init_fighter_update_functions();
@@ -66,7 +66,7 @@ void update_test_scene_2(RbgGameContext* ctx)
 	rbg_update_fighter(ctx, &ctx->player_1);
 	rbg_update_fighter(ctx, &ctx->player_2);
 	rbg_update_players();
-	rbg_update_sheet_animators();
+	rbg_update_sheet_animators(ctx);
 	rbg_update_player_boxes(ctx);
 	rbg_update_basic_collision_resolve(ctx);
 }

@@ -31,8 +31,8 @@ void rbg_update_player_boxes(RbgGameContext* game_ctx)
 
 void rbg_check_collision(RbgGameContext* game_ctx)
 {
-	rbg_player* p1 = game_ctx->player_1;  //rbg_get_player(1);
-	rbg_player* p2 = game_ctx->player_2; //rbg_get_player(2);
+	rbg_player* p1 = &game_ctx->player_1;
+	rbg_player* p2 = &game_ctx->player_2;
 	rbg_player_col_box* b1 = &game_ctx->player_1_box;
 	rbg_player_col_box* b2 = &game_ctx->player_2_box;
 

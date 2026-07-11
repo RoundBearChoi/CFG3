@@ -1,6 +1,7 @@
 #ifndef RBG_SHEET_ANIMATORS_H
 #define RBG_SHEET_ANIMATORS_H
 
+#include "../rbg_game_context.h"
 #include "rbg_sheet_loader.h"
 #include "raylib.h"
 
@@ -27,7 +28,7 @@ extern sprite_sheet_animator sheet_animator_p1;
 extern sprite_sheet_animator sheet_animator_p2;
 
 void rbg_init_sheet_animators();
-void rbg_update_sheet_animators();
+void rbg_update_sheet_animators(RbgGameContext* game_ctx);
 void rbg_change_player_animation(int playerIndex, const char* sheet_name);
 sprite_sheet_animator* rbg_get_player_sheet_animator(int playerIndex);
 void rbg_init_animator(sprite_sheet_animator* ani, const char* spritesheet_name, rbg_render_pivot pivot);

@@ -3,6 +3,7 @@
 #include "../rbg_players/rbg_players.h"
 #include "../rbg_players/rbg_player_boxes.h"
 #include "../rbg_fixed_update_count.h"
+#include <stddef.h>
 #include "raylib.h"
 
 void rbg_render_debug(RbgGameContext* game_ctx)
@@ -19,7 +20,7 @@ void rbg_render_debug(RbgGameContext* game_ctx)
 
 	rbg_draw_player_boxes(game_ctx, 1);
 	rbg_draw_player_boxes(game_ctx, 2);
-	rbg_draw_x_on_player_pos();
+	rbg_draw_x_on_player_pos(game_ctx);
 }
 
 void rbg_draw_x_on_player_pos(RbgGameContext* game_ctx)
@@ -46,11 +47,11 @@ void rbg_draw_player_boxes(RbgGameContext* game_ctx, int playerIndex)
 
 	if (playerIndex == 1)
 	{
-		rbg_player* p = game_ctx->player_1;
+		rbg_player* p = &game_ctx->player_1;
 	}
 	else if (playerIndex == 2)
 	{
-		rbg_player* p = game_ctx->player_2;
+		rbg_player* p = &game_ctx->player_2;
 	}
 
 	rbg_get_player(playerIndex); 

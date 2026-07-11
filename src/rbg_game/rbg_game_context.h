@@ -46,8 +46,7 @@ typedef enum
 #define RECORD_LAST_ACTION   END_OF_INPUT
 #define NUM_RECORD_ACTIONS   ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 
-typedef struct
-{
+typedef struct {
 	int player_index;
 	bool is_colliding_with_other_player;
 
@@ -61,7 +60,7 @@ typedef struct
 
 } rbg_player_col_box;
 
-typedef struct {
+typedef struct RbgGameContext{
     bool game_initialized;
 
     // fixed timestep ctx

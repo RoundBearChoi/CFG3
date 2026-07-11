@@ -16,10 +16,10 @@ void rbg_init_sheet_animators()
 	rbg_init_animator(&sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
 
-void rbg_update_sheet_animators()
+void rbg_update_sheet_animators(RbgGameContext* game_ctx)
 {
-	sheet_animator_p1.is_facing_right_side = ctx->player_1.is_facing_right_side;
-	sheet_animator_p2.is_facing_right_side = ctx->player_2.is_facing_right_side;
+	sheet_animator_p1.is_facing_right_side = game_ctx->player_1.is_facing_right_side;
+	sheet_animator_p2.is_facing_right_side = game_ctx->player_2.is_facing_right_side;
 
 	rbg_update_animator(&sheet_animator_p1);
 	rbg_update_animator(&sheet_animator_p2);
