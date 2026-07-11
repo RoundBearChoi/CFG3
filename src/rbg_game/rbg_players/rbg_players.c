@@ -4,9 +4,6 @@
 #include <stddef.h>
 #include <stdio.h>
 
-//rbg_player rbg_player_1;
-//rbg_player rbg_player_2;
-
 void rbg_init_players(RbgGameContext* game_ctx)
 {
 	printf("\n=== initializing players ===\n");
@@ -42,18 +39,16 @@ bool new_state_detected(rbg_player* player)
 	}
 }
 
-/*
-rbg_player* rbg_get_player(int playerIndex)
+rbg_player* rbg_get_player(RbgGameContext* game_ctx, int playerIndex)
 {
 	if (playerIndex == 1)
 	{
-		return &rbg_player_1;
+		return &game_ctx->player_1;
 	}
 	else if (playerIndex == 2)
 	{
-		return &rbg_player_2;
+		return &game_ctx->player_2;
 	}
 
 	return NULL;
 }
-*/
