@@ -42,7 +42,18 @@ void rbg_draw_x_on_player_pos(RbgGameContext* game_ctx)
 
 void rbg_draw_player_boxes(RbgGameContext* game_ctx, int playerIndex)
 {
-	rbg_player* p = rbg_get_player(playerIndex); 
+	rbg_player* p = NULL; 
+
+	if (playerIndex == 1)
+	{
+		rbg_player* p = game_ctx->player_1;
+	}
+	else if (playerIndex == 2)
+	{
+		rbg_player* p = game_ctx->player_2;
+	}
+
+	rbg_get_player(playerIndex); 
 	rbg_player_col_box* b = rbg_get_player_box(game_ctx, playerIndex);
 
 	float center_x = p->position.x + b->offset_x;
