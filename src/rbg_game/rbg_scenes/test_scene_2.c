@@ -57,7 +57,7 @@ void update_test_scene_2(RbgGameContext* ctx)
 	// temp -  switch scene
 	if (IsInputActionPressed(ctx, INPUT_F1))
 	{
-		rbg_set_next_scene(TEST_SCENE_1);
+		rbg_set_next_scene(ctx, TEST_SCENE_1);
 		end_test_scene_2(ctx);
 	}
 	

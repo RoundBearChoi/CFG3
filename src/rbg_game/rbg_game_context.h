@@ -96,6 +96,7 @@ typedef struct RbgGameContext{
 
 	// scene ctx
 	rbg_scene_type current_scene;
+	rbg_scene_type next_scene;
 } RbgGameContext;
 
 #endif

@@ -5,7 +5,7 @@
 #include <stddef.h>
 
 //static rbg_scene_type _current_scene = TEST_SCENE_2;
-static rbg_scene_type _next_scene = NONE;
+//static rbg_scene_type _next_scene = NONE;
 
 // Array of function pointers for updates - indexed by rbg_scene_type enum
 static SceneUpdateFn scene_updates[NUM_SCENES] =
@@ -24,6 +24,7 @@ static SceneRenderFn scene_renders[NUM_SCENES] =
 void rbg_init_scenes(RbgGameContext* ctx)
 {
 	ctx->current_scene = TEST_SCENE_2;
+	ctx->next_scene = NONE;
 }
 
 void rbg_update_scenes(RbgGameContext* ctx)
@@ -39,10 +40,10 @@ void rbg_update_scenes(RbgGameContext* ctx)
     }
 
     // apply queued scene change at the end of the frame's update phase
-    if (_next_scene != NONE && _next_scene != NUM_SCENES)
+    if (ctx->next_scene != NONE && ctx->next_scene != NUM_SCENES)
     {
-        ctx->current_scene = _next_scene;
-        _next_scene = NONE;
+        ctx->current_scene = ctx->next_scene;
+        ctx->next_scene = NONE;
         //TraceLog(LOG_INFO, "Scene switched to %d", (int)_current_scene);
     }
 }
@@ -60,10 +61,10 @@ void rbg_render_scenes(RbgGameContext* ctx)
     }
 }
 
-void rbg_set_next_scene(rbg_scene_type next_scene)
+void rbg_set_next_scene(RbgGameContext* ctx, rbg_scene_type next_scene)
 {
 	if (next_scene >= 0 && next_scene < NUM_SCENES)
 	{
-		_next_scene = next_scene;
+		ctx->next_scene = next_scene;
 	}
 }

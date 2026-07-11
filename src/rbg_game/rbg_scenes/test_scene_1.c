@@ -10,7 +10,7 @@ void update_test_scene_1(RbgGameContext* ctx)
 
 	if (IsInputActionPressed(ctx, INPUT_F1))
 	{
-		rbg_set_next_scene(TEST_SCENE_2);
+		rbg_set_next_scene(ctx, TEST_SCENE_2);
 	}
 
 	// Note: input, logic, state changes here. No drawing.
