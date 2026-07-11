@@ -6,8 +6,7 @@
 // forward declaration - we only need the pointer type here
 typedef struct RbgGameContext RbgGameContext;
 
-typedef enum
-{
+typedef enum {
 	fighter_uninitialized,
 	fighter_0_idle,
     fighter_0_walk,
@@ -16,8 +15,7 @@ typedef enum
     NUM_FIGHTER_STATES,
 } rbg_fighter_state;
 
-typedef struct
-{
+typedef struct {
 	int player_index;
     Vector2 position;
     bool is_facing_right_side;
