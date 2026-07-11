@@ -88,5 +88,4 @@ typedef struct RbgGameContext{
 	rbg_player_col_box player_2_box;
 } RbgGameContext;
 
-
 #endif
