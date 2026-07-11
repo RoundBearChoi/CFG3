@@ -3,6 +3,9 @@
 
 #include "raylib.h"
 
+// forward declaration - we only need the pointer type here
+typedef struct RbgGameContext RbgGameContext;
+
 typedef enum
 {
 	fighter_uninitialized,
@@ -22,12 +25,12 @@ typedef struct
 	rbg_fighter_state fighter_prev_state;
 } rbg_player;
 
-extern rbg_player rbg_player_1;
-extern rbg_player rbg_player_2;
+//extern rbg_player rbg_player_1;
+//extern rbg_player rbg_player_2;
 
-void rbg_init_players(void);
+void rbg_init_players(RbgGameContext* game_ctx);
 void rbg_update_players(void);
 bool new_state_detected(rbg_player* player);
-rbg_player* rbg_get_player(int playerIndex);
+//rbg_player* rbg_get_player(int playerIndex);
 
 #endif

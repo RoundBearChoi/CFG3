@@ -1,8 +1,11 @@
 #ifndef RBG_GAME_CONTEXT_H
 #define RBG_GAME_CONTEXT_H
 
+#include "rbg_players/rbg_players.h"
 #include <stdbool.h>
 #include "raylib.h"
+
+extern RbgGameContext game_ctx;
 
 // this is the single source of truth
 // both InputAction enum and input_action_names[] table are generated from this list (side-by-side for easy comparison)
@@ -79,8 +82,12 @@ typedef struct {
 	bool pressed_states[INPUT_ACTION_COUNT];
 
 	// player ctx
+	rbg_player player_1;
+	rbg_player player_2;
+	
 	rbg_player_col_box player_1_box;
 	rbg_player_col_box player_2_box;
 } RbgGameContext;
+
 
 #endif

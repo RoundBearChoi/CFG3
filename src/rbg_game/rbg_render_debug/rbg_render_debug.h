@@ -4,7 +4,7 @@
 #include "../rbg_game_context.h"
 
 void rbg_render_debug(RbgGameContext* game_ctx);
-void rbg_draw_x_on_player_pos(void);
+void rbg_draw_x_on_player_pos(RbgGameContext* game_ctx);
 void rbg_draw_player_boxes(RbgGameContext* game_ctx, int playerIndex);
 
 #endif

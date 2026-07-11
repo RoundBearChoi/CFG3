@@ -22,11 +22,11 @@ void rbg_render_debug(RbgGameContext* game_ctx)
 	rbg_draw_x_on_player_pos();
 }
 
-void rbg_draw_x_on_player_pos(void)
+void rbg_draw_x_on_player_pos(RbgGameContext* game_ctx)
 {
 	// draw x on player positions
-	Vector2 p1_pos = rbg_player_1.position;
-	Vector2 p2_pos = rbg_player_2.position;
+	Vector2 p1_pos = game_ctx->player_1.position;
+	Vector2 p2_pos = game_ctx->player_2.position;
 
 	Color p1_color_x = (Color){ 0, 149, 255, 255 };
 	Color p2_color_x = (Color){ 255, 162, 0, 255 };

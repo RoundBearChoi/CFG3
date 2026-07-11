@@ -63,8 +63,8 @@ void update_test_scene_2(RbgGameContext* ctx)
 	
 	// update all gameplay stuff
 	rbg_update_cam_control(ctx);
-	rbg_update_fighter(ctx, &rbg_player_1);
-	rbg_update_fighter(ctx, &rbg_player_2);
+	rbg_update_fighter(ctx, &ctx->player_1);
+	rbg_update_fighter(ctx, &ctx->player_2);
 	rbg_update_players();
 	rbg_update_sheet_animators();
 	rbg_update_player_boxes(ctx);
@@ -75,6 +75,6 @@ void render_test_scene_2(RbgGameContext* ctx)
 {
 	if (!ctx) return;
 	
-	rbg_draw_sprite_animation(&sheet_animator_p1, rbg_player_1.position, 1.0f, WHITE);
-	rbg_draw_sprite_animation(&sheet_animator_p2, rbg_player_2.position, 1.0f, GRAY);
+	rbg_draw_sprite_animation(&sheet_animator_p1, ctx->player_1.position, 1.0f, WHITE);
+	rbg_draw_sprite_animation(&sheet_animator_p2, ctx->player_2.position, 1.0f, GRAY);
 }
