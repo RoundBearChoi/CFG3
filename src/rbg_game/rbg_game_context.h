@@ -1,15 +1,11 @@
 #ifndef RBG_GAME_CONTEXT_H
 #define RBG_GAME_CONTEXT_H
 
-#include "rbg_players/rbg_players.h"
 #include <stdbool.h>
 #include "raylib.h"
 
-extern RbgGameContext game_ctx;
-
 // this is the single source of truth
 // both InputAction enum and input_action_names[] table are generated from this list (side-by-side for easy comparison)
-
 #define RBG_INPUT_ACTIONS \
     X(INPUT_P1,               "INPUT_P1") \
     X(INPUT_P1_MOVE_LEFT,     "INPUT_P1_MOVE_LEFT") \
@@ -51,6 +47,23 @@ typedef enum {
     TEST_SCENE_2,
     NUM_SCENES
 } rbg_scene_type;
+
+typedef enum {
+	fighter_uninitialized,
+	fighter_0_idle,
+    fighter_0_walk,
+    fighter_0_jump,
+    fighter_0_fall,
+    NUM_FIGHTER_STATES,
+} rbg_fighter_state;
+
+typedef struct {
+	int player_index;
+    Vector2 position;
+    bool is_facing_right_side;
+	rbg_fighter_state fighter_curr_state;
+	rbg_fighter_state fighter_prev_state;
+} rbg_player;
 
 typedef struct {
 	int player_index;
@@ -97,7 +110,7 @@ typedef struct {
                                // false = horizontal mirror flip (left-facing)
 } sprite_sheet_animator;
 
-typedef struct RbgGameContext {
+typedef struct {
     bool game_initialized;
 
     // fixed timestep ctx
