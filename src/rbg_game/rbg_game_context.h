@@ -29,7 +29,7 @@
     \
     X(END_OF_INPUT,           "END_OF_INPUT")
 
-typedef enum {
+typedef enum InputAction {
 #define X(id, str) id,
     RBG_INPUT_ACTIONS
 #undef X
@@ -41,14 +41,14 @@ typedef enum {
 #define RECORD_LAST_ACTION   END_OF_INPUT
 #define NUM_RECORD_ACTIONS   ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
 
-typedef enum {
+typedef enum rbg_scene_type {
 	NONE = -1,
     TEST_SCENE_1,
     TEST_SCENE_2,
     NUM_SCENES
 } rbg_scene_type;
 
-typedef enum {
+typedef enum rbg_fighter_state {
 	fighter_0_none,
 	fighter_0_idle,
     fighter_0_walk,
@@ -59,12 +59,12 @@ typedef enum {
 
 // Enum that controls where the 'position' parameter points to in rbg_draw_sprite_animation.
 // CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
-typedef enum {
+typedef enum rbg_render_pivot {
     RENDER_PIVOT_CENTER,
     RENDER_PIVOT_BOTTOM_CENTER
 } rbg_render_pivot;
 
-typedef struct {
+typedef struct rbg_player {
 	int player_index;
     Vector2 position;
     bool is_facing_right_side;
@@ -72,7 +72,7 @@ typedef struct {
 	rbg_fighter_state fighter_prev_state;
 } rbg_player;
 
-typedef struct {
+typedef struct rbg_player_col_box {
 	int player_index;
 	bool is_colliding_with_other_player;
 
@@ -86,7 +86,7 @@ typedef struct {
 
 } rbg_player_col_box;
 
-typedef struct {
+typedef struct SpriteSheet {
     char *fighter_type;
     char *spritesheet_name;     // base name WITHOUT .png (automatically cleaned from CSV)
     int total_x;
@@ -100,7 +100,7 @@ typedef struct {
     int frame_height;       // pre-computed: texture.height / total_y
 } SpriteSheet;
 
-typedef struct {
+typedef struct sprite_sheet_animator {
     SpriteSheet* sheet;       // pointer to loaded data (do NOT free)
     int current_frame;
     int frame_counter;        // ticks until next frame
@@ -110,7 +110,7 @@ typedef struct {
                                // false = horizontal mirror flip (left-facing)
 } sprite_sheet_animator;
 
-typedef struct {
+typedef struct RbgGameContext {
     bool game_initialized;
 
     // fixed timestep ctx
