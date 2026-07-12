@@ -49,7 +49,7 @@ typedef enum {
 } rbg_scene_type;
 
 typedef enum {
-	fighter_uninitialized,
+	fighter_0_none,
 	fighter_0_idle,
     fighter_0_walk,
     fighter_0_jump,
