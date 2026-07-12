@@ -57,6 +57,13 @@ typedef enum {
     NUM_FIGHTER_STATES,
 } rbg_fighter_state;
 
+// Enum that controls where the 'position' parameter points to in rbg_draw_sprite_animation.
+// CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
+typedef enum {
+    RENDER_PIVOT_CENTER,
+    RENDER_PIVOT_BOTTOM_CENTER
+} rbg_render_pivot;
+
 typedef struct {
 	int player_index;
     Vector2 position;
@@ -78,13 +85,6 @@ typedef struct {
 	float overlap_x;   // Positive value = how much the boxes overlap horizontally
 
 } rbg_player_col_box;
-
-// Enum that controls where the 'position' parameter points to in rbg_draw_sprite_animation.
-// CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
-typedef enum {
-    RENDER_PIVOT_CENTER,
-    RENDER_PIVOT_BOTTOM_CENTER
-} rbg_render_pivot;
 
 typedef struct {
     char *fighter_type;
