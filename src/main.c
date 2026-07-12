@@ -34,8 +34,8 @@ int main(void)
 	SetTextureFilter(global_font_press_start.texture, TEXTURE_FILTER_POINT);
     
 	// create render target (native resolution)
-    RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
-    SetTextureFilter(target.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
+    RenderTexture2D render_texture_2d = LoadRenderTexture(virtualWidth, virtualHeight);
+    SetTextureFilter(render_texture_2d.texture, TEXTURE_FILTER_POINT);  // sharp pixels (no smoothing)
 
 	// 0 = native 1600x800 (default), 1 = 2400x1200, 2 = fullscreen
 	int window_mode = 0;
@@ -85,7 +85,7 @@ int main(void)
         ClearBackground(BLACK);
 
         // draw everything to fixed render target
-        BeginTextureMode(target);
+        BeginTextureMode(render_texture_2d);
             ClearBackground(BLACK);
             
             BeginMode2D(game_ctx.camera);
@@ -102,8 +102,8 @@ int main(void)
         Rectangle source = {
             0.0f, 
             0.0f, 
-            (float)target.texture.width, 
-            (float)-target.texture.height // negative height for OpenGL Y-flip
+            (float)render_texture_2d.texture.width, 
+            (float)-render_texture_2d.texture.height // negative height for OpenGL Y-flip
         };
 
         Rectangle dest = {
@@ -113,7 +113,7 @@ int main(void)
             virtualHeight * scale
         };
 
-        DrawTexturePro(target.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
+        DrawTexturePro(render_texture_2d.texture, source, dest, (Vector2){0.0f, 0.0f}, 0.0f, WHITE);
 
 		rbg_render_on_screenspace(&game_ctx);
 
@@ -121,7 +121,7 @@ int main(void)
     }
 
     // clean up
-    UnloadRenderTexture(target);
+    UnloadRenderTexture(render_texture_2d);
     rbg_unload_sprite_sheets(&game_ctx);
 	UnloadFont(global_font_press_start);
     CloseWindow();
