@@ -5,7 +5,6 @@
 #include "math.h"
 #include <stddef.h>
 
-//extern int global_rbg_target_fps;
 extern Font global_font_press_start;
 
 int main(void)
