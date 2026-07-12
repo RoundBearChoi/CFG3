@@ -104,6 +104,8 @@ typedef struct RbgGameContext {
     double accumulator;
     double previous_time;
     double fixed_dt;
+	double frame_time;
+	int target_fps;
 
 	int fps_display;
 	int fps_count;

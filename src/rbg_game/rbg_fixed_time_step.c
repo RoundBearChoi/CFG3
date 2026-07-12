@@ -36,12 +36,12 @@ void rbg_accumulate_fixed_time_step(RbgGameContext* ctx)
     }
 
     double current_time = GetTime();
-    global_rbg_frame_time = current_time - ctx->previous_time;
+    ctx->frame_time = current_time - ctx->previous_time;
     ctx->previous_time = current_time;
-    ctx->accumulator += global_rbg_frame_time;
+    ctx->accumulator += ctx->frame_time;
 
 	// for fps display
-	ctx->fps_timer += global_rbg_frame_time;
+	ctx->fps_timer += ctx->frame_time;
 	ctx->fps_count++;
 
 	if (ctx->fps_timer >= 1.0)
