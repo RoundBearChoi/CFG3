@@ -5,7 +5,7 @@ void update_fighter_0_fall(RbgGameContext* game_ctx, rbg_player* player)
 {
 	if (new_state_detected(player))
 	{
-		rbg_change_player_animation(player->player_index, "fighter_0_fall");
+		rbg_change_player_animation(game_ctx, player->player_index, "fighter_0_fall");
 	}
 
 	player->position.y += 3.0f;

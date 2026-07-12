@@ -25,7 +25,7 @@ void init_test_scene_2(RbgGameContext* ctx)
 	rbg_init_input(ctx);
 	rbg_init_players(ctx);
 	rbg_init_player_boxes(ctx);
-	rbg_init_sheet_animators();
+	rbg_init_sheet_animators(ctx);
 	rbg_init_fighter_update_functions();
 }
 
@@ -75,6 +75,6 @@ void render_test_scene_2(RbgGameContext* ctx)
 {
 	if (!ctx) return;
 	
-	rbg_draw_sprite_animation(&sheet_animator_p1, ctx->player_1.position, 1.0f, WHITE);
-	rbg_draw_sprite_animation(&sheet_animator_p2, ctx->player_2.position, 1.0f, GRAY);
+	rbg_draw_sprite_animation(&ctx->sheet_animator_p1, ctx->player_1.position, 1.0f, WHITE);
+	rbg_draw_sprite_animation(&ctx->sheet_animator_p2, ctx->player_2.position, 1.0f, GRAY);
 }

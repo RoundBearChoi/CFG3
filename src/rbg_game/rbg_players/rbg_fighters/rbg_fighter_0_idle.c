@@ -6,7 +6,7 @@ void update_fighter_0_idle(RbgGameContext* game_ctx, rbg_player* player)
 {
 	if (new_state_detected(player))
 	{
-		rbg_change_player_animation(player->player_index, "fighter_0_idle");
+		rbg_change_player_animation(game_ctx, player->player_index, "fighter_0_idle");
 	}
 
 	if (rbg_input_action_is_pressed(game_ctx, rbg_get_move_up(player->player_index)))

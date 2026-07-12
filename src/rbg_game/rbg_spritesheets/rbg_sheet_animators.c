@@ -5,29 +5,26 @@
 #include <stddef.h>
 #include <string.h>  // for memset
 
-sprite_sheet_animator sheet_animator_p1;
-sprite_sheet_animator sheet_animator_p2;
-
-void rbg_init_sheet_animators()
+void rbg_init_sheet_animators(RbgGameContext* game_ctx)
 {
 	rbg_load_sprite_sheets("resources/fighters_spritesheet_list.csv");
 
-	rbg_init_animator(&sheet_animator_p1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
-	rbg_init_animator(&sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_animator(&game_ctx->sheet_animator_p1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_animator(&game_ctx->sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
 
 void rbg_update_sheet_animators(RbgGameContext* game_ctx)
 {
-	sheet_animator_p1.is_facing_right_side = game_ctx->player_1.is_facing_right_side;
-	sheet_animator_p2.is_facing_right_side = game_ctx->player_2.is_facing_right_side;
+	game_ctx->sheet_animator_p1.is_facing_right_side = game_ctx->player_1.is_facing_right_side;
+	game_ctx->sheet_animator_p2.is_facing_right_side = game_ctx->player_2.is_facing_right_side;
 
-	rbg_update_animator(&sheet_animator_p1);
-	rbg_update_animator(&sheet_animator_p2);
+	rbg_update_animator(&game_ctx->sheet_animator_p1);
+	rbg_update_animator(&game_ctx->sheet_animator_p2);
 }
 
-void rbg_change_player_animation(int playerIndex, const char* sheet_name)
+void rbg_change_player_animation(RbgGameContext* game_ctx, int playerIndex, const char* sheet_name)
 {
-	sprite_sheet_animator* animator = rbg_get_player_sheet_animator(playerIndex);
+	sprite_sheet_animator* animator = rbg_get_player_sheet_animator(game_ctx, playerIndex);
 
 	if (animator != NULL)
 	{
@@ -38,15 +35,15 @@ void rbg_change_player_animation(int playerIndex, const char* sheet_name)
 	}
 }
 
-sprite_sheet_animator* rbg_get_player_sheet_animator(int playerIndex)
+sprite_sheet_animator* rbg_get_player_sheet_animator(RbgGameContext* game_ctx, int playerIndex)
 {
 	if (playerIndex == 1)
 	{
-		return &sheet_animator_p1;
+		return &game_ctx->sheet_animator_p1;
 	}
 	else if (playerIndex == 2)
 	{
-		return &sheet_animator_p2;
+		return &game_ctx->sheet_animator_p2;
 	}
 	return NULL;
 }

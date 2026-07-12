@@ -13,7 +13,7 @@ void update_fighter_0_jump(RbgGameContext* game_ctx, rbg_player* player)
 
 	if (new_state_detected(player))
 	{
-		rbg_change_player_animation(player->player_index, "fighter_0_jump");
+		rbg_change_player_animation(game_ctx, player->player_index, "fighter_0_jump");
 
 		jump_timers[idx] = 0;  // reset timer for this jump
 	}
@@ -30,7 +30,7 @@ void update_fighter_0_jump(RbgGameContext* game_ctx, rbg_player* player)
 
 	if (t >= 10 * 5)
 	{
-		sprite_sheet_animator* ani = rbg_get_player_sheet_animator(player->player_index);
+		sprite_sheet_animator* ani = rbg_get_player_sheet_animator(game_ctx, player->player_index);
 		ani->is_playing = false;
 		player->fighter_curr_state = fighter_0_fall;  // as we stop playing the jump animation, transition to fall
 	}

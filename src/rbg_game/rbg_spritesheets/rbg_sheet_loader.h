@@ -1,8 +1,10 @@
 #ifndef RBG_SPRITESHEET_LOADER_H
 #define RBG_SPRITESHEET_LOADER_H
 
+#include "../rbg_game_context.h"
 #include "raylib.h"
 
+/*
 typedef struct
 {
     char *fighter_type;
@@ -17,6 +19,7 @@ typedef struct
     int frame_width;        // pre-computed: texture.width / total_x
     int frame_height;       // pre-computed: texture.height / total_y
 } SpriteSheet;
+*/
 
 extern SpriteSheet *spritesheets;
 extern int spritesheet_count;
