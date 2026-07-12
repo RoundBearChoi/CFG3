@@ -4,7 +4,6 @@
 #include "rbg_game_context.h"
 #include <stdbool.h>
 
-//extern double global_rbg_frame_time;
 extern const int global_rbg_target_fps;
 
 void rbg_init_fixed_time_step(RbgGameContext* ctx);
