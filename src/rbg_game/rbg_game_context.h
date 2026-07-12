@@ -131,6 +131,7 @@ typedef struct RbgGameContext {
 	rbg_player_col_box player_2_box;
 
 	// scene ctx
+	bool scene_initialized;
 	rbg_scene_type current_scene;
 	rbg_scene_type next_scene;
 
