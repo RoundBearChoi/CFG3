@@ -37,7 +37,7 @@ void end_test_scene_2(RbgGameContext* ctx)
 	_test_scene_2_initialized = false;
 
 	rbg_stop_recording(ctx);
-	rbg_unload_sprite_sheets();
+	rbg_unload_sprite_sheets(ctx);
 }
 
 void update_test_scene_2(RbgGameContext* ctx)

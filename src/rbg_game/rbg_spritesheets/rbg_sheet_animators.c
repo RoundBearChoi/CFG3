@@ -7,10 +7,11 @@
 
 void rbg_init_sheet_animators(RbgGameContext* game_ctx)
 {
-	rbg_load_sprite_sheets("resources/fighters_spritesheet_list.csv");
+	rbg_init_sprite_sheet_loader(game_ctx);
+	rbg_load_sprite_sheets(game_ctx, "resources/fighters_spritesheet_list.csv");
 
-	rbg_init_animator(&game_ctx->sheet_animator_p1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
-	rbg_init_animator(&game_ctx->sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_animator(game_ctx, &game_ctx->sheet_animator_p1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
+	rbg_init_animator(game_ctx, &game_ctx->sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 }
 
 void rbg_update_sheet_animators(RbgGameContext* game_ctx)
@@ -28,7 +29,7 @@ void rbg_change_player_animation(RbgGameContext* game_ctx, int playerIndex, cons
 
 	if (animator != NULL)
 	{
-		animator->sheet = rbg_get_sprite_sheet_by_name(sheet_name);
+		animator->sheet = rbg_get_sprite_sheet_by_name(game_ctx, sheet_name);
 
 		// start curr frame at 0 whenever new animation begins (otherwise player 1 and player 2 walk animations for example will sink)
 		rbg_reset_animator(animator);
@@ -48,13 +49,13 @@ sprite_sheet_animator* rbg_get_player_sheet_animator(RbgGameContext* game_ctx, i
 	return NULL;
 }
 
-void rbg_init_animator(sprite_sheet_animator* ani, const char* spritesheet_name, rbg_render_pivot pivot)
+void rbg_init_animator(RbgGameContext* game_ctx, sprite_sheet_animator* ani, const char* spritesheet_name, rbg_render_pivot pivot)
 {
     if (ani == NULL) return;
     
 	memset(ani, 0, sizeof(sprite_sheet_animator));
     
-    ani->sheet = rbg_get_sprite_sheet_by_name(spritesheet_name);
+    ani->sheet = rbg_get_sprite_sheet_by_name(game_ctx, spritesheet_name);
     ani->pivot = pivot;
     ani->is_facing_right_side = true;  // default: right-facing (assuming all original png orientation is left to right)
     

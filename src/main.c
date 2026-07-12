@@ -122,7 +122,7 @@ int main(void)
 
     // clean up
     UnloadRenderTexture(target);
-    rbg_unload_sprite_sheets();
+    rbg_unload_sprite_sheets(&game_ctx);
 	UnloadFont(global_font_press_start);
     CloseWindow();
     return 0;
