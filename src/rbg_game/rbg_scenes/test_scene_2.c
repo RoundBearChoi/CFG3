@@ -14,8 +14,6 @@
 
 void init_test_scene_2(RbgGameContext* ctx)
 {
-	if (!ctx) return;
-
 	printf("\n=== starting test scene 2 ===\n");
 
 	ctx->scene_initialized = true;
@@ -29,8 +27,6 @@ void init_test_scene_2(RbgGameContext* ctx)
 
 void end_test_scene_2(RbgGameContext* ctx)
 {
-	if (!ctx) return;
-	
 	// reset so we init again when we come back to this scene
 	ctx->scene_initialized = false;
 
@@ -71,8 +67,6 @@ void update_test_scene_2(RbgGameContext* ctx)
 
 void render_test_scene_2(RbgGameContext* ctx)
 {
-	if (!ctx) return;
-	
 	rbg_draw_sprite_animation(&ctx->sheet_animator_p1, ctx->player_1.position, 1.0f, WHITE);
 	rbg_draw_sprite_animation(&ctx->sheet_animator_p2, ctx->player_2.position, 1.0f, GRAY);
 }
