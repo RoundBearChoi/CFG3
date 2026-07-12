@@ -33,8 +33,7 @@ extern RbgGameContext game_ctx;
     \
     X(END_OF_INPUT,           "END_OF_INPUT")
 
-typedef enum
-{
+typedef enum {
 #define X(id, str) id,
     RBG_INPUT_ACTIONS
 #undef X
@@ -69,8 +68,7 @@ typedef struct {
 
 // Enum that controls where the 'position' parameter points to in rbg_draw_sprite_animation.
 // CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
-typedef enum
-{
+typedef enum {
     RENDER_PIVOT_CENTER,
     RENDER_PIVOT_BOTTOM_CENTER
 } rbg_render_pivot;
@@ -99,7 +97,7 @@ typedef struct {
                                // false = horizontal mirror flip (left-facing)
 } sprite_sheet_animator;
 
-typedef struct RbgGameContext{
+typedef struct RbgGameContext {
     bool game_initialized;
 
     // fixed timestep ctx
