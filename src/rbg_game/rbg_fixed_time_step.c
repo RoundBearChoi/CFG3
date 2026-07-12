@@ -12,11 +12,11 @@ void rbg_init_fixed_time_step(RbgGameContext* ctx)
 	ctx->fps_display = 0;
 	ctx->fps_timer = 0.0;
 
-    if (global_rbg_target_fps == 128)
+    if (ctx->target_fps == 128)
     {
         ctx->fixed_dt = 1.0 / 128.0;
     }
-    else if (global_rbg_target_fps == 60)
+    else if (ctx->target_fps == 60)
     {
         ctx->fixed_dt = 1.0 / 60.0;
     }

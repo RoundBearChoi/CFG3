@@ -9,7 +9,6 @@
 #include <stddef.h>
 
 Font global_font_press_start;
-const int global_rbg_target_fps = 128;
 
 void rbg_init_game(void)
 {

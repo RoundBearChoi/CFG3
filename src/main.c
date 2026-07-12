@@ -5,7 +5,7 @@
 #include "math.h"
 #include <stddef.h>
 
-extern int global_rbg_target_fps;
+//extern int global_rbg_target_fps;
 extern Font global_font_press_start;
 
 int main(void)
@@ -21,10 +21,14 @@ int main(void)
 
 	static const char* const bar_title = "C Fighting Game 3"; 
 
-    // start at native resolution (1600x800)
+	// game context instance
+	RbgGameContext game_ctx = {0};
+	game_ctx.target_fps = 128;
+
+	// start at native resolution (1600x800)
 	InitWindow(nativeWidth, nativeHeight, bar_title);
     ClearWindowState(FLAG_VSYNC_HINT);
-    SetTargetFPS(global_rbg_target_fps);
+    SetTargetFPS(game_ctx.target_fps);
 
 	// font
 	global_font_press_start = LoadFontEx("PrStart.ttf", 32, NULL, 0);
@@ -36,9 +40,6 @@ int main(void)
 
 	// 0 = native 1600x800 (default), 1 = 2400x1200, 2 = fullscreen
 	int window_mode = 0;
-
-	// game context instance
-	RbgGameContext game_ctx = {0};
 
 	while (!WindowShouldClose())
     {
@@ -78,7 +79,7 @@ int main(void)
 
             // re-apply after window change
             ClearWindowState(FLAG_VSYNC_HINT);
-            SetTargetFPS(global_rbg_target_fps);
+            SetTargetFPS(game_ctx.target_fps);
         }
 
         BeginDrawing();
