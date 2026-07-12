@@ -105,6 +105,10 @@ typedef struct RbgGameContext {
     double previous_time;
     double fixed_dt;
 
+	int fps_display;
+	int fps_count;
+	double fps_timer;
+
 	// cam ctx
 	Camera2D camera;
 	bool cam_initialized;

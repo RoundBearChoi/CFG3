@@ -8,6 +8,10 @@ void rbg_init_fixed_time_step(RbgGameContext* ctx)
     ctx->accumulator   = 0.0;
     ctx->previous_time = 0.0;
 
+	ctx->fps_count = 0;
+	ctx->fps_display = 0;
+	ctx->fps_timer = 0.0;
+
     if (global_rbg_target_fps == 128)
     {
         ctx->fixed_dt = 1.0 / 128.0;
@@ -35,6 +39,17 @@ void rbg_accumulate_fixed_time_step(RbgGameContext* ctx)
     global_rbg_frame_time = current_time - ctx->previous_time;
     ctx->previous_time = current_time;
     ctx->accumulator += global_rbg_frame_time;
+
+	// for fps display
+	ctx->fps_timer += global_rbg_frame_time;
+	ctx->fps_count++;
+
+	if (ctx->fps_timer >= 1.0)
+	{
+		ctx->fps_display = ctx->fps_count;
+		ctx->fps_count = 0;
+		ctx->fps_timer = 0.0;
+	}
 }
 
 bool rbg_run_fixed_time_step(RbgGameContext* ctx)
