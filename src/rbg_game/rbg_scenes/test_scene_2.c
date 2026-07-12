@@ -57,8 +57,8 @@ void update_test_scene_2(RbgGameContext* game_ctx)
 	
 	// update all gameplay stuff
 	rbg_update_cam_control(game_ctx);
-	rbg_update_fighter(game_ctx, &game_ctx->player_1);
-	rbg_update_fighter(game_ctx, &game_ctx->player_2);
+	rbg_update_fighter(game_ctx, 1); //player 1
+	rbg_update_fighter(game_ctx, 2); //player 2
 	rbg_update_players();
 	rbg_update_sheet_animators(game_ctx);
 	rbg_update_player_boxes(game_ctx);

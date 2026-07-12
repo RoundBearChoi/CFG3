@@ -10,6 +10,6 @@ typedef void (*rbg_fighter_update_func)(RbgGameContext* game_ctx, rbg_player* pl
 extern rbg_fighter_update_func rbg_fighter_update_functions[NUM_FIGHTER_STATES];
 
 void rbg_init_fighter_update_functions(void);
-void rbg_update_fighter(RbgGameContext* game_ctx, rbg_player* player);
+void rbg_update_fighter(RbgGameContext* game_ctx, int player_index);
 
 #endif

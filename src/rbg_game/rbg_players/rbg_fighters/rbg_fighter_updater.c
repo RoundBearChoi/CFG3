@@ -1,4 +1,5 @@
 #include "rbg_fighter_updater.h"
+#include "../rbg_players.h"
 #include "rbg_fighter_0_idle.h"
 #include "rbg_fighter_0_walk.h"
 #include "rbg_fighter_0_jump.h"
@@ -22,21 +23,9 @@ void rbg_init_fighter_update_functions(void)
     rbg_fighter_update_functions[fighter_0_fall]          = update_fighter_0_fall;
 }
 
-void rbg_update_fighter(RbgGameContext* game_ctx, rbg_player* player)
+void rbg_update_fighter(RbgGameContext* game_ctx, int player_index)
 {
-    if (player == NULL)
-    {
-        printf("Error: rbg_update_fighter called with NULL player\n");
-        return;
-    }
-
-    // Safety net for invalid/corrupted state
-    if (player->fighter_curr_state < 0 || player->fighter_curr_state >= NUM_FIGHTER_STATES)
-    {
-        printf("Error: Invalid fighter state %d for player at %p\n", player->fighter_curr_state, (void*)player);
-        player->fighter_curr_state = fighter_0_idle;
-    }
-
-    // Dispatch to the correct per-state update function
-    rbg_fighter_update_functions[player->fighter_curr_state](game_ctx, player);
+	rbg_player* player = rbg_get_player(game_ctx, player_index);
+    
+	rbg_fighter_update_functions[player->fighter_curr_state](game_ctx, player);
 }
