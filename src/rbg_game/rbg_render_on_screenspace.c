@@ -1,7 +1,6 @@
 #include "rbg_render_on_screenspace.h"
 #include "rbg_game.h"
 #include "rbg_game_settings.h"
-#include "rbg_fixed_update_count.h"
 #include "rbg_input/rbg_record_input_actions.h"
 #include "raylib.h"
 
@@ -21,7 +20,7 @@ void rbg_render_on_screenspace(RbgGameContext* game_ctx)
 	float font_spacing = 3.0f * scale;
 	float horizontal_gap = 20.0f * scale;
 
-	rbg_draw_scaled_text(TextFormat("FIXED UPDATE COUNT: %i", global_rbg_fixed_updates), (Vector2){ 10.0f, 15.0f }, font_size, font_spacing, WHITE);
+	rbg_draw_scaled_text(TextFormat("FIXED UPDATE COUNT: %i", game_ctx->fps_display), (Vector2){ 10.0f, 15.0f }, font_size, font_spacing, WHITE);
 	rbg_draw_scaled_text(TextFormat("RECORDING FRAME: %i", game_ctx->current_recording_frame), (Vector2){ 10.0f, 15.0f + horizontal_gap }, font_size, font_spacing, WHITE);
 	rbg_draw_scaled_text(TextFormat("PRESS F2 TO START PLAYING, F3 TO STOP"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 2 }, font_size, font_spacing, WHITE);
 

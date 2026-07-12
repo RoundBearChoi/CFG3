@@ -2,7 +2,6 @@
 #include "../rbg_game_settings.h"
 #include "../rbg_players/rbg_players.h"
 #include "../rbg_players/rbg_player_boxes.h"
-#include "../rbg_fixed_update_count.h"
 #include <stddef.h>
 #include "raylib.h"
 

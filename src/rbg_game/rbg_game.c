@@ -3,7 +3,6 @@
 #include "rbg_scenes/rbg_scenes.h"
 #include "rbg_input/rbg_update_input.h"
 #include "rbg_render_debug/rbg_render_debug.h"
-#include "rbg_fixed_update_count.h"
 #include "rbg_fixed_time_step.h"
 #include "raylib.h"
 #include <stddef.h>
@@ -34,7 +33,6 @@ void rbg_run_game(RbgGameContext* game_ctx)
     while (rbg_run_fixed_time_step(game_ctx))
     {
         rbg_update_scenes(game_ctx);
-        rbg_fixed_update_count();
     }
 
     // Render scenes once per frame
