@@ -4,8 +4,8 @@
 #include "rbg_game_context.h"
 #include <stdbool.h>
 
-void rbg_init_fixed_time_step(RbgGameContext* ctx);
-void rbg_accumulate_fixed_time_step(RbgGameContext* ctx);
-bool rbg_run_fixed_time_step(RbgGameContext* ctx);
+void rbg_init_fixed_time_step(RbgGameContext* game_ctx);
+void rbg_accumulate_fixed_time_step(RbgGameContext* game_ctx);
+bool rbg_run_fixed_time_step(RbgGameContext* game_ctx);
 
 #endif

@@ -18,18 +18,18 @@ static SceneRenderFn scene_renders[NUM_SCENES] =
     render_test_scene_2,
 };
 
-void rbg_init_scenes(RbgGameContext* ctx)
+void rbg_init_scenes(RbgGameContext* game_ctx)
 {
-	ctx->current_scene = TEST_SCENE_2;
-	ctx->next_scene = NONE;
+	game_ctx->current_scene = TEST_SCENE_2;
+	game_ctx->next_scene = NONE;
 }
 
-void rbg_update_scenes(RbgGameContext* ctx)
+void rbg_update_scenes(RbgGameContext* game_ctx)
 {
     // safety: prevent crashes if somehow out of bounds
-    if (ctx->current_scene >= 0 && ctx->current_scene < NUM_SCENES && scene_updates[ctx->current_scene] != NULL)
+    if (game_ctx->current_scene >= 0 && game_ctx->current_scene < NUM_SCENES && scene_updates[game_ctx->current_scene] != NULL)
 	{
-        scene_updates[ctx->current_scene](ctx); // run the scene update based on selected enum
+        scene_updates[game_ctx->current_scene](game_ctx); // run the scene update based on selected enum
     } 
 	else
 	{
@@ -37,20 +37,20 @@ void rbg_update_scenes(RbgGameContext* ctx)
     }
 
     // apply queued scene change at the end of the frame's update phase
-    if (ctx->next_scene != NONE && ctx->next_scene != NUM_SCENES)
+    if (game_ctx->next_scene != NONE && game_ctx->next_scene != NUM_SCENES)
     {
-        ctx->current_scene = ctx->next_scene;
-        ctx->next_scene = NONE;
+        game_ctx->current_scene = game_ctx->next_scene;
+        game_ctx->next_scene = NONE;
         //TraceLog(LOG_INFO, "Scene switched to %d", (int)_current_scene);
     }
 }
 
-void rbg_render_scenes(RbgGameContext* ctx)
+void rbg_render_scenes(RbgGameContext* game_ctx)
 {
     // Mirror of update dispatch, but for rendering (called once per visual frame)
-    if (ctx->current_scene >= 0 && ctx->current_scene < NUM_SCENES && scene_renders[ctx->current_scene] != NULL)
+    if (game_ctx->current_scene >= 0 && game_ctx->current_scene < NUM_SCENES && scene_renders[game_ctx->current_scene] != NULL)
 	{
-        scene_renders[ctx->current_scene](ctx);
+        scene_renders[game_ctx->current_scene](game_ctx);
     } 
 	else
 	{
@@ -58,10 +58,10 @@ void rbg_render_scenes(RbgGameContext* ctx)
     }
 }
 
-void rbg_set_next_scene(RbgGameContext* ctx, rbg_scene_type next_scene)
+void rbg_set_next_scene(RbgGameContext* game_ctx, rbg_scene_type next_scene)
 {
 	if (next_scene >= 0 && next_scene < NUM_SCENES)
 	{
-		ctx->next_scene = next_scene;
+		game_ctx->next_scene = next_scene;
 	}
 }

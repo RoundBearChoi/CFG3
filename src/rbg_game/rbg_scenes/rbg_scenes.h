@@ -3,13 +3,13 @@
 
 #include "../rbg_game_context.h"
 
-void rbg_init_scenes(RbgGameContext* ctx);
-void rbg_update_scenes(RbgGameContext* ctx);
-void rbg_render_scenes(RbgGameContext* ctx);
-void rbg_set_next_scene(RbgGameContext* ctx, rbg_scene_type next_scene);
+void rbg_init_scenes(RbgGameContext* game_ctx);
+void rbg_update_scenes(RbgGameContext* game_ctx);
+void rbg_render_scenes(RbgGameContext* game_ctx);
+void rbg_set_next_scene(RbgGameContext* game_ctx, rbg_scene_type next_scene);
 
 // Function pointer types for scene dispatch (update & render)
-typedef void (*SceneUpdateFn)(RbgGameContext* ctx);
-typedef void (*SceneRenderFn)(RbgGameContext* ctx);
+typedef void (*SceneUpdateFn)(RbgGameContext* game_ctx);
+typedef void (*SceneRenderFn)(RbgGameContext* game_ctx);
 
 #endif

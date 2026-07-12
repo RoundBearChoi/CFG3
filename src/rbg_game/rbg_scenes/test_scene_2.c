@@ -12,61 +12,61 @@
 #include "raylib.h"
 #include <stdio.h>
 
-void init_test_scene_2(RbgGameContext* ctx)
+void init_test_scene_2(RbgGameContext* game_ctx)
 {
 	printf("\n=== starting test scene 2 ===\n");
 
-	ctx->scene_initialized = true;
+	game_ctx->scene_initialized = true;
 
-	rbg_init_input(ctx);
-	rbg_init_players(ctx);
-	rbg_init_player_boxes(ctx);
-	rbg_init_sheet_animators(ctx);
+	rbg_init_input(game_ctx);
+	rbg_init_players(game_ctx);
+	rbg_init_player_boxes(game_ctx);
+	rbg_init_sheet_animators(game_ctx);
 	rbg_init_fighter_update_functions();
 }
 
-void end_test_scene_2(RbgGameContext* ctx)
+void end_test_scene_2(RbgGameContext* game_ctx)
 {
 	// reset so we init again when we come back to this scene
-	ctx->scene_initialized = false;
+	game_ctx->scene_initialized = false;
 
-	rbg_stop_recording(ctx);
-	rbg_unload_sprite_sheets(ctx);
+	rbg_stop_recording(game_ctx);
+	rbg_unload_sprite_sheets(game_ctx);
 }
 
-void update_test_scene_2(RbgGameContext* ctx)
+void update_test_scene_2(RbgGameContext* game_ctx)
 {
-	if (ctx->scene_initialized == false) init_test_scene_2(ctx);
+	if (game_ctx->scene_initialized == false) init_test_scene_2(game_ctx);
 
-	rbg_update_recording(ctx); // input actions
+	rbg_update_recording(game_ctx); // input actions
 
 	// temp - manual record button for now
-	if (IsInputActionPressed(ctx, INPUT_F2)) rbg_start_recording(ctx);
-	if (IsInputActionPressed(ctx, INPUT_F3))
+	if (IsInputActionPressed(game_ctx, INPUT_F2)) rbg_start_recording(game_ctx);
+	if (IsInputActionPressed(game_ctx, INPUT_F3))
 	{
-		rbg_stop_recording(ctx);
-		rbg_save_recording(ctx, "resources/recordings/demo_input.csv");  // nested array ready
+		rbg_stop_recording(game_ctx);
+		rbg_save_recording(game_ctx, "resources/recordings/demo_input.csv");  // nested array ready
 	}
 
 	// temp -  switch scene
-	if (IsInputActionPressed(ctx, INPUT_F1))
+	if (IsInputActionPressed(game_ctx, INPUT_F1))
 	{
-		rbg_set_next_scene(ctx, TEST_SCENE_1);
-		end_test_scene_2(ctx);
+		rbg_set_next_scene(game_ctx, TEST_SCENE_1);
+		end_test_scene_2(game_ctx);
 	}
 	
 	// update all gameplay stuff
-	rbg_update_cam_control(ctx);
-	rbg_update_fighter(ctx, &ctx->player_1);
-	rbg_update_fighter(ctx, &ctx->player_2);
+	rbg_update_cam_control(game_ctx);
+	rbg_update_fighter(game_ctx, &game_ctx->player_1);
+	rbg_update_fighter(game_ctx, &game_ctx->player_2);
 	rbg_update_players();
-	rbg_update_sheet_animators(ctx);
-	rbg_update_player_boxes(ctx);
-	rbg_update_basic_collision_resolve(ctx);
+	rbg_update_sheet_animators(game_ctx);
+	rbg_update_player_boxes(game_ctx);
+	rbg_update_basic_collision_resolve(game_ctx);
 }
 
-void render_test_scene_2(RbgGameContext* ctx)
+void render_test_scene_2(RbgGameContext* game_ctx)
 {
-	rbg_draw_sprite_animation(&ctx->sheet_animator_p1, ctx->player_1.position, 1.0f, WHITE);
-	rbg_draw_sprite_animation(&ctx->sheet_animator_p2, ctx->player_2.position, 1.0f, GRAY);
+	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p1, game_ctx->player_1.position, 1.0f, WHITE);
+	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p2, game_ctx->player_2.position, 1.0f, GRAY);
 }
