@@ -27,10 +27,9 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ └── rbg_cam_control.h
   ├── rbg_fixed_time_step.c
   ├── rbg_fixed_time_step.h
-  ├── rbg_fixed_update_count.c
-  ├── rbg_fixed_update_count.h
   ├── rbg_game.c
   ├── rbg_game.h
+  ├── rbg_game_context.h
   ├── rbg_game_settings.c
   ├── rbg_game_settings.h
   ├── rbg_input
@@ -38,6 +37,7 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ ├── rbg_record_input_actions.h
   │ ├── rbg_update_input.c
   │ └── rbg_update_input.h
+  ├── rbg_input_context.h
   ├── rbg_players
   │ ├── rbg_basic_collision_resolve.c
   │ ├── rbg_basic_collision_resolve.h
