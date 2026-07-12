@@ -6,13 +6,13 @@
 #include "rbg_fighter_0_fall.h"
 #include <stdio.h>
 
+rbg_fighter_update_func rbg_fighter_update_functions[NUM_FIGHTER_STATES];
+
 // Handle the uninitialized state
 static void update_fighter_uninitialized(RbgGameContext* game_ctx, rbg_player* player)
 {
     printf("fighter_uninitialized state detected for player at %p\n", (void*)player);
 }
-
-rbg_fighter_update_func rbg_fighter_update_functions[NUM_FIGHTER_STATES];
 
 void rbg_init_fighter_update_functions(void)
 {
