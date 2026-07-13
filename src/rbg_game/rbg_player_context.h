@@ -12,6 +12,7 @@ typedef enum rbg_fighter_state {
     NUM_FIGHTER_STATES,
 } rbg_fighter_state;
 
+// should be in render ctx..
 // Enum that controls where the 'position' parameter points to in rbg_draw_sprite_animation.
 // CENTER is the original behavior; BOTTOM_CENTER is useful for characters standing on the ground.
 typedef enum rbg_render_pivot {
