@@ -1,8 +1,6 @@
 #ifndef RBG_INPUT_CONTEXT_H
 #define RBG_INPUT_CONTEXT_H
 
-#include <stdbool.h>
-
 // this is the single source of truth
 // both InputAction enum and input_action_names[] table are generated from this list (side-by-side for easy comparison)
 
@@ -41,19 +39,5 @@ typedef enum
 #define RECORD_FIRST_ACTION  INPUT_P1
 #define RECORD_LAST_ACTION   END_OF_INPUT
 #define NUM_RECORD_ACTIONS   ((int)(RECORD_LAST_ACTION - RECORD_FIRST_ACTION + 1))
-
-typedef struct {
-	int player_index;
-	bool is_colliding_with_other_player;
-
-	float width;
-	float height;
-	float offset_x;
-	float offset_y;
-
-	// Collision result stored after detection (to avoid recalculating in resolve)
-	float overlap_x;   // Positive value = how much the boxes overlap horizontally
-
-} rbg_player_col_box;
 
 #endif
