@@ -3,39 +3,10 @@
 
 #include "rbg_player_context.h"
 #include "rbg_input_context.h"
+#include "rbg_scene_context.h"
+#include "rbg_render_context.h"
 #include <stdbool.h>
 #include "raylib.h"
-
-typedef enum rbg_scene_type {
-	NONE = -1,
-    TEST_SCENE_1,
-    TEST_SCENE_2,
-    NUM_SCENES
-} rbg_scene_type;
-
-typedef struct SpriteSheet {
-    char *fighter_type;
-    char *spritesheet_name;     // base name WITHOUT .png (automatically cleaned from CSV)
-    int total_x;
-    int total_y;
-    int total_images;
-    float render_scale;
-    int play_delay;
-
-    Texture2D texture;      // loaded by Raylib
-    int frame_width;        // pre-computed: texture.width / total_x
-    int frame_height;       // pre-computed: texture.height / total_y
-} SpriteSheet;
-
-typedef struct sprite_sheet_animator {
-    SpriteSheet* sheet;       // pointer to loaded data (do NOT free)
-    int current_frame;
-    int frame_counter;        // ticks until next frame
-    bool is_playing;
-    rbg_render_pivot pivot;
-    bool is_facing_right_side; // true = original PNG right-facing orientation (default)
-                               // false = horizontal mirror flip (left-facing)
-} sprite_sheet_animator;
 
 typedef struct RbgGameContext {
     bool game_initialized;
