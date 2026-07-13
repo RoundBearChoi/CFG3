@@ -1,9 +1,8 @@
 #ifndef RBG_INPUT_CONTEXT_H
 #define RBG_INPUT_CONTEXT_H
 
-// this is the single source of truth
+// this is the single source of truth for input enums and strings
 // both InputAction enum and input_action_names[] table are generated from this list (side-by-side for easy comparison)
-
 #define RBG_INPUT_ACTIONS \
     X(INPUT_P1,               "INPUT_P1") \
     X(INPUT_P1_MOVE_LEFT,     "INPUT_P1_MOVE_LEFT") \
