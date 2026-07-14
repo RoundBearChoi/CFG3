@@ -3,8 +3,6 @@
 
 void rbg_accumulate_fixed_time_step(RbgGameContext* game_ctx)
 {
-    if (!game_ctx) return;
-
     if (game_ctx->previous_time == 0.0)
     {
         game_ctx->previous_time = GetTime();
@@ -29,12 +27,12 @@ void rbg_accumulate_fixed_time_step(RbgGameContext* game_ctx)
 
 bool rbg_run_fixed_time_step(RbgGameContext* game_ctx)
 {
-    if (!game_ctx) return false;
-
     if (game_ctx->accumulator >= game_ctx->fixed_dt)
     {
         game_ctx->accumulator -= game_ctx->fixed_dt;
-        return true;
+    
+		return true;
     }
-    return false;
+    
+	return false;
 }

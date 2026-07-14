@@ -16,12 +16,11 @@ void rbg_init_game(void)
 
 void rbg_run_game(RbgGameContext* game_ctx)
 {
-    if (!game_ctx) return;
-
     if (game_ctx->game_initialized == false)
     {
         game_ctx->game_initialized = true;
-        rbg_init_game();
+    
+		rbg_init_game();
     }
 
     rbg_update_input(game_ctx);

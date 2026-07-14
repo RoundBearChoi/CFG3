@@ -23,11 +23,10 @@ RbgGameContext create_default_game_ctx(void)
         .spritesheets = NULL,
         .spritesheet_count = 0,
 
-        // Camera2D defaults (important for Raylib)
         .camera = {
             .zoom = 1.0f,
             .rotation = 0.0f,
-            .target = { -600.0f, -600.0f },
+            .target = (Vector2){ -600.0f, -600.0f },
             .offset = (Vector2){ 0.0f, 0.0f }
         }
     };
