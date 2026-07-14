@@ -21,8 +21,8 @@ int main(void)
 	static const char* const bar_title = "C Fighting Game 3"; 
 
 	// game context instance
-	RbgGameContext game_ctx = {0};
-	game_ctx.target_fps = 128;
+	RbgGameContext game_ctx = create_default_game_ctx();
+	//game_ctx.target_fps = 128;
 
 	// start at native resolution (1600x800)
 	InitWindow(nativeWidth, nativeHeight, bar_title);

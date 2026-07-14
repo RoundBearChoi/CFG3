@@ -54,4 +54,6 @@ typedef struct RbgGameContext {
 	
 } RbgGameContext;
 
+RbgGameContext create_default_game_ctx(void);
+
 #endif
