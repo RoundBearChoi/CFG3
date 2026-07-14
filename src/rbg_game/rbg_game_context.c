@@ -19,7 +19,6 @@ RbgGameContext create_default_game_ctx(void)
 		.current_scene = TEST_SCENE_2,
 		.next_scene = NONE,
 
-        .cam_initialized = false,
         .scene_initialized = false,
         .spritesheets = NULL,
         .spritesheet_count = 0,

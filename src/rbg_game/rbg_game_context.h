@@ -24,7 +24,6 @@ typedef struct RbgGameContext {
 
 	// cam ctx
 	Camera2D camera;
-	bool cam_initialized;
 
 	// input ctx
 	int current_recording_frame;

@@ -22,7 +22,6 @@ int main(void)
 
 	// game context instance
 	RbgGameContext game_ctx = create_default_game_ctx();
-	//game_ctx.target_fps = 128;
 
 	// start at native resolution (1600x800)
 	InitWindow(nativeWidth, nativeHeight, bar_title);
