@@ -22,7 +22,6 @@ void rbg_run_game(RbgGameContext* game_ctx)
     {
         game_ctx->game_initialized = true;
         rbg_init_game();
-		rbg_init_scenes(game_ctx);
     }
 
     rbg_update_input(game_ctx);

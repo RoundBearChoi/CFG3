@@ -18,12 +18,6 @@ static SceneRenderFn scene_renders[NUM_SCENES] =
     render_test_scene_2,
 };
 
-void rbg_init_scenes(RbgGameContext* game_ctx)
-{
-	game_ctx->current_scene = TEST_SCENE_2;
-	game_ctx->next_scene = NONE;
-}
-
 void rbg_update_scenes(RbgGameContext* game_ctx)
 {
     // safety: prevent crashes if somehow out of bounds
