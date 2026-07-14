@@ -4,7 +4,7 @@
 
 RbgGameContext create_default_game_ctx(void)
 {
-    RbgGameContext ctx = {
+    RbgGameContext game_ctx = {
         .game_initialized = false,
 		
 		.accumulator = 0.0,
@@ -31,5 +31,5 @@ RbgGameContext create_default_game_ctx(void)
         }
     };
 
-    return ctx;
+    return game_ctx;
 }
