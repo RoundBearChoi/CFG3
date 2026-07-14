@@ -3,11 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-void rbg_init_sprite_sheet_loader(RbgGameContext* game_ctx)
-{
-	game_ctx->spritesheets = NULL;
-}
-
 void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
 {
     if (game_ctx->spritesheets != NULL)
