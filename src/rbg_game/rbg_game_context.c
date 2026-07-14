@@ -9,11 +9,12 @@ RbgGameContext create_default_game_ctx(void)
 		
 		.accumulator = 0.0,
 		.previous_time = 0.0,
+        .frame_time = 0,
+		.fixed_dt = 1.0 / 128.0,
 		.target_fps = 128,
-        .fixed_dt = 1.0 / 128.0,
 		
-		.fps_count = 0,
 		.fps_display = 0,
+		.fps_count = 0,
 		.fps_timer = 0,
         
 		.current_scene = TEST_SCENE_2,
