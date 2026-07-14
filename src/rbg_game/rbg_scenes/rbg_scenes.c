@@ -31,10 +31,10 @@ void rbg_update_scenes(RbgGameContext* game_ctx)
     }
 
     // apply queued scene change at the end of the frame's update phase
-    if (game_ctx->next_scene != NONE && game_ctx->next_scene != NUM_SCENES)
+    if (game_ctx->next_scene != NO_SCENE && game_ctx->next_scene != NUM_SCENES)
     {
         game_ctx->current_scene = game_ctx->next_scene;
-        game_ctx->next_scene = NONE;
+        game_ctx->next_scene = NO_SCENE;
         //TraceLog(LOG_INFO, "Scene switched to %d", (int)_current_scene);
     }
 }
