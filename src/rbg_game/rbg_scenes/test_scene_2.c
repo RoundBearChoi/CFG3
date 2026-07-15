@@ -7,8 +7,8 @@
 #include "../rbg_players/rbg_basic_collision_resolve.h"
 #include "../rbg_players/rbg_fighters/rbg_fighter_updater.h"
 #include "../rbg_scenes/rbg_scenes.h"
-#include "../rbg_spritesheets/rbg_sheet_loader.h" // need for unloading
-#include "../rbg_spritesheets/rbg_sheet_animators.h"
+#include "../rbg_sprite_sheets/rbg_sheet_loader.h" // need for unloading
+#include "../rbg_sprite_sheets/rbg_sheet_animators.h"
 #include "raylib.h"
 #include <stdio.h>
 

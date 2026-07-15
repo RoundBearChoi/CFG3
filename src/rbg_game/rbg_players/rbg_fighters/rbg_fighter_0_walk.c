@@ -1,6 +1,6 @@
 #include "rbg_fighter_0_walk.h"
 #include "../../rbg_input/rbg_record_input_actions.h"
-#include "../../rbg_spritesheets/rbg_sheet_animators.h"
+#include "../../rbg_sprite_sheets/rbg_sheet_animators.h"
 
 void update_fighter_0_walk(RbgGameContext* game_ctx, rbg_player* player)
 {

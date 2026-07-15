@@ -1,5 +1,5 @@
 #include "rbg_fighter_0_fall.h"
-#include "../../rbg_spritesheets/rbg_sheet_animators.h"
+#include "../../rbg_sprite_sheets/rbg_sheet_animators.h"
 
 void update_fighter_0_fall(RbgGameContext* game_ctx, rbg_player* player)
 {

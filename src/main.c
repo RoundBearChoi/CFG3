@@ -1,6 +1,6 @@
 #include "rbg_game/rbg_game.h"
 #include "rbg_game/rbg_render_on_screenspace.h"
-#include "rbg_game/rbg_spritesheets/rbg_sheet_loader.h"
+#include "rbg_game/rbg_sprite_sheets/rbg_sheet_loader.h"
 #include "raylib.h"
 #include "math.h"
 #include <stddef.h>
