@@ -43,7 +43,5 @@ void rbg_draw_on_test_scene_2(RbgGameContext* game_ctx)
 	rbg_draw_scaled_text(TextFormat("FIXED UPDATE COUNT: %i", game_ctx->fps_display), (Vector2){ 10.0f, 15.0f }, font_size, font_spacing, WHITE);
 	rbg_draw_scaled_text(TextFormat("RECORDING FRAME: %i", game_ctx->current_recording_frame), (Vector2){ 10.0f, 15.0f + horizontal_gap }, font_size, font_spacing, WHITE);
 	rbg_draw_scaled_text(TextFormat("PRESS F2 TO START PLAYING, F3 TO STOP"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 2 }, font_size, font_spacing, WHITE);
-
 	rbg_draw_scaled_text(TextFormat("F11 TO CYCLE THROUGH WINDOW MODES"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 3 }, font_size, font_spacing, WHITE);
-
 }
