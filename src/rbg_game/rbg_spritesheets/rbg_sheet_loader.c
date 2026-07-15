@@ -93,7 +93,7 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
 
             // Load texture using the clean name + .png
             char fullpath[512];
-            snprintf(fullpath, sizeof(fullpath), "resources/fighters_spritesheets/%s.png", name_buf);
+            snprintf(fullpath, sizeof(fullpath), "resources/fighters_sprite_sheets/%s.png", name_buf);
             game_ctx->sprite_sheets[i].texture = LoadTexture(fullpath);
 
             // Pre-compute frame size

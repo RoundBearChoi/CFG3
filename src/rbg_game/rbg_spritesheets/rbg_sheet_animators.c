@@ -7,7 +7,7 @@
 
 void rbg_init_sheet_animators(RbgGameContext* game_ctx)
 {
-	rbg_load_sprite_sheets(game_ctx, "resources/fighters_spritesheet_list.csv");
+	rbg_load_sprite_sheets(game_ctx, "resources/fighters_sprite_sheet_list.csv");
 
 	rbg_init_animator(game_ctx, &game_ctx->sheet_animator_p1, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
 	rbg_init_animator(game_ctx, &game_ctx->sheet_animator_p2, "fighter_0_idle", RENDER_PIVOT_BOTTOM_CENTER);
