@@ -13,6 +13,26 @@ void rbg_render_on_screenspace(RbgGameContext* game_ctx)
 		return;
 	}
 
+	rbg_draw_on_test_scene_2(game_ctx);
+}
+
+void rbg_draw_scaled_text(const char* text, Vector2 pos, float font_size, float font_spacing, Color color)
+{
+	DrawTextEx(global_font_press_start,
+               text,
+               pos, // must be float
+               font_size, // must be float
+               font_spacing, // must be float
+               color);
+}
+
+void rbg_draw_on_test_scene_2(RbgGameContext* game_ctx)
+{
+	if (game_ctx->current_scene != TEST_SCENE_2)
+	{
+		return;
+	}
+
 	// scale to 720p reference
     int screenHeight = GetScreenHeight();
     float scale = (float)screenHeight / 720.0f;
@@ -25,14 +45,5 @@ void rbg_render_on_screenspace(RbgGameContext* game_ctx)
 	rbg_draw_scaled_text(TextFormat("PRESS F2 TO START PLAYING, F3 TO STOP"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 2 }, font_size, font_spacing, WHITE);
 
 	rbg_draw_scaled_text(TextFormat("F11 TO CYCLE THROUGH WINDOW MODES"), (Vector2){ 10.0f, 15.0f + horizontal_gap * 3 }, font_size, font_spacing, WHITE);
-}
 
-void rbg_draw_scaled_text(const char* text, Vector2 pos, float font_size, float font_spacing, Color color)
-{
-	DrawTextEx(global_font_press_start,
-               text,
-               pos, // must be float
-               font_size, // must be float
-               font_spacing, // must be float
-               color);
 }
