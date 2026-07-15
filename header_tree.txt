@@ -5,8 +5,8 @@ Note: Directories are colored blue in the terminal (plain text here)
 
 ├── resources
 │ ├── default_key_bindings.json
-│ ├── fighters_spritesheet_list.csv
-│ ├── fighters_spritesheets
+│ ├── fighters_sprite_sheet_list.csv
+│ ├── fighters_sprite_sheets
 │ │ ├── fighter_0_fall.png
 │ │ ├── fighter_0_fall_loop.png
 │ │ ├── fighter_0_idle.png
@@ -29,6 +29,7 @@ Note: Directories are colored blue in the terminal (plain text here)
   ├── rbg_fixed_time_step.h
   ├── rbg_game.c
   ├── rbg_game.h
+  ├── rbg_game_context.c
   ├── rbg_game_context.h
   ├── rbg_game_settings.c
   ├── rbg_game_settings.h
@@ -38,6 +39,7 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ ├── rbg_update_input.c
   │ └── rbg_update_input.h
   ├── rbg_input_context.h
+  ├── rbg_player_context.h
   ├── rbg_players
   │ ├── rbg_basic_collision_resolve.c
   │ ├── rbg_basic_collision_resolve.h
@@ -56,11 +58,13 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ ├── rbg_player_boxes.h
   │ ├── rbg_players.c
   │ └── rbg_players.h
+  ├── rbg_render_context.h
   ├── rbg_render_debug
   │ ├── rbg_render_debug.c
   │ └── rbg_render_debug.h
   ├── rbg_render_on_screenspace.c
   ├── rbg_render_on_screenspace.h
+  ├── rbg_scene_context.h
   ├── rbg_scenes
   │ ├── rbg_scenes.c
   │ ├── rbg_scenes.h
@@ -68,7 +72,7 @@ Note: Directories are colored blue in the terminal (plain text here)
   │ ├── test_scene_1.h
   │ ├── test_scene_2.c
   │ └── test_scene_2.h
-  └── rbg_spritesheets
+  └── rbg_sprite_sheets
    ├── rbg_sheet_animators.c
    ├── rbg_sheet_animators.h
    ├── rbg_sheet_loader.c
