@@ -5,7 +5,7 @@
 
 void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
 {
-    if (game_ctx->spritesheets != NULL)
+    if (game_ctx->sprite_sheets != NULL)
 	{
         rbg_unload_sprite_sheets(game_ctx);   // allow re-load if called again
     }
@@ -35,12 +35,12 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
 
     if (row_count == 0) return;
 
-    game_ctx->spritesheets = (SpriteSheet *)calloc(row_count, sizeof(SpriteSheet));
+    game_ctx->sprite_sheets = (sprite_sheet *)calloc(row_count, sizeof(sprite_sheet));
     
-	if (game_ctx->spritesheets == NULL)
+	if (game_ctx->sprite_sheets == NULL)
 	{
         game_ctx->spritesheet_count = 0;
-        TraceLog(LOG_ERROR, "Failed to allocate memory for spritesheets");
+        TraceLog(LOG_ERROR, "Failed to allocate memory for sprite_sheets");
         return;
     }
     
@@ -51,8 +51,8 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
     
 	if (fileData == NULL)
 	{
-        free(game_ctx->spritesheets);
-        game_ctx->spritesheets = NULL;
+        free(game_ctx->sprite_sheets);
+        game_ctx->sprite_sheets = NULL;
         game_ctx->spritesheet_count = 0;
         return;
     }
@@ -83,29 +83,29 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
                 *ext = '\0';   // truncate at the dot → clean base name
             }
 
-            game_ctx->spritesheets[i].fighter_type = strdup(type_buf);
-            game_ctx->spritesheets[i].spritesheet_name = strdup(name_buf);   // now guaranteed no .png
-            game_ctx->spritesheets[i].total_x = tx;
-            game_ctx->spritesheets[i].total_y = ty;
-            game_ctx->spritesheets[i].total_images = ti;
-            game_ctx->spritesheets[i].render_scale = rs;
-            game_ctx->spritesheets[i].play_delay = pd;
+            game_ctx->sprite_sheets[i].fighter_type = strdup(type_buf);
+            game_ctx->sprite_sheets[i].spritesheet_name = strdup(name_buf);   // now guaranteed no .png
+            game_ctx->sprite_sheets[i].total_x = tx;
+            game_ctx->sprite_sheets[i].total_y = ty;
+            game_ctx->sprite_sheets[i].total_images = ti;
+            game_ctx->sprite_sheets[i].render_scale = rs;
+            game_ctx->sprite_sheets[i].play_delay = pd;
 
             // Load texture using the clean name + .png
             char fullpath[512];
             snprintf(fullpath, sizeof(fullpath), "resources/fighters_spritesheets/%s.png", name_buf);
-            game_ctx->spritesheets[i].texture = LoadTexture(fullpath);
+            game_ctx->sprite_sheets[i].texture = LoadTexture(fullpath);
 
             // Pre-compute frame size
-            if (game_ctx->spritesheets[i].texture.id != 0 && tx > 0 && ty > 0)
+            if (game_ctx->sprite_sheets[i].texture.id != 0 && tx > 0 && ty > 0)
 			{
-                game_ctx->spritesheets[i].frame_width = game_ctx->spritesheets[i].texture.width / tx;
-                game_ctx->spritesheets[i].frame_height = game_ctx->spritesheets[i].texture.height / ty;
+                game_ctx->sprite_sheets[i].frame_width = game_ctx->sprite_sheets[i].texture.width / tx;
+                game_ctx->sprite_sheets[i].frame_height = game_ctx->sprite_sheets[i].texture.height / ty;
             } 
 			else
 			{
-                game_ctx->spritesheets[i].frame_width = 0;
-                game_ctx->spritesheets[i].frame_height = 0;
+                game_ctx->sprite_sheets[i].frame_width = 0;
+                game_ctx->sprite_sheets[i].frame_height = 0;
             }
         }
 
@@ -120,34 +120,34 @@ void rbg_unload_sprite_sheets(RbgGameContext* game_ctx)
 {
 	printf("\n=== unloading sprite sheets ===\n");
 
-    if (game_ctx->spritesheets == NULL) return;
+    if (game_ctx->sprite_sheets == NULL) return;
 
     for (int i = 0; i < game_ctx->spritesheet_count; i++)
 	{
-        if (game_ctx->spritesheets[i].texture.id != 0)
+        if (game_ctx->sprite_sheets[i].texture.id != 0)
 		{
-            UnloadTexture(game_ctx->spritesheets[i].texture);
+            UnloadTexture(game_ctx->sprite_sheets[i].texture);
         }
         
-		if (game_ctx->spritesheets[i].fighter_type) free(game_ctx->spritesheets[i].fighter_type);
-        if (game_ctx->spritesheets[i].spritesheet_name) free(game_ctx->spritesheets[i].spritesheet_name);
+		if (game_ctx->sprite_sheets[i].fighter_type) free(game_ctx->sprite_sheets[i].fighter_type);
+        if (game_ctx->sprite_sheets[i].spritesheet_name) free(game_ctx->sprite_sheets[i].spritesheet_name);
     }
 
-    free(game_ctx->spritesheets);
-    game_ctx->spritesheets = NULL;
+    free(game_ctx->sprite_sheets);
+    game_ctx->sprite_sheets = NULL;
     game_ctx->spritesheet_count = 0;
 }
 
-SpriteSheet* rbg_get_sprite_sheet_by_name(RbgGameContext* game_ctx, const char *spritesheet_name)
+sprite_sheet* rbg_get_sprite_sheet_by_name(RbgGameContext* game_ctx, const char *spritesheet_name)
 {
-    if (spritesheet_name == NULL || game_ctx->spritesheets == NULL) return NULL;
+    if (spritesheet_name == NULL || game_ctx->sprite_sheets == NULL) return NULL;
 
     for (int i = 0; i < game_ctx->spritesheet_count; i++)
 	{
-        if (game_ctx->spritesheets[i].spritesheet_name &&
-            strcmp(game_ctx->spritesheets[i].spritesheet_name, spritesheet_name) == 0)
+        if (game_ctx->sprite_sheets[i].spritesheet_name &&
+            strcmp(game_ctx->sprite_sheets[i].spritesheet_name, spritesheet_name) == 0)
 		{
-            return &game_ctx->spritesheets[i];
+            return &game_ctx->sprite_sheets[i];
         }
     }
 

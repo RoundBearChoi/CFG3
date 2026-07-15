@@ -85,7 +85,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
 {
     if (ani == NULL || ani->sheet == NULL || ani->sheet->texture.id == 0) return;
     
-    SpriteSheet* s = ani->sheet;
+    sprite_sheet* s = ani->sheet;
     int frame = ani->current_frame;
    
     // Calculate source rectangle (row-major order, respect total_images)

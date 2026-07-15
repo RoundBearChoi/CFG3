@@ -21,7 +21,7 @@ RbgGameContext create_default_game_ctx(void)
 		.next_scene = NO_SCENE,
 
         .scene_initialized = false,
-        .spritesheets = NULL,
+        .sprite_sheets = NULL,
         .spritesheet_count = 0,
 
         .camera = {

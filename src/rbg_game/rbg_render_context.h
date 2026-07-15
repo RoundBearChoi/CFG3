@@ -8,7 +8,7 @@ typedef enum rbg_render_pivot {
     RENDER_PIVOT_BOTTOM_CENTER
 } rbg_render_pivot;
 
-typedef struct SpriteSheet {
+typedef struct sprite_sheet {
     char *fighter_type;
     char *spritesheet_name;     // base name WITHOUT .png (automatically cleaned from CSV)
     int total_x;
@@ -20,10 +20,10 @@ typedef struct SpriteSheet {
     Texture2D texture;      // loaded by Raylib
     int frame_width;        // pre-computed: texture.width / total_x
     int frame_height;       // pre-computed: texture.height / total_y
-} SpriteSheet;
+} sprite_sheet;
 
 typedef struct sprite_sheet_animator {
-    SpriteSheet* sheet;       // pointer to loaded data (do NOT free)
+    sprite_sheet* sheet;       // pointer to loaded data (do NOT free)
     int current_frame;
     int frame_counter;        // ticks until next frame
     bool is_playing;
