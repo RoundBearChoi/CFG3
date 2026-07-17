@@ -1,6 +1,10 @@
 #ifndef RBG_RENDER_ON_SCREENSPACE_H
 #define RBG_RENDER_ON_SCREENSPACE_H
 
+// --------------------------------------------------------------
+// this is only for testing. all text and drawings will use png
+// --------------------------------------------------------------
+
 #include "rbg_game_context.h"
 #include "raylib.h"
 
