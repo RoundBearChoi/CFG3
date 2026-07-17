@@ -52,7 +52,7 @@ void update_test_scene_2(RbgGameContext* game_ctx)
 		rbg_save_recording(game_ctx, "resources/recordings/demo_input.csv");  // nested array ready
 	}
 
-	// temp -  switch scene
+	// temp - switch scene
 	if (IsInputActionPressed(game_ctx, INPUT_F1))
 	{
 		rbg_set_next_scene(game_ctx, TEST_SCENE_1);

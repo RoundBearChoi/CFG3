@@ -30,8 +30,6 @@ void update_test_scene_1(RbgGameContext* game_ctx)
 		rbg_set_next_scene(game_ctx, TEST_SCENE_2);
 		end_test_scene_1(game_ctx);
 	}
-
-	// Note: input, logic, state changes here. No drawing.
 }
 
 void render_test_scene_1(RbgGameContext* game_ctx)
@@ -39,5 +37,4 @@ void render_test_scene_1(RbgGameContext* game_ctx)
 	if (!game_ctx) return;
 
     DrawText("This is TEST SCENE 1", 0, 0, 30, WHITE);
-	// All drawing / render commands for this scene go here.
 }
