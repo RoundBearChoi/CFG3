@@ -27,7 +27,8 @@ void init_test_scene_2(RbgGameContext* game_ctx)
 
 void end_test_scene_2(RbgGameContext* game_ctx)
 {
-	// reset so we init again when we come back to this scene
+	printf("\n=== ending test scene 2 ===\n");
+
 	game_ctx->scene_initialized = false;
 
 	rbg_stop_recording(game_ctx);
