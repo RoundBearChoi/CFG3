@@ -23,7 +23,10 @@ void end_dev_scene(RbgGameContext* game_ctx)
 
 void update_dev_scene(RbgGameContext* game_ctx)
 {
-
+	if (game_ctx->scene_initialized == false)
+	{
+		init_dev_scene(game_ctx);
+	}
 }
 
 void render_dev_scene(RbgGameContext* game_ctx)

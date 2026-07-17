@@ -36,7 +36,10 @@ void end_test_scene_2(RbgGameContext* game_ctx)
 
 void update_test_scene_2(RbgGameContext* game_ctx)
 {
-	if (game_ctx->scene_initialized == false) init_test_scene_2(game_ctx);
+	if (game_ctx->scene_initialized == false)
+	{
+		init_test_scene_2(game_ctx);
+	}
 
 	rbg_update_recording(game_ctx); // input actions
 
