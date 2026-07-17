@@ -1,6 +1,7 @@
 #include "rbg_scenes.h"
 #include "test_scene_1.h"
 #include "test_scene_2.h"
+#include "dev_scene.h"
 #include "raylib.h"
 #include <stddef.h>
 
@@ -9,6 +10,7 @@ static SceneUpdateFn scene_updates[NUM_SCENES] =
 {
     update_test_scene_1,
     update_test_scene_2,
+	update_dev_scene,
 };
 
 // Array of function pointers for renders - indexed by rbg_scene_type enum (mirrors the update pattern)
@@ -16,6 +18,7 @@ static SceneRenderFn scene_renders[NUM_SCENES] =
 {
     render_test_scene_1,
     render_test_scene_2,
+	render_dev_scene,
 };
 
 void rbg_update_scenes(RbgGameContext* game_ctx)

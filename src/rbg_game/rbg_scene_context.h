@@ -5,6 +5,7 @@ typedef enum rbg_scene_type {
 	NO_SCENE = -1,
     TEST_SCENE_1,
     TEST_SCENE_2,
+	DEV_SCENE,
     NUM_SCENES
 } rbg_scene_type;
 
