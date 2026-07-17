@@ -9,6 +9,8 @@ void rbg_render_debug(RbgGameContext* game_ctx)
 {
 	if (global_rbg_game_settings.render_debug == false) { return; }
 
+	if (game_ctx->current_scene != TEST_SCENE_2) { return; } //temp - only draw on test_scene_2
+
 	// red x on (0, 0)
 	// -y is up
 	DrawLine(-5, 5, 5, -5, RED);
