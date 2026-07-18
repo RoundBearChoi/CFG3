@@ -122,23 +122,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
         fh
     };
     
-    // Pivot-based origin (works correctly with flip)
     Vector2 origin = rbg_get_render_origin(ani->pivot, fw, fh);
-
-	/*
-    switch (ani->pivot)
-	{
-        case RENDER_PIVOT_CENTER:
-            origin = (Vector2){ fw * 0.5f, fh * 0.5f };
-            break;
-        case RENDER_PIVOT_BOTTOM_CENTER:
-            origin = (Vector2){ fw * 0.5f, fh  };           // bottom edge
-            break;
-        default:
-            origin = (Vector2){ fw * 0.5f, fh * 0.5f };
-            break;
-    }
-	*/
 
 	DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
