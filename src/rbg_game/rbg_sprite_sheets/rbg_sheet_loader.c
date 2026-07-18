@@ -39,12 +39,12 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
     
 	if (game_ctx->sprite_sheets == NULL)
 	{
-        game_ctx->spritesheet_count = 0;
+        game_ctx->sprite_sheet_count = 0;
         TraceLog(LOG_ERROR, "Failed to allocate memory for sprite_sheets");
         return;
     }
     
-	game_ctx->spritesheet_count = row_count;
+	game_ctx->sprite_sheet_count = row_count;
 
     // Second pass: parse and load
     fileData = LoadFileText(csv_path);
@@ -53,7 +53,7 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
 	{
         free(game_ctx->sprite_sheets);
         game_ctx->sprite_sheets = NULL;
-        game_ctx->spritesheet_count = 0;
+        game_ctx->sprite_sheet_count = 0;
         return;
     }
 
@@ -84,7 +84,7 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
             }
 
             game_ctx->sprite_sheets[i].fighter_type = strdup(type_buf);
-            game_ctx->sprite_sheets[i].spritesheet_name = strdup(name_buf);   // now guaranteed no .png
+            game_ctx->sprite_sheets[i].sprite_sheet_name = strdup(name_buf);   // now guaranteed no .png
             game_ctx->sprite_sheets[i].total_x = tx;
             game_ctx->sprite_sheets[i].total_y = ty;
             game_ctx->sprite_sheets[i].total_images = ti;
@@ -122,7 +122,7 @@ void rbg_unload_sprite_sheets(RbgGameContext* game_ctx)
 
     if (game_ctx->sprite_sheets == NULL) return;
 
-    for (int i = 0; i < game_ctx->spritesheet_count; i++)
+    for (int i = 0; i < game_ctx->sprite_sheet_count; i++)
 	{
         if (game_ctx->sprite_sheets[i].texture.id != 0)
 		{
@@ -130,22 +130,22 @@ void rbg_unload_sprite_sheets(RbgGameContext* game_ctx)
         }
         
 		if (game_ctx->sprite_sheets[i].fighter_type) free(game_ctx->sprite_sheets[i].fighter_type);
-        if (game_ctx->sprite_sheets[i].spritesheet_name) free(game_ctx->sprite_sheets[i].spritesheet_name);
+        if (game_ctx->sprite_sheets[i].sprite_sheet_name) free(game_ctx->sprite_sheets[i].sprite_sheet_name);
     }
 
     free(game_ctx->sprite_sheets);
     game_ctx->sprite_sheets = NULL;
-    game_ctx->spritesheet_count = 0;
+    game_ctx->sprite_sheet_count = 0;
 }
 
-sprite_sheet* rbg_get_sprite_sheet_by_name(RbgGameContext* game_ctx, const char *spritesheet_name)
+sprite_sheet* rbg_get_sprite_sheet_by_name(RbgGameContext* game_ctx, const char *sprite_sheet_name)
 {
-    if (spritesheet_name == NULL || game_ctx->sprite_sheets == NULL) return NULL;
+    if (sprite_sheet_name == NULL || game_ctx->sprite_sheets == NULL) return NULL;
 
-    for (int i = 0; i < game_ctx->spritesheet_count; i++)
+    for (int i = 0; i < game_ctx->sprite_sheet_count; i++)
 	{
-        if (game_ctx->sprite_sheets[i].spritesheet_name &&
-            strcmp(game_ctx->sprite_sheets[i].spritesheet_name, spritesheet_name) == 0)
+        if (game_ctx->sprite_sheets[i].sprite_sheet_name &&
+            strcmp(game_ctx->sprite_sheets[i].sprite_sheet_name, sprite_sheet_name) == 0)
 		{
             return &game_ctx->sprite_sheets[i];
         }

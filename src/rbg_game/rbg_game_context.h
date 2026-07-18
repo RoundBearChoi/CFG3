@@ -47,7 +47,7 @@ typedef struct RbgGameContext {
 
 	// sprite sheets (render) ctx
 	sprite_sheet* sprite_sheets;
-	int spritesheet_count;
+	int sprite_sheet_count;
 	sprite_sheet_animator sheet_animator_p1;
 	sprite_sheet_animator sheet_animator_p2;
 	

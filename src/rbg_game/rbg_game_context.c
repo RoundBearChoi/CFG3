@@ -22,7 +22,7 @@ RbgGameContext create_default_game_ctx(void)
 
         .scene_initialized = false,
         .sprite_sheets = NULL,
-        .spritesheet_count = 0,
+        .sprite_sheet_count = 0,
 
         .camera = {
             .zoom = 1.0f,

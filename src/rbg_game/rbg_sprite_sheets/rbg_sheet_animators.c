@@ -48,19 +48,19 @@ sprite_sheet_animator* rbg_get_player_sheet_animator(RbgGameContext* game_ctx, i
 	return NULL;
 }
 
-void rbg_init_animator(RbgGameContext* game_ctx, sprite_sheet_animator* ani, const char* spritesheet_name, rbg_render_pivot pivot)
+void rbg_init_animator(RbgGameContext* game_ctx, sprite_sheet_animator* ani, const char* sprite_sheet_name, rbg_render_pivot pivot)
 {
     if (ani == NULL) return;
     
 	memset(ani, 0, sizeof(sprite_sheet_animator));
     
-    ani->sheet = rbg_get_sprite_sheet_by_name(game_ctx, spritesheet_name);
+    ani->sheet = rbg_get_sprite_sheet_by_name(game_ctx, sprite_sheet_name);
     ani->pivot = pivot;
     ani->is_facing_right_side = true;  // default: right-facing (assuming all original png orientation is left to right)
     
     if (ani->sheet == NULL)
 	{
-        TraceLog(LOG_WARNING, "rbg_init_animator: Could not find spritesheet '%s'", spritesheet_name);
+        TraceLog(LOG_WARNING, "rbg_init_animator: Could not find spritesheet '%s'", sprite_sheet_name);
         return;
     }
     

@@ -10,7 +10,7 @@ typedef enum rbg_render_pivot {
 
 typedef struct sprite_sheet {
     char *fighter_type;
-    char *spritesheet_name;     // base name WITHOUT .png (automatically cleaned from CSV)
+    char *sprite_sheet_name;     // base name WITHOUT .png (automatically cleaned from CSV)
     int total_x;
     int total_y;
     int total_images;
