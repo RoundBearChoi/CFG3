@@ -5,6 +5,6 @@
 
 void rbg_render_debug(RbgGameContext* game_ctx);
 void rbg_draw_x_on_player_pos(RbgGameContext* game_ctx);
-void rbg_draw_player_boxes(RbgGameContext* game_ctx, int playerIndex);
+void rbg_draw_player_box(RbgGameContext* game_ctx, int playerIndex);
 
 #endif

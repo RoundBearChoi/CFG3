@@ -19,8 +19,8 @@ void rbg_render_debug(RbgGameContext* game_ctx)
 	// random green horizontal line
 	DrawLine(-50, -50, 50, -50, GREEN);
 
-	rbg_draw_player_boxes(game_ctx, 1);
-	rbg_draw_player_boxes(game_ctx, 2);
+	rbg_draw_player_box(game_ctx, 1);
+	rbg_draw_player_box(game_ctx, 2);
 	rbg_draw_x_on_player_pos(game_ctx);
 }
 
@@ -42,7 +42,7 @@ void rbg_draw_x_on_player_pos(RbgGameContext* game_ctx)
 	DrawLineV((Vector2){ p2_pos.x - x_length, p2_pos.y - x_length }, (Vector2){ p2_pos.x + x_length, p2_pos.y + x_length }, p2_color_x);
 }
 
-void rbg_draw_player_boxes(RbgGameContext* game_ctx, int playerIndex)
+void rbg_draw_player_box(RbgGameContext* game_ctx, int playerIndex)
 {
 	rbg_player* p = rbg_get_player(game_ctx, playerIndex); 
 	rbg_player_col_box* b = rbg_get_player_box(game_ctx, playerIndex);
