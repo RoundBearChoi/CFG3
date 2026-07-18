@@ -75,4 +75,23 @@ void render_test_scene_2(RbgGameContext* game_ctx)
 {
 	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p1, game_ctx->player_1.position, 1.0f, WHITE);
 	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p2, game_ctx->player_2.position, 1.0f, GRAY);
+
+	// testing cat sprite
+    single_sprite* cat = rbg_get_single_sprite_by_name(game_ctx, "retro_cat_test");
+    
+	if (cat && cat->texture.id != 0)
+    {
+        float cat_scale = 3.0f;
+        float cat_w = cat->texture.width  * cat_scale;
+        float cat_h = cat->texture.height * cat_scale;
+
+        float x = 300.0f;
+        float y = -500.0f;
+
+        DrawTextureEx(cat->texture, (Vector2){x, y}, 0.0f, cat_scale, WHITE);
+    }
+	else
+	{
+		printf("\nfailing to render cat\n");
+	}
 }
