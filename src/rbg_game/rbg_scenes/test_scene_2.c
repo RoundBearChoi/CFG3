@@ -74,6 +74,7 @@ void update_test_scene_2(RbgGameContext* game_ctx)
 
 void render_test_scene_2(RbgGameContext* game_ctx)
 {
+	// draw fighters
 	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p1, game_ctx->player_1.position, 1.0f, WHITE);
 	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p2, game_ctx->player_2.position, 1.0f, GRAY);
 	
