@@ -60,7 +60,7 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
     line = strtok(fileData, "\r\n");    // header
 	if (line) line = strtok(NULL, "\r\n");
 
-	printf("\n=== loading textures ===\n");
+	printf("\n=== loading sprite sheets ===\n");
 
 	int i = 0;
 

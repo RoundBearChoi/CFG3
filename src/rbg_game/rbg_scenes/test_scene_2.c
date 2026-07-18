@@ -7,7 +7,8 @@
 #include "../rbg_players/rbg_basic_collision_resolve.h"
 #include "../rbg_players/rbg_fighters/rbg_fighter_updater.h"
 #include "../rbg_scenes/rbg_scenes.h"
-#include "../rbg_sprite_sheets/rbg_sheet_loader.h" // need for unloading
+#include "../rbg_sprite_sheets/rbg_sheet_loader.h"
+#include "../rbg_sprite_sheets/rbg_single_sprite_loader.h"
 #include "../rbg_sprite_sheets/rbg_sheet_animators.h"
 #include "raylib.h"
 #include <stdio.h>
@@ -33,6 +34,7 @@ void end_test_scene_2(RbgGameContext* game_ctx)
 
 	rbg_stop_recording(game_ctx);
 	rbg_unload_sprite_sheets(game_ctx);
+	rbg_unload_single_sprites(game_ctx);
 }
 
 void update_test_scene_2(RbgGameContext* game_ctx)
