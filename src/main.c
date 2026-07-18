@@ -1,6 +1,7 @@
 #include "rbg_game/rbg_game.h"
 #include "rbg_game/rbg_render_on_screenspace.h"
 #include "rbg_game/rbg_sprite_sheets/rbg_sheet_loader.h"
+#include "rbg_game/rbg_sprite_sheets/rbg_single_sprite_loader.h"
 #include "raylib.h"
 #include "math.h"
 #include <stddef.h>
@@ -122,6 +123,7 @@ int main(void)
     // clean up
     UnloadRenderTexture(render_texture_2d);
     rbg_unload_sprite_sheets(&game_ctx);
+	rbg_unload_single_sprites(&game_ctx);
 	UnloadFont(global_font_press_start);
     CloseWindow();
     return 0;
