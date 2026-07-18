@@ -9,6 +9,7 @@
 #include "../rbg_scenes/rbg_scenes.h"
 #include "../rbg_sprite_sheets/rbg_sheet_loader.h"
 #include "../rbg_sprite_sheets/rbg_single_sprite_loader.h"
+#include "../rbg_sprite_sheets/rbg_single_sprite_renderer.h"
 #include "../rbg_sprite_sheets/rbg_sheet_animators.h"
 #include "raylib.h"
 #include <stdio.h>
@@ -75,20 +76,7 @@ void render_test_scene_2(RbgGameContext* game_ctx)
 {
 	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p1, game_ctx->player_1.position, 1.0f, WHITE);
 	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p2, game_ctx->player_2.position, 1.0f, GRAY);
-
-	rbg_render_single_sprite(game_ctx, "retro_cat_test", (Vector2){ 300.0f, -500.0f }, 3.0f);
 	
-	// testing cat sprite
-	/*
-	single_sprite* cat = rbg_get_single_sprite_by_name(game_ctx, "retro_cat_test");
-    
-	if (cat && cat->texture.id != 0)
-    {
-        float cat_scale = 3.0f;
-        float x = 300.0f;
-        float y = -500.0f;
-
-        DrawTextureEx(cat->texture, (Vector2){x, y}, 0.0f, cat_scale, WHITE);
-	}
-	*/
+	// cat test render
+	rbg_render_single_sprite(game_ctx, "retro_cat_test", (Vector2){ 300.0f, -500.0f }, 3.0f);
 }
