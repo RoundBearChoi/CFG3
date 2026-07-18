@@ -1,4 +1,5 @@
 #include "dev_scene.h"
+#include <stdio.h>
 
 void init_dev_scene(RbgGameContext* game_ctx)
 {

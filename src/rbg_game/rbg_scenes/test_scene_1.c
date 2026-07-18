@@ -3,6 +3,7 @@
 #include "../rbg_input/rbg_update_input.h"
 #include "../rbg_cam_control/rbg_cam_control.h"
 #include "raylib.h"
+#include <stdio.h>
 
 void init_test_scene_1(RbgGameContext* game_ctx)
 {
