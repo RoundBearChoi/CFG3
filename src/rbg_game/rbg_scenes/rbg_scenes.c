@@ -5,7 +5,7 @@
 #include "raylib.h"
 #include <stddef.h>
 
-// Array of function pointers for updates - indexed by rbg_scene_type enum
+// array of function pointers for updates - indexed by rbg_scene_type enum
 static SceneUpdateFn scene_updates[NUM_SCENES] =
 {
     update_test_scene_1,
@@ -13,7 +13,7 @@ static SceneUpdateFn scene_updates[NUM_SCENES] =
 	update_dev_scene,
 };
 
-// Array of function pointers for renders - indexed by rbg_scene_type enum (mirrors the update pattern)
+// array of function pointers for renders - indexed by rbg_scene_type enum (mirrors the update pattern)
 static SceneRenderFn scene_renders[NUM_SCENES] =
 {
     render_test_scene_1,
@@ -44,7 +44,7 @@ void rbg_update_scenes(RbgGameContext* game_ctx)
 
 void rbg_render_scenes(RbgGameContext* game_ctx)
 {
-    // Mirror of update dispatch, but for rendering (called once per visual frame)
+    // mirror of update dispatch, but for rendering (called once per visual frame)
     if (game_ctx->current_scene >= 0 && game_ctx->current_scene < NUM_SCENES && scene_renders[game_ctx->current_scene] != NULL)
 	{
         scene_renders[game_ctx->current_scene](game_ctx);
