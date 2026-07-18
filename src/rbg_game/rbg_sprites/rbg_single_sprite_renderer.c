@@ -1,5 +1,5 @@
 #include "rbg_single_sprite_renderer.h"
-#include "../rbg_sprite_sheets/rbg_single_sprite_loader.h"
+#include "../rbg_sprites/rbg_single_sprite_loader.h"
 
 void rbg_render_single_sprite(RbgGameContext* game_ctx, const char *sprite_name, Vector2 position, float scale, Color tint)
 {

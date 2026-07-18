@@ -1,6 +1,6 @@
 #include "rbg_fighter_0_idle.h"
 #include "../../rbg_input/rbg_record_input_actions.h"
-#include "../../rbg_sprite_sheets/rbg_sheet_animators.h"
+#include "../../rbg_sprites/rbg_sheet_animators.h"
 
 void update_fighter_0_idle(RbgGameContext* game_ctx, rbg_player* player)
 {
