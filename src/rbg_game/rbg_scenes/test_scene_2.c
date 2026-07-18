@@ -78,5 +78,5 @@ void render_test_scene_2(RbgGameContext* game_ctx)
 	rbg_draw_sprite_animation(&game_ctx->sheet_animator_p2, game_ctx->player_2.position, 1.0f, GRAY);
 	
 	// cat test render
-	rbg_render_single_sprite(game_ctx, "retro_cat_test", (Vector2){ 0.0f, -500.0f }, 3.0f, RENDER_PIVOT_CENTER, GRAY);
+	rbg_render_single_sprite(game_ctx, "retro_cat_test", (Vector2){ 0.0f, -500.0f }, 3.0f, RENDER_PIVOT_BOTTOM_CENTER, GRAY);
 }

@@ -1,5 +1,6 @@
 #include "rbg_single_sprite_renderer.h"
-#include "../rbg_sprites/rbg_single_sprite_loader.h"
+#include "rbg_single_sprite_loader.h"
+#include "rbg_render_origin.h"
 
 void rbg_render_single_sprite(RbgGameContext* game_ctx, const char *sprite_name, Vector2 position, float scale, rbg_render_pivot pivot, Color tint)
 {
@@ -26,22 +27,8 @@ void rbg_render_single_sprite(RbgGameContext* game_ctx, const char *sprite_name,
             height
         };
 
-        Vector2 origin;
-        switch (pivot)
-        {
-            case RENDER_PIVOT_CENTER:
-                origin = (Vector2){ width * 0.5f, height * 0.5f };
-                break;
-
-            case RENDER_PIVOT_BOTTOM_CENTER:
-                origin = (Vector2){ width * 0.5f, height };          // bottom edge
-                break;
-
-            default:
-                origin = (Vector2){ width * 0.5f, height * 0.5f };
-                break;
-        }
-
-        DrawTexturePro(tex, source, dest, origin, 0.0f, tint);
+        Vector2 origin = rbg_get_render_origin(pivot, width, height);
+    
+		DrawTexturePro(tex, source, dest, origin, 0.0f, tint);
     }
 }

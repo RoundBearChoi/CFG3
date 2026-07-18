@@ -1,5 +1,6 @@
 #include "rbg_sheet_animators.h"
 #include "rbg_sheet_loader.h"
+#include "rbg_render_origin.h"
 #include "../rbg_players/rbg_players.h"
 #include "raylib.h"
 #include <stddef.h>
@@ -122,7 +123,9 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
     };
     
     // Pivot-based origin (works correctly with flip)
-    Vector2 origin;
+    Vector2 origin = rbg_get_render_origin(ani->pivot, fw, fh);
+
+	/*
     switch (ani->pivot)
 	{
         case RENDER_PIVOT_CENTER:
@@ -135,6 +138,7 @@ void rbg_draw_sprite_animation(const sprite_sheet_animator* ani, Vector2 positio
             origin = (Vector2){ fw * 0.5f, fh * 0.5f };
             break;
     }
+	*/
 
 	DrawTexturePro(s->texture, drawSource, dest, origin, 0.0f, tint);
 }
