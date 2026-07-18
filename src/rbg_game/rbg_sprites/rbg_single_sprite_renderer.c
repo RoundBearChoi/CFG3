@@ -1,7 +1,7 @@
 #include "rbg_single_sprite_renderer.h"
 #include "../rbg_sprites/rbg_single_sprite_loader.h"
 
-void rbg_render_single_sprite(RbgGameContext* game_ctx, const char *sprite_name, Vector2 position, float scale, Color tint)
+void rbg_render_single_sprite(RbgGameContext* game_ctx, const char *sprite_name, Vector2 position, float scale, rbg_render_pivot pivot, Color tint)
 {
     single_sprite* sprite = rbg_get_single_sprite_by_name(game_ctx, sprite_name);
     
