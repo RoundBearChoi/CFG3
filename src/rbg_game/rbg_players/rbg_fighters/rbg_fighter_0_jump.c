@@ -6,6 +6,7 @@
 
 void update_fighter_0_jump(RbgGameContext* game_ctx, rbg_player* player)
 {
+	// temp - perhaps move jump_timer to each player
 	// static timer for jump duration (initialized once, value persists. we reset on state entry)
 	static int jump_timers[3] = {0, 0, 0};
 	int idx = player->player_index;
