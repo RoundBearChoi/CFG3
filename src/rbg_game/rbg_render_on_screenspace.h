@@ -2,7 +2,7 @@
 #define RBG_RENDER_ON_SCREENSPACE_H
 
 // --------------------------------------------------------------
-// this is only for testing. all text and drawings will use png
+// this is only for testing. most text and drawings will use png
 // --------------------------------------------------------------
 
 #include "rbg_game_context.h"

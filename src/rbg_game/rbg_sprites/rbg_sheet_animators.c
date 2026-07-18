@@ -1,5 +1,6 @@
 #include "rbg_sheet_animators.h"
 #include "rbg_sheet_loader.h"
+#include "rbg_single_sprite_loader.h"
 #include "rbg_render_origin.h"
 #include "../rbg_players/rbg_players.h"
 #include "raylib.h"
