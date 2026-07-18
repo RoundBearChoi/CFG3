@@ -26,7 +26,6 @@ void rbg_render_single_sprite(RbgGameContext* game_ctx, const char *sprite_name,
             height
         };
 
-        // Same pivot logic you already use in rbg_draw_sprite_animation
         Vector2 origin;
         switch (pivot)
         {
