@@ -22,6 +22,12 @@ typedef struct sprite_sheet {
     int frame_height;       // pre-computed: texture.height / total_y
 } sprite_sheet;
 
+typedef struct single_sprite {
+    char *sprite_name;
+    Texture2D texture;
+    // intentionally no total_x/y, frame sizes, play_delay, render_scale, etc.
+} single_sprite;
+
 typedef struct sprite_sheet_animator {
     sprite_sheet* sheet;       // pointer to loaded data (do NOT free)
     int current_frame;

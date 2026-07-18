@@ -46,11 +46,17 @@ typedef struct RbgGameContext {
 	rbg_scene_type next_scene;
 
 	// sprite sheets (render) ctx
+	
+	// sheets
 	sprite_sheet* sprite_sheets;
 	int sprite_sheet_count;
 	sprite_sheet_animator sheet_animator_p1;
 	sprite_sheet_animator sheet_animator_p2;
-	
+
+	// single sprites
+	single_sprite* single_sprites;
+	int single_sprite_count;
+
 } RbgGameContext;
 
 RbgGameContext create_default_game_ctx(void);
