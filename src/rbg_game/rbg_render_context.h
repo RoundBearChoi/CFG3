@@ -29,9 +29,9 @@ typedef struct single_sprite {
 } single_sprite;
 
 typedef struct sprite_sheet_animator {
-    sprite_sheet* sheet;       // pointer to loaded data (do NOT free)
+    sprite_sheet* sheet; // pointer to loaded data (do NOT free)
     int current_frame;
-    int frame_counter;        // ticks until next frame
+    int frame_counter; // ticks until next frame
     bool is_playing;
     rbg_render_pivot pivot;
     bool is_facing_right_side; // true = original PNG right-facing orientation (default)
