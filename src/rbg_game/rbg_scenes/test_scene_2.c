@@ -90,8 +90,4 @@ void render_test_scene_2(RbgGameContext* game_ctx)
 
         DrawTextureEx(cat->texture, (Vector2){x, y}, 0.0f, cat_scale, WHITE);
     }
-	else
-	{
-		printf("\nfailing to render cat\n");
-	}
 }
