@@ -1,5 +1,5 @@
-#ifndef RBG_SPRITESHEET_LOADER_H
-#define RBG_SPRITESHEET_LOADER_H
+#ifndef RBG_SPRITE_SHEET_LOADER_H
+#define RBG_SPRITE_SHEET_LOADER_H
 
 #include "../rbg_game_context.h"
 #include "raylib.h"

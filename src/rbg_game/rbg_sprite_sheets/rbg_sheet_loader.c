@@ -14,7 +14,7 @@ void rbg_load_sprite_sheets(RbgGameContext* game_ctx, const char *csv_path)
     char *fileData = LoadFileText(csv_path);
     
 	if (fileData == NULL) {
-        TraceLog(LOG_WARNING, "Could not load spritesheet list: %s", csv_path);
+        TraceLog(LOG_WARNING, "Could not load sprite sheet list: %s", csv_path);
         return;
     }
 

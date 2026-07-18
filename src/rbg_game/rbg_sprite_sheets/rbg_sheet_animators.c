@@ -60,7 +60,7 @@ void rbg_init_animator(RbgGameContext* game_ctx, sprite_sheet_animator* ani, con
     
     if (ani->sheet == NULL)
 	{
-        TraceLog(LOG_WARNING, "rbg_init_animator: Could not find spritesheet '%s'", sprite_sheet_name);
+        TraceLog(LOG_WARNING, "rbg_init_animator: Could not find sprite sheet '%s'", sprite_sheet_name);
         return;
     }
     
