@@ -12,6 +12,7 @@ void init_dev_scene(RbgGameContext* game_ctx)
 
 	game_ctx->scene_initialized = true;
 
+	rbg_init_input(game_ctx);
 	rbg_load_single_sprites(game_ctx, "resources/single_sprite_list.csv");
 }
 
