@@ -5,6 +5,9 @@
 #include <stdlib.h>   // atoi
 #include <stdio.h>
 
+// init just once throughout the whole program
+static bool _input_initialized = false;
+
 // string table generated from the side-by-side X-macro
 // (id, str) → we take the str part
 const char* const rbg_input_action_names[INPUT_ACTION_COUNT] =
@@ -135,6 +138,13 @@ bool rbg_load_default_key_bindings(RbgGameContext* game_ctx)
 
 void rbg_init_input(RbgGameContext* game_ctx)
 {
+	if (_input_initialized == true)
+	{
+		return;
+	}
+
+	_input_initialized = false;
+
     rbg_load_default_key_bindings(game_ctx);
 }
 

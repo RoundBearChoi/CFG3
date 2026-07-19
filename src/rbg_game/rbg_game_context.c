@@ -18,7 +18,6 @@ RbgGameContext create_default_game_ctx(void)
 		.fps_timer = 0,
         
 		.current_scene = TEST_SCENE_2, // starting scene
-		//.current_scene = DEV_SCENE,
 		.next_scene = NO_SCENE,
 
         .scene_initialized = false,
