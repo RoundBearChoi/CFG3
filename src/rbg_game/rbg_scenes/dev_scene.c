@@ -1,4 +1,6 @@
 #include "dev_scene.h"
+#include "../rbg_sprites/rbg_single_sprite_loader.h"
+#include "../rbg_sprites/rbg_single_sprite_renderer.h"
 #include <stdio.h>
 
 void init_dev_scene(RbgGameContext* game_ctx)
@@ -23,5 +25,5 @@ void update_dev_scene(RbgGameContext* game_ctx)
 
 void render_dev_scene(RbgGameContext* game_ctx)
 {
-
+	rbg_render_single_sprite(game_ctx, "retro_cat_test", (Vector2){ 0.0f, -500.0f }, 3.0f, RENDER_PIVOT_BOTTOM_CENTER, GRAY);
 }

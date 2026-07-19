@@ -24,6 +24,7 @@ void init_test_scene_2(RbgGameContext* game_ctx)
 	rbg_init_players(game_ctx);
 	rbg_init_player_boxes(game_ctx);
 	rbg_init_sheet_animators(game_ctx);
+	rbg_load_single_sprites(game_ctx, "resources/single_sprite_list.csv");
 	rbg_init_fighter_update_functions();
 }
 
