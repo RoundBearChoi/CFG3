@@ -28,10 +28,11 @@ void rbg_draw_scaled_text(const char* text, Vector2 pos, float font_size, float 
 
 void rbg_draw_on_test_scene_2(RbgGameContext* game_ctx)
 {
-	if (game_ctx->current_scene != TEST_SCENE_2)
-	{
-		return;
-	}
+	bool skip = true;
+
+	if (game_ctx->current_scene == TEST_SCENE_2) { skip = false; }
+	if (game_ctx->current_scene == DEV_SCENE) { skip = false; }
+	if (skip) {	return; }
 
 	// scale to 720p reference
     int screenHeight = GetScreenHeight();
