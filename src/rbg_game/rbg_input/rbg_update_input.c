@@ -77,18 +77,9 @@ static KeyboardKey string_to_keyboard_key(const char* keystr)
 	return KEY_NULL;
 }
 
-// hardcoded defaults
-static void rbg_set_default_bindings(void)
-{
-
-}
-
 bool rbg_load_default_key_bindings(RbgGameContext* game_ctx)
 {
 	printf("\n=== loading default_key_bindings.json ===\n");
-
-    // start from safe defaults
-    rbg_set_default_bindings();
 
     // try to load JSON
     char* jsonText = LoadFileText("resources/default_key_bindings.json");
