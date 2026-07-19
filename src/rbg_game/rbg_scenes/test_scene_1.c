@@ -26,9 +26,10 @@ void update_test_scene_1(RbgGameContext* game_ctx)
 		init_test_scene_1(game_ctx);
 	}
 
+	// temp - switch scene
 	if (IsInputActionPressed(game_ctx, INPUT_F1))
 	{
-		rbg_set_next_scene(game_ctx, TEST_SCENE_2);
+		rbg_set_next_scene(game_ctx, DEV_SCENE);
 		end_test_scene_1(game_ctx);
 	}
 }
